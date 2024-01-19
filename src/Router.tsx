@@ -1,13 +1,18 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import PrivateRoutes from "@util/PrivateRoutes";
-import AuthRoutes from "@util/AuthRoutes";
-// import { PAGE_URL } from "@util/constants";
+import Home from '@pages/Home';
+import EDIT from '@pages/Edit';
+
+import PrivateRoutes from '@util/PrivateRoutes';
+import AuthRoutes from '@util/AuthRoutes';
+import { PAGE_URL } from '@util/constants';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path={`${PAGE_URL.HOME}`} element={<Home />} />
+        <Route path={`${PAGE_URL.EDIT}`} element={<EDIT />} />
         <Route element={<PrivateRoutes />}>
           {/* <Route path={`${PAGE_URL.HOME}`} element={<Home />} />
           <Route path={`${PAGE_URL.HOME}/:userId`} element={<Home />} /> */}
