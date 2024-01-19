@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from '@pages/Home';
 import EDIT from '@pages/Edit';
+import NotFound from '@pages/NotFound';
 
 import PrivateRoutes from '@util/PrivateRoutes';
 import AuthRoutes from '@util/AuthRoutes';
@@ -21,7 +22,7 @@ const Router = () => {
           {/* <Route path={`${PAGE_URL.LOGIN}`} element={<Login />} />
           <Route path={`${PAGE_URL.AUTH}`} element={<AuthLogin />} /> */}
         </Route>
-        {/* <Route path="/*" element={<NotFound />} /> */}
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
