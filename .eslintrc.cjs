@@ -14,6 +14,12 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
     "@typescript-eslint/no-explicit-any": 0,
   },
 };
