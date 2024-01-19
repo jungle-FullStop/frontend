@@ -9,6 +9,7 @@ const NavBar = () => {
         <NavLink to="/" className="ml-[5%]">
           <img src={logo} alt="메인로고" className="w-24" />
         </NavLink>
+        NavBar입니다!
       </div>
     </div>
   );
