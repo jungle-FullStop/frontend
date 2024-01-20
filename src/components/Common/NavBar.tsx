@@ -161,7 +161,7 @@ export function NavBar() {
             <Button fullWidth variant="text" size="sm" className="">
               <span>Log In</span>
             </Button>
-            <Button fullWidth variant="gradient" size="sm" className="">
+            <Button fullWidth variant="gradient" size="sm" color="amber" className="">
               <span>Sign in</span>
             </Button>
           </div>

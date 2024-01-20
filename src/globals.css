@@ -50,3 +50,10 @@
     background-color: #ff8f00;
   }
 }
+
+/* md editor 폰트 크기 */
+.w-md-editor-text-pre > code,
+.w-md-editor-text-input {
+  font-size: 20px !important;
+  line-height: 30px !important;
+}
