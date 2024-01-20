@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import Landing from '@pages/Landing';
 import Home from '@pages/Home';
 import Loading from '@pages/Loading';
 import EDIT from '@pages/Edit';
@@ -13,6 +14,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path={`${PAGE_URL.LANDING}`} element={<Landing />} />
         <Route path={`${PAGE_URL.HOME}`} element={<Home />} />
         <Route path={`${PAGE_URL.LOADING}`} element={<Loading />} />
         <Route path={`${PAGE_URL.EDIT}`} element={<EDIT />} />
