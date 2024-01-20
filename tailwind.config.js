@@ -12,6 +12,7 @@ export default {
   theme: {
     colors: {
       default: '#4B4B4B',
+      orange: '#E7A702',
       brown: '#C7C1BB',
       gray: '#D9D9D9',
       mint: '#C6D8CD',
