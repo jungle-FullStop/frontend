@@ -1,4 +1,5 @@
 export const PAGE_URL = {
+  LANDING: '/landing',
   HOME: '/',
   LOGIN: '/login',
   AUTH: '/auth',
