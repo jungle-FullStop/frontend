@@ -7,10 +7,11 @@ import Header from '@components/Landing/Header';
 const Landing = () => {
   //   const navigate = useNavigate();
 
-  //   const handleGoogleLogin = async () => {
-  //     const { googleLoginUrl } = await fetchGoogleLogin();
-  //     window.location.href = googleLoginUrl;
-  //   };
+  const handleGoogleLogin = async () => {
+    // const { googleLoginUrl } = await fetchGoogleLogin();
+    // window.location.href = googleLoginUrl;
+    window.location.href = '/home';
+  };
 
   //   useEffect(() => {
   //     if (accessToken) {
@@ -49,7 +50,7 @@ const Landing = () => {
               size="lg"
               color="white"
               className="flex items-center w-72 border-solid border-2 shadow-lg"
-              // onClick={handleGoogleLogin}
+              onClick={handleGoogleLogin}
             >
               <img
                 src="https://docs.material-tailwind.com/icons/google.svg"

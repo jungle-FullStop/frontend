@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import MDEditor from '@uiw/react-md-editor';
 import { Button } from '@material-tailwind/react';
+import { useNavigate } from 'react-router-dom';
 
 const TEMP = {
   body: `### 1. React 및 Redux 사용법 개선
@@ -24,6 +25,7 @@ const TEMP = {
 };
 
 const Editor = () => {
+  const navigate = useNavigate();
   const [value, setValue] = useState(TEMP.body);
 
   return (
@@ -39,7 +41,13 @@ const Editor = () => {
         />
       </div>
       <div className="flex mt-2 justify-end">
-        <Button variant="gradient" color="amber">
+        <Button
+          variant="gradient"
+          color="amber"
+          onClick={() => {
+            navigate('/home');
+          }}
+        >
           저장하기
         </Button>
       </div>
