@@ -1,13 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
-import { generateGraph } from '@hooks/useGenerateGraph';
+import { Stylesheet } from 'cytoscape';
+import { generateNode } from '@/hooks/useGenerateNode';
+import { generateStylesheet } from '@/hooks/useGenerateStylesheet';
 import { layouts } from '@type/components/Graph/layouts';
 
 const Graph = () => {
-  const [elements, setElements] = useState(() => generateGraph(5));
+  const [elements, setElements] = useState(() => generateNode(5));
   const [layout, setLayout] = useState(layouts.circle);
+  const [stylesheet, setStylesheet] = useState<Stylesheet[]>(generateStylesheet);
+
   return (
     <CytoscapeComponent
+      id="cy"
       elements={elements}
       style={{
         width: '100%',
@@ -17,6 +22,7 @@ const Graph = () => {
         borderRadius: '30px',
       }}
       layout={layout}
+      stylesheet={stylesheet}
       wheelSensitivity={0.1}
     />
   );

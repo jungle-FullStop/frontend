@@ -4,16 +4,18 @@ function randint(min: number, max: number): number {
   return min + Math.floor(Math.random() * (max - min));
 }
 
-export function generateGraph(n = 8, m = n * 2, acyclic = false) {
+export function generateNode(n = 8, m = n * 2, acyclic = false) {
   const ids = [];
   for (let i = 0; i < n; i++) {
-    ids.push(String.fromCharCode('a'.charCodeAt(0) + i));
+    ids.push(i.toString());
   }
 
   const elements: ElementDefinition[] = [];
 
   ids.forEach((id) => {
-    elements.push({ data: { id, label: id } });
+    elements.push({
+      data: { id, url: `https://changjohwang.tistory.com/${id}`, label: `React ${id}` },
+    });
   });
 
   for (let i = 0; i < m; i++) {
