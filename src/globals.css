@@ -11,12 +11,6 @@
 }
 
 /* 로딩 바 */
-.progress-container {
-  margin: 100px auto;
-  width: 500px;
-  text-align: center;
-}
-
 .progress {
   padding: 6px;
   border-radius: 30px;
