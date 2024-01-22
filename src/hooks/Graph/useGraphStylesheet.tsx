@@ -1,5 +1,5 @@
 import cytoscape, { NodeCollection, SearchPageRankOptions, SearchPageRankResult } from 'cytoscape';
-import * as graph from '@hooks/Graph/graphConstants';
+import * as graph from '@/util/Constants/graphConstants';
 
 export function getPageRank(elements: any): SearchPageRankResult {
   const cy_for_rank = cytoscape({

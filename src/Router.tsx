@@ -8,7 +8,7 @@ import NotFound from '@pages/NotFound';
 
 import PrivateRoutes from '@util/PrivateRoutes';
 import AuthRoutes from '@util/AuthRoutes';
-import { PAGE_URL } from '@util/constants';
+import { PAGE_URL } from '@/util/Constants/constants';
 
 const Router = () => {
   return (

@@ -3,7 +3,7 @@ import CytoscapeComponent from 'react-cytoscapejs';
 import { Stylesheet } from 'cytoscape';
 import { dummyElements } from '@type/components/Graph/dummyElements';
 import { generateStylesheet, getPageRank } from '@/hooks/Graph/useGraphStylesheet';
-import { layouts } from '@type/components/Graph/layouts';
+import { layouts } from '@/types/components/Graph/graphLayouts';
 import setupCy from '@util/SetupCy';
 import { setDimStyle, setFocus, setResetFocus } from '@/hooks/Graph/useGraphFunc';
 

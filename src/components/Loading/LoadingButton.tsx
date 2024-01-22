@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoadingCircle from '@/components/Loading/LoadingCircle';
 import { Button } from '@material-tailwind/react';
-import { WAITING_TIME } from '@util/constants';
+import { WAITING_TIME } from '@/util/Constants/constants';
 
 const LoadingButton = () => {
   const navigate = useNavigate();
