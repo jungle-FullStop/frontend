@@ -1,5 +1,4 @@
-import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
 import { Stylesheet } from 'cytoscape';
 import { dummyElements } from '@type/components/Graph/dummyElements';
@@ -10,10 +9,9 @@ import setupCy from '@util/SetupCy';
 setupCy();
 
 const Graph = () => {
-  const navigate = useNavigate();
   const [elements, setElements] = useState(dummyElements);
   const [layout, setLayout] = useState(layouts.fcose);
-  const [stylesheet, setStylesheet] = useState<Stylesheet[]>(generateStylesheet());
+  const [stylesheet, setStylesheet] = useState<Stylesheet[]>(generateStylesheet(elements));
 
   return (
     <CytoscapeComponent
