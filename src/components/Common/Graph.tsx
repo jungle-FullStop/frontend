@@ -1,18 +1,33 @@
 import { useState } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
 import { Stylesheet } from 'cytoscape';
-import { generateNode } from '@/hooks/useGenerateNode';
-import { generateStylesheet } from '@/hooks/useGenerateStylesheet';
-import { layouts } from '@type/components/Graph/layouts';
+import { dummyElements } from '@type/components/Graph/dummyElements';
+import { generateStylesheet, getPageRank } from '@/hooks/Graph/useGraphStylesheet';
+import { layouts } from '@/types/components/Graph/graphLayouts';
+import setupCy from '@util/SetupCy';
+import { setDimStyle, setFocus, setResetFocus } from '@/hooks/Graph/useGraphFunc';
+
+setupCy();
 
 const Graph = () => {
-  const [elements, setElements] = useState(() => generateNode(5));
-  const [layout, setLayout] = useState(layouts.circle);
-  const [stylesheet, setStylesheet] = useState<Stylesheet[]>(generateStylesheet);
+  const [elements, setElements] = useState(dummyElements);
+  const [layout, setLayout] = useState(layouts.fcose);
+  const [stylesheet, setStylesheet] = useState<Stylesheet[]>(
+    generateStylesheet(getPageRank(elements)),
+  );
 
   return (
     <CytoscapeComponent
-      id="cy"
+      cy={(cy) => {
+        cy.on('select', 'node', function (e) {
+          setDimStyle(cy.nodes());
+          setFocus(e.target);
+        });
+
+        cy.on('unselect', function (e) {
+          setResetFocus(e.cy.elements(), getPageRank(elements));
+        });
+      }}
       elements={elements}
       style={{
         width: '100%',

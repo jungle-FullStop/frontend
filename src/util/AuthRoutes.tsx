@@ -1,5 +1,5 @@
 import { Outlet, Navigate } from 'react-router-dom';
-import { PAGE_URL } from '@util/constants';
+import { PAGE_URL } from '@/util/Constants/constants';
 
 const AuthRoutes = () => {
   const isLogin =

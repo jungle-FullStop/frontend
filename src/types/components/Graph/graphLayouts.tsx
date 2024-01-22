@@ -1,8 +1,4 @@
 export const layouts: Record<string, any> = {
-  random: {
-    name: 'random',
-    animate: true,
-  },
   grid: {
     name: 'grid',
     animate: true,
@@ -14,5 +10,10 @@ export const layouts: Record<string, any> = {
   breadthfirst: {
     name: 'breadthfirst',
     animate: true,
+  },
+  fcose: {
+    name: 'fcose',
+    animate: true,
+    fit: true,
   },
 };
