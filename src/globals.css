@@ -11,12 +11,6 @@
 }
 
 /* 로딩 바 */
-.progress-container {
-  margin: 100px auto;
-  width: 500px;
-  text-align: center;
-}
-
 .progress {
   padding: 6px;
   border-radius: 30px;
@@ -37,7 +31,7 @@
 .progress-moved .progress-bar {
   width: 100%;
   background-color: #ff8f00;
-  animation: progressAnimation 5s;
+  animation: progressAnimation 10s;
 }
 
 @keyframes progressAnimation {
@@ -51,3 +45,9 @@
   }
 }
 
+/* md editor 폰트 크기 */
+.w-md-editor-text-pre > code,
+.w-md-editor-text-input {
+  font-size: 20px !important;
+  line-height: 30px !important;
+}

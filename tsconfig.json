@@ -10,7 +10,7 @@
       "@api/*": ["./src/api/*"],
       "@type/*": ["./src/types/*"],
       "@hooks/*": ["./src/hooks/*"],
-      "@store/*": ["./src/store/*"]
+      "@store/*": ["./src/store/*"],
     },
     "target": "ES2020",
     "useDefineForClassFields": true,
@@ -30,8 +30,8 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
   },
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
 }
