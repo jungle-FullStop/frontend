@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Heatmap from '@/components/Home/Grass2';
+import Heatmap from '@/components/Home/Grass';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@material-tailwind/react';
 
