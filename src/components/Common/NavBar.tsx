@@ -4,7 +4,7 @@ import { Navbar, MobileNav, Typography, Button, IconButton } from '@material-tai
 
 import logo from '@assets/image/logo.png';
 
-export function NavBar() {
+export function NavBar(props : any) {
   const [openNav, setOpenNav] = useState(false);
 
   useEffect(() => {
