@@ -1,9 +1,13 @@
+const nodeMaxSize = 50;
+const nodeMinSize = 5;
+const fontMaxSize = 8;
+const fontMinSize = 5;
+
 export function generateStylesheet() {
   return [
     {
       selector: 'node',
       style: {
-        backgroundColor: '#ffd54f',
         label: 'data(label)',
       },
     },
@@ -12,7 +16,6 @@ export function generateStylesheet() {
       style: {
         width: 3,
         lineColor: '#ccc',
-        sourceArrowColor: '#000',
         sourceArrowShape: 'triangle',
         curveStyle: 'bezier',
       },
