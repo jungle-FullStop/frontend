@@ -16,6 +16,8 @@ const Graph = () => {
     generateStylesheet(getPageRank(elements)),
   );
 
+  let resizeTimer: number;
+
   return (
     <CytoscapeComponent
       cy={(cy) => {
@@ -26,6 +28,13 @@ const Graph = () => {
 
         cy.on('unselect', function (e) {
           setResetFocus(e.cy.elements(), getPageRank(elements));
+        });
+
+        window.addEventListener('resize', function () {
+          this.clearTimeout(resizeTimer);
+          resizeTimer = this.setTimeout(function () {
+            cy.fit();
+          }, 200);
         });
       }}
       elements={elements}

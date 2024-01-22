@@ -28,15 +28,17 @@ const LoadingButton = () => {
       {componentType === 'button' ? (
         <LoadingCircle />
       ) : (
-        <Button
-          color="amber"
-          className="text-lg font-bold"
-          onClick={() => {
-            navigate('/edit');
-          }}
-        >
-          가이드라인 보러가기
-        </Button>
+        <div className="flex w-64 h-20 justify-center items-center">
+          <Button
+            color="amber"
+            className="text-2xl font-bold"
+            onClick={() => {
+              navigate('/edit');
+            }}
+          >
+            가이드라인 보러가기!
+          </Button>
+        </div>
       )}
       {timer > 0}
     </div>

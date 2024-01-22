@@ -1,6 +1,6 @@
 const LoadingCircle = () => {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center w-64 h-20">
       <svg className="fill-orange-300 h-10 w-10 animate-spin" viewBox="3 3 18 18">
         <path
           className="opacity-70"
