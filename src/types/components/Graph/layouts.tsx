@@ -14,5 +14,6 @@ export const layouts: Record<string, any> = {
   fcose: {
     name: 'fcose',
     animate: true,
+    fit: true,
   },
 };

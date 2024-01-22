@@ -2,25 +2,30 @@ import { useState } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
 import { Stylesheet } from 'cytoscape';
 import { dummyElements } from '@type/components/Graph/dummyElements';
-import { generateStylesheet } from '@/hooks/Graph/useGenerateStylesheet';
+import { generateStylesheet, getPageRank } from '@/hooks/Graph/useGraphStylesheet';
 import { layouts } from '@type/components/Graph/layouts';
 import setupCy from '@util/SetupCy';
+import { setDimStyle, setFocus, setResetFocus } from '@/hooks/Graph/useGraphFunc';
 
 setupCy();
 
 const Graph = () => {
   const [elements, setElements] = useState(dummyElements);
   const [layout, setLayout] = useState(layouts.fcose);
-  const [stylesheet, setStylesheet] = useState<Stylesheet[]>(generateStylesheet(elements));
+  const [stylesheet, setStylesheet] = useState<Stylesheet[]>(
+    generateStylesheet(getPageRank(elements)),
+  );
 
   return (
     <CytoscapeComponent
-      cy={(cy): void => {
-        cy.on('select', (e: any) => {
-          const url = e.target.data('url');
-          if (url && url !== '') {
-            window.open(url);
-          }
+      cy={(cy) => {
+        cy.on('select', 'node', function (e) {
+          setDimStyle(cy.nodes());
+          setFocus(e.target);
+        });
+
+        cy.on('unselect', function (e) {
+          setResetFocus(e.cy.elements(), getPageRank(elements));
         });
       }}
       elements={elements}
