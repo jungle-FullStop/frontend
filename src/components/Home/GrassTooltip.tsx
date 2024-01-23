@@ -1,14 +1,12 @@
 import { ReactNode, useState, useEffect, useRef } from 'react';
 
-interface GrassTooltipProps {
-  content: string;
-  children: ReactNode;
-}
+const GrassTooltip = (props: any) => {
+  const [showToolTip, setShowToolTip] = useState(false);
 
-const GrassTooltip = ({ content, children }: GrassTooltipProps) => {
-  const [showTooltip, setShowTooltip] = useState(false);
   const grassDiv = useRef<HTMLDivElement>(null);
   const tooltipDiv = useRef<HTMLDivElement>(null);
+
+ 
 
   useEffect(() => {
     const grassNode = grassDiv.current;
@@ -17,26 +15,36 @@ const GrassTooltip = ({ content, children }: GrassTooltipProps) => {
       const rect = grassNode.getBoundingClientRect();
       tooltipNode.style.left = `${rect.left}px`;
     }
-  }, [showTooltip]);
+  }, [showToolTip]);
 
   return (
     <div
       ref={grassDiv}
       className="flex whitespace-pre"
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
+      onMouseEnter={() => {
+        setShowToolTip(true);
+       
+      }}
+      onMouseLeave={() => 
+        setShowToolTip(false)   
+      }
     >
-      {children}
-      {showTooltip && (
+      <div className={`m-[0.2rem] h-5 w-5 flex-grow rounded ${props.i == 23 ? 'bg-light-green-400' :  'bg-gray-300' }`}></div>
+      {showToolTip && (
         <div
           ref={tooltipDiv}
-          className="bg-default absolute -translate-x-1/2 translate-y-1/2 rounded p-2 text-white opacity-90"
+          className="bg-default absolute rounded -translate-y-8 bg-yellow-100 p-2  opacity-70"
         >
-          {content}
+          {
+            props.i ==23 ? <p><strong> Check TIL</strong> on {props.date}</p> :
+            <p><strong> No TIL</strong> on {props.date}</p>
+          }
+          
         </div>
       )}
     </div>
   );
 };
+
 
 export default GrassTooltip;
