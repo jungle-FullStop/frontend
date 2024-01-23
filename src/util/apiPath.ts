@@ -9,6 +9,6 @@ const API_PATH = {
     logout: () => SERVER_URL + AUTH + '/logout',
     updateToken: () => SERVER_URL + AUTH + '/refresh_token',
   },
-}
+};
 
 export default API_PATH;

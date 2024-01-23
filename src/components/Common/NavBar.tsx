@@ -5,7 +5,6 @@ import { Navbar, Collapse, Typography, Button, IconButton } from '@material-tail
 import logo from '@assets/image/logo.png';
 import { logout } from '@api/Login.ts';
 
-
 export function NavBar() {
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
@@ -19,7 +18,7 @@ export function NavBar() {
 
     if (isLogout) {
       localStorage.setItem('userId', '');
-      navigate('/login');
+      navigate('/');
     }
   };
 
@@ -132,7 +131,12 @@ export function NavBar() {
         </NavLink>
         <div className="hidden lg:block">{navList}</div>
         <div className="flex items-center gap-x-1">
-          <Button variant="text" size="sm" className="hidden lg:inline-block" onClick={onClickLogout}>
+          <Button
+            variant="text"
+            size="sm"
+            className="hidden lg:inline-block"
+            onClick={onClickLogout}
+          >
             <span>Log Out</span>
           </Button>
           <Button variant="gradient" size="sm" className="hidden lg:inline-block" color="amber">
@@ -176,7 +180,14 @@ export function NavBar() {
             <Button fullWidth variant="text" size="sm" className="">
               <span>Log In</span>
             </Button>
-            <Button fullWidth variant="gradient" size="sm" color="amber" className="" onClick={onClickLogout}>
+            <Button
+              fullWidth
+              variant="gradient"
+              size="sm"
+              color="amber"
+              className=""
+              onClick={onClickLogout}
+            >
               <span>Sign in</span>
             </Button>
           </div>

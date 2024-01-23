@@ -3,6 +3,8 @@
 import { Button, Typography } from '@material-tailwind/react';
 
 import Header from '@components/Landing/Header';
+import { Link } from 'react-router-dom';
+import { GOOGLE_LOGIN_FORM_URL } from '@/util/Constants/constants';
 
 const Landing = () => {
   //   const navigate = useNavigate();
@@ -46,19 +48,21 @@ const Landing = () => {
             <Typography className="text-3xl font-extrabold">TIL을 작성해보세요.</Typography>
           </div>
           <div id="googleLoginButton" className="flex flex-col justify-end p-0">
-            <Button
-              size="lg"
-              color="white"
-              className="flex items-center w-72 border-solid border-2 shadow-lg"
-              onClick={handleGoogleLogin}
-            >
-              <img
-                src="https://docs.material-tailwind.com/icons/google.svg"
-                alt="metamask"
-                className="h-6 w-6"
-              />
-              Google 계정으로 로그인하기
-            </Button>
+            <Link to={GOOGLE_LOGIN_FORM_URL}>
+              <Button
+                size="lg"
+                color="white"
+                className="flex items-center w-72 border-solid border-2 shadow-lg"
+                onClick={handleGoogleLogin}
+              >
+                <img
+                  src="https://docs.material-tailwind.com/icons/google.svg"
+                  alt="metamask"
+                  className="h-6 w-6"
+                />
+                Google 계정으로 로그인하기
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
