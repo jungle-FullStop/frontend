@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { GOOGLE_LOGIN_FORM_URL } from '@util/constants';
+import { GOOGLE_LOGIN_FORM_URL } from '@util/Constants/constants';
 
 const LoginForm = () => {
   return (
