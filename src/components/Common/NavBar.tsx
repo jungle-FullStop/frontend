@@ -5,7 +5,7 @@ import { Navbar, Collapse, Typography, Button, IconButton } from '@material-tail
 import logo from '@assets/image/logo.png';
 import { logout } from '@api/Login.ts';
 
-export function NavBar() {
+export function NavBar(props : any) {
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
 
