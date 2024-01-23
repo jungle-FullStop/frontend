@@ -1,83 +1,211 @@
-import { useRef, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Component } from 'react';
+import Chart from 'react-apexcharts';
 
-import GrassTooltip from '@components/Home/GrassTooltip';
+class Heatmap extends Component {
+  constructor(props: any) {
+    super(props);
 
-import useGrassQuery from '@hooks/useGrassQuery';
+    this.state = {
+      options: {
+        plotOptions: {
+          heatmap: {
+            colorScale: {
+              ranges: [
+                {
+                  from: 0,
+                  to: 45,
+                  color: '#CFD2D0',
+                  name: 'TIL 아직 안 씀',
+                },
+              ],
+            },
+          },
+        },
+      },
+      series: [
+        {
+          name: '',
+          data: [
+            {
+              x: 'MON',
+              y: 29,
+            },
+            {
+              x: 'TUE',
+              y: 30,
+            },
+            {
+              x: 'WED',
+              y: 31,
+            },
+            {
+              x: 'THU',
+              y: 1,
+            },
+            {
+              x: 'FRI',
+              y: 2,
+            },
+            {
+              x: 'SAT',
+              y: 3,
+            },
+            {
+              x: 'SUN',
+              y: 4,
+            },
+          ],
+        },
+        {
+          name: '',
+          data: [
+            {
+              x: 'MON',
+              y: 22,
+            },
+            {
+              x: 'TUE',
+              y: 23,
+            },
+            {
+              x: 'WED',
+              y: 24,
+            },
+            {
+              x: 'THU',
+              y: 25,
+            },
+            {
+              x: 'FRI',
+              y: 26,
+            },
+            {
+              x: 'SAT',
+              y: 27,
+            },
+            {
+              x: 'SUN',
+              y: 28,
+            },
+          ],
+        },
+        {
+          name: '',
+          data: [
+            {
+              x: 'MON',
+              y: 15,
+            },
+            {
+              x: 'TUE',
+              y: 16,
+            },
+            {
+              x: 'WED',
+              y: 17,
+            },
+            {
+              x: 'THU',
+              y: 18,
+            },
+            {
+              x: 'FRI',
+              y: 19,
+            },
+            {
+              x: 'SAT',
+              y: 20,
+            },
+            {
+              x: 'SUN',
+              y: 21,
+            },
+          ],
+        },
+        {
+          name: '',
+          data: [
+            {
+              x: 'MON',
+              y: 8,
+            },
+            {
+              x: 'TUE',
+              y: 9,
+            },
+            {
+              x: 'WED',
+              y: 10,
+            },
+            {
+              x: 'THU',
+              y: 11,
+            },
+            {
+              x: 'FRI',
+              y: 12,
+            },
+            {
+              x: 'SAT',
+              y: 13,
+            },
+            {
+              x: 'SUN',
+              y: 14,
+            },
+          ],
+        },
+        {
+          name: '',
+          data: [
+            {
+              x: 'MON',
+              y: 1,
+            },
+            {
+              x: 'TUE',
+              y: 2,
+            },
+            {
+              x: 'WED',
+              y: 3,
+            },
+            {
+              x: 'THU',
+              y: 4,
+            },
+            {
+              x: 'FRI',
+              y: 5,
+            },
+            {
+              x: 'SAT',
+              y: 6,
+            },
+            {
+              x: 'SUN',
+              y: 7,
+            },
+          ],
+        },
+      ],
+    };
+  }
 
-import { EMOTION_LEVELS } from '@util/constants';
-
-interface GrassDataProps {
-  date: string;
-  mood: number;
+  render() {
+    return (
+      <div className="heatmap">
+        <div>
+          <Chart
+            options={this.state.options}
+            series={this.state.series}
+            type="heatmap"
+            width="30%"
+          />
+        </div>
+      </div>
+    );
+  }
 }
 
-const Grass = () => {
-  const params = useParams();
-  const userId = params.userId || (localStorage.getItem('userId') as string);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.scrollLeft = containerRef.current.scrollWidth;
-    }
-  });
-
-  const currentDate: Date = new Date();
-  currentDate.setHours(0, 0, 0, 0);
-  const lastYear: Date = new Date(currentDate);
-  lastYear.setFullYear(lastYear.getFullYear() - 1);
-
-  const dates = Array.from({ length: 366 }, () => 0);
-  const { data, isLoading, isError } = useGrassQuery(userId);
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (isError) {
-    return <p>Error fetching data</p>;
-  }
-
-  data.yearMood.forEach(({ date, mood }: GrassDataProps) => {
-    const dataDate = new Date(date);
-    const index = Math.floor((dataDate.getTime() - lastYear.getTime()) / (24 * 60 * 60 * 1000));
-    dates[index] = mood;
-  });
-
-  const grassData = [...Array(lastYear.getDay()).fill(undefined), ...dates];
-  const getTooltipContent = (index: number) => {
-    const tmpDate = new Date(lastYear);
-    tmpDate.setDate(tmpDate.getDate() - lastYear.getDay() + index);
-    const moodContent = EMOTION_LEVELS[grassData[index]];
-    return `${moodContent} mood on ${tmpDate.toLocaleDateString()}`;
-  };
-
-  const grassElements = grassData.map((mood, index) => {
-    if (mood === undefined) {
-      return <div key={index} className={`m-[0.1rem] h-4 w-4 flex-grow`}></div>;
-    }
-
-    return (
-      <GrassTooltip key={index} content={getTooltipContent(index)}>
-        <div className={`m-[0.1rem] h-4 w-4 flex-grow rounded bg-emotion-${mood}`}></div>
-      </GrassTooltip>
-    );
-  });
-
-  return (
-    <div className="flex h-full w-full flex-col gap-2 p-5 sm:w-3/5">
-      <p className="text-lg font-bold sm:text-2xl">
-        지난 1년간 {data.yearMood.length}개의 일기를 작성하셨어요.
-      </p>
-      <div
-        ref={containerRef}
-        className="grid-rows-7 border-brown grid h-full w-full grid-flow-col overflow-x-scroll rounded-lg border p-2"
-      >
-        {grassElements}
-      </div>
-    </div>
-  );
-};
-
-export default Grass;
+export default Heatmap;

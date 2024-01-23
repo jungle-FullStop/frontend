@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoadingCircle from '@/components/Loading/LoadingCircle';
 import { Button } from '@material-tailwind/react';
-import { WAITING_TIME } from '@util/constants';
+import { WAITING_TIME } from '@/util/Constants/constants';
 
 const LoadingButton = () => {
   const navigate = useNavigate();
@@ -28,15 +28,17 @@ const LoadingButton = () => {
       {componentType === 'button' ? (
         <LoadingCircle />
       ) : (
-        <Button
-          color="amber"
-          className="text-lg font-bold"
-          onClick={() => {
-            navigate('/edit');
-          }}
-        >
-          가이드라인 보러가기
-        </Button>
+        <div className="flex w-64 h-20 justify-center items-center">
+          <Button
+            color="amber"
+            className="text-2xl font-bold"
+            onClick={() => {
+              navigate('/edit');
+            }}
+          >
+            가이드라인 보러가기!
+          </Button>
+        </div>
       )}
       {timer > 0}
     </div>
