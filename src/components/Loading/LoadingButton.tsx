@@ -28,7 +28,7 @@ const LoadingButton = () => {
       {componentType === 'button' ? (
         <LoadingCircle />
       ) : (
-        <div className="flex w-64 h-20 justify-center items-center">
+        <div className="flex h-20 w-64 items-center justify-center">
           <Button
             color="amber"
             className="text-2xl font-bold"
