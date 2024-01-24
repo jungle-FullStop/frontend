@@ -144,4 +144,32 @@ export const dummyElements: ElementDefinition[] = [
       target: 'STUDY-webpackBuild',
     },
   },
+  {
+    data: {
+      id: 'React',
+      url: 'https://changjohwang.tistory.com/11',
+      label: 'React',
+    },
+  },
+  {
+    data: {
+      id: 'Redux',
+      url: 'https://changjohwang.tistory.com/11',
+      label: 'Redux',
+    },
+  },
+  {
+    data: {
+      id: 'PJ-mindMap->React',
+      source: 'React',
+      target: 'PJ-mindMap',
+    },
+  },
+  {
+    data: {
+      id: 'React->Redux',
+      source: 'Redux',
+      target: 'React',
+    },
+  },
 ];

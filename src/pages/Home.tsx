@@ -1,10 +1,21 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HomeProfile } from '@/components/Common/HomeProfile';
 import NavBar from '@/components/Common/NavBar';
 import GrassTooltip from '@/components/Home/GrassTooltip';
 import { Button } from '@material-tailwind/react';
+import { getProfile } from '@/api/Profile';
 
 const Home = () => {
+  const getUserProfile = async () => {
+    const userProfile = await getProfile();
+    localStorage.setItem('userName', userProfile?.name);
+    localStorage.setItem('userProfileImage', userProfile?.profileImage);
+  };
+
+  useEffect(() => {
+    getUserProfile();
+  }, []);
   //현재 날짜와 시각을 나타내는 클래스 생성
   const currentDate: Date = new Date();
   // console.log(currentDate)
