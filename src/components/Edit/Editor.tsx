@@ -40,7 +40,7 @@ const Editor = () => {
           }}
         />
       </div>
-      <div className="flex mt-2 justify-end">
+      <div className="mt-2 flex justify-end">
         <Button
           variant="gradient"
           color="amber"

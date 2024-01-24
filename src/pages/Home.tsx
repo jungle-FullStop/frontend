@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HomeProfile } from '@/components/Common/HomeProfile';
 import NavBar from '@/components/Common/NavBar';
 import GrassTooltip from '@/components/Home/GrassTooltip';
+import { Button } from '@material-tailwind/react';
 
 const Home = () => {
   //현재 날짜와 시각을 나타내는 클래스 생성
@@ -53,31 +53,31 @@ const Home = () => {
   });
 
   return (
-    <>
+    <div className="main-container">
       <NavBar />
-      <div className="max-w-screen-xl mx-auto">
-        <div className="float-left">
+      <div className="sub-container">
+        <div className="flex flex-row place-content-between">
           <HomeProfile />
-        </div>
-        <div className=" mt-20">
-          <div className="flex flex-col items-center">
-            <p className="mb-8 text-center  mt-24 text-2xl font-bold">아직 TIL을 작성하지 않으셨네요 !</p>
-            <button
-              className="mb-10 rounded-full bg-yellow-600 px-4 py-2 font-bold text-white hover:bg-yellow-400"
-              onClick={() => navigate('/loading')}
-            >
-              TIL 작성하기
-            </button>
-          </div>
-
-          <p className="m-5 text-center text-lg font-bold sm:text-2xl">이번 달 TIL HISTORY.</p>
-
-          <div className="border-brown container mx-auto mb-10 grid h-auto w-80 grid-cols-7 grid-rows-5 rounded-lg border p-2">
-            {grassElements}
+          <div className="flex flex-col gap-y-20">
+            <div className="contents-container">
+              <p className="text-center text-2xl font-bold">아직 TIL을 작성하지 않으셨나요?</p>
+              <Button
+                className="rounded-full bg-yellow-600 px-4 py-2 text-2xl font-bold text-white hover:bg-yellow-400"
+                onClick={() => navigate('/loading')}
+              >
+                TIL 작성하기
+              </Button>
+            </div>
+            <div className="contents-container">
+              <p className="text-center text-lg font-bold sm:text-2xl">이번 달 TIL HISTORY.</p>
+              <div className="border-brown container mx-auto grid h-auto w-80 grid-cols-7 grid-rows-5 rounded-lg border p-2">
+                {grassElements}
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

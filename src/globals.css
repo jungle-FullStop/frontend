@@ -10,6 +10,18 @@
   }
 }
 
+.main-container {
+  @apply mx-auto flex max-w-screen-xl flex-col px-4 py-2 lg:px-8 lg:py-4;
+}
+
+.sub-container {
+  @apply py-10;
+}
+
+.contents-container {
+  @apply flex flex-col items-center gap-y-5 rounded-lg bg-white p-7 shadow-md;
+}
+
 /* 로딩 바 */
 .progress {
   padding: 6px;
