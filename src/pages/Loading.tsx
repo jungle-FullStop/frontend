@@ -6,16 +6,18 @@ import LoadingButton from '@components/Loading/LoadingButton';
 
 const Loading = () => {
   return (
-    <div className="flex flex-col mx-auto max-w-screen-xl px-4 py-2 lg:px-8 lg:py-4">
+    <div className="main-container">
       <NavBar />
-      <div className="flex flex-col items-center">
-        <Typography className="container place-self-start text-3xl font-extrabold pt-6 pb-2">
-          오늘의 검색 키워드
-        </Typography>
-        <Graph />
-        <div className="container flex justify-center items-center gap-x-3 p-5">
-          <ProgressBar />
-          <LoadingButton />
+      <div className="sub-container">
+        <div className="flex flex-col items-center">
+          <Typography className="container place-self-start pb-2 text-3xl font-extrabold">
+            오늘의 검색 키워드
+          </Typography>
+          <Graph />
+          <div className="container flex items-center justify-center gap-x-3 p-5">
+            <ProgressBar />
+            <LoadingButton />
+          </div>
         </div>
       </div>
     </div>

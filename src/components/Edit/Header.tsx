@@ -31,7 +31,7 @@ const KeywordBox = () => {
   }
 
   return (
-    <div className="flex flex-col justify-between mt-10 mb-2">
+    <div className="flex flex-col justify-between pb-2">
       <p className="text-3xl font-bold">오늘의 TIL을 적어보세요!</p>
       <div className="flex flex-row justify-end">
         <div className="flex flex-wrap gap-4">
