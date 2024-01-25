@@ -12,8 +12,8 @@ const API_PATH = {
     updateToken: () => SERVER_URL + AUTH + '/refresh_token',
   },
   REPORT: {
-    create: (id: any) => SERVER_URL + REPROT + `/create/${id}`,
     find: (id: any) => SERVER_URL + REPROT + `/find/${id}`,
+    create: (id: any) => SERVER_URL + REPROT + `/create/${id}`,
   },
   USER: {
     getProfile: (id: any) => SERVER_URL + USER + `/${id}`,

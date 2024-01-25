@@ -3,11 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import LoadingCircle from '@/components/Loading/LoadingCircle';
 import { Button } from '@material-tailwind/react';
 import { WAITING_TIME } from '@/util/Constants/constants';
+import { findReport } from '@/api/Report';
 
 const LoadingButton = () => {
   const navigate = useNavigate();
   const [componentType, setComponentType] = useState('button');
   const [timer, setTimer] = useState(WAITING_TIME);
+
+  const getReport = async () => {
+    const report = await findReport();
+    localStorage.setItem('todayReport', report?.report);
+    navigate('/edit');
+  };
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -33,7 +40,7 @@ const LoadingButton = () => {
             color="amber"
             className="text-2xl font-bold"
             onClick={() => {
-              navigate('/edit');
+              getReport();
             }}
           >
             가이드라인 보러가기!

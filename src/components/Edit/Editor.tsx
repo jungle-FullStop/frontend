@@ -2,6 +2,7 @@ import { useState } from 'react';
 import MDEditor from '@uiw/react-md-editor';
 import { Button } from '@material-tailwind/react';
 import { useNavigate } from 'react-router-dom';
+import { findReport } from '@/api/Report';
 
 const TEMP = {
   body: `### 1. React 및 Redux 사용법 개선
@@ -26,7 +27,11 @@ const TEMP = {
 
 const Editor = () => {
   const navigate = useNavigate();
-  const [value, setValue] = useState(TEMP.body);
+  let report = localStorage.getItem('todayReport');
+  if (report === null) {
+    report = TEMP.body;
+  }
+  const [value, setValue] = useState(report);
 
   return (
     <div>

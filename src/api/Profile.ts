@@ -16,6 +16,6 @@ export const getProfile = async () => {
     const user: userInfo = await response.json();
     return user;
   } catch (error) {
-    console.error('가이드라인 생성에 실패했습니다.', error);
+    console.error('프로필 불러오기에 실패했습니다.', error);
   }
 };

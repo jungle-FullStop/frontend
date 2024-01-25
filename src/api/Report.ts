@@ -1,6 +1,10 @@
 import API_PATH from '@util/apiPath';
 
-const TEMP_ID = 3;
+const TEMP_ID = 1;
+
+interface reportInfo {
+  report: any;
+}
 
 export const createReport = async () => {
   try {
@@ -19,7 +23,7 @@ export const findReport = async () => {
     const response = await fetch(API_PATH.REPORT.find(TEMP_ID), {
       method: 'GET',
     });
-    const { report } = await response.json();
+    const report: reportInfo = await response.json();
     return report;
   } catch (error) {
     console.error('가이드라인을 찾는데 실패했습니다.', error);
