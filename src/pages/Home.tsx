@@ -27,11 +27,7 @@ const Home = () => {
   }, []);
 
   const grassElements = dateRange.map((date, i) => {
-    return (
-      <GrassTooltip date={date} i={i}>
-        {/* <div className="m-[0.1rem] h-5 w-5 flex-grow rounded bg-gray-300" title={`${a}`}></div> */}
-      </GrassTooltip>
-    );
+    return <GrassTooltip date={date} i={i} key={i} />;
   });
 
   return (

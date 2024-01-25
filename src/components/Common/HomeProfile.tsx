@@ -76,8 +76,8 @@ export const HomeProfile = () => {
           <div className="grid grid-cols-3">
             {[...Array(5)].map((a, i) => {
               return (
-                <div className="m-5 flex flex-col items-center">
-                  <Typography>황창조</Typography>
+                <div className="m-5 flex flex-col items-center" key={i}>
+                  <Typography>정준희</Typography>
                   <img
                     className={`border-brownw-25 h-20 rounded-full border-2 border-solid object-cover transition duration-1000 ease-in-out sm:mb-0 ${isWrite ? 'border-green-700' : 'border-gray-300'}`}
                     src={imgUrl}
