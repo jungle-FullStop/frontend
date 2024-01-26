@@ -2,19 +2,22 @@ import { Typography } from '@material-tailwind/react';
 import { useState, useRef } from 'react';
 
 export const HomeProfile = () => {
-  //친구 관리 모달창 닫혀 있으면 false, 열려 있으면 true
-  const [isWrite, setIsWrite] = useState(false);
+  //TIL 썼으면 프로필 주변 초록색으로
+  const [myProfile,setMyProfile] = useState(false);
+  const [isWrite, setIsWrite] = useState([false,false,false,false,false]);
+  const [count, setCount] = useState(-1);
 
-  const [handleFriend, setHandleFriend] = useState(false);
+  //스토리 닫혀 있으면 false, 열려 있으면 true
+  const [handleStory, setHandleStory] = useState(false);
 
   //모달창 여는 함수
   const openModal = () => {
-    setHandleFriend(true);
+    setHandleStory(true);
   };
 
   //모달창 닫는 함수
   const closeModal = () => {
-    setHandleFriend(false);
+    setHandleStory(false);
   };
 
   const imgUrl =
@@ -24,19 +27,25 @@ export const HomeProfile = () => {
     <div className="w-screen pr-10">
       <div className="contents-container">
         <img
-          className={`border-brown mb-5 h-40 w-40 rounded-full border-4 border-solid object-cover transition duration-1000 ease-in-out sm:mb-0 ${isWrite ? 'border-green-700' : 'border-gray-300'}`}
+          className={`border-brown mb-5 h-40 w-40 rounded-full border-4 border-solid object-cover transition duration-1000 ease-in-out sm:mb-0 ${myProfile ? 'border-green-700' : 'border-gray-300'}`}
           src={imgUrl}
           alt="나의 프로필 사진"
+          onClick={() => {
+            if (isWrite) {
+              openModal();
+            }
+          }}
         />
 
-        {handleFriend ? (
+        {handleStory && isWrite ? (
           <div className="fixed inset-0  flex  items-center justify-center  bg-gray-800 bg-opacity-50">
             <div className="w-96 rounded-lg bg-white p-8">
-              <h2 className="mb-4 text-2xl font-bold">친구 관리</h2>
-              {/* 모달 내용 및 로직 구현 */}
-              <p>친구 0명</p>
+              <h2 className="mb-4 text-2xl font-bold">작성한 TIL</h2>
+              {/* 스토리 내용 및 로직 구현 */}
               <button
-                onClick={closeModal}
+                onClick={()=>{
+                  closeModal()
+                setIsWrite}}
                 className="mt-4 rounded bg-blue-500 px-4 py-2 text-white"
               >
                 닫기
@@ -49,7 +58,8 @@ export const HomeProfile = () => {
           <button
             className="border-slate-300 border hover:border-indigo-300"
             onClick={() => {
-              setIsWrite(true);
+              setMyProfile(true);
+              setCount(count + 1);
             }}
           >
             TIL 작성 완료
@@ -58,9 +68,7 @@ export const HomeProfile = () => {
           <div className="border-brown grid w-max grid-flow-col rounded-2xl border-2 border-solid bg-white p-5 text-center text-lg font-bold">
             <p className="cursor-pointer">TIL을 함께하는 친구 5명</p>
             <div className="border-brown mx-5 border-l-2 border-solid" />
-            <p className="cursor-pointer" onClick={openModal}>
-              친구 관리
-            </p>
+            <p className="cursor-pointer">친구 관리</p>
             <div className="border-brown mx-5 border-l-2 border-solid" />
             <p className="cursor-pointer">내 정보 수정</p>
           </div>
@@ -75,9 +83,14 @@ export const HomeProfile = () => {
                 <div className="m-5 flex flex-col items-center">
                   <Typography>황창조</Typography>
                   <img
-                    className={`border-brownw-25 h-20 rounded-full border-2 border-solid object-cover transition duration-1000 ease-in-out sm:mb-0 ${isWrite ? 'border-green-700' : 'border-gray-300'}`}
+                    className={`border-brownw-25 h-20 rounded-full border-2 border-solid object-cover transition duration-1000 ease-in-out sm:mb-0 ${isWrite && count >= i + 1 ? 'border-green-700' : 'border-gray-300'}`}
                     src={imgUrl}
                     alt="나의 프로필 사진"
+                    onClick={() => {
+                      if (isWrite) {
+                        openModal();
+                      }
+                    }}
                   />
                 </div>
               );
