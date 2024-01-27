@@ -6,7 +6,7 @@ export const Friends = () => {
     <div className="contents-container card-front">
       <Typography className="text-center text-2xl font-bold">현재 함께하는 친구</Typography>
       <div className="grid grid-cols-3">
-        {[...Array(5)].map((i) => {
+        {[...Array(5)].map((_, i) => {
           return (
             <div className="flex flex-col items-center" key={i}>
               <img
