@@ -1,13 +1,23 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import NavBar from '@/components/Common/NavBar';
-import { HomeProfile } from '@/components/Home/HomeProfile';
+import { UserProfile } from '@/components/Home/UserProfile';
 import { Friends } from '@/components/Home/Friends';
 import { WriteTIL } from '@/components/Home/WriteTIL';
 import { UserGrass } from '@/components/Home/UserGrass';
 import { getProfile } from '@/api/ProfileAPI';
 import { createMindmap } from '@/api/MindmapAPI';
+import { TeamGrass } from '@/components/Home/TeamGrass';
+import { Button } from '@material-tailwind/react';
+import { TeamProfile } from '@/components/Home/Teamprofile';
+import { FriendsInfo } from '@/components/Home/FriendsInfo';
 
 const Home = () => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const flipCard = () => {
+    setIsFlipped(!isFlipped);
+  };
+
   const getUserProfile = async () => {
     const userProfile = await getProfile();
     localStorage.setItem('userName', userProfile?.name);
@@ -30,12 +40,24 @@ const Home = () => {
       <div className="sub-container">
         <div className="flex flex-row place-content-center gap-x-10">
           <div className="flex flex-col gap-y-10">
-            <HomeProfile />
+            <div className={`card ${isFlipped ? 'flipped' : ''}`}>
+            <UserProfile />
+            <TeamProfile />
+            </div>
+            <div className={`card ${isFlipped ? 'flipped' : ''}`}>
             <Friends />
+            <FriendsInfo/>
+            </div>
           </div>
           <div className="flex flex-col gap-y-10">
             <WriteTIL />
-            <UserGrass />
+            <div className={`card ${isFlipped ? 'flipped' : ''}`}>
+              <UserGrass />
+              <TeamGrass />
+            </div>
+            <Button className="mx-auto rounded-full" onClick={flipCard}>
+              뒤집어
+            </Button>
           </div>
         </div>
       </div>

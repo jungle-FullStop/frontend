@@ -11,7 +11,7 @@ export const Grass = (props: any) => {
     const tooltipNode = tooltipDiv.current;
     if (grassNode && tooltipNode) {
       const rect = grassNode.getBoundingClientRect();
-      tooltipNode.style.left = `${rect.left}px`;
+      tooltipNode.style.left = `${-1050+ rect.left}px`;
     }
   }, [showToolTip]);
 
@@ -25,9 +25,9 @@ export const Grass = (props: any) => {
       onMouseLeave={() => setShowToolTip(false)}
     >
       <div
-        className={`m-[0.2rem] h-5 w-5 flex-grow rounded ${props.i == 23 ? 'bg-light-green-400' : 'bg-gray-300'}`}
+        className={`m-[0.2rem] h-5 w-5 flex-grow rounded ${props.date !== '0' ? props.i == 23 ? 'bg-light-green-400' : 'bg-gray-300' : 'bg-white'}`}
       ></div>
-      {showToolTip && (
+      {showToolTip && props.date !== '0' && (
         <div
           ref={tooltipDiv}
           className="bg-default absolute -translate-y-8 rounded bg-yellow-100 p-2  opacity-70"

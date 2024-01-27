@@ -79,6 +79,27 @@
   }
 }
 
+.card {
+  transition: transform 1.2s;
+  transform: perspective(1500px) rotateY(0deg);
+  transform-style: preserve-3d;
+  display: inline-grid;
+}
+
+.card.flipped {
+  transform: perspective(1500px) rotateY(180deg);
+}
+
+.card-back{
+  transform: rotateY(180deg);
+}
+
+.card > *{
+  grid-area: 1 / 1 / 1 / 1;
+  backface-visibility: hidden; 
+  
+}
+
 /* md editor 폰트 크기 */
 .w-md-editor-text-pre > code,
 .w-md-editor-text-input {

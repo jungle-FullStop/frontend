@@ -2,7 +2,7 @@ import { Typography } from '@material-tailwind/react';
 import anonymousImage from '@assets/image/anonymousImage.png';
 import { useState } from 'react';
 
-export const HomeProfile = () => {
+export const UserProfile = () => {
   //친구 관리 모달창 닫혀 있으면 false, 열려 있으면 true
   const [isWrite, setIsWrite] = useState(false);
   const [handleFriend, setHandleFriend] = useState(false);
@@ -23,7 +23,7 @@ export const HomeProfile = () => {
   };
 
   return (
-    <div className="contents-container">
+    <div className="contents-container card-front">
       <img
         className={`border-brown mx-auto mb-5 h-40 w-40 rounded-full border-4 border-solid object-cover transition duration-1000 ease-in-out sm:mb-0 ${isWrite ? 'border-green-700' : 'border-gray-300'}`}
         src={profileImage}
