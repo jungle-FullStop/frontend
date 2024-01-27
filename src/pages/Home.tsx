@@ -10,8 +10,11 @@ import { TeamGrass } from '@/components/Home/TeamGrass';
 import { Button } from '@material-tailwind/react';
 import { TeamProfile } from '@/components/Home/TeamProfile';
 import { FriendsInfo } from '@/components/Home/FriendsInfo';
+import { requestForToken } from '@/firebaseNotifications/firebase';
 
 const Home = () => {
+  const [,setToken] = useState("");
+  const [,setLoading] = useState(true);
   const [isFlipped, setIsFlipped] = useState(false);
 
   const flipCard = () => {
@@ -29,9 +32,21 @@ const Home = () => {
     localStorage.setItem('todayMindmap', mindmap?.data);
   };
 
+  const getToken = async () => {
+    try {
+      const resToken = await requestForToken();
+      setToken(resToken ?? "");
+    } catch (error) {
+      console.error("Failed to fetch FCM token:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     getUserProfile();
     getMindmap();
+    getToken();
   }, []);
 
   return (
