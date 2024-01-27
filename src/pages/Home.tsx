@@ -41,7 +41,7 @@ const Home = () => {
     <div className="main-container">
       <NavBar />
       <div className="sub-container">
-        <div className="flex flex-row place-content-between">
+        <div className="flex flex-row place-content-center gap-x-10">
           <HomeProfile />
           <div className="flex flex-col gap-y-20">
             <div className="contents-container">

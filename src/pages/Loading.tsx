@@ -10,16 +10,14 @@ const Loading = () => {
       <NavBar />
       <div className="sub-container">
         <div className="flex flex-col items-center">
-          <Typography className="container place-self-start pb-2 text-3xl font-extrabold">
-            오늘의 검색 키워드
-          </Typography>
-          <Mindmap />
-          <div className="container flex items-center justify-center gap-x-3 p-5">
+          <div className="container flex items-center justify-center gap-x-3">
             <ProgressBar />
             <LoadingButton />
           </div>
         </div>
       </div>
+      <Mindmap />
+      <Typography className="p-2 text-right text-3xl font-extrabold">오늘의 검색 키워드</Typography>
     </div>
   );
 };

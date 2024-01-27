@@ -8,7 +8,7 @@ import { GOOGLE_LOGIN_FORM_URL } from '@/util/Constants/constants';
 
 const Landing = () => {
   return (
-    <div id="Container" className="flex h-screen w-screen flex-col">
+    <div id="Container" className="bg-landing flex h-screen w-screen flex-col">
       <Header />
       <div id="MainContainer" className="flex flex-grow items-center justify-center">
         <div id="Main" className="flex flex-col justify-end pe-12 text-left">
@@ -22,10 +22,12 @@ const Landing = () => {
             티.나.끝
           </Typography>
           <div id="LoreTextContainer" className="mb-14">
-            <Typography className="text-3xl font-extrabold">
+            <Typography color="white" className="text-3xl font-extrabold">
               티.나.끝의 가이드라인과 함께
             </Typography>
-            <Typography className="text-3xl font-extrabold">TIL을 작성해보세요.</Typography>
+            <Typography color="white" className="text-3xl font-extrabold">
+              TIL을 작성해보세요.
+            </Typography>
           </div>
           <div id="googleLoginButton" className="flex flex-col justify-end p-0">
             <Link to={GOOGLE_LOGIN_FORM_URL}>

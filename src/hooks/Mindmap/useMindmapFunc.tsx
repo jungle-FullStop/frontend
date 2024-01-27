@@ -10,7 +10,7 @@ const dimColor = '#dfe4ea';
 const DimStyle = {
   'background-color': dimColor,
   'line-color': dimColor,
-  'source-arrow-color': dimColor,
+  'target-arrow-color': dimColor,
   color: dimColor,
 };
 

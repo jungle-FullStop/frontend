@@ -37,7 +37,7 @@ const Graph = () => {
       elements={elements}
       style={{
         width: '100%',
-        height: '500px',
+        height: '100%',
         border: '1px solid black',
         backgroundColor: '#ffffff',
         borderRadius: '30px',

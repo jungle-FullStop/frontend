@@ -25,10 +25,10 @@ export const HomeProfile = () => {
   };
 
   return (
-    <div className="w-screen pr-10">
+    <div>
       <div className="contents-container">
         <img
-          className={`border-brown mb-5 h-40 w-40 rounded-full border-4 border-solid object-cover transition duration-1000 ease-in-out sm:mb-0 ${isWrite ? 'border-green-700' : 'border-gray-300'}`}
+          className={`border-brown mx-auto mb-5 h-40 w-40 rounded-full border-4 border-solid object-cover transition duration-1000 ease-in-out sm:mb-0 ${isWrite ? 'border-green-700' : 'border-gray-300'}`}
           src={profileImage}
           alt="나의 프로필 사진"
         />

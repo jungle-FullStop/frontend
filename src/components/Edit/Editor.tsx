@@ -2,7 +2,7 @@ import { useState } from 'react';
 import MDEditor from '@uiw/react-md-editor';
 import { Button } from '@material-tailwind/react';
 import { useNavigate } from 'react-router-dom';
-import { dummyReport } from '@/types/components/EDIT/dummyReport';
+import { dummyReport } from '@/types/components/Edit/dummyReport';
 
 const Editor = () => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const Editor = () => {
       <div data-color-mode="light">
         <MDEditor
           height="100%"
-          minHeight={300}
+          minHeight={500}
           value={value}
           onChange={(e: any) => {
             setValue(e);
