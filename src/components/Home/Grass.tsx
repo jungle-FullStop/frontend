@@ -1,211 +1,48 @@
-import { Component } from 'react';
-import Chart from 'react-apexcharts';
+import { useState, useEffect, useRef } from 'react';
 
-class Heatmap extends Component {
-  constructor(props: any) {
-    super(props);
+export const Grass = (props: any) => {
+  const [showToolTip, setShowToolTip] = useState(false);
 
-    this.state = {
-      options: {
-        plotOptions: {
-          heatmap: {
-            colorScale: {
-              ranges: [
-                {
-                  from: 0,
-                  to: 45,
-                  color: '#CFD2D0',
-                  name: 'TIL 아직 안 씀',
-                },
-              ],
-            },
-          },
-        },
-      },
-      series: [
-        {
-          name: '',
-          data: [
-            {
-              x: 'MON',
-              y: 29,
-            },
-            {
-              x: 'TUE',
-              y: 30,
-            },
-            {
-              x: 'WED',
-              y: 31,
-            },
-            {
-              x: 'THU',
-              y: 1,
-            },
-            {
-              x: 'FRI',
-              y: 2,
-            },
-            {
-              x: 'SAT',
-              y: 3,
-            },
-            {
-              x: 'SUN',
-              y: 4,
-            },
-          ],
-        },
-        {
-          name: '',
-          data: [
-            {
-              x: 'MON',
-              y: 22,
-            },
-            {
-              x: 'TUE',
-              y: 23,
-            },
-            {
-              x: 'WED',
-              y: 24,
-            },
-            {
-              x: 'THU',
-              y: 25,
-            },
-            {
-              x: 'FRI',
-              y: 26,
-            },
-            {
-              x: 'SAT',
-              y: 27,
-            },
-            {
-              x: 'SUN',
-              y: 28,
-            },
-          ],
-        },
-        {
-          name: '',
-          data: [
-            {
-              x: 'MON',
-              y: 15,
-            },
-            {
-              x: 'TUE',
-              y: 16,
-            },
-            {
-              x: 'WED',
-              y: 17,
-            },
-            {
-              x: 'THU',
-              y: 18,
-            },
-            {
-              x: 'FRI',
-              y: 19,
-            },
-            {
-              x: 'SAT',
-              y: 20,
-            },
-            {
-              x: 'SUN',
-              y: 21,
-            },
-          ],
-        },
-        {
-          name: '',
-          data: [
-            {
-              x: 'MON',
-              y: 8,
-            },
-            {
-              x: 'TUE',
-              y: 9,
-            },
-            {
-              x: 'WED',
-              y: 10,
-            },
-            {
-              x: 'THU',
-              y: 11,
-            },
-            {
-              x: 'FRI',
-              y: 12,
-            },
-            {
-              x: 'SAT',
-              y: 13,
-            },
-            {
-              x: 'SUN',
-              y: 14,
-            },
-          ],
-        },
-        {
-          name: '',
-          data: [
-            {
-              x: 'MON',
-              y: 1,
-            },
-            {
-              x: 'TUE',
-              y: 2,
-            },
-            {
-              x: 'WED',
-              y: 3,
-            },
-            {
-              x: 'THU',
-              y: 4,
-            },
-            {
-              x: 'FRI',
-              y: 5,
-            },
-            {
-              x: 'SAT',
-              y: 6,
-            },
-            {
-              x: 'SUN',
-              y: 7,
-            },
-          ],
-        },
-      ],
-    };
-  }
+  const grassDiv = useRef<HTMLDivElement>(null);
+  const tooltipDiv = useRef<HTMLDivElement>(null);
 
-  render() {
-    return (
-      <div className="heatmap">
-        <div>
-          <Chart
-            options={this.state.options}
-            series={this.state.series}
-            type="heatmap"
-            width="30%"
-          />
+  useEffect(() => {
+    const grassNode = grassDiv.current;
+    const tooltipNode = tooltipDiv.current;
+    if (grassNode && tooltipNode) {
+      const rect = grassNode.getBoundingClientRect();
+      tooltipNode.style.left = `${rect.left}px`;
+    }
+  }, [showToolTip]);
+
+  return (
+    <div
+      ref={grassDiv}
+      className="flex whitespace-pre"
+      onMouseEnter={() => {
+        setShowToolTip(true);
+      }}
+      onMouseLeave={() => setShowToolTip(false)}
+    >
+      <div
+        className={`m-[0.2rem] h-5 w-5 flex-grow rounded ${props.i == 23 ? 'bg-light-green-400' : 'bg-gray-300'}`}
+      ></div>
+      {showToolTip && (
+        <div
+          ref={tooltipDiv}
+          className="bg-default absolute -translate-y-8 rounded bg-yellow-100 p-2  opacity-70"
+        >
+          {props.i == 23 ? (
+            <p>
+              <strong> Check TIL</strong> on {props.date}
+            </p>
+          ) : (
+            <p>
+              <strong> No TIL</strong> on {props.date}
+            </p>
+          )}
         </div>
-      </div>
-    );
-  }
-}
-
-export default Heatmap;
+      )}
+    </div>
+  );
+};

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import LoadingCircle from '@/components/Loading/LoadingCircle';
 import { Button } from '@material-tailwind/react';
 import { WAITING_TIME } from '@/util/Constants/constants';
-import { findReport } from '@/api/Report';
+import { findReport } from '@/api/ReportAPI';
 
 const LoadingButton = () => {
   const navigate = useNavigate();

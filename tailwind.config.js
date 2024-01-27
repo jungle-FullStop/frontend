@@ -9,7 +9,11 @@ export default withMT({
     },
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        landing: "url('./src/assets/image/landingBackground.jpeg')",
+      },
+    },
   },
   plugins: [],
 });
