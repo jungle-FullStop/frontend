@@ -8,7 +8,7 @@ import { getProfile } from '@/api/ProfileAPI';
 import { createMindmap } from '@/api/MindmapAPI';
 import { TeamGrass } from '@/components/Home/TeamGrass';
 import { Button } from '@material-tailwind/react';
-import { TeamProfile } from '@/components/Home/Teamprofile';
+import { TeamProfile } from '@/components/Home/TeamProfile';
 import { FriendsInfo } from '@/components/Home/FriendsInfo';
 
 const Home = () => {
@@ -41,12 +41,12 @@ const Home = () => {
         <div className="flex flex-row place-content-center gap-x-10">
           <div className="flex flex-col gap-y-10">
             <div className={`card ${isFlipped ? 'flipped' : ''}`}>
-            <UserProfile />
-            <TeamProfile />
+              <UserProfile />
+              <TeamProfile />
             </div>
             <div className={`card ${isFlipped ? 'flipped' : ''}`}>
-            <Friends />
-            <FriendsInfo/>
+              <Friends />
+              <FriendsInfo />
             </div>
           </div>
           <div className="flex flex-col gap-y-10">

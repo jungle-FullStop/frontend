@@ -1,7 +1,5 @@
 import { dateRange } from '@/util/Constants/dateConstants';
-import { Grass } from '@/components/Home/Grass';
-import { Button } from '@material-tailwind/react';
-import { useState } from 'react';
+import { Grass } from '@/components/Common/Grass';
 
 export const UserGrass = () => {
   const grassElements = dateRange.map((date, i) => {
@@ -12,7 +10,7 @@ export const UserGrass = () => {
     <div className="contents-container card-front">
       <div>
         <p className="text-center text-lg font-bold sm:text-2xl">User TIL HISTORY.</p>
-        <div className="grid w-80 grid-cols-7 grid-rows-1 p-2 text-center mx-auto">
+        <div className="mx-auto grid w-80 grid-cols-7 grid-rows-1 p-2 text-center">
           <p>Sun</p>
           <p>Mon</p>
           <p>Tue</p>
@@ -21,7 +19,7 @@ export const UserGrass = () => {
           <p>Fri</p>
           <p>Sat</p>
         </div>
-        <div className="border-brown grid w-80 grid-cols-7 grid-rows-5 rounded-lg border p-2 mx-auto ">
+        <div className="border-brown mx-auto grid w-80 grid-cols-7 grid-rows-5 rounded-lg border p-2 ">
           {grassElements}
         </div>
       </div>

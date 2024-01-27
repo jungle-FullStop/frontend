@@ -5,7 +5,7 @@ import { Navbar, Collapse, Typography, Button, IconButton } from '@material-tail
 import logo from '@assets/image/logo.png';
 import { logout } from '@/api/LoginAPI';
 
-export function NavBar(props: any) {
+export function NavBar() {
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
 
@@ -129,7 +129,7 @@ export function NavBar(props: any) {
             티.나.끝
           </Typography>
         </NavLink>
-
+        <div className="hidden lg:block">{navList}</div>
         <div className="flex items-center gap-x-1">
           <Button variant="outlined" className="hidden lg:inline-block" onClick={onClickLogout}>
             <span>Log Out</span>
