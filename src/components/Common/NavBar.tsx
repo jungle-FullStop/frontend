@@ -129,7 +129,7 @@ export function NavBar(props: any) {
             티.나.끝
           </Typography>
         </NavLink>
-        <div className="hidden lg:block">{navList}</div>
+
         <div className="flex items-center gap-x-1">
           <Button variant="outlined" className="hidden lg:inline-block" onClick={onClickLogout}>
             <span>Log Out</span>
