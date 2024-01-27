@@ -131,11 +131,16 @@ export function NavBar() {
         </NavLink>
         <div className="hidden lg:block">{navList}</div>
         <div className="flex items-center gap-x-1">
-          <Button variant="outlined" className="hidden lg:inline-block" onClick={onClickLogout}>
-            <span>Log Out</span>
-          </Button>
-          <Button variant="gradient" className="hidden lg:inline-block" color="amber">
+          <Button variant="gradient" className="hidden lg:inline-block" color="green">
             <span>팀으로 전환</span>
+          </Button>
+          <Button
+            variant="gradient"
+            className="hidden lg:inline-block"
+            color="amber"
+            onClick={onClickLogout}
+          >
+            <span>Log Out</span>
           </Button>
         </div>
         <IconButton
@@ -172,11 +177,18 @@ export function NavBar() {
         <div className="container mx-auto">
           {navList}
           <div className="flex items-center gap-x-1">
-            <Button fullWidth variant="outlined" size="sm" onClick={onClickLogout} className="">
-              <span>LOG OUT</span>
-            </Button>
-            <Button fullWidth variant="gradient" size="sm" color="amber" className="">
+            <Button fullWidth variant="gradient" size="sm" color="green" className="">
               <span>팀으로 전환</span>
+            </Button>
+            <Button
+              fullWidth
+              variant="gradient"
+              size="sm"
+              color="amber"
+              onClick={onClickLogout}
+              className=""
+            >
+              <span>LOG OUT</span>
             </Button>
           </div>
         </div>
