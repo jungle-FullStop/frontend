@@ -1,9 +1,9 @@
 export const nodeMaxSize = 100;
 export const nodeMinSize = 5;
 export const nodeActiveSize = 30;
-export const fontMaxSize = 8;
-export const fontMinSize = 5;
-export const fontActiveSize = 7;
+export const fontMaxSize = 10;
+export const fontMinSize = 8;
+export const fontActiveSize = 9;
 // node & font 크기 값
 
 export const edgeWidth = '3px';

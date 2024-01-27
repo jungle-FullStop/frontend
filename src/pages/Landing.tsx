@@ -6,7 +6,7 @@ const Landing = () => {
   return (
     <div className="bg-landing flex h-screen w-screen flex-col">
       <Header />
-      <div className="mx-auto mb-40 flex flex-grow items-center">
+      <div className="mx-auto mb-20 flex flex-grow items-center">
         <div id="Main" className="flex flex-col text-left">
           <LandingMain />
           <LoginButton />
