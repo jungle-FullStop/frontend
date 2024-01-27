@@ -44,7 +44,6 @@ const Graph = () => {
       }}
       layout={layout}
       stylesheet={stylesheet}
-      wheelSensitivity={0.1}
     />
   );
 };
