@@ -1,13 +1,13 @@
-export const nodeMaxSize = 50;
+export const nodeMaxSize = 100;
 export const nodeMinSize = 5;
-export const nodeActiveSize = 28;
+export const nodeActiveSize = 30;
 export const fontMaxSize = 8;
 export const fontMinSize = 5;
 export const fontActiveSize = 7;
 // node & font 크기 값
 
-export const edgeWidth = '1px';
-export var edgeActiveWidth = '1px';
+export const edgeWidth = '3px';
+export var edgeActiveWidth = '3px';
 export const arrowScale = 0.5;
 export const arrowActiveScale = 0.5;
 // edge & arrow 크기값

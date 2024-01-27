@@ -33,15 +33,15 @@
 } */
 
 .main-container {
-  @apply mx-auto flex max-w-screen-2xl flex-col px-4 py-2 lg:px-8 lg:py-4;
+  @apply mx-auto flex h-screen max-w-screen-2xl flex-col px-4 py-2 lg:px-8 lg:py-4;
 }
 
 .sub-container {
-  @apply py-10;
+  @apply mx-auto w-full py-10;
 }
 
 .contents-container {
-  @apply flex flex-col items-center gap-y-5 rounded-lg bg-white p-7 shadow-md;
+  @apply mx-auto flex w-full flex-col gap-y-5 rounded-lg bg-white p-7 shadow-md;
 }
 
 /* 로딩 바 */

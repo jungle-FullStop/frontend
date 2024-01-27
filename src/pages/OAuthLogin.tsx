@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { googleLogin } from '@api/Login';
+import { googleLogin } from '@/api/LoginAPI';
 
 const AuthLogin = () => {
   const getUserId = async () => {

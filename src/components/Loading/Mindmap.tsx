@@ -1,22 +1,19 @@
 import { useState } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
 import { Stylesheet } from 'cytoscape';
-import { dummyElements } from '@type/components/Graph/dummyElements';
-import { generateStylesheet, getPageRank } from '@/hooks/Graph/useGraphStylesheet';
-import { layouts } from '@/types/components/Graph/graphLayouts';
+import { layouts } from '@/types/components/Mindmap/mindmapLayouts';
 import setupCy from '@util/SetupCy';
-import { setDimStyle, setFocus, setResetFocus } from '@/hooks/Graph/useGraphFunc';
+import { generateStylesheet, getPageRank } from '@/hooks/Mindmap/useMindmapStylesheet';
+import { setDimStyle, setFocus, setResetFocus } from '@/hooks/Mindmap/useMindmapFunc';
+import { generateMindmap } from '@/hooks/Mindmap/useMindmapGenerate';
 
 setupCy();
 
 const Graph = () => {
-  const [elements, setElements] = useState(dummyElements);
-  const [layout, setLayout] = useState(layouts.fcose);
-  const [stylesheet, setStylesheet] = useState<Stylesheet[]>(
-    generateStylesheet(getPageRank(elements)),
-  );
-
   let resizeTimer: number;
+  const [elements] = useState(() => generateMindmap());
+  const [layout] = useState(layouts.fcose);
+  const [stylesheet] = useState<Stylesheet[]>(generateStylesheet(getPageRank(elements)));
 
   return (
     <CytoscapeComponent
@@ -40,14 +37,13 @@ const Graph = () => {
       elements={elements}
       style={{
         width: '100%',
-        height: '500px',
+        height: '100%',
         border: '1px solid black',
         backgroundColor: '#ffffff',
         borderRadius: '30px',
       }}
       layout={layout}
       stylesheet={stylesheet}
-      wheelSensitivity={0.1}
     />
   );
 };
