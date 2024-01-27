@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
 import { Stylesheet } from 'cytoscape';
-import { generateStylesheet, getPageRank } from '@/hooks/Graph/useGraphStylesheet';
-import { layouts } from '@/types/components/Graph/graphLayouts';
+import { layouts } from '@/types/components/Mindmap/mindmapLayouts';
 import setupCy from '@util/SetupCy';
-import { setDimStyle, setFocus, setResetFocus } from '@/hooks/Graph/useGraphFunc';
-import { dummyMindmap } from '@/types/components/Graph/dummyMindmap';
+import { generateStylesheet, getPageRank } from '@/hooks/Mindmap/useMindmapStylesheet';
+import { setDimStyle, setFocus, setResetFocus } from '@/hooks/Mindmap/useMindmapFunc';
+import { generateMindmap } from '@/hooks/Mindmap/useGenerateMindmap';
 
 setupCy();
 
 const Graph = () => {
   let resizeTimer: number;
-  const [elements, setElements] = useState(dummyMindmap);
+  const [elements, setElements] = useState(() => generateMindmap());
   const [layout, setLayout] = useState(layouts.fcose);
   const [stylesheet, setStylesheet] = useState<Stylesheet[]>(
     generateStylesheet(getPageRank(elements)),

@@ -4,7 +4,7 @@ import {
   SearchPageRankResult,
   SingularElementReturnValue,
 } from 'cytoscape';
-import * as graph from '@/util/Constants/graphConstants';
+import * as graph from '@/util/Constants/mindmapConstants';
 
 const dimColor = '#dfe4ea';
 const DimStyle = {

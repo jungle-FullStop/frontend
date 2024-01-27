@@ -4,9 +4,10 @@ import { HomeProfile } from '@/components/Common/HomeProfile';
 import NavBar from '@/components/Common/NavBar';
 import GrassTooltip from '@/components/Home/GrassTooltip';
 import { Button } from '@material-tailwind/react';
-import { getProfile } from '@/api/Profile';
-import { createReport } from '@/api/Report';
-import { dateRange } from '@/util/Constants/date';
+import { getProfile } from '@/api/ProfileAPI';
+import { createReport } from '@/api/ReportAPI';
+import { dateRange } from '@/util/Constants/dateConstants';
+import { createMindmap, findMindmap } from '@/api/MindmapAPI';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -17,6 +18,11 @@ const Home = () => {
     localStorage.setItem('userProfileImage', userProfile?.profileImage);
   };
 
+  const getMindmap = async () => {
+    const mindmap = await createMindmap();
+    localStorage.setItem('todayMindmap', mindmap?.data);
+  };
+
   const generateReport = () => {
     createReport();
     navigate('/loading');
@@ -24,6 +30,7 @@ const Home = () => {
 
   useEffect(() => {
     getUserProfile();
+    getMindmap();
   }, []);
 
   const grassElements = dateRange.map((date, i) => {

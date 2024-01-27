@@ -1,6 +1,6 @@
 import NavBar from '@components/Common/NavBar';
 import ProgressBar from '@components/Loading/ProgressBar';
-import Graph from '@components/Common/Graph';
+import Mindmap from '@/components/Common/Mindmap';
 import { Typography } from '@material-tailwind/react';
 import LoadingButton from '@components/Loading/LoadingButton';
 
@@ -13,7 +13,7 @@ const Loading = () => {
           <Typography className="container place-self-start pb-2 text-3xl font-extrabold">
             오늘의 검색 키워드
           </Typography>
-          <Graph />
+          <Mindmap />
           <div className="container flex items-center justify-center gap-x-3 p-5">
             <ProgressBar />
             <LoadingButton />
