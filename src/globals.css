@@ -9,10 +9,28 @@
     background-color: #fffef9;
   }
 }
-
+/* 
 @layer utilities {
-  
-}
+  .card {
+    display: inline-grid;
+    transition: transform 0.3s;
+    transform:  perspective(800px) rotateY(0deg);
+    transform-style: preserve-3d;
+  }
+
+  .card > * {
+    grid-area: 1 / 1 / 1 / 1;
+    backface-visibility: hidden;
+  }
+
+  .card:hover {
+    transform: perspective(800px) rotateY(180deg);
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+  }
+} */
 
 .main-container {
   @apply mx-auto flex max-w-screen-2xl flex-col px-4 py-2 lg:px-8 lg:py-4;

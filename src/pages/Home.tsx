@@ -3,7 +3,6 @@ import { HomeProfile } from '@/components/Common/HomeProfile';
 import NavBar from '@/components/Common/NavBar';
 import GrassTooltip from '@/components/Home/GrassTooltip';
 import { Button } from '@material-tailwind/react';
-import { useState } from 'react';
 
 const Home = () => {
   //현재 날짜와 시각을 나타내는 클래스 생성
@@ -84,7 +83,8 @@ const Home = () => {
                 TIL 작성하기
               </Button>
             </div>
-            <div className="contents-container">
+            <div className="contents-container card">
+              <div className='card-back'>
               <p className="text-center text-lg font-bold sm:text-2xl">이번 달 TIL HISTORY.</p>
               <div>
                 <div className="grid w-80 grid-cols-7 grid-rows-1 p-2 text-center">
@@ -117,6 +117,8 @@ const Home = () => {
                   />
                 </svg>
               </Button>
+              </div>
+
             </div>
           </div>
         </div>

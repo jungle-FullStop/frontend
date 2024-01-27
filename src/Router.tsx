@@ -15,10 +15,10 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route element={<PrivateRoutes />}>
           <Route path={`${PAGE_URL.LOADING}`} element={<Loading />} />
           <Route path={`${PAGE_URL.HOME}`} element={<Home />} />
           <Route path={`${PAGE_URL.EDIT}`} element={<EDIT />} />
-        <Route element={<PrivateRoutes />}>
         </Route>
         <Route element={<AuthRoutes />}>
           <Route path={`${PAGE_URL.LANDING}`} element={<Landing />} />
