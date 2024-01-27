@@ -1,8 +1,8 @@
 import NavBar from '@components/Common/NavBar';
 import ProgressBar from '@components/Loading/ProgressBar';
-import Mindmap from '@/components/Common/Mindmap';
-import { Typography } from '@material-tailwind/react';
+import Mindmap from '@/components/Loading/Mindmap';
 import LoadingButton from '@components/Loading/LoadingButton';
+import { Typography } from '@material-tailwind/react';
 
 const Loading = () => {
   return (
@@ -17,7 +17,7 @@ const Loading = () => {
         </div>
       </div>
       <Mindmap />
-      <Typography className="p-2 text-right text-3xl font-extrabold">오늘의 검색 키워드</Typography>
+      <Typography className="p-2 text-right text-4xl font-extrabold">오늘의 검색 키워드</Typography>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { layouts } from '@/types/components/Mindmap/mindmapLayouts';
 import setupCy from '@util/SetupCy';
 import { generateStylesheet, getPageRank } from '@/hooks/Mindmap/useMindmapStylesheet';
 import { setDimStyle, setFocus, setResetFocus } from '@/hooks/Mindmap/useMindmapFunc';
-import { generateMindmap } from '@/hooks/Mindmap/useGenerateMindmap';
+import { generateMindmap } from '@/hooks/Mindmap/useMindmapGenerate';
 
 setupCy();
 

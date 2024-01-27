@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Keyword from '@components/Common/Keyword';
+import Keyword from '@/components/Edit/Keyword';
 
 const KeywordBox = () => {
   const [keyword, setKeyword] = useState<string>('');
@@ -47,7 +47,7 @@ const KeywordBox = () => {
           placeholder="키워드를 추가하세요"
           value={keyword}
           onChange={changeKeyword}
-          className="border-brown ml-3 h-10 mb-3 w-max rounded-xl border pl-4 outline-none"
+          className="border-brown mb-3 ml-3 h-10 w-max rounded-xl border pl-4 outline-none"
         />
       </div>
     </div>
