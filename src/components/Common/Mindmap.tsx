@@ -11,11 +11,9 @@ setupCy();
 
 const Graph = () => {
   let resizeTimer: number;
-  const [elements, setElements] = useState(() => generateMindmap());
-  const [layout, setLayout] = useState(layouts.fcose);
-  const [stylesheet, setStylesheet] = useState<Stylesheet[]>(
-    generateStylesheet(getPageRank(elements)),
-  );
+  const [elements] = useState(() => generateMindmap());
+  const [layout] = useState(layouts.fcose);
+  const [stylesheet] = useState<Stylesheet[]>(generateStylesheet(getPageRank(elements)));
 
   return (
     <CytoscapeComponent

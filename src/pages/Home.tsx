@@ -7,7 +7,7 @@ import { Button } from '@material-tailwind/react';
 import { getProfile } from '@/api/ProfileAPI';
 import { createReport } from '@/api/ReportAPI';
 import { dateRange } from '@/util/Constants/dateConstants';
-import { createMindmap, findMindmap } from '@/api/MindmapAPI';
+import { createMindmap } from '@/api/MindmapAPI';
 
 const Home = () => {
   const navigate = useNavigate();
