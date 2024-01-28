@@ -106,3 +106,17 @@
   font-size: 20px !important;
   line-height: 30px !important;
 }
+
+/* 마인드맵 */
+.target-popper {
+  display: none;
+  padding: 1rem;
+  text-align: left;
+  border-radius: 10%;
+  border: 1px solid #ccc;
+  background: #fff;
+  z-index: 2;
+}
+.target-popper.active {
+  display: block;
+}
