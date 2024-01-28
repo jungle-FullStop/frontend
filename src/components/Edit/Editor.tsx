@@ -16,9 +16,9 @@ const Editor = () => {
     <div>
       <div data-color-mode="light">
         <MDEditor
-          height="100%"
-          minHeight={500}
+          height={500}
           value={value}
+          preview="preview"
           onChange={(e: any) => {
             setValue(e);
           }}
