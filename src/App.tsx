@@ -8,6 +8,7 @@ import Notification from '@components/FirebaseNotifications/Notification';
 const queryClient = new QueryClient();
 function App() {
   return (
+    <div>
     <QueryClientProvider client={queryClient}>
       <ToastProvider>
         <ModalProvider>
@@ -16,6 +17,7 @@ function App() {
         </ModalProvider>
       </ToastProvider>
     </QueryClientProvider>
+    </div>
   );
 }
 
