@@ -18,6 +18,7 @@ const Home = () => {
 
   const [isFlipped, setIsFlipped] = useState(false);
 
+
   const flipCard = () => {
     setIsFlipped(!isFlipped);
   };
@@ -69,6 +70,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+
         <div className="sub-container card-back">
           <div className="flex flex-row place-content-center gap-x-10">
             <div className="flex flex-col gap-y-10">

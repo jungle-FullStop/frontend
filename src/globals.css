@@ -7,37 +7,16 @@
     font-family: 'SUIT Variable', 'Noto Sans KR', sans-serif;
     color: #4b4b4b;
     background-color: #fffef9;
+    transition: background-color 0.3s ease;
   }
 }
-/* 
-@layer utilities {
-  .card {
-    display: inline-grid;
-    transition: transform 0.3s;
-    transform:  perspective(800px) rotateY(0deg);
-    transform-style: preserve-3d;
-  }
-
-  .card > * {
-    grid-area: 1 / 1 / 1 / 1;
-    backface-visibility: hidden;
-  }
-
-  .card:hover {
-    transform: perspective(800px) rotateY(180deg);
-  }
-
-  .card-back {
-    transform: rotateY(180deg);
-  }
-} */
 
 .main-container {
-  @apply mx-auto flex h-screen max-w-screen-2xl flex-col px-4 py-2 lg:px-8 lg:py-4;
+  @apply flex h-screen max-w-screen-2xl flex-col mx-auto px-4 py-2 lg:px-8 lg:py-4;
 }
 
 .sub-container {
-  @apply mx-auto w-full py-10;
+  @apply mx-auto  w-full py-20;
 }
 
 .contents-container {
@@ -80,24 +59,24 @@
 }
 
 .card {
-  transition: transform 1.0s;
+  transition: transform 1.2s;
   transform: perspective(3000px) rotateY(0deg);
   transform-style: preserve-3d;
   display: inline-grid;
+
 }
 
 .card.flipped {
   transform: perspective(3000px) rotateY(180deg);
 }
 
-.card-back{
+.card-back {
   transform: rotateY(180deg);
 }
 
-.card > *{
+.card > * {
   grid-area: 1 / 1 / 1 / 1;
-  backface-visibility: hidden; 
-  
+  backface-visibility: hidden;
 }
 
 /* md editor 폰트 크기 */
