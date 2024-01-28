@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import NavBar from '@components/Common/NavBar';
 import ProgressBar from '@components/Loading/ProgressBar';
-import Mindmap from '@/components/Loading/Mindmap';
+import { Mindmap } from '@/components/Loading/Mindmap';
 import LoadingButton from '@components/Loading/LoadingButton';
-import { Typography } from '@material-tailwind/react';
+import { Button, Typography } from '@material-tailwind/react';
 
 const Loading = () => {
+  const [layout, setLayout] = useState('fcose');
+
   return (
     <div className="main-container">
       <NavBar />
@@ -16,8 +19,52 @@ const Loading = () => {
           </div>
         </div>
       </div>
-      <Mindmap />
-      <Typography className="p-2 text-right text-4xl font-extrabold">오늘의 검색 키워드</Typography>
+      <Mindmap name={layout} />
+      <div className="flex place-content-between p-2">
+        <div className="flex flex-row gap-x-3">
+          <Button
+            variant="outlined"
+            size="sm"
+            className="inline text-lg font-light"
+            onClick={() => {
+              setLayout('fcose');
+            }}
+          >
+            마인드맵
+          </Button>
+          <Button
+            variant="outlined"
+            size="sm"
+            className="inline text-lg font-light"
+            onClick={() => {
+              setLayout('circle');
+            }}
+          >
+            원형
+          </Button>
+          <Button
+            variant="outlined"
+            size="sm"
+            className="inline text-lg font-light"
+            onClick={() => {
+              setLayout('grid');
+            }}
+          >
+            그리드
+          </Button>
+          <Button
+            variant="outlined"
+            size="sm"
+            className="inline text-lg font-light"
+            onClick={() => {
+              setLayout('breadthfirst');
+            }}
+          >
+            트리
+          </Button>
+        </div>
+        <Typography className="text-right text-4xl font-extrabold">오늘의 검색 키워드</Typography>
+      </div>
     </div>
   );
 };
