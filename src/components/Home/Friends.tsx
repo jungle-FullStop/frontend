@@ -3,7 +3,7 @@ import anonymousImage from '@assets/image/anonymousImage.png';
 
 export const Friends = () => {
   return (
-    <div className="contents-container card-front">
+    <div className="contents-container">
       <Typography className="text-center text-2xl font-bold">현재 함께하는 친구</Typography>
       <div className="grid grid-cols-3">
         {[...Array(5)].map((_, i) => {

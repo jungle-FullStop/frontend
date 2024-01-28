@@ -7,7 +7,7 @@ export const UserGrass = () => {
   });
 
   return (
-    <div className="contents-container card-front">
+    <div className="contents-container">
       <div>
         <p className="text-center text-lg font-bold sm:text-2xl">User TIL HISTORY.</p>
         <div className="mx-auto grid w-80 grid-cols-7 grid-rows-1 p-2 text-center">

@@ -11,7 +11,7 @@ export const Grass = (props: any) => {
     const tooltipNode = tooltipDiv.current;
     if (grassNode && tooltipNode) {
       const rect = grassNode.getBoundingClientRect();
-      tooltipNode.style.left = `${-1050+ rect.left}px`;
+      tooltipNode.style.left = `${-330+rect.left}px`;
     }
   }, [showToolTip]);
 

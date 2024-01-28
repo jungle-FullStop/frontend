@@ -15,6 +15,7 @@ import { requestForToken } from '@/components/FirebaseNotifications/Firebase';
 const Home = () => {
   const [, setToken] = useState('');
   const [, setLoading] = useState(true);
+
   const [isFlipped, setIsFlipped] = useState(false);
 
   const flipCard = () => {
@@ -51,28 +52,36 @@ const Home = () => {
 
   return (
     <div className="main-container">
-      <NavBar />
-      <div className="sub-container">
-        <div className="flex flex-row place-content-center gap-x-10">
-          <div className="flex flex-col gap-y-10">
-            <div className={`card ${isFlipped ? 'flipped' : ''}`}>
+      <NavBar flipCard={flipCard} />
+      <div className={`card ${isFlipped ? 'flipped' : ''}`}>
+        <div className="sub-container card-front">
+          <div className="flex flex-row place-content-center gap-x-10">
+            <div className="flex flex-col gap-y-10">
               <UserProfile />
-              <TeamProfile />
-            </div>
-            <div className={`card ${isFlipped ? 'flipped' : ''}`}>
+              {/* <TeamProfile /> */}
               <Friends />
-              <FriendsInfo />
+              {/* <FriendsInfo /> */}
+            </div>
+            <div className="flex flex-col gap-y-10">
+              <WriteTIL />
+              <UserGrass />
+              {/* <TeamGrass /> */}
             </div>
           </div>
-          <div className="flex flex-col gap-y-10">
-            <WriteTIL />
-            <div className={`card ${isFlipped ? 'flipped' : ''}`}>
-              <UserGrass />
+        </div>
+        <div className="sub-container card-back">
+          <div className="flex flex-row place-content-center gap-x-10">
+            <div className="flex flex-col gap-y-10">
+              {/* <UserProfile /> */}
+              <TeamProfile />
+              {/* <Friends /> */}
+              <FriendsInfo />
+            </div>
+            <div className="flex flex-col gap-y-10">
+              <WriteTIL />
+              {/* <UserGrass /> */}
               <TeamGrass />
             </div>
-            <Button className="mx-auto rounded-full" onClick={flipCard}>
-              뒤집어
-            </Button>
           </div>
         </div>
       </div>

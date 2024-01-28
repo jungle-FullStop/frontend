@@ -23,7 +23,7 @@ export const UserProfile = () => {
   };
 
   return (
-    <div className="contents-container card-front">
+    <div className="contents-container">
       <img
         className={`border-brown mx-auto mb-5 h-40 w-40 rounded-full border-4 border-solid object-cover transition duration-1000 ease-in-out sm:mb-0 ${isWrite ? 'border-green-700' : 'border-gray-300'}`}
         src={profileImage}
