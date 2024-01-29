@@ -7,7 +7,7 @@ export const WriteTIL = (props: any) => {
 
   const generateReport = () => {
     createReport();
-    document.documentElement.style.backgroundColor = '#fffef9';
+    document.documentElement.style.backgroundColor = '#FFFFE6';
     navigate('/loading');
   };
 
