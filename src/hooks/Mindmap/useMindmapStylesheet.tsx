@@ -1,6 +1,9 @@
 import cytoscape, { NodeCollection, SearchPageRankOptions, SearchPageRankResult } from 'cytoscape';
 import * as graph from '@/util/Constants/mindmapConstants';
 
+import typeormImage from '@assets/mindmapImage/typeormImage.png';
+import typescriptImage from '@assets/mindmapImage/typescriptImage.png';
+import tailwindImage from '@assets/mindmapImage/tailwindImage.png';
 import nginxImage from '@assets/mindmapImage/nginxImage.png';
 import dockerImage from '@assets/mindmapImage/dockerImage.png';
 import cytoscapejsImage from '@assets/mindmapImage/cytoscapejsImage.png';
@@ -110,6 +113,34 @@ export function generateStylesheet(pageRank: SearchPageRankResult) {
       selector: '#NGINX',
       style: {
         backgroundImage: nginxImage,
+        backgroundFit: 'cover',
+      },
+    },
+    {
+      selector: '#TAILWIND',
+      style: {
+        backgroundImage: tailwindImage,
+        backgroundFit: 'cover',
+      },
+    },
+    {
+      selector: '#TYPESCRIPT',
+      style: {
+        backgroundImage: typescriptImage,
+        backgroundFit: 'cover',
+      },
+    },
+    {
+      selector: '#TAILWIND',
+      style: {
+        backgroundImage: tailwindImage,
+        backgroundFit: 'cover',
+      },
+    },
+    {
+      selector: '#TYPEORM',
+      style: {
+        backgroundImage: typeormImage,
         backgroundFit: 'cover',
       },
     },

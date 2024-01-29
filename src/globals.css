@@ -16,7 +16,7 @@
 }
 
 .sub-container {
-  @apply mx-auto  w-full py-20;
+  @apply mx-auto w-full py-10;
 }
 
 .contents-container {

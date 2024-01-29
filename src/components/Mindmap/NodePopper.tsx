@@ -47,5 +47,10 @@ export const nodePopper = (target: any) => {
       if (document.getElementById(tooltipId)) {
         document.getElementById(tooltipId)?.classList.remove('active');
       }
+    })
+    .on('mousedown', () => {
+      if (document.getElementById(tooltipId)) {
+        document.getElementById(tooltipId)?.classList.remove('active');
+      }
     });
 };

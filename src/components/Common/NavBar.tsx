@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Navbar, Collapse, Typography, Button, IconButton } from '@material-tailwind/react';
 
 import logo from '@assets/image/logo.png';
-import teamlogo from '@assets/image/logo-team.png';
+import teamlogo from '@assets/image/logo-team-love.png';
 import { logout } from '@/api/LoginAPI';
 
 export function NavBar(props: any) {
