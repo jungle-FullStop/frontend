@@ -6,7 +6,7 @@
   html {
     font-family: 'SUIT Variable', 'Noto Sans KR', sans-serif;
     color: #4b4b4b;
-    background-color: #fffef9;
+    background-color: #FFFFE6;
     transition: background-color 0.3s ease;
   }
 }
@@ -16,7 +16,7 @@
 }
 
 .sub-container {
-  @apply mx-auto w-full py-10;
+  @apply mx-auto w-full pt-10;
 }
 
 .contents-container {

@@ -11,7 +11,7 @@ const Loading = () => {
   return (
     <div className="main-container">
       <NavBar />
-      <div className="sub-container">
+      <div className="mx-auto w-full pt-3">
         <div className="flex flex-col items-center">
           <div className="container flex items-center justify-center gap-x-3">
             <ProgressBar />
@@ -63,7 +63,7 @@ const Loading = () => {
             트리
           </Button>
         </div>
-        <Typography className="text-right text-4xl font-extrabold">오늘의 검색 키워드</Typography>
+        <Typography className="text-right text-4xl font-extrabold">키워드 마인드맵</Typography>
       </div>
     </div>
   );
