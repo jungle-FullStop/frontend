@@ -1,6 +1,6 @@
 const ProgressBar = () => {
   return (
-    <div className="w-[500px] text-center">
+    <div className="w-full text-center">
       <div className="progress progress-moved">
         <div className="progress-bar" />
       </div>
