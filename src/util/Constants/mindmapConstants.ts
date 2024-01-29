@@ -7,7 +7,7 @@ export const fontActiveSize = 30;
 // node & font 크기 값
 
 export const edgeWidth = '5px';
-export var edgeActiveWidth = '5px';
+export const edgeActiveWidth = '5px';
 export const arrowScale = 0.5;
 export const arrowActiveScale = 0.5;
 // edge & arrow 크기값

@@ -29,6 +29,7 @@ const Editor = () => {
           variant="gradient"
           color="amber"
           onClick={() => {
+            window.open('https://velog.io/write');
             navigate('/home');
           }}
         >

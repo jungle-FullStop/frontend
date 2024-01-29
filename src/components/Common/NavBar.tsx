@@ -151,7 +151,7 @@ export function NavBar(props: any) {
         ) : (
           <NavLink className="flex flex-row gap-x-3" to="/">
             <img src={teamlogo} alt="메인로고" className="w-12" />
-            <Typography color="green" className=" self-center text-4xl font-extrabold">
+            <Typography color="green" className="self-center text-4xl font-extrabold">
               티.나.끝
             </Typography>
           </NavLink>
