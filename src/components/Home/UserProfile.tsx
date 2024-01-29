@@ -31,7 +31,7 @@ export const UserProfile = () => {
       />
       {handleFriend ? (
         <div className="fixed inset-0  flex  items-center justify-center  bg-gray-800 bg-opacity-50">
-          <div className="w-96 rounded-lg bg-white p-8">
+          <div className="w-1/2 rounded-lg bg-white p-8">
             <h2 className="mb-4 text-2xl font-bold">친구 관리</h2>
             {/* 모달 내용 및 로직 구현 */}
             <p>친구 0명</p>

@@ -6,14 +6,17 @@ export const Grass = (props: any) => {
   const grassDiv = useRef<HTMLDivElement>(null);
   const tooltipDiv = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const grassNode = grassDiv.current;
-    const tooltipNode = tooltipDiv.current;
-    if (grassNode && tooltipNode) {
-      const rect = grassNode.getBoundingClientRect();
-      tooltipNode.style.left = `${-330+rect.left}px`;
-    }
-  }, [showToolTip]);
+  // useEffect(() => {
+  //   const grassNode = grassDiv.current;
+  //   console.log(grassNode);
+  //   const tooltipNode = tooltipDiv.current;
+  //   console.log(tooltipDiv)
+  //   if (grassNode && tooltipNode) {
+  //     const rect = grassNode.getBoundingClientRect();
+  //     console.log(rect)
+  //     tooltipNode.style.left = `${-330+rect.left}px`;
+  //   }
+  // }, [showToolTip]);
 
   return (
     <div
@@ -30,7 +33,7 @@ export const Grass = (props: any) => {
       {showToolTip && props.date !== '0' && (
         <div
           ref={tooltipDiv}
-          className="bg-default absolute -translate-y-8 rounded bg-yellow-100 p-2  opacity-70"
+          className="bg-default absolute -translate-y-full -translate-x-3/4  rounded bg-yellow-100 p-2  opacity-70"
         >
           {props.i == 23 ? (
             <p>
