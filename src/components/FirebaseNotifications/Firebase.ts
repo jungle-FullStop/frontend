@@ -3,7 +3,6 @@
 
 import { initializeApp } from 'firebase/app';
 import { getMessaging, getToken, onMessage } from 'firebase/messaging';
-import { onBackgroundMessage } from 'firebase/messaging/sw';
 
 export const firebase_config = {
   apiKey: 'AIzaSyCxDY16C3DftbV_kMYLtqrzcoZkHgHYxvA',
@@ -50,10 +49,3 @@ export const onMessageListener = () =>
       resolve(payload);
     });
   });
-// export const onMessageListener = () =>
-//   new Promise((resolve) => {
-//     onBackgroundMessage(messaging, (payload) => {
-//       console.log(payload);
-//       resolve(payload);
-//     });
-//   });
