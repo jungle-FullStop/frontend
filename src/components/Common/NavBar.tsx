@@ -61,7 +61,7 @@ export function NavBar(props: any) {
           />
         </svg>
 
-        <a href="#" className="flex items-center">
+        <a href="/board" className="flex items-center">
           TILs
         </a>
       </Typography>

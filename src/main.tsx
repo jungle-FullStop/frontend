@@ -3,6 +3,7 @@ import App from './App.tsx';
 import '@/globals.css';
 
 import { ThemeProvider } from '@material-tailwind/react';
+import{ RecoilRoot} from "recoil"
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <ThemeProvider>

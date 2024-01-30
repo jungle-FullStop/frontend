@@ -15,7 +15,8 @@ export const googleLogin = async (code: string) => {
     });
 
     if (!response.ok) throw new Error('올바른 네트워크 응답이 아닙니다.');
-    const { id } = await response.json();
+    const { id, email } = await response.json();
+    console.log(`id : ${id} email : ${email}`)
     return id;
   } catch (error) {
     console.error('로그인에 실패했습니다.', error);

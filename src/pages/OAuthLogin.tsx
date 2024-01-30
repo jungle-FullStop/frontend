@@ -4,12 +4,26 @@ import { useNavigate } from 'react-router-dom';
 import { googleLogin } from '@/api/LoginAPI';
 
 const AuthLogin = () => {
+
   const getUserId = async () => {
     const code = new URL(window.location.href).searchParams.get('code') ?? '';
     // const state = new URL(window.location.href).searchParams.get('state') ?? '';
     const userId = await googleLogin(code);
+
+    const email = await getEmail(code);
+    localStorage.setItem('email', email);
+
     localStorage.setItem('userId', userId);
     navigate('/home');
+  };
+
+
+  const getEmail = async (code: string) => {
+    const userInfoResponse = await fetch(
+      'https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=' + code,
+    );
+    const userInfo = await userInfoResponse.json();
+    return userInfo.email;
   };
 
   const navigate = useNavigate();
