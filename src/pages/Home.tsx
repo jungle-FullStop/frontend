@@ -38,8 +38,8 @@ const Home = () => {
 
   const getToken = async () => {
     try {
-      const resToken = await requestForToken();
-      setToken(resToken ?? '');
+      const resToken: any = await requestForToken();
+      setToken(resToken);
     } catch (error) {
       console.error('Failed to fetch FCM token:', error);
     } finally {

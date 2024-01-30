@@ -15,23 +15,18 @@ const Editor = () => {
   }
   const [value, setValue] = useState(report);
 
-  const [loading, setLoading] = useState(false);
-
+  const [, setLoading] = useState(false);
   const postData = async () => {
     try {
       setLoading(true);
-
       // 현재 편집 중인 내용을 postData로 설정
       const postData = {
-        userId:localStorage.getItem('userId'),
+        userId: localStorage.getItem('userId'),
         contents: value,
       };
-
       // 데이터 요청
-      const response = await axios.post(API_PATH.BOARD.create(), postData);
-
-      console.log('데이터 전송 성공')
-
+      await axios.post(API_PATH.BOARD.create(), postData);
+      console.log('데이터 전송 성공');
       // 데이터를 성공적으로 받았다면 이동
       navigate('/board');
     } catch (error: any) {
@@ -54,13 +49,7 @@ const Editor = () => {
         />
       </div>
       <div className="mt-2 flex justify-end">
-        <Button
-          variant="gradient"
-          color="amber"
-          onClick={() => {
-            postData();
-          }}
-        >
+        <Button variant="gradient" color="amber" onClick={postData}>
           저장하기
         </Button>
       </div>

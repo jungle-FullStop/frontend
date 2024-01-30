@@ -5,8 +5,8 @@ export const PAGE_URL = {
   LOADING: '/loading',
   EDIT: '/edit',
   NOT_FOUND: '/not/found',
-  BOARD: '/board',
-  BOARD_DETAIL: '/board/:id',
+  BOARD: '/Board',
+  BOARD_DETAIL: '/Board/:id',
 };
 
 export const WAITING_TIME = 10;

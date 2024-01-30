@@ -5,6 +5,7 @@ import useModal from '@hooks/useModal.tsx';
 import FriendList from '@components/Friend/FriendList.tsx';
 
 import { PROFILE_MODAL_CONTENT_TYPE } from '@util/Constants/constants';
+import FriendRequest from '@components/Friend/FriendRequest.tsx';
 
 export const UserProfile = () => {
   const userId = localStorage.getItem('userId');
@@ -24,6 +25,8 @@ export const UserProfile = () => {
     switch (type) {
       case PROFILE_MODAL_CONTENT_TYPE.LIST:
         return <FriendList userId={Number(userId)} />;
+      case PROFILE_MODAL_CONTENT_TYPE.REQUEST:
+        return <FriendRequest userId={Number(userId)} />;
     }
   };
 
@@ -45,12 +48,19 @@ export const UserProfile = () => {
         </button>
         <Typography className="mb-5 text-3xl font-extrabold">{name}님, 안녕하세요 !</Typography>
         <div className="border-brown grid w-max grid-flow-col rounded-2xl border-2 border-solid bg-white p-5 text-center text-lg font-bold">
-          <p className="cursor-pointer">TIL을 함께하는 친구 5명</p>
-          <div className="border-brown mx-5 border-l-2 border-solid" />
           <p
             className="cursor-pointer"
             onClick={() =>
               openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.LIST) })
+            }
+          >
+            TIL을 함께하는 친구 5명
+          </p>
+          <div className="border-brown mx-5 border-l-2 border-solid" />
+          <p
+            className="cursor-pointer"
+            onClick={() =>
+              openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.REQUEST) })
             }
           >
             친구 관리

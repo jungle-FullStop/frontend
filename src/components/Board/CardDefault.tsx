@@ -13,13 +13,7 @@ import TIL from '@assets/image/TIL.png';
 
 export function CardDefault(props: any) {
   // 현재 날짜를 얻어오기
-<<<<<<< HEAD
   const currentDate = new Date(props.cardDate);
-=======
- 
-
->>>>>>> main
-
   // 년도, 달, 요일 변수에 담기
   const currentYear: number = currentDate.getFullYear();
   const currentMonth: number = currentDate.getMonth() + 1; // 월은 0부터 시작하므로 1을 더함

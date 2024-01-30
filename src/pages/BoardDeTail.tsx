@@ -7,13 +7,9 @@ import axios from 'axios';
 import { Typography } from '@material-tailwind/react';
 
 const BoardDetail = () => {
-  let { id } = useParams();
-
+  const { id } = useParams();
   const [content, setContent] = useState('');
-
-  const [beforeTime,setBeforeTime] = useState<string>();
-
-  const userName = localStorage.getItem('userName');
+  const [beforeTime, setBeforeTime] = useState<string>();
   const userImage = localStorage.getItem('userProfileImage');
 
   useEffect(() => {
@@ -26,9 +22,7 @@ const BoardDetail = () => {
             (card: BoardType) => card.id === parseInt(id as string, 10),
           );
           setContent(selectedCard.contents);
-
           const writeDate = new Date(selectedCard.timestamp);
-
           const currentDate = new Date();
 
           // 밀리초로 변환 후 차이 계산
@@ -39,11 +33,11 @@ const BoardDetail = () => {
 
           if (daysDifference >= 1) {
             console.log(`날짜 차이 (일): ${daysDifference}`);
-            setBeforeTime(`${daysDifference}일 전`)
+            setBeforeTime(`${daysDifference}일 전`);
           } else {
             const hoursDifference = Math.floor(timeDifference / (1000 * 60 * 60));
             console.log(`몇 시간 전: ${hoursDifference}`);
-            setBeforeTime(`${hoursDifference}시간 전`)
+            setBeforeTime(`${hoursDifference}시간 전`);
           }
         } else {
           console.log('해당 id의 카드를 찾을 수 없습니다.');
@@ -59,14 +53,16 @@ const BoardDetail = () => {
       <NavBar></NavBar>
       <div className="mb-5 mt-5 flex flex-row items-center">
         <img
-          className="h-10 w-10 mr-5 rounded-full object-cover object-center"
+          className="mr-5 h-10 w-10 rounded-full object-cover object-center"
           src={userImage as string | undefined}
           alt="nature image"
         />
-       <Typography variant="h6"> 작성 {beforeTime}</Typography>
+        <Typography variant="h6"> 작성 {beforeTime}</Typography>
       </div>
       <div className="contents-container">
-        <MDEditor.Markdown source={content} />
+        <div data-color-mode="light">
+          <MDEditor.Markdown source={content} />
+        </div>
       </div>
     </div>
   );
