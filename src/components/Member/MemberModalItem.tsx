@@ -6,6 +6,7 @@ import { useToast } from '@hooks/useToast.tsx';
 
 import { PROFILE_BUTTON_TYPE, reactQueryKeys } from '@util/Constants/constants.ts';
 import { Button } from '@material-tailwind/react';
+import anonymousImage from '@assets/image/anonymousImage.png';
 
 interface MemberModalItemProps {
   email: string;
@@ -122,6 +123,11 @@ const MemberModalItem = ({ email, profileImage, name, id, type }: MemberModalIte
   };
 
   const buttonContent = getButtonElement(type);
+
+  // 프로필 이미지가 없을 경우, 기본 이미지로 대체
+  if (profileImage === null || profileImage === '') {
+    profileImage = anonymousImage;
+  }
 
   return (
     <div className="mb-5 mr-3 flex w-full">
