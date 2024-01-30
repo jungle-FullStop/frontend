@@ -24,7 +24,7 @@ const MemberModalItem = ({ email, profileImage, name, id, type }: MemberModalIte
   const cancelRequestMutation = useMutation({
     mutationFn: (receiverId: number) => cancelRequestMember(receiverId),
     onSuccess() {
-      openToast('친구 신청을 취소했습니다.');
+      openToast('팀원 신청을 취소했습니다.');
       setTimeout(() => {
         queryClient.invalidateQueries({
           queryKey: [reactQueryKeys.SendList],
@@ -36,7 +36,7 @@ const MemberModalItem = ({ email, profileImage, name, id, type }: MemberModalIte
   const deleteMemberMutation = useMutation({
     mutationFn: (memberId: number) => deleteMember(memberId),
     onSuccess() {
-      openToast('친구가 삭제되었습니다.');
+      openToast('팀원가 삭제되었습니다.');
       queryClient.invalidateQueries({
         queryKey: [reactQueryKeys.MemberList],
       });
@@ -49,7 +49,7 @@ const MemberModalItem = ({ email, profileImage, name, id, type }: MemberModalIte
   const allowMemberMutation = useMutation({
     mutationFn: (senderId: number) => allowMember(senderId),
     onSuccess() {
-      openToast('친구 요청을 수락하였습니다.');
+      openToast('팀원 요청을 수락하였습니다.');
       queryClient.invalidateQueries({
         queryKey: [reactQueryKeys.ReceivedList],
       });
@@ -62,7 +62,7 @@ const MemberModalItem = ({ email, profileImage, name, id, type }: MemberModalIte
   const rejectMemberMutation = useMutation({
     mutationFn: (senderId: number) => rejectMember(senderId),
     onSuccess() {
-      openToast('친구 요청을 거절하였습니다.');
+      openToast('팀원 요청을 거절하였습니다.');
       setTimeout(() => {
         queryClient.invalidateQueries({
           queryKey: [reactQueryKeys.ReceivedList],
@@ -81,7 +81,7 @@ const MemberModalItem = ({ email, profileImage, name, id, type }: MemberModalIte
             }}
             className="btn-delete"
           >
-            친구 삭제
+            팀원 삭제
           </Button>
         );
       case PROFILE_BUTTON_TYPE.RECEIVED:

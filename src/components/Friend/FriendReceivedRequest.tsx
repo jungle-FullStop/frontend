@@ -1,6 +1,6 @@
-import FriendModalItem from '@components/Friend/FriendModalItem';
-import useRequestListQuery from '@hooks/useRequestListQuery';
-import { PROFILE_BUTTON_TYPE, reactQueryKeys } from '@util/Constants/constants';
+import FriendModalItem from '@components/Friend/FriendModalItem.tsx';
+import useRequestListQuery from '@hooks/useRequestListQuery.ts';
+import { PROFILE_BUTTON_TYPE, reactQueryKeys } from '@util/Constants/constants.ts';
 
 interface ReceivedListResponse {
   senderId: number;
@@ -21,7 +21,7 @@ interface ReceivedList {
   id: string;
 }
 
-const ReceivedRequest = ({ userId }: ReceivedRequestProps) => {
+const FriendReceivedRequest = ({ userId }: ReceivedRequestProps) => {
   const { data, isLoading, isError } = useRequestListQuery(reactQueryKeys.ReceivedList, userId);
 
   if (isLoading) {
@@ -57,4 +57,4 @@ const ReceivedRequest = ({ userId }: ReceivedRequestProps) => {
   ));
 };
 
-export default ReceivedRequest;
+export default FriendReceivedRequest;

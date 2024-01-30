@@ -32,7 +32,7 @@ const MemberSearchContent = ({ name }: MemberSearchContentProps) => {
   if (memberList.length === 0) {
     return (
       <div className="flex w-full flex-col items-center justify-center gap-3">
-        <p className="font-bold">검색된 친구가 없어요.</p>
+        <p className="font-bold">검색된 팀원이 없어요.</p>
       </div>
     );
   }

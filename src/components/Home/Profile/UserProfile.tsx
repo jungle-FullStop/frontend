@@ -6,7 +6,8 @@ import FriendList from '@components/Friend/FriendList.tsx';
 
 import { PROFILE_MODAL_CONTENT_TYPE } from '@util/Constants/constants';
 import FriendRequest from '@components/Friend/FriendRequest.tsx';
-import ProfileEdit from '@components/Home/ProfileEdit.tsx';
+import ProfileEdit from '@components/Profile/ProfileEdit.tsx';
+import { useFriendRankListDataQuery } from '@hooks/useFriendListQuery.ts';
 
 export const UserProfile = () => {
   const userId = localStorage.getItem('userId');
@@ -21,6 +22,16 @@ export const UserProfile = () => {
   }
 
   const { openModal } = useModal();
+
+  const friendListData = useFriendRankListDataQuery(Number(userId));
+
+  if (friendListData.isLoading) {
+    return <p>친구목록 가져오는 중...</p>;
+  }
+
+  if (friendListData.isError) {
+    return <p>친구목록을 불러오지 못했습니다!</p>;
+  }
 
   const getModalContent = (type: string) => {
     switch (type) {
@@ -57,7 +68,7 @@ export const UserProfile = () => {
               openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.LIST) })
             }
           >
-            TIL을 함께하는 친구 5명
+            TIL을 함께하는 친구 {friendListData.data.friends.length}명
           </p>
           <div className="border-brown mx-5 border-l-2 border-solid" />
           <p

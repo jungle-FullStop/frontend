@@ -1,15 +1,15 @@
 import { useState, ChangeEvent } from 'react';
 
-import FriendReceivedRequest from '@components/Friend/FriendReceivedRequest.tsx';
-import FriendSendRequest from '@components/Friend/FriendSendRequest.tsx';
 import Icon from '@components/Common/Icon';
 import UserSearchContent from '@components/Home/UserSearchContent';
+import TeamReceivedRequest from '@components/Member/MemberReceivedRequest.tsx';
+import TeamSendRequest from '@components/Member/MemberSendRequest.tsx';
 
-interface FriendRequestProps {
+interface MemberRequestProps {
   userId: number;
 }
 
-const FriendRequest = ({ userId }: FriendRequestProps) => {
+const MemberRequest = ({ userId }: MemberRequestProps) => {
   const [name, setName] = useState('');
 
   const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -38,14 +38,14 @@ const FriendRequest = ({ userId }: FriendRequestProps) => {
           <div>
             <p className="mb-2 text-2xl font-bold">받은 신청</p>
             <div className="flex h-40 flex-wrap justify-between overflow-scroll">
-              <FriendReceivedRequest userId={userId} />
+              <TeamReceivedRequest userId={userId} />
             </div>
           </div>
 
           <div>
             <p className="mb-2  text-2xl font-bold">보낸 신청</p>
             <div className="flex h-40 flex-wrap justify-between overflow-scroll">
-              <FriendSendRequest userId={userId} />
+              <TeamSendRequest userId={userId} />
             </div>
           </div>
         </div>
@@ -62,4 +62,4 @@ const FriendRequest = ({ userId }: FriendRequestProps) => {
   );
 };
 
-export default FriendRequest;
+export default MemberRequest;
