@@ -3,6 +3,9 @@ import teamDefaultImage from '@assets/image/teamDefaultImage.jpeg';
 import useModal from '@hooks/useModal.tsx';
 import MemberList from '@components/Member/MemberList.tsx';
 import { PROFILE_MODAL_CONTENT_TYPE } from '@util/Constants/constants.ts';
+import MemberRequest from '@components/Member/MemberRequest.tsx';
+import TeamProfileEdit from '@components/Profile/TeamProfileEdit.tsx';
+import useMemberListDataQuery from '@hooks/useMemberListQuery.ts';
 
 export const TeamProfile = () => {
   const userId = localStorage.getItem('userId');
@@ -17,10 +20,24 @@ export const TeamProfile = () => {
 
   const { openModal } = useModal();
 
+  const memberListData = useMemberListDataQuery(Number(userId));
+
+  if (memberListData.isLoading) {
+    return <p>팀원목록 가져오는 중...</p>;
+  }
+
+  if (memberListData.isError) {
+    return <p>팀원목록을 불러오지 못했습니다!</p>;
+  }
+
   const getModalContent = (type: string) => {
     switch (type) {
       case PROFILE_MODAL_CONTENT_TYPE.LIST:
         return <MemberList userId={Number(userId)} />;
+      case PROFILE_MODAL_CONTENT_TYPE.REQUEST:
+        return <MemberRequest userId={Number(userId)} />;
+      case PROFILE_MODAL_CONTENT_TYPE.EDIT:
+        return <TeamProfileEdit name={String(teamName)} />;
     }
   };
 
@@ -33,16 +50,28 @@ export const TeamProfile = () => {
       />
       <Typography className="mb-5 text-3xl font-extrabold">{teamName}에 어서오세요 !</Typography>
       <div className="border-brown grid w-max grid-flow-col rounded-2xl border-2 border-solid bg-white p-5 text-center text-lg font-bold">
-        <p className="cursor-pointer">{teamName}에 소속된 팀원 57명</p>
-        <div className="border-brown mx-5 border-l-2 border-solid" />
         <p
           className="cursor-pointer"
           onClick={() => openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.LIST) })}
         >
+          {teamName}에 소속된 팀원 {memberListData.data.member.length}명
+        </p>
+        <div className="border-brown mx-5 border-l-2 border-solid" />
+        <p
+          className="cursor-pointer"
+          onClick={() =>
+            openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.REQUEST) })
+          }
+        >
           팀원 관리
         </p>
         <div className="border-brown mx-5 border-l-2 border-solid" />
-        <p className="cursor-pointer">팀 정보 수정</p>
+        <p
+          className="cursor-pointer"
+          onClick={() => openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.EDIT) })}
+        >
+          팀 정보 수정
+        </p>
       </div>
     </div>
   );

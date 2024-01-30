@@ -1,6 +1,6 @@
-import FriendModalItem from '@components/Friend/FriendModalItem';
-import useSendListQuery from '@hooks/useRequestListQuery';
-import { PROFILE_BUTTON_TYPE, reactQueryKeys } from '@util/Constants/constants';
+import FriendModalItem from '@components/Friend/FriendModalItem.tsx';
+import useSendListQuery from '@hooks/useRequestListQuery.ts';
+import { PROFILE_BUTTON_TYPE, reactQueryKeys } from '@util/Constants/constants.ts';
 
 interface SendRequestProps {
   userId: number;
@@ -20,7 +20,7 @@ interface SendList {
   id: string;
 }
 
-const SendRequest = ({ userId }: SendRequestProps) => {
+const FriendSendRequest = ({ userId }: SendRequestProps) => {
   const { data, isLoading, isError } = useSendListQuery(reactQueryKeys.SendList, userId);
 
   if (isLoading) {
@@ -56,4 +56,4 @@ const SendRequest = ({ userId }: SendRequestProps) => {
   ));
 };
 
-export default SendRequest;
+export default FriendSendRequest;

@@ -1,9 +1,9 @@
 import { ChangeEvent, useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { updateProfile } from '@api/FriendModal';
+import { updateProfile } from '@api/FriendModal.ts';
 
-import { useToast } from '@hooks/useToast';
+import { useToast } from '@hooks/useToast.tsx';
 import { Button } from '@material-tailwind/react';
 import anonymousImage from '@assets/image/anonymousImage.png';
 
