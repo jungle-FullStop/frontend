@@ -7,9 +7,10 @@ import API_PATH from '@util/apiPath';
 import { cardListState } from '@/store/Store';
 import { useRecoilState } from 'recoil';
 import { TabsWithIcon } from '@/components/board/TabsWithIcon';
+import { BoardType } from '@/types/board/BoardType';
 
 export const Board = () => {
-  const [cardList, setCardList] = useRecoilState(cardListState);
+  const [cardList, setCardList] = useRecoilState<any>(cardListState);
 
   let navigate = useNavigate();
 
@@ -19,13 +20,13 @@ export const Board = () => {
       .then((response) => {
         const cardList = response.data;
         setCardList(cardList);
+        console.log(cardList)
       })
       .catch(() => {
         console.log('실패');
       });
   }, []);
 
-  console.log(cardList);
 
   return (
     <div className="main-container">
@@ -33,18 +34,18 @@ export const Board = () => {
       <div className=" w-1/3 min-w-96 mt-5 flex">
         <div className='w-full'><TabsWithIcon /></div>
       </div>
-      <div className="card-container">
+      <div className="TIL-container">
         {cardList
           ? cardList.map((data: any, items: number) => {
               return (
                 <div
-                  className="card shadow-xl opacity-85"
+                  className="TIL shadow-xl opacity-85"
                   key={items}
                   onClick={() => {
                     navigate(`/board/${data.id}`);
                   }}
                 >
-                  <CardDefault cardContents={data.contents} />
+                  <CardDefault cardContents={data.contents} cardDate ={data.timestamp} />
                 </div>
               );
             })

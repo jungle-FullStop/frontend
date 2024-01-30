@@ -1,5 +1,6 @@
 export interface BoardType {
+    contents : 'string'
     id : number,
     userId : number,
-    contents : 'string'
+    timestamp : Date
 }

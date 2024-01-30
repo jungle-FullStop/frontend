@@ -4,23 +4,47 @@ import { BoardType } from '@/types/board/BoardType';
 import MDEditor from '@uiw/react-md-editor';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Typography } from '@material-tailwind/react';
 
 const BoardDetail = () => {
   let { id } = useParams();
 
-  const [content,setContent] = useState('');
- 
+  const [content, setContent] = useState('');
+
+  const [beforeTime,setBeforeTime] = useState<string>();
+
+  const userName = localStorage.getItem('userName');
+  const userImage = localStorage.getItem('userProfileImage');
 
   useEffect(() => {
     axios
       .get('http://localhost:3000/board/find')
       .then((response) => {
         const cardList = response.data;
-        if (typeof id ==='string') {
+        if (typeof id === 'string') {
           const selectedCard: BoardType = cardList.find(
             (card: BoardType) => card.id === parseInt(id as string, 10),
           );
           setContent(selectedCard.contents);
+
+          const writeDate = new Date(selectedCard.timestamp);
+
+          const currentDate = new Date();
+
+          // 밀리초로 변환 후 차이 계산
+          const timeDifference = currentDate.getTime() - writeDate.getTime();
+
+          // 밀리초를 일로 변환 (1초 = 1000밀리초, 1분 = 60초, 1시간 = 60분, 1일 = 24시간)
+          const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+          if (daysDifference >= 1) {
+            console.log(`날짜 차이 (일): ${daysDifference}`);
+            setBeforeTime(`${daysDifference}일 전`)
+          } else {
+            const hoursDifference = Math.floor(timeDifference / (1000 * 60 * 60));
+            console.log(`몇 시간 전: ${hoursDifference}`);
+            setBeforeTime(`${hoursDifference}시간 전`)
+          }
         } else {
           console.log('해당 id의 카드를 찾을 수 없습니다.');
         }
@@ -30,14 +54,19 @@ const BoardDetail = () => {
       });
   }, []);
 
-  // id를 이용하여 필요한 데이터를 가져오거나 렌더링
   return (
     <div className="main-container">
       <NavBar></NavBar>
-      <div className="mx-auto contents-container">
-      <MDEditor.Markdown
-		source={content}
-    />
+      <div className="mb-5 mt-5 flex flex-row items-center">
+        <img
+          className="h-10 w-10 mr-5 rounded-full object-cover object-center"
+          src={userImage as string | undefined}
+          alt="nature image"
+        />
+       <Typography variant="h6"> 작성 {beforeTime}</Typography>
+      </div>
+      <div className="contents-container">
+        <MDEditor.Markdown source={content} />
       </div>
     </div>
   );
