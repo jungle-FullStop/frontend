@@ -4,7 +4,7 @@ import { ElementDefinition } from 'cytoscape';
 export function generateMindmap() {
   let elements: ElementDefinition[];
   const mindmap = localStorage.getItem('todayMindmap');
-  if (mindmap === null) {
+  if (mindmap === null || mindmap === '') {
     elements = dummyMindmap;
   } else {
     const preprocessed = JSON.parse(mindmap);

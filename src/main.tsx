@@ -5,13 +5,10 @@ import '@/globals.css';
 import { ThemeProvider } from '@material-tailwind/react';
 import{ RecoilRoot} from "recoil"
 
-
-ReactDOM.createRoot(document.getElementById('root')!).render( 
-    <ThemeProvider>
-      <RecoilRoot>
-      <App />
-      </RecoilRoot>
-    </ThemeProvider>
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>,
 );
 
 if ("serviceWorker" in navigator) {

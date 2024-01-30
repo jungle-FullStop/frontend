@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Navbar, Collapse, Typography, Button, IconButton } from '@material-tailwind/react';
 
 import logo from '@assets/image/logo.png';
-import teamlogo from '@assets/image/logo-team-love-three.png';
+import teamLogo from '@assets/image/logo-team-love-three.png';
 import { logout } from '@/api/LoginAPI';
 
 export function NavBar(props: any) {
@@ -150,8 +150,8 @@ export function NavBar(props: any) {
           </NavLink>
         ) : (
           <NavLink className="flex flex-row gap-x-3" to="/">
-            <img src={teamlogo} alt="메인로고" className="w-12" />
-            <Typography color="green" className=" self-center text-4xl font-extrabold">
+            <img src={teamLogo} alt="메인로고" className="w-12" />
+            <Typography color="green" className="self-center text-4xl font-extrabold">
               티.나.끝
             </Typography>
           </NavLink>
@@ -194,12 +194,10 @@ export function NavBar(props: any) {
           )}
 
           <Button
-            variant="gradient"
+            variant="outlined"
+            color="blue-gray"
             className="hidden lg:inline-block"
-            color="amber"
-            onClick={() => {
-              onClickLogout();
-            }}
+            onClick={onClickLogout}
           >
             <span>로그아웃</span>
           </Button>
@@ -243,9 +241,9 @@ export function NavBar(props: any) {
             </Button>
             <Button
               fullWidth
-              variant="gradient"
+              variant="outlined"
               size="sm"
-              color="amber"
+              color="blue-gray"
               onClick={onClickLogout}
               className=""
             >

@@ -1,6 +1,7 @@
 // Firebase Cloud Messaging Configuration File.
 // Read more at https://firebase.google.com/docs/cloud-messaging/js/client && https://firebase.google.com/docs/cloud-messaging/js/receive
 
+import axios from 'axios';
 import { initializeApp } from 'firebase/app';
 import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 
@@ -21,13 +22,15 @@ initializeApp(firebase_config);
 const messaging = getMessaging();
 
 export const requestForToken = async () => {
-  return getToken(messaging, {
+  return await getToken(messaging, {
     vapidKey: firebase_vapidkey_tes,
   })
     .then((currentToken) => {
       if (currentToken) {
         console.log('current token for client: ', currentToken);
-        return currentToken;
+        // return currentToken;
+        const id = parseInt(localStorage.getItem('userId') as string, 10);
+        saveTokenOnServer(id, currentToken);
         // Perform any other neccessary action with the token
       } else {
         // Show permission request UI
@@ -37,6 +40,18 @@ export const requestForToken = async () => {
     .catch((err) => {
       console.log('An error occurred while retrieving token. ', err);
     });
+};
+
+const saveTokenOnServer = async (id: number, token: string) => {
+  try {
+    const response = await axios.post('/api/push/token', {
+      id: id,
+      token: token,
+    });
+    console.log('Token saved successfully on server:', response.data);
+  } catch (error) {
+    console.error('Error while saving token on server:', error);
+  }
 };
 
 // Handle incoming messages. Called when:
