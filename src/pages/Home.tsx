@@ -12,6 +12,7 @@ import { FriendsInfo } from '@components/Home/Friends/FriendsInfo.tsx';
 import { requestForToken } from '@/components/FirebaseNotifications/Firebase';
 import Modal from '@components/Common/Modal';
 import useModal from '@hooks/useModal.tsx';
+import { Quotes } from '@components/Home/Quotes.tsx';
 
 const Home = () => {
   const userId = localStorage.getItem('userId') as string;
@@ -67,6 +68,7 @@ const Home = () => {
             <div className="flex flex-col gap-y-10">
               <WriteTIL color="yellow" />
               <UserGrass />
+              <Quotes mode="user" />
             </div>
           </div>
         </div>
@@ -80,6 +82,7 @@ const Home = () => {
             <div className="flex flex-col gap-y-10">
               <WriteTIL color="green" />
               <TeamGrass />
+              <Quotes mode="team" />
             </div>
           </div>
         </div>

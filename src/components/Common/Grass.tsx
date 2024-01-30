@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 
 export const Grass = (props: any) => {
   const [showToolTip, setShowToolTip] = useState(false);
@@ -28,12 +28,12 @@ export const Grass = (props: any) => {
       onMouseLeave={() => setShowToolTip(false)}
     >
       <div
-        className={`m-[0.2rem] h-5 w-5 flex-grow rounded ${props.date !== '0' ? props.i == 23 ? 'bg-light-green-400' : 'bg-gray-300' : 'bg-white'}`}
+        className={`m-[0.2rem] h-5 w-5 flex-grow rounded ${props.date !== '0' ? (props.i == 23 ? 'bg-light-green-400' : 'bg-gray-300') : 'bg-white'}`}
       ></div>
       {showToolTip && props.date !== '0' && (
         <div
           ref={tooltipDiv}
-          className="bg-default absolute -translate-y-full -translate-x-3/4  rounded bg-yellow-100 p-2  opacity-70"
+          className="bg-default absolute -translate-x-3/4 -translate-y-full  rounded bg-yellow-100 p-2  opacity-70"
         >
           {props.i == 23 ? (
             <p>
