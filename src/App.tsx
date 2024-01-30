@@ -9,14 +9,14 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <div>
-    <QueryClientProvider client={queryClient}>
-      <ToastProvider>
-        <ModalProvider>
-          <Router />
-          <Notification />
-        </ModalProvider>
-      </ToastProvider>
-    </QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <ToastProvider>
+          <ModalProvider>
+            <Router />
+            <Notification />
+          </ModalProvider>
+        </ToastProvider>
+      </QueryClientProvider>
     </div>
   );
 }
