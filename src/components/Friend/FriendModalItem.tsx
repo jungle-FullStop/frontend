@@ -1,6 +1,12 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { cancelRequestFriend, deleteFriend, allowFriend, rejectFriend } from '@api/FriendModal.ts';
+import {
+  cancelRequestFriend,
+  deleteFriend,
+  allowFriend,
+  rejectFriend,
+  requestFriend,
+} from '@api/FriendModal.ts';
 
 import { useToast } from '@hooks/useToast.tsx';
 
@@ -21,6 +27,21 @@ const DB_WAITING_TIME = 100;
 const FriendModalItem = ({ email, profileImage, name, id, type }: FriendModalItemProps) => {
   const queryClient = useQueryClient();
   const openToast = useToast();
+
+  const requestFriendMutation = useMutation({
+    mutationFn: (receiverId: number) => requestFriend(receiverId),
+    onSuccess() {
+      openToast('친구 요청을 보냈습니다.');
+      setTimeout(() => {
+        queryClient.invalidateQueries({
+          queryKey: [reactQueryKeys.SendList],
+        });
+        queryClient.invalidateQueries({
+          queryKey: [reactQueryKeys.ProfileData],
+        });
+      }, 100);
+    },
+  });
 
   const cancelRequestMutation = useMutation({
     mutationFn: (receiverId: number) => cancelRequestFriend(receiverId),
@@ -88,37 +109,46 @@ const FriendModalItem = ({ email, profileImage, name, id, type }: FriendModalIte
       case PROFILE_BUTTON_TYPE.RECEIVED:
         return (
           <div className="flex gap-2">
-            <button
+            <Button
               onClick={() => {
                 rejectFriendMutation.mutate(+id);
               }}
               className="btn-reject"
             >
               거절
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={() => {
                 allowFriendMutation.mutate(+id);
               }}
               className="btn-accept"
             >
               수락
-            </button>
+            </Button>
           </div>
         );
       case PROFILE_BUTTON_TYPE.SEND:
         return (
-          <button
+          <Button
             onClick={() => {
               cancelRequestMutation.mutate(+id);
             }}
-            className="btn-cancel"
+            className="btn-reject"
           >
             신청 취소
-          </button>
+          </Button>
         );
       case PROFILE_BUTTON_TYPE.STRANGER:
-        return <div></div>;
+        return (
+          <Button
+            onClick={() => {
+              requestFriendMutation.mutate(+id);
+            }}
+            className="btn-request"
+          >
+            친구 요청
+          </Button>
+        );
     }
   };
 
