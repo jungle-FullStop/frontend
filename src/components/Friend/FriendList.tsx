@@ -4,7 +4,7 @@ import Icon from '@components/Common/Icon.tsx';
 import FriendModalItem from '@components/Friend/FriendModalItem.tsx';
 import FriendSearchContent from '@components/Friend/FriendSearchContent.tsx';
 
-import useFriendListDataQuery from '@hooks/useFriendListQuery.ts';
+import { useFriendListDataQuery } from '@hooks/useFriendListQuery.ts';
 
 import { PROFILE_BUTTON_TYPE } from '@util/Constants/constants.ts';
 

@@ -99,3 +99,16 @@
 .target-popper.active {
   display: block;
 }
+
+/* 모달창 버튼 */
+.btn-delete {
+  @apply bg-red-500 w-fit rounded-md border-none px-2 py-1 text-[0.7rem] font-bold text-white;
+}
+
+.btn-accept {
+  @apply bg-green-300 w-fit rounded-md border-none px-2 py-1 text-[0.7rem] font-bold text-white;
+}
+
+.btn-reject {
+  @apply bg-red-500 w-fit rounded-md border-none px-2 py-1 text-[0.7rem] font-bold text-white;
+}

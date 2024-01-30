@@ -43,6 +43,7 @@ export const reactQueryKeys = {
   ProfileData: 'profileData',
   SearchDataList: 'searchDataList',
   FriendList: 'friendList',
+  FriendRankList: 'friendRankList',
   MemberList: 'memberList',
   SendList: 'sendList',
   ReceivedList: 'receivedList',
