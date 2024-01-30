@@ -1,11 +1,12 @@
-import { useNavigate } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { cancelRequestFriend, deleteFriend, allowFriend, rejectFriend } from '@api/FriendModal.ts';
 
 import { useToast } from '@hooks/useToast.tsx';
 
-import { PROFILE_BUTTON_TYPE, PAGE_URL, reactQueryKeys } from '@util/Constants/constants.ts';
+import { PROFILE_BUTTON_TYPE, reactQueryKeys } from '@util/Constants/constants.ts';
+import { Button } from '@material-tailwind/react';
+import anonymousImage from '@assets/image/anonymousImage.png';
 
 interface FriendModalItemProps {
   email: string;
@@ -18,16 +19,8 @@ interface FriendModalItemProps {
 const DB_WAITING_TIME = 100;
 
 const FriendModalItem = ({ email, profileImage, name, id, type }: FriendModalItemProps) => {
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const openToast = useToast();
-
-  const goFriendHome = () => {
-    navigate(`${PAGE_URL.HOME}${id}`);
-    queryClient.removeQueries({
-      queryKey: [reactQueryKeys.ProfileData],
-    });
-  };
 
   const cancelRequestMutation = useMutation({
     mutationFn: (receiverId: number) => cancelRequestFriend(receiverId),
@@ -83,14 +76,14 @@ const FriendModalItem = ({ email, profileImage, name, id, type }: FriendModalIte
     switch (type) {
       case PROFILE_BUTTON_TYPE.LIST:
         return (
-          <button
+          <Button
             onClick={() => {
               deleteFriendMutation.mutate(+id);
             }}
-            className="bg-mint w-3/5 rounded-md border-none px-2 py-1 text-[0.7rem] font-bold"
+            className="btn-delete"
           >
             친구 삭제
-          </button>
+          </Button>
         );
       case PROFILE_BUTTON_TYPE.RECEIVED:
         return (
@@ -99,7 +92,7 @@ const FriendModalItem = ({ email, profileImage, name, id, type }: FriendModalIte
               onClick={() => {
                 rejectFriendMutation.mutate(+id);
               }}
-              className="bg-red w-2/5 rounded-md border-none px-2 py-1 text-[0.7rem] font-bold text-white"
+              className="btn-reject"
             >
               거절
             </button>
@@ -107,7 +100,7 @@ const FriendModalItem = ({ email, profileImage, name, id, type }: FriendModalIte
               onClick={() => {
                 allowFriendMutation.mutate(+id);
               }}
-              className="bg-mint w-2/5 rounded-md border-none px-2 py-1 text-[0.7rem] font-bold"
+              className="btn-accept"
             >
               수락
             </button>
@@ -119,7 +112,7 @@ const FriendModalItem = ({ email, profileImage, name, id, type }: FriendModalIte
             onClick={() => {
               cancelRequestMutation.mutate(+id);
             }}
-            className="bg-red w-3/5 rounded-md border-none px-2 py-1 text-[0.7rem] font-bold text-white"
+            className="btn-cancel"
           >
             신청 취소
           </button>
@@ -131,12 +124,16 @@ const FriendModalItem = ({ email, profileImage, name, id, type }: FriendModalIte
 
   const buttonContent = getButtonElement(type);
 
+  // 프로필 이미지가 없을 경우, 기본 이미지로 대체
+  if (profileImage === null || profileImage === '') {
+    profileImage = anonymousImage;
+  }
+
   return (
     <div className="mb-5 mr-3 flex w-full">
       <div className="w-28">
         <img
           className="mr-3 h-16 w-16 cursor-pointer rounded-full object-cover"
-          onClick={goFriendHome}
           src={profileImage}
           alt={`${name} 프로필 이미지`}
         />

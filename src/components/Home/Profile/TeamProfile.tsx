@@ -20,7 +20,7 @@ export const TeamProfile = () => {
   const getModalContent = (type: string) => {
     switch (type) {
       case PROFILE_MODAL_CONTENT_TYPE.LIST:
-        return <MemberList userId={+userId} />;
+        return <MemberList userId={Number(userId)} />;
     }
   };
 

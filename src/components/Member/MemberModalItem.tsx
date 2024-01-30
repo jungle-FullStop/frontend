@@ -1,11 +1,11 @@
-import { useNavigate } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { cancelRequestMember, deleteMember, allowMember, rejectMember } from '@api/MemberModal.ts';
 
 import { useToast } from '@hooks/useToast.tsx';
 
-import { PROFILE_BUTTON_TYPE, PAGE_URL, reactQueryKeys } from '@util/Constants/constants.ts';
+import { PROFILE_BUTTON_TYPE, reactQueryKeys } from '@util/Constants/constants.ts';
+import { Button } from '@material-tailwind/react';
 
 interface MemberModalItemProps {
   email: string;
@@ -18,16 +18,8 @@ interface MemberModalItemProps {
 const DB_WAITING_TIME = 100;
 
 const MemberModalItem = ({ email, profileImage, name, id, type }: MemberModalItemProps) => {
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const openToast = useToast();
-
-  const goMemberHome = () => {
-    navigate(`${PAGE_URL.HOME}${id}`);
-    queryClient.removeQueries({
-      queryKey: [reactQueryKeys.ProfileData],
-    });
-  };
 
   const cancelRequestMutation = useMutation({
     mutationFn: (receiverId: number) => cancelRequestMember(receiverId),
@@ -83,14 +75,14 @@ const MemberModalItem = ({ email, profileImage, name, id, type }: MemberModalIte
     switch (type) {
       case PROFILE_BUTTON_TYPE.LIST:
         return (
-          <button
+          <Button
             onClick={() => {
               deleteMemberMutation.mutate(+id);
             }}
-            className="bg-mint w-3/5 rounded-md border-none px-2 py-1 text-[0.7rem] font-bold"
+            className="btn-delete"
           >
             친구 삭제
-          </button>
+          </Button>
         );
       case PROFILE_BUTTON_TYPE.RECEIVED:
         return (
@@ -99,7 +91,7 @@ const MemberModalItem = ({ email, profileImage, name, id, type }: MemberModalIte
               onClick={() => {
                 rejectMemberMutation.mutate(+id);
               }}
-              className="bg-red w-2/5 rounded-md border-none px-2 py-1 text-[0.7rem] font-bold text-white"
+              className="btn-reject"
             >
               거절
             </button>
@@ -107,7 +99,7 @@ const MemberModalItem = ({ email, profileImage, name, id, type }: MemberModalIte
               onClick={() => {
                 allowMemberMutation.mutate(+id);
               }}
-              className="bg-mint w-2/5 rounded-md border-none px-2 py-1 text-[0.7rem] font-bold"
+              className="btn-accept"
             >
               수락
             </button>
@@ -119,7 +111,7 @@ const MemberModalItem = ({ email, profileImage, name, id, type }: MemberModalIte
             onClick={() => {
               cancelRequestMutation.mutate(+id);
             }}
-            className="bg-red w-3/5 rounded-md border-none px-2 py-1 text-[0.7rem] font-bold text-white"
+            className="btn-cancel"
           >
             신청 취소
           </button>
@@ -136,7 +128,6 @@ const MemberModalItem = ({ email, profileImage, name, id, type }: MemberModalIte
       <div className="w-28">
         <img
           className="mr-3 h-16 w-16 cursor-pointer rounded-full object-cover"
-          onClick={goMemberHome}
           src={profileImage}
           alt={`${name} 프로필 이미지`}
         />

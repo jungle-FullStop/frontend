@@ -30,6 +30,7 @@ const API_PATH = {
   FRIEND: {
     search: (name: string) => SERVER_URL + FRIEND + '/search' + `/${name}`,
     list: (userId: number) => SERVER_URL + FRIEND + `/${userId}`,
+    rankList: (userId: number) => SERVER_URL + FRIEND + `/rank/${userId}`,
     request: (userId: number) => SERVER_URL + FRIEND + '/request' + `/${userId}`,
     allow: (senderId: number) => SERVER_URL + FRIEND + '/allow' + `/${senderId}`,
   },

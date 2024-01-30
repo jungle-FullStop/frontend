@@ -23,7 +23,7 @@ export const UserProfile = () => {
   const getModalContent = (type: string) => {
     switch (type) {
       case PROFILE_MODAL_CONTENT_TYPE.LIST:
-        return <FriendList userId={+userId} />;
+        return <FriendList userId={Number(userId)} />;
     }
   };
 
