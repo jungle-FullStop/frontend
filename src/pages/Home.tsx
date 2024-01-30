@@ -1,20 +1,25 @@
 import { useEffect, useState } from 'react';
 import NavBar from '@/components/Common/NavBar';
-import { UserProfile } from '@/components/Home/UserProfile';
+import { UserProfile } from '@components/Home/Profile/UserProfile.tsx';
 import { Friends } from '@/components/Home/Friends';
 import { WriteTIL } from '@/components/Home/WriteTIL';
 import { UserGrass } from '@/components/Home/UserGrass';
 import { getProfile } from '@/api/ProfileAPI';
 import { createMindmap } from '@/api/MindmapAPI';
 import { TeamGrass } from '@/components/Home/TeamGrass';
-import { TeamProfile } from '@/components/Home/TeamProfile';
+import { TeamProfile } from '@components/Home/Profile/TeamProfile.tsx';
 import { FriendsInfo } from '@/components/Home/FriendsInfo';
 import { requestForToken } from '@/components/FirebaseNotifications/Firebase';
+import Modal from '@components/Common/Modal';
+import useModal from '@hooks/useModal.tsx';
 
 const Home = () => {
+  const userId = localStorage.getItem('userId') as string;
   const [, setToken] = useState('');
   const [, setLoading] = useState(true);
   const [isFlipped, setIsFlipped] = useState(false);
+
+  const { closeModal } = useModal();
 
   const flipCard = () => {
     setIsFlipped(!isFlipped);
@@ -46,7 +51,8 @@ const Home = () => {
     getUserProfile();
     getMindmap();
     getToken();
-  }, []);
+    closeModal();
+  }, [userId]);
 
   return (
     <div className="main-container">
@@ -78,6 +84,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Modal />
     </div>
   );
 };

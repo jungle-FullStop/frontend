@@ -7,8 +7,10 @@ const Edit = () => {
     <div className="main-container">
       <NavBar />
       <div className="sub-container">
-        <Header />
-        <Editor />
+        <div className="contents-container">
+          <Header />
+          <Editor />
+        </div>
       </div>
     </div>
   );

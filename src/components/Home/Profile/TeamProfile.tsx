@@ -1,27 +1,27 @@
 import { Typography } from '@material-tailwind/react';
 import teamDefaultImage from '@assets/image/teamDefaultImage.jpeg';
-import { useState } from 'react';
+import useModal from '@hooks/useModal.tsx';
+import MemberList from '@components/Member/MemberList.tsx';
+import { PROFILE_MODAL_CONTENT_TYPE } from '@util/Constants/constants.ts';
 
 export const TeamProfile = () => {
-  //친구 관리 모달창 닫혀 있으면 false, 열려 있으면 true
-  const [handleFriend, setHandleFriend] = useState(false);
+  const userId = localStorage.getItem('userId');
   let teamName = localStorage.getItem('teamName');
-  if (teamName === null) {
+  if (teamName === null || teamName === '') {
     teamName = '정글 3기';
   }
   let teamImage = localStorage.getItem('teamProfileImage');
-  if (teamImage === null) {
+  if (teamImage === null || teamImage === '') {
     teamImage = teamDefaultImage;
   }
 
-  //모달창 여는 함수
-  const openModal = () => {
-    setHandleFriend(true);
-  };
+  const { openModal } = useModal();
 
-  //모달창 닫는 함수
-  const closeModal = () => {
-    setHandleFriend(false);
+  const getModalContent = (type: string) => {
+    switch (type) {
+      case PROFILE_MODAL_CONTENT_TYPE.LIST:
+        return <MemberList userId={+userId} />;
+    }
   };
 
   return (
@@ -31,24 +31,14 @@ export const TeamProfile = () => {
         src={teamImage}
         alt="프로필 사진"
       />
-      {handleFriend ? (
-        <div className="fixed inset-0  flex  items-center justify-center  bg-gray-800 bg-opacity-50">
-          <div className="w-96 rounded-lg bg-white p-8">
-            <h2 className="mb-4 text-2xl font-bold">친구 관리</h2>
-            {/* 모달 내용 및 로직 구현 */}
-            <p>친구 0명</p>
-            <button onClick={closeModal} className="mt-4 rounded bg-blue-500 px-4 py-2 text-white">
-              닫기
-            </button>
-          </div>
-        </div>
-      ) : null}
-
       <Typography className="mb-5 text-3xl font-extrabold">{teamName}에 어서오세요 !</Typography>
       <div className="border-brown grid w-max grid-flow-col rounded-2xl border-2 border-solid bg-white p-5 text-center text-lg font-bold">
         <p className="cursor-pointer">{teamName}에 소속된 팀원 57명</p>
         <div className="border-brown mx-5 border-l-2 border-solid" />
-        <p className="cursor-pointer" onClick={openModal}>
+        <p
+          className="cursor-pointer"
+          onClick={() => openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.LIST) })}
+        >
           팀원 관리
         </p>
         <div className="border-brown mx-5 border-l-2 border-solid" />

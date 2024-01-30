@@ -9,7 +9,7 @@ interface userInfo {
 
 export const getProfile = async () => {
   try {
-    const response = await fetch(API_PATH.USER.getProfile(TEMP_ID), {
+    const response = await fetch(API_PATH.USER.userProfile(TEMP_ID), {
       method: 'GET',
     });
     if (!response.ok) throw new Error('올바른 네트워크 응답이 아닙니다.');
