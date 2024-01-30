@@ -22,8 +22,8 @@ export function CardDefault(props: any) {
   //카드 내용 최대 20자로 줄임
   const shortenedContents = props.cardContents.slice(0, 70) + ' ...';
 
-  const userImage = localStorage.getItem('userProfileImage');
-  const userName = localStorage.getItem('userName');
+  const userImage = props.userImage;
+  const userName = props.userName;
 
   // console.log(props.cardContents);
   // console.log('Year:', currentYear);

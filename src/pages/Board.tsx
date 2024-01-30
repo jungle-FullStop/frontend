@@ -1,7 +1,7 @@
 import NavBar from '@/components/Common/NavBar';
 import { CardDefault } from '@components/Board/CardDefault';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import API_PATH from '@util/apiPath';
 import { cardListState } from '@/store/Store';
@@ -10,14 +10,21 @@ import { TabsWithIcon } from '@components/Board/TabsWithIcon';
 
 export const Board = () => {
   const [cardList, setCardList] = useRecoilState<any>(cardListState);
+  const [userImage, setUserImage] = useState<string | null>(null);
+  const [userName, setUserName] = useState<string | null>(null);
   const navigate = useNavigate();
+  const userID = localStorage.getItem('userId');
 
   useEffect(() => {
     axios
-      .get(API_PATH.BOARD.find())
+      .get(`${API_PATH.BOARD.find()}/${userID}`)
       .then((response) => {
-        const cardList = response.data;
+        const userImage = response.data.user.profileImage;
+        const userName = response.data.user.name;
+        const cardList = response.data.boards;
         setCardList(cardList);
+        setUserImage(userImage);
+        setUserName(userName);
         console.log(cardList);
       })
       .catch(() => {
@@ -44,7 +51,12 @@ export const Board = () => {
                     navigate(`/board/${data.id}`);
                   }}
                 >
-                  <CardDefault cardContents={data.contents} cardDate={data.timestamp} />
+                  <CardDefault
+                    cardContents={data.contents}
+                    cardDate={data.timestamp}
+                    userImage={userImage}
+                    userName={userName}
+                  />
                 </div>
               );
             })

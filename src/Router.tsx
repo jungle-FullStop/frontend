@@ -22,7 +22,6 @@ const Router = () => {
           <Route path={`${PAGE_URL.EDIT}`} element={<EDIT />} />
           <Route path={`${PAGE_URL.BOARD}`} element={<Board />} />
           <Route path={`${PAGE_URL.BOARD_DETAIL}`} element={<BoardDetail />} />
-
         </Route>
         <Route element={<AuthRoutes />}>
           <Route path={`${PAGE_URL.LANDING}`} element={<Landing />} />
