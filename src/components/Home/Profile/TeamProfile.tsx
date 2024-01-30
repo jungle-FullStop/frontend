@@ -6,11 +6,11 @@ export const TeamProfile = () => {
   //친구 관리 모달창 닫혀 있으면 false, 열려 있으면 true
   const [handleFriend, setHandleFriend] = useState(false);
   let teamName = localStorage.getItem('teamName');
-  if (teamName === null) {
+  if (teamName === null || teamName === '') {
     teamName = '정글 3기';
   }
   let teamImage = localStorage.getItem('teamProfileImage');
-  if (teamImage === null) {
+  if (teamImage === null || teamImage === '') {
     teamImage = teamDefaultImage;
   }
 

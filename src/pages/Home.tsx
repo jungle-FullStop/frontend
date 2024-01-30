@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 import NavBar from '@/components/Common/NavBar';
-import { UserProfile } from '@/components/Home/UserProfile';
+import { UserProfile } from '@components/Home/Profile/UserProfile.tsx';
 import { Friends } from '@/components/Home/Friends';
 import { WriteTIL } from '@/components/Home/WriteTIL';
 import { UserGrass } from '@/components/Home/UserGrass';
 import { getProfile } from '@/api/ProfileAPI';
 import { createMindmap } from '@/api/MindmapAPI';
 import { TeamGrass } from '@/components/Home/TeamGrass';
-import { TeamProfile } from '@/components/Home/TeamProfile';
+import { TeamProfile } from '@components/Home/Profile/TeamProfile.tsx';
 import { FriendsInfo } from '@/components/Home/FriendsInfo';
 import { requestForToken } from '@/components/FirebaseNotifications/Firebase';
+import Modal from '@components/Common/Modal';
 
 const Home = () => {
   const [, setToken] = useState('');
@@ -78,6 +79,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Modal />
     </div>
   );
 };

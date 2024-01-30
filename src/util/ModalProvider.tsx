@@ -1,7 +1,7 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, ReactNode } from 'react';
 
 interface ModalData {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export const ModalContext = createContext<{
@@ -11,30 +11,23 @@ export const ModalContext = createContext<{
   modalData: ModalData;
 }>({} as any);
 
-const ModalProvider = ({ children }: { children: React.ReactNode }) => {
+const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState<ModalData>({});
 
   const openModal = ({ children }: ModalData) => {
     setIsOpen(true);
-    document.body.style.cssText = `
-    position: fixed; 
-    top: -${window.scrollY}px;
-    overflow-y: scroll;
-    width: 100%;`;
     setModalData({ children });
   };
 
   const closeModal = () => {
     setIsOpen(false);
     setModalData({});
-    const scrollY = document.body.style.top;
-    document.body.style.cssText = '';
-    window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
   };
   return (
     <ModalContext.Provider value={{ isOpen, openModal, closeModal, modalData }}>
       {children}
+      <p className="fixed z-50 w-full bg-black indent-0">test 중 입니다!</p>
     </ModalContext.Provider>
   );
 };
