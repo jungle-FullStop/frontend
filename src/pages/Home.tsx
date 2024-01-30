@@ -11,11 +11,15 @@ import { TeamProfile } from '@components/Home/Profile/TeamProfile.tsx';
 import { FriendsInfo } from '@/components/Home/FriendsInfo';
 import { requestForToken } from '@/components/FirebaseNotifications/Firebase';
 import Modal from '@components/Common/Modal';
+import useModal from '@hooks/useModal.tsx';
 
 const Home = () => {
+  const userId = localStorage.getItem('userId') as string;
   const [, setToken] = useState('');
   const [, setLoading] = useState(true);
   const [isFlipped, setIsFlipped] = useState(false);
+
+  const { closeModal } = useModal();
 
   const flipCard = () => {
     setIsFlipped(!isFlipped);
@@ -47,7 +51,8 @@ const Home = () => {
     getUserProfile();
     getMindmap();
     getToken();
-  }, []);
+    closeModal();
+  }, [userId]);
 
   return (
     <div className="main-container">

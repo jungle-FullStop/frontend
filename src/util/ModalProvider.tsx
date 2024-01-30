@@ -27,7 +27,6 @@ const ModalProvider = ({ children }: { children: ReactNode }) => {
   return (
     <ModalContext.Provider value={{ isOpen, openModal, closeModal, modalData }}>
       {children}
-      <p className="fixed z-50 w-full bg-black indent-0">test 중 입니다!</p>
     </ModalContext.Provider>
   );
 };

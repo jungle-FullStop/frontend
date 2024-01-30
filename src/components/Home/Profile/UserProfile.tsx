@@ -2,10 +2,12 @@ import { Typography } from '@material-tailwind/react';
 import anonymousImage from '@assets/image/anonymousImage.png';
 import { useState } from 'react';
 import useModal from '@hooks/useModal.tsx';
-import MemberList from '@components/Home/Profile/MemberList.tsx';
+import FriendList from '@components/Friend/FriendList.tsx';
+
+import { PROFILE_MODAL_CONTENT_TYPE } from '@util/Constants/constants';
 
 export const UserProfile = () => {
-  //친구 관리 모달창 닫혀 있으면 false, 열려 있으면 true
+  const userId = localStorage.getItem('userId');
   const [isWrite, setIsWrite] = useState(false);
   let name = localStorage.getItem('userName');
   if (name === null || name === '') {
@@ -18,8 +20,11 @@ export const UserProfile = () => {
 
   const { openModal } = useModal();
 
-  const getModalContent = () => {
-    return <MemberList />;
+  const getModalContent = (type: string) => {
+    switch (type) {
+      case PROFILE_MODAL_CONTENT_TYPE.LIST:
+        return <FriendList userId={+userId} />;
+    }
   };
 
   return (
@@ -42,7 +47,12 @@ export const UserProfile = () => {
         <div className="border-brown grid w-max grid-flow-col rounded-2xl border-2 border-solid bg-white p-5 text-center text-lg font-bold">
           <p className="cursor-pointer">TIL을 함께하는 친구 5명</p>
           <div className="border-brown mx-5 border-l-2 border-solid" />
-          <p className="cursor-pointer" onClick={() => openModal({ children: getModalContent() })}>
+          <p
+            className="cursor-pointer"
+            onClick={() =>
+              openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.LIST) })
+            }
+          >
             친구 관리
           </p>
           <div className="border-brown mx-5 border-l-2 border-solid" />

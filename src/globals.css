@@ -23,14 +23,6 @@
   @apply mx-auto flex w-full flex-col gap-y-5 rounded-lg bg-white p-7 shadow-md;
 }
 
-.modal-back-container {
-  @apply fixed inset-0 w-full h-full flex items-center justify-center bg-blue-gray-800 bg-opacity-50 rounded-3xl;
-}
-
-.modal-container {
-  @apply rounded-lg bg-white p-8 shadow-2xl;
-}
-
 /* 로딩 바 */
 .progress {
   padding: 6px;
