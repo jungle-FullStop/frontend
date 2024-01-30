@@ -7,11 +7,16 @@ const Notification = () => {
   const notify = () => toast(<ToastDisplay />);
   function ToastDisplay() {
     return (
-      <div>
-        <p>
-          <b>{notification?.title}</b>
-        </p>
-        <p>{notification?.body}</p>
+      <div
+        style={{
+          border: '1px solid #ccc',
+          borderRadius: '8px',
+          padding: '16px',
+          backgroundColor: '#f0f0f0',
+        }}
+      >
+        <h2 style={{ color: '#333', marginBottom: '8px' }}>{notification?.title}</h2>
+        <p style={{ color: '#666' }}>{notification?.body}</p>
       </div>
     );
   }

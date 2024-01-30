@@ -4,7 +4,7 @@ import { LoginButton } from '@/components/Landing/LoginButton';
 
 const Landing = () => {
   return (
-    <div className="bg-landing flex h-screen w-screen flex-col">
+    <div className="flex h-screen w-screen flex-col bg-landing">
       <Header />
       <div className="mx-auto mb-20 flex flex-grow items-center">
         <div id="Main" className="flex flex-col text-left">
