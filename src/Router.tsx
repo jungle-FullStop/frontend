@@ -9,6 +9,8 @@ import NotFound from '@pages/NotFound';
 import PrivateRoutes from '@util/PrivateRoutes';
 import AuthRoutes from '@util/AuthRoutes';
 import { PAGE_URL } from '@/util/Constants/constants';
+import { Board } from './pages/Board';
+import BoardDetail from './pages/BoardDeTail';
 
 const Router = () => {
   return (
@@ -18,6 +20,9 @@ const Router = () => {
           <Route path={`${PAGE_URL.HOME}`} element={<Home />} />
           <Route path={`${PAGE_URL.LOADING}`} element={<Loading />} />
           <Route path={`${PAGE_URL.EDIT}`} element={<EDIT />} />
+          <Route path={`${PAGE_URL.BOARD}`} element={<Board />} />
+          <Route path={`${PAGE_URL.BOARD_DETAIL}`} element={<BoardDetail />} />
+
         </Route>
         <Route element={<AuthRoutes />}>
           <Route path={`${PAGE_URL.LANDING}`} element={<Landing />} />

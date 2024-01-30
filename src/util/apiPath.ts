@@ -5,6 +5,7 @@ const AUTH = '/auth';
 const USER = '/users';
 const REPROT = '/report';
 const MINDMAP = '/mindmap';
+const BOARD = '/board'
 
 const API_PATH = {
   AUTH: {
@@ -23,6 +24,10 @@ const API_PATH = {
     find: (id: any) => SERVER_URL + MINDMAP + `/find/${id}`,
     create: (id: any) => SERVER_URL + MINDMAP + `/create/${id}`,
   },
+  BOARD :{
+    find: () => SERVER_URL + BOARD + `/find/`,
+    create: () => SERVER_URL + BOARD + `/create/`,
+  }
 };
 
 export default API_PATH;

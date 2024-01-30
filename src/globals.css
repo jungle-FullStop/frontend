@@ -23,6 +23,29 @@
   @apply mx-auto flex w-full flex-col gap-y-5 rounded-lg bg-white p-7 shadow-md;
 }
 
+.card-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between ;
+  width : 100% ;
+
+}
+
+.card{
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 30%;
+  height: 50vh;
+  max-height: 400px;
+  transition: 0.4s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-15px);
+  cursor: pointer;
+}
+
 /* 로딩 바 */
 .progress {
   padding: 6px;
