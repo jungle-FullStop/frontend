@@ -6,6 +6,7 @@ import FriendList from '@components/Friend/FriendList.tsx';
 
 import { PROFILE_MODAL_CONTENT_TYPE } from '@util/Constants/constants';
 import FriendRequest from '@components/Friend/FriendRequest.tsx';
+import ProfileEdit from '@components/Home/ProfileEdit.tsx';
 
 export const UserProfile = () => {
   const userId = localStorage.getItem('userId');
@@ -27,6 +28,8 @@ export const UserProfile = () => {
         return <FriendList userId={Number(userId)} />;
       case PROFILE_MODAL_CONTENT_TYPE.REQUEST:
         return <FriendRequest userId={Number(userId)} />;
+      case PROFILE_MODAL_CONTENT_TYPE.EDIT:
+        return <ProfileEdit name={String(name)} />;
     }
   };
 
@@ -66,7 +69,14 @@ export const UserProfile = () => {
             친구 관리
           </p>
           <div className="border-brown mx-5 border-l-2 border-solid" />
-          <p className="cursor-pointer">내 정보 수정</p>
+          <p
+            className="cursor-pointer"
+            onClick={() =>
+              openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.EDIT) })
+            }
+          >
+            내 정보 수정
+          </p>
         </div>
       </div>
     </div>

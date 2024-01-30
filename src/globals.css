@@ -124,6 +124,10 @@
 }
 
 /* 모달창 버튼 */
+.btn-request {
+  @apply bg-amber-500 w-fit rounded-md border-none px-2 py-1 text-[0.7rem] font-bold text-white;
+}
+
 .btn-delete {
   @apply bg-red-500 w-fit rounded-md border-none px-2 py-1 text-[0.7rem] font-bold text-white;
 }
