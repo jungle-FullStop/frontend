@@ -11,16 +11,19 @@ const Loading = () => {
   return (
     <div className="main-container">
       <NavBar />
-      <div className="mx-auto w-full pt-3">
-        <div className="flex flex-col items-center">
-          <div className="container flex items-center justify-center gap-x-3">
-            <ProgressBar />
-            <LoadingButton />
-          </div>
+
+      <div className=" flex mb-5 flex-wrap items-center justify-between pt-3">
+        <div className="w-2/3">
+          <ProgressBar />
+        </div>
+        <div className='h-14'>
+          <LoadingButton />
         </div>
       </div>
+
       <Mindmap name={layout} />
-      <div className="flex place-content-between p-2">
+      
+
         <div className="flex flex-row gap-x-3">
           <Button
             variant="outlined"
@@ -65,7 +68,6 @@ const Loading = () => {
         </div>
         <Typography className="text-right text-4xl font-extrabold">키워드 마인드맵</Typography>
       </div>
-    </div>
   );
 };
 

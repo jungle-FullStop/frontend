@@ -51,13 +51,13 @@ const BoardDetail = () => {
   return (
     <div className="main-container">
       <NavBar></NavBar>
-      <div className="mb-5 mt-5 flex flex-row items-center">
+      <div className="mb-5 mt-5 flex flex-row items-end">
         <img
           className="mr-5 h-10 w-10 rounded-full object-cover object-center"
           src={userImage as string | undefined}
           alt="nature image"
         />
-        <Typography variant="h6"> 작성 {beforeTime}</Typography>
+        <Typography variant="h5"> 작성 {beforeTime}</Typography>
       </div>
       <div className="contents-container">
         <div data-color-mode="light">

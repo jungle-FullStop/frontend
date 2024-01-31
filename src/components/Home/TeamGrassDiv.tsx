@@ -1,15 +1,21 @@
 import { dateRange } from '@/util/Constants/dateConstants';
-import { Grass } from '@/components/Common/Grass';
+import { TeamGrass } from '@/components/Common/TeamGrass';
 
-export const UserGrass = () => {
+
+export const TeamGrassDiv = () => {
+  let teamName = localStorage.getItem('teamName');
+  if (teamName === null || teamName === '') {
+    teamName = '정글 3기';
+  }
+
   const grassElements = dateRange.map((date, i) => {
-    return <Grass date={date} i={i} key={i} />;
+    return <TeamGrass date={date} i={i} key={i} />;
   });
 
   return (
     <div className="contents-container">
       <div>
-        <p className="text-center text-2xl font-bold">나의 TIL 잔디밭</p>
+        <p className="text-center text-lg font-bold sm:text-2xl">{teamName} 잔디밭 </p>
         <div className="mx-auto grid w-80 grid-cols-7 grid-rows-1 p-2 text-center">
           <p>Sun</p>
           <p>Mon</p>
