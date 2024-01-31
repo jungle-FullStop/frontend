@@ -4,7 +4,6 @@ import { BoardType } from '@/types/board/BoardType';
 import MDEditor from '@uiw/react-md-editor';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Typography } from '@material-tailwind/react';
 
 const BoardDetail = () => {
   const { id } = useParams();
@@ -57,7 +56,7 @@ const BoardDetail = () => {
           src={userImage as string | undefined}
           alt="nature image"
         />
-        <Typography variant="h5"> 작성 {beforeTime}</Typography>
+        <p className={'text-lg'}> 작성 {beforeTime}</p>
       </div>
       <div className="contents-container">
         <div data-color-mode="light">
