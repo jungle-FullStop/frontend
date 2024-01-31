@@ -11,15 +11,20 @@ const Loading = () => {
   return (
     <div className="main-container">
       <NavBar />
-      <div className="mx-auto w-full pt-3">
-        <div className="flex flex-col items-center">
-          <div className="container flex items-center justify-center gap-x-3">
-            <ProgressBar />
-            <LoadingButton />
-          </div>
+
+      <div className="mb-5 mt-5 flex w-full flex-wrap content-center items-center justify-between pt-3">
+        <div className="w-2/3">
+          <ProgressBar />
+        </div>
+        <div className="">
+          <LoadingButton />
         </div>
       </div>
-      <Mindmap name={layout} />
+
+      <div className="h-4/5">
+        <Mindmap name={layout} />
+      </div>
+
       <div className="flex place-content-between p-2">
         <div className="flex flex-row gap-x-3">
           <Button

@@ -1,15 +1,16 @@
 import { dateRange } from '@/util/Constants/dateConstants';
-import { Grass } from '@/components/Common/Grass';
+import { TeamGrass } from '@/components/Common/TeamGrass';
 
-export const UserGrass = () => {
+
+export const TeamGrassDiv = () => {
   const grassElements = dateRange.map((date, i) => {
-    return <Grass date={date} i={i} key={i} />;
+    return <TeamGrass date={date} i={i} key={i} />;
   });
 
   return (
     <div className="contents-container">
       <div>
-        <p className="text-center text-2xl font-bold">User TIL HISTORY</p>
+        <p className="text-center text-lg font-bold sm:text-2xl">Team TIL HISTORY </p>
         <div className="mx-auto grid w-80 grid-cols-7 grid-rows-1 p-2 text-center">
           <p>Sun</p>
           <p>Mon</p>

@@ -31,24 +31,22 @@ const LoadingButton = () => {
   }, [timer]);
 
   return (
-    <div>
+    <>
       {componentType === 'button' ? (
         <LoadingCircle />
       ) : (
-        <div className="flex h-20 w-64 items-center justify-center">
-          <Button
-            color="amber"
-            className="text-2xl font-bold"
-            onClick={() => {
-              getReport();
-            }}
-          >
-            가이드라인 보러가기!
-          </Button>
-        </div>
+        <Button
+          color="amber"
+          className="text-2xl font-bold"
+          onClick={() => {
+            getReport();
+          }}
+        >
+          가이드라인 보러가기
+        </Button>
       )}
       {timer > 0}
-    </div>
+    </>
   );
 };
 

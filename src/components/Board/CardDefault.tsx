@@ -19,7 +19,7 @@ export function CardDefault(props: any) {
   const currentMonth: number = currentDate.getMonth() + 1; // 월은 0부터 시작하므로 1을 더함
   const currentDay: number = currentDate.getDate();
 
-  //카드 내용 최대 20자로 줄임
+  //카드 내용 최대 70자로 줄임
   const shortenedContents = props.cardContents.slice(0, 70) + ' ...';
 
   const userImage = props.userImage;
