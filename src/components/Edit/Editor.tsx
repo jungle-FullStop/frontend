@@ -18,7 +18,7 @@ const Editor = () => {
   // 사용자 상태 업데이트 함수
   const updateUserStatus = async (status) => {
     try {
-      await axios.post(apiPath.TEAM.updateState(), { status });
+      await axios.post(apiPath.TEAM.updateState(), { status: status });
     } catch (error) {
       console.error('Error updating user status:', error);
     }
@@ -30,7 +30,7 @@ const Editor = () => {
 
     // 컴포넌트가 언마운트될 때 'not_written'으로 상태 변경
     return () => {
-      updateUserStatus('not_written');
+      // updateUserStatus('not_written');
     };
   }, []); // 빈 배열을 넣어 처음 마운트될 때만 실행되도록 함
 
