@@ -1,18 +1,23 @@
-import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Navbar, Collapse, Typography, Button, IconButton } from '@material-tailwind/react';
 
 import logo from '@assets/image/logo.png';
 import teamLogo from '@assets/image/logo-team-love-three.png';
 import { logout } from '@/api/LoginAPI';
+import useModal from '@hooks/useModal.tsx';
+import { NAVBAR_MODAL_CONTENT_TYPE } from '@util/Constants/constants.ts';
+import ProfileEdit from '@components/Profile/ProfileEdit.tsx';
+import TeamSetting from '@components/Team/TeamSetting.tsx';
 
 export function NavBar(props: any) {
+  const name = localStorage.getItem('userName');
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
   const [mode, setMode] = useState('user');
 
   const changeColor = () => {
-    if (mode === 'team') {
+    if (mode === 'Team') {
       document.documentElement.style.backgroundColor = '#FFFFE6';
     } else if (mode === 'user') {
       document.documentElement.style.backgroundColor = '#F5FFEC';
@@ -21,8 +26,8 @@ export function NavBar(props: any) {
 
   const modifyMode = () => {
     if (mode === 'user') {
-      setMode('team');
-    } else if (mode === 'team') {
+      setMode('Team');
+    } else if (mode === 'Team') {
       setMode('user');
     }
   };
@@ -37,6 +42,17 @@ export function NavBar(props: any) {
     if (isLogout) {
       localStorage.setItem('userId', '');
       navigate('/');
+    }
+  };
+
+  // 모달 기능
+  const { openModal } = useModal();
+  const getModalContent = (type: string) => {
+    switch (type) {
+      case NAVBAR_MODAL_CONTENT_TYPE.MYPAGE:
+        return <ProfileEdit name={String(name)} />;
+      case NAVBAR_MODAL_CONTENT_TYPE.TEAM:
+        return <TeamSetting />;
     }
   };
 
@@ -61,9 +77,14 @@ export function NavBar(props: any) {
           />
         </svg>
 
-        <a href="/board" className="flex items-center">
+        <button
+          onClick={() => {
+            navigate('/board');
+          }}
+          className="flex items-center"
+        >
           TILs
-        </a>
+        </button>
       </Typography>
       <Typography
         as="li"
@@ -85,9 +106,13 @@ export function NavBar(props: any) {
             fill="#90A4AE"
           />
         </svg>
-        <a href="#" className="flex items-center">
+        <button
+          onClick={() => {
+            openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.MYPAGE) });
+          }}
+        >
           가이드라인
-        </a>
+        </button>
       </Typography>
       <Typography
         as="li"
@@ -109,9 +134,13 @@ export function NavBar(props: any) {
             fill="#90A4AE"
           />
         </svg>
-        <a href="#" className="flex items-center">
+        <button
+          onClick={() => {
+            openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.MYPAGE) });
+          }}
+        >
           마이페이지
-        </a>
+        </button>
       </Typography>
       <Typography
         as="li"
@@ -131,9 +160,13 @@ export function NavBar(props: any) {
             fill="#90A4AE"
           />
         </svg>
-        <a href="#" className="flex items-center">
+        <button
+          onClick={() => {
+            openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.TEAM) });
+          }}
+        >
           팀 설정
-        </a>
+        </button>
       </Typography>
     </ul>
   );
@@ -141,7 +174,7 @@ export function NavBar(props: any) {
   return (
     <Navbar className="mx-auto px-4 py-2 lg:px-8 lg:py-4">
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
-        <div
+        <button
           className="flex flex-row gap-x-3"
           onClick={() => {
             window.location.replace('/');
@@ -162,7 +195,7 @@ export function NavBar(props: any) {
               </Typography>
             </>
           )}
-        </div>
+        </button>
 
         <div className="hidden lg:block">{navList}</div>
         <div className="flex items-center gap-x-1">
