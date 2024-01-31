@@ -1,4 +1,5 @@
 import { createContext, useState, ReactNode } from 'react';
+import { useKeyEscClose } from '@hooks/useKeyEscClose.ts';
 
 interface ModalData {
   children?: ReactNode;
@@ -24,6 +25,10 @@ const ModalProvider = ({ children }: { children: ReactNode }) => {
     setIsOpen(false);
     setModalData({});
   };
+
+  // esc로 모달 닫기
+  useKeyEscClose(closeModal);
+
   return (
     <ModalContext.Provider value={{ isOpen, openModal, closeModal, modalData }}>
       {children}

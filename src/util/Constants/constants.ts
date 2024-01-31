@@ -33,6 +33,11 @@ export const PROFILE_MODAL_CONTENT_TYPE = {
   EDIT: 'edit',
 };
 
+export const NAVBAR_MODAL_CONTENT_TYPE = {
+  MYPAGE: 'mypage',
+  TEAM: 'Team',
+};
+
 export const PROFILE_BUTTON_TYPE = {
   LIST: 'list',
   RECEIVED: 'received',
@@ -77,3 +82,5 @@ export const KEYWORDS = [
   'Page Fault와 TLB',
   'B Tree와 B+ Tree',
 ];
+
+export const INVITE_CODE_LENGTH = 8;
