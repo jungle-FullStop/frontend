@@ -1,24 +1,12 @@
-import { Typography } from '@material-tailwind/react';
-
 export const LandingMain = () => {
   return (
     <div>
-      <Typography color="orange" className="text-5xl font-semibold">
-        TIL을 쓰지 않으면,
-      </Typography>
-      <Typography color="orange" className="mb-3 text-5xl font-semibold">
-        나의 하루는 끝나지 않는다
-      </Typography>
-      <Typography color="amber" className="mb-7 text-7xl font-black">
-        티.나.끝
-      </Typography>
+      <p className="text-5xl font-semibold text-orange-500">TIL을 쓰지 않으면,</p>
+      <p className="mb-3 text-5xl font-semibold text-orange-500">나의 하루는 끝나지 않는다</p>
+      <p className="mb-7 text-7xl font-black text-amber-500">티.나.끝</p>
       <div id="LoreTextContainer" className="mb-14">
-        <Typography color="white" className="text-3xl font-extrabold">
-          티.나.끝의 가이드라인과 함께
-        </Typography>
-        <Typography color="white" className="text-3xl font-extrabold">
-          TIL을 작성해보세요.
-        </Typography>
+        <p className="text-3xl font-extrabold text-white">티.나.끝의 가이드라인과 함께</p>
+        <p className="text-3xl font-extrabold text-white">TIL을 작성해보세요.</p>
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ const Editor = () => {
   }
 
   // 사용자 상태 업데이트 함수
-  const updateUserStatus = async (status) => {
+  const updateUserStatus = async (status: any) => {
     try {
       await axios.post(apiPath.TEAM.updateState(), { status: status });
     } catch (error) {

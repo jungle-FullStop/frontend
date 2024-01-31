@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
 import { Stylesheet } from 'cytoscape';
-import setupCy from '@util/SetupCy';
-import { generateStylesheet, getPageRank } from '@/hooks/Mindmap/useMindmapStylesheet';
-import { setDimStyle, setFocus, setResetFocus } from '@/hooks/Mindmap/useMindmapFunc';
-import { generateMindmap } from '@/hooks/Mindmap/useMindmapGenerate';
-import { nodePopper } from '@components/Mindmap/NodePopper.tsx';
-import { edgePopper } from '@components/Mindmap/EdgePopper.tsx';
+import setupCy from '@util/SetupCy.ts';
+import { generateStylesheet, getPageRank } from '@hooks/Mindmap/useMindmapStylesheet.tsx';
+import { setDimStyle, setFocus, setResetFocus } from '@hooks/Mindmap/useMindmapFunc.tsx';
+import { generateMindmap } from '@hooks/Mindmap/useMindmapGenerate.tsx';
+import { nodePopper } from '@components/Loading/Mindmap/NodePopper.tsx';
+import { edgePopper } from '@components/Loading/Mindmap/EdgePopper.tsx';
 import { layouts } from '@type/components/Mindmap/mindmapLayouts.tsx';
 
 setupCy();

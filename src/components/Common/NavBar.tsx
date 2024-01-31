@@ -191,7 +191,7 @@ export function NavBar(props: any) {
             <>
               <img src={teamLogo} alt="메인로고" className="w-12" />
               <Typography color="green" className="self-center text-4xl font-extrabold">
-                티.나.끝
+                팀.나.끝
               </Typography>
             </>
           )}

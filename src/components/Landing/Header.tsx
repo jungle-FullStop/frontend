@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Button, Typography } from '@material-tailwind/react';
+import { Button } from '@material-tailwind/react';
 import logo from '@assets/image/logo.png';
 
 export const Header = () => {
@@ -13,9 +13,7 @@ export const Header = () => {
         aria-label="메인 페이지로 이동"
       >
         <img src={logo} alt="메인로고" className="w-14" />
-        <Typography color="amber" className="text-4xl font-extrabold">
-          티.나.끝
-        </Typography>
+        <p className="text-4xl font-extrabold text-amber-500">티.나.끝</p>
       </Button>
     </div>
   );

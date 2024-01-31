@@ -1,10 +1,7 @@
-import { dateRange } from '@/util/Constants/dateConstants';
-import { UserGrass } from '@/components/Home/Grass/UserGrass';
+import { dateRange } from '@util/Constants/dateConstants.ts';
+import { UserGrass } from '@components/Grass/UserGrass.tsx';
 
 export const UserGrassDiv = () => {
-
-  
-
   const grassElements = dateRange.map((date, i) => {
     return <UserGrass date={date} i={i} key={i} />;
   });
