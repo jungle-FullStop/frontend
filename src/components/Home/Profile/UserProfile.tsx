@@ -7,8 +7,12 @@ import { PROFILE_MODAL_CONTENT_TYPE } from '@util/Constants/constants';
 import FriendRequest from '@components/Friend/FriendRequest.tsx';
 import ProfileEdit from '@components/Profile/ProfileEdit.tsx';
 import { useFriendRankListDataQuery } from '@hooks/useFriendListQuery.ts';
+import { todayState } from '@/store/Store';
+import { useRecoilValue } from 'recoil';
 
 export const UserProfile = () => {
+  const todayWrite = useRecoilValue(todayState) ;
+
   const userId = localStorage.getItem('userId');
   let name = localStorage.getItem('userName');
   if (name === null || name === '') {
@@ -42,10 +46,12 @@ export const UserProfile = () => {
     }
   };
 
+ 
+
   return (
     <div className="contents-container">
       <img
-        className={`border-brown mx-auto mb-5 h-40 w-40 rounded-full border-4 border-solid object-cover transition duration-1000 ease-in-out sm:mb-0`}
+        className={`border-brown mx-auto mb-5 h-40 w-40 rounded-full border-4 border-solid object-cover transition duration-1000 ease-in-out sm:mb-0 profileImg ${todayWrite ? 'border-green-500' : null}`}
         src={profileImage}
         alt="프로필 사진"
       />

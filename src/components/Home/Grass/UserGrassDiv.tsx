@@ -1,5 +1,5 @@
 import { dateRange } from '@/util/Constants/dateConstants';
-import { UserGrass } from '@/components/Common/UserGrass';
+import { UserGrass } from '@/components/Home/Grass/UserGrass';
 
 export const UserGrassDiv = () => {
 
