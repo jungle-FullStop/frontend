@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import useTeamListQuery from '@hooks/useTeamListQuery.ts';
 import { useQueryClient } from '@tanstack/react-query';
 import { Typography } from '@material-tailwind/react'; // 경로는 실제 위치에 맞게 조정
+import { cockPush } from '@/api/TeamAPI';
 
 interface MemberListResponse {
   id: string;
@@ -44,7 +45,8 @@ const TeamInfo = () => {
     }
   }, [queryClient, teamListData]);
 
-  const handlePoke = (memberId: number) => {
+  const handlePoke = async (memberId: number) => {
+    await cockPush(memberId);
     console.log(`${memberId}가 콕 찌르기 당했습니다.`);
     // 콕 찌르기 로직 구현
   };

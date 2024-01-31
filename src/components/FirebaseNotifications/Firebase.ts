@@ -66,7 +66,6 @@ export const onMessageListener = () =>
     });
   });
 
-
 export const onBackground = () =>
   new Promise((resolve) => {
     onBackgroundMessage(messaging, (payload) => {

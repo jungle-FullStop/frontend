@@ -9,6 +9,7 @@ const BOARD = '/Board';
 const FRIEND = '/friends';
 const MEMBER = '/member';
 const TEAM = '/team';
+const PUSH = '/push';
 
 const API_PATH = {
   AUTH: {
@@ -49,6 +50,9 @@ const API_PATH = {
   TEAM: {
     list: () => SERVER_URL + TEAM + '/my',
     updateState: () => SERVER_URL + TEAM + '/change-status',
+  },
+  PUSH: {
+    push: (memberId: number) => SERVER_URL + PUSH + `/${memberId}`,
   },
 };
 
