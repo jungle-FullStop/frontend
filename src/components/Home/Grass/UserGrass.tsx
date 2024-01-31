@@ -2,17 +2,24 @@ import API_PATH from '@/util/apiPath';
 import axios from 'axios';
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { todayState,todayTILState } from '@/store/Store';
 
 export const UserGrass = (props: any) => {
   const [showToolTip, setShowToolTip] = useState(false);
 
-  const [isWrite, SetIsWrite] = useState(false);
+  const [isWrite, setIsWrite] = useState(false);
 
-  const [page,SetPage] = useState<number>();
+  const [page, setPage] = useState<number>();
 
-  const navigate =useNavigate();
+  const [todayWrite, setTodayWrite] = useRecoilState(todayState);
 
-  
+  const [todayTILPage,setTodayTILPage] = useRecoilState(todayTILState)
+
+  const navigate = useNavigate();
+
+  const currentDate = new Date();
+
   function formatDate(dateString: string): string | null {
     const parts = dateString.split('. ');
 
@@ -27,7 +34,7 @@ export const UserGrass = (props: any) => {
     return `${year}-${month}-${day}`;
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     const handleGrassDivClick = async () => {
       const userId = localStorage.getItem('userId');
       const date = formatDate(props.date);
@@ -36,16 +43,21 @@ export const UserGrass = (props: any) => {
         const response = await axios.get(`${API_PATH.BOARD.find()}/${userId}/${date}`);
         // 서버로부터 받은 데이터를 처리하는 코드
         console.log(response.data); // 서버에서 받은 데이터 출력
-        if(new Date(response.data.timestamp).toString() != "Invalid Date"){
-          SetIsWrite(true)
-          SetPage(response.data.id);
+        let timeStamp = response.data.timestamp;
+        if (new Date(timeStamp).toString() != 'Invalid Date') {
+          if (currentDate.getDate() == new Date(timeStamp).getDate()) {
+            setTodayWrite(true);
+          }
+          setIsWrite(true);
+          setPage(response.data.id);
+          setTodayTILPage(response.data.id)
         }
       } catch (error) {
         // console.error('Error fetching data:', error);
       }
     };
     handleGrassDivClick();
-  },[])
+  }, []);
 
   return (
     <div
@@ -57,16 +69,14 @@ export const UserGrass = (props: any) => {
     >
       <div
         className={`m-[0.2rem] h-5 w-5 flex-grow rounded ${props.date !== '0' ? (isWrite ? 'bg-light-green-400' : 'bg-gray-300') : 'bg-white'}`}
-        onClick={()=>{
-          if(isWrite){
-            navigate(`/board/${page}`)
+        onClick={() => {
+          if (isWrite) {
+            navigate(`/board/${page}`);
           }
         }}
       ></div>
       {showToolTip && props.date !== '0' && (
-        <div
-          className="bg-default absolute -translate-x-3/4 -translate-y-full  rounded bg-yellow-100 p-2  opacity-70"
-        >
+        <div className="bg-default absolute -translate-x-3/4 -translate-y-full  rounded bg-yellow-100 p-2  opacity-70">
           {isWrite ? (
             <p>
               <strong> Check TIL</strong> on {props.date}

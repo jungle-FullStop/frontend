@@ -1,5 +1,5 @@
 import { dateRange } from '@/util/Constants/dateConstants';
-import { TeamGrass } from '@/components/Common/TeamGrass';
+import { TeamGrass } from '@/components/Home/Grass/TeamGrass';
 
 export const TeamGrassDiv = () => {
   let teamName = localStorage.getItem('teamName');

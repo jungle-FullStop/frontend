@@ -23,6 +23,10 @@
   @apply mx-auto flex w-full flex-col gap-y-5 rounded-lg bg-white p-7 shadow-md;
 }
 
+.profileImg{
+  transition: 1.5s ;
+}
+
 .TIL-container{
   display: flex;
   flex-direction: row;
