@@ -66,7 +66,7 @@ const Home = () => {
               <FriendInfo />
             </div>
             <div className="flex flex-col gap-y-5">
-              <WriteTIL color="yellow" />
+              <WriteTIL id={userId} color="yellow" />
               <Quotes mode="user" />
               <UserGrassDiv />
             </div>
@@ -80,7 +80,7 @@ const Home = () => {
               <TeamInfo />
             </div>
             <div className="flex flex-col gap-y-5">
-              <WriteTIL color="green" />
+              <WriteTIL id={userId} color="green" />
               <Quotes mode="team" />
               <TeamGrassDiv />
             </div>
