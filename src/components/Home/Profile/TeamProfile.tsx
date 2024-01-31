@@ -48,15 +48,15 @@ export const TeamProfile = () => {
         src={teamImage}
         alt="프로필 사진"
       />
-      <Typography className="mb-5 text-3xl font-extrabold">{teamName}에 어서오세요 !</Typography>
-      <div className="border-brown grid w-max grid-flow-col rounded-2xl border-2 border-solid bg-white p-5 text-center text-lg font-bold">
+      <Typography className="text-3xl font-extrabold">{teamName}에 어서오세요 !</Typography>
+      <div className="border-brown grid w-full grid-flow-col rounded-2xl border-2 border-solid bg-white p-5 text-lg font-bold">
         <p
           className="cursor-pointer"
           onClick={() => openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.LIST) })}
         >
           {teamName}에 소속된 팀원 {memberListData.data.member.length}명
         </p>
-        <div className="border-brown mx-5 border-l-2 border-solid" />
+        <div className="border-brown border-l-2 border-solid" />
         <p
           className="cursor-pointer"
           onClick={() =>
@@ -65,7 +65,7 @@ export const TeamProfile = () => {
         >
           팀원 관리
         </p>
-        <div className="border-brown mx-5 border-l-2 border-solid" />
+        <div className="border-brown border-l-2 border-solid" />
         <p
           className="cursor-pointer"
           onClick={() => openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.EDIT) })}

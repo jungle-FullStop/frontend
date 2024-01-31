@@ -10,7 +10,7 @@ interface FriendListResponse {
   tilScore: number;
 }
 
-export const Friends = () => {
+export const FriendInfo = () => {
   const userId = localStorage.getItem('userId');
   const friendListData = useFriendRankListDataQuery(Number(userId));
 

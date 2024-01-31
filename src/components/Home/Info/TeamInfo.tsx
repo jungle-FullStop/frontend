@@ -1,23 +1,32 @@
-// Team.jsx 또는 Team.tsx
+// TeamInfo.jsx 또는 TeamInfo.tsx
 import TeamItem from '@components/Team/TeamItem.tsx';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import useTeamListQuery from '@hooks/useTeamListQuery.ts';
-import { useQueryClient } from '@tanstack/react-query'; // 경로는 실제 위치에 맞게 조정
+import { useQueryClient } from '@tanstack/react-query';
+import { Typography } from '@material-tailwind/react'; // 경로는 실제 위치에 맞게 조정
 
-const Team = () => {
+interface MemberListResponse {
+  id: string;
+  name: string;
+  profileImage: string;
+  status: string;
+  tilScore: number;
+}
+
+const TeamInfo = () => {
   const queryClient = useQueryClient();
-  const { data: teams, isLoading, isError } = useTeamListQuery();
+  const teamListData = useTeamListQuery();
 
   useEffect(() => {
     // 데이터 로딩 완료를 확인합니다.
-    if (!isLoading && !isError) {
+    if (!teamListData.isLoading && !teamListData.isError) {
       const eventSource = new EventSource(`/api/team/team.status`);
 
       eventSource.onmessage = (event) => {
         let newStatusData = JSON.parse(event.data);
         newStatusData = newStatusData.data;
 
-        queryClient.setQueryData(['teamList'], (oldTeams) => {
+        queryClient.setQueryData(['teamList'], (oldTeams: any[]) => {
           // oldTeams가 null이거나 undefined가 아닌지 확인합니다.
           if (!oldTeams) return [];
           return oldTeams.map((member) => {
@@ -33,38 +42,38 @@ const Team = () => {
         eventSource.close();
       };
     }
-  }, [queryClient, isLoading, isError]);
+  }, [queryClient, teamListData]);
 
-  const handlePoke = (memberId) => {
+  const handlePoke = (memberId: number) => {
     console.log(`${memberId}가 콕 찌르기 당했습니다.`);
     // 콕 찌르기 로직 구현
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error loading teams</div>;
+  if (teamListData.isLoading) return <div>Loading...</div>;
+  if (teamListData.isError) return <div>Error loading teams</div>;
 
   return (
-    <div className="w-screen pr-10">
-      <div className="contents-container">
-        <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-1 sm:gap-y-16 xl:col-span-2">
-          {teams.map((member) => (
+    <div className="contents-container">
+      <Typography className="text-center text-2xl font-bold">이달의 우수 정원사</Typography>
+      <div className="grid grid-cols-3 gap-5">
+        {teamListData.data.map((data: MemberListResponse, index: number) => (
+          <div className="flex flex-col items-center" key={index}>
             <TeamItem
-              key={member.id}
-              name={member.name}
-              role="동료"
-              status={member.status}
-              profileImage={member.profileImage}
-              onPoke={() => handlePoke(member.id)}
+              key={data.id}
+              name={data.name}
+              tilScore={data.tilScore}
+              status={data.status}
+              profileImage={data.profileImage}
+              onPoke={() => handlePoke(Number(data.id))}
             />
-          ))}
-        </ul>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default Team;
-
+export default TeamInfo;
 
 // // import NavBar from '@components/Common/NavBar';
 // // import Editor from '@components/Edit/Editor';
@@ -72,7 +81,7 @@ export default Team;
 //
 // import { useEffect, useState } from 'react';
 //
-// const Team = () => {
+// const TeamInfo = () => {
 //   const [events, setEvents] = useState([]);
 //
 //   useEffect(() => {
@@ -172,4 +181,4 @@ export default Team;
 //   );
 // };
 //
-// export default Team;
+// export default TeamInfo;
