@@ -61,11 +61,11 @@ const Home = () => {
       <div className={`card ${isFlipped ? 'flipped' : ''}`}>
         <div className="sub-container card-front">
           <div className="flex flex-row place-content-center gap-x-10">
-            <div className="flex flex-col gap-y-10">
+            <div className="flex flex-col gap-y-5">
               <UserProfile />
               <FriendInfo />
             </div>
-            <div className="flex flex-col gap-y-10">
+            <div className="flex flex-col gap-y-5">
               <WriteTIL color="yellow" />
               <UserGrassDiv />
               <Quotes mode="user" />
@@ -75,11 +75,11 @@ const Home = () => {
 
         <div className="sub-container card-back">
           <div className="flex flex-row place-content-center gap-x-10">
-            <div className="flex flex-col gap-y-10">
+            <div className="flex flex-col gap-y-5">
               <TeamProfile />
               <TeamInfo />
             </div>
-            <div className="flex flex-col gap-y-10">
+            <div className="flex flex-col gap-y-5">
               <WriteTIL color="green" />
               <TeamGrassDiv />
               <Quotes mode="team" />

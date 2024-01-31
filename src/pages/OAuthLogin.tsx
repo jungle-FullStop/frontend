@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { googleLogin } from '@/api/LoginAPI';
 
 const AuthLogin = () => {
-
   const getUserId = async () => {
     const code = new URL(window.location.href).searchParams.get('code') ?? '';
     // const state = new URL(window.location.href).searchParams.get('state') ?? '';
@@ -16,7 +15,6 @@ const AuthLogin = () => {
     localStorage.setItem('userId', userId);
     navigate('/home');
   };
-
 
   const getEmail = async (code: string) => {
     const userInfoResponse = await fetch(

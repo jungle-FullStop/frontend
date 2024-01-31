@@ -4,12 +4,10 @@ import { onMessageListener } from './Firebase';
 import Alarm from './Alarm';
 
 const Notification = () => {
-  const [notification, setNotification] = useState({ title: '', body: '' });
+  const [notification, setNotification] = useState({ title: '', body: '', image: '' });
   const notify = () => toast(<ToastDisplay />);
   function ToastDisplay() {
-    return (
-        <Alarm></Alarm>
-    );
+    return <Alarm></Alarm>;
   }
 
   useEffect(() => {

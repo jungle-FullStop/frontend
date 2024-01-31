@@ -143,3 +143,8 @@
 .btn-reject {
   @apply bg-red-500 w-fit rounded-md border-none px-2 py-1 text-[0.7rem] font-bold text-white;
 }
+
+button:hover .cock-button-img {
+  transform: translateX(-6px); /* 이미지를 왼쪽으로 10px 이동 */
+  transition: transform 0.5s ease; /* 애니메이션 효과 적용 */
+}
