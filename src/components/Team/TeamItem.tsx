@@ -1,12 +1,6 @@
 import anonymousImage from '@assets/image/anonymousImage.png';
 import cokImage from '@assets/image/cokImage.png';
 
-const statusStyles = {
-  not_written: { bgClass: 'bg-gray-500', text: '미작성', live: false },
-  writing: { bgClass: 'bg-red-500', text: '작성중', live: true },
-  written: { bgClass: 'bg-green-500', text: '작성완료', live: false },
-};
-
 interface MemberListProps {
   name: string;
   profileImage: string;
@@ -14,6 +8,18 @@ interface MemberListProps {
   tilScore: number;
   onPoke: any;
 }
+
+interface StatusStyles {
+  bgClass: string;
+  text: string;
+  live: boolean;
+}
+
+const statusStyles: Record<string, StatusStyles> = {
+  not_written: { bgClass: 'bg-gray-500', text: '미작성', live: false },
+  writing: { bgClass: 'bg-red-500', text: '작성중', live: true },
+  written: { bgClass: 'bg-green-500', text: '작성완료', live: false },
+};
 
 const TeamItem = ({ name, tilScore, status, profileImage, onPoke }: MemberListProps) => {
   const { bgClass, text, live } = statusStyles[status] || statusStyles.not_written;
