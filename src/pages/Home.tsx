@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 import NavBar from '@/components/Common/NavBar';
 import { UserProfile } from '@components/Home/Profile/UserProfile.tsx';
-import { Friends } from '@components/Home/Friends/Friends.tsx';
+import { FriendInfo } from '@components/Home/Info/FriendInfo.tsx';
 import { WriteTIL } from '@/components/Home/WriteTIL';
 import { UserGrass } from '@/components/Home/UserGrass';
 import { getProfile } from '@/api/ProfileAPI';
 import { createMindmap } from '@/api/MindmapAPI';
 import { TeamGrass } from '@/components/Home/TeamGrass';
 import { TeamProfile } from '@components/Home/Profile/TeamProfile.tsx';
-import { FriendsInfo } from '@components/Home/Friends/FriendsInfo.tsx';
 import { requestForToken } from '@/components/FirebaseNotifications/Firebase';
 import Modal from '@components/Common/Modal';
 import useModal from '@hooks/useModal.tsx';
 import { Quotes } from '@components/Home/Quotes.tsx';
+import TeamInfo from '@components/Home/Info/TeamInfo.tsx';
 
 const Home = () => {
   const userId = localStorage.getItem('userId') as string;
@@ -63,7 +63,7 @@ const Home = () => {
           <div className="flex flex-row place-content-center gap-x-10">
             <div className="flex flex-col gap-y-10">
               <UserProfile />
-              <Friends />
+              <FriendInfo />
             </div>
             <div className="flex flex-col gap-y-10">
               <WriteTIL color="yellow" />
@@ -77,7 +77,7 @@ const Home = () => {
           <div className="flex flex-row place-content-center gap-x-10">
             <div className="flex flex-col gap-y-10">
               <TeamProfile />
-              <FriendsInfo />
+              <TeamInfo />
             </div>
             <div className="flex flex-col gap-y-10">
               <WriteTIL color="green" />

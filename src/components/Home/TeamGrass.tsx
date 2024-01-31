@@ -1,8 +1,12 @@
 import { dateRange } from '@/util/Constants/dateConstants';
 import { Grass } from '@/components/Common/Grass';
-import { Button } from '@material-tailwind/react';
 
 export const TeamGrass = () => {
+  let teamName = localStorage.getItem('teamName');
+  if (teamName === null || teamName === '') {
+    teamName = '정글 3기';
+  }
+
   const grassElements = dateRange.map((date, i) => {
     return <Grass date={date} i={i} key={i} />;
   });
@@ -10,7 +14,7 @@ export const TeamGrass = () => {
   return (
     <div className="contents-container">
       <div>
-        <p className="text-center text-lg font-bold sm:text-2xl">Team TIL HISTORY </p>
+        <p className="text-center text-lg font-bold sm:text-2xl">{teamName} 잔디밭 </p>
         <div className="mx-auto grid w-80 grid-cols-7 grid-rows-1 p-2 text-center">
           <p>Sun</p>
           <p>Mon</p>
