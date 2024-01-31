@@ -3,7 +3,6 @@ import TeamItem from '@components/Team/TeamItem.tsx';
 import { useEffect } from 'react';
 import useTeamListQuery from '@hooks/useTeamListQuery.ts';
 import { useQueryClient } from '@tanstack/react-query';
-import { Typography } from '@material-tailwind/react'; // 경로는 실제 위치에 맞게 조정
 import { cockPush } from '@/api/TeamAPI';
 
 interface MemberListResponse {
@@ -56,7 +55,7 @@ const TeamInfo = () => {
 
   return (
     <div className="contents-container">
-      <Typography className="text-center text-2xl font-bold">이달의 우수 정원사</Typography>
+      <p className="text-center text-2xl font-bold">이달의 우수 정원사</p>
       <div className="grid grid-cols-3 gap-5">
         {teamListData.data.map((data: MemberListResponse, index: number) => (
           <div className="flex flex-col items-center" key={index}>

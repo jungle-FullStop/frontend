@@ -1,23 +1,17 @@
-import API_PATH from '@/util/apiPath';
+import API_PATH from '@util/apiPath.ts';
 import axios from 'axios';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { todayState,todayTILState } from '@/store/Store';
+import { todayState, todayTILState } from '@store/Store.ts';
 
 export const UserGrass = (props: any) => {
   const [showToolTip, setShowToolTip] = useState(false);
-
   const [isWrite, setIsWrite] = useState(false);
-
   const [page, setPage] = useState<number>();
-
-  const [todayWrite, setTodayWrite] = useRecoilState(todayState);
-
-  const [todayTILPage,setTodayTILPage] = useRecoilState(todayTILState)
-
+  const [, setTodayWrite] = useRecoilState(todayState);
+  const [, setTodayTILPage] = useRecoilState(todayTILState);
   const navigate = useNavigate();
-
   const currentDate = new Date();
 
   function formatDate(dateString: string): string | null {
@@ -43,14 +37,14 @@ export const UserGrass = (props: any) => {
         const response = await axios.get(`${API_PATH.BOARD.find()}/${userId}/${date}`);
         // 서버로부터 받은 데이터를 처리하는 코드
         console.log(response.data); // 서버에서 받은 데이터 출력
-        let timeStamp = response.data.timestamp;
+        const timeStamp = response.data.timestamp;
         if (new Date(timeStamp).toString() != 'Invalid Date') {
           if (currentDate.getDate() == new Date(timeStamp).getDate()) {
             setTodayWrite(true);
           }
           setIsWrite(true);
           setPage(response.data.id);
-          setTodayTILPage(response.data.id)
+          setTodayTILPage(response.data.id);
         }
       } catch (error) {
         // console.error('Error fetching data:', error);

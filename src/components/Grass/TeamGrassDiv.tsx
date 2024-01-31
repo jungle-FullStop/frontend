@@ -1,4 +1,4 @@
-import { dateRange } from '@/util/Constants/dateConstants';
+import { dateRange } from '@util/Constants/dateConstants.ts';
 import { TeamGrass } from '@/components/Grass/TeamGrass';
 
 export const TeamGrassDiv = () => {

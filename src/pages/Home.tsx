@@ -3,10 +3,10 @@ import NavBar from '@/components/Common/NavBar';
 import { UserProfile } from '@components/Home/Profile/UserProfile.tsx';
 import { FriendInfo } from '@components/Home/Info/FriendInfo.tsx';
 import { WriteTIL } from '@/components/Home/WriteTIL';
-import { UserGrassDiv } from '@/components/Home/Grass/UserGrassDiv';
+import { UserGrassDiv } from '@components/Grass/UserGrassDiv.tsx';
 import { getProfile } from '@/api/ProfileAPI';
 import { createMindmap } from '@/api/MindmapAPI';
-import { TeamGrassDiv } from '@/components/Home/Grass/TeamGrassDiv';
+import { TeamGrassDiv } from '@components/Grass/TeamGrassDiv.tsx';
 import { TeamProfile } from '@components/Home/Profile/TeamProfile.tsx';
 import { requestForToken } from '@/components/FirebaseNotifications/Firebase';
 import Modal from '@components/Common/Modal';
@@ -67,8 +67,8 @@ const Home = () => {
             </div>
             <div className="flex flex-col gap-y-5">
               <WriteTIL color="yellow" />
-              <UserGrassDiv />
               <Quotes mode="user" />
+              <UserGrassDiv />
             </div>
           </div>
         </div>
@@ -81,8 +81,8 @@ const Home = () => {
             </div>
             <div className="flex flex-col gap-y-5">
               <WriteTIL color="green" />
-              <TeamGrassDiv />
               <Quotes mode="team" />
+              <TeamGrassDiv />
             </div>
           </div>
         </div>

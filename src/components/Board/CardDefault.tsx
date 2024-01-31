@@ -1,12 +1,4 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Avatar,
-  Tooltip,
-} from '@material-tailwind/react';
+import { Card, CardHeader, CardBody, CardFooter, Avatar, Tooltip } from '@material-tailwind/react';
 
 import ReactMarkdown from 'react-markdown';
 import TIL from '@assets/image/TIL.png';
@@ -25,11 +17,6 @@ export function CardDefault(props: any) {
   const userImage = props.userImage;
   const userName = props.userName;
 
-  // console.log(props.cardContents);
-  // console.log('Year:', currentYear);
-  // console.log('Month:', currentMonth);
-  // console.log('Day:', currentDay);
-
   return (
     <Card className="h-full max-w-[24rem] overflow-hidden">
       <CardHeader
@@ -41,9 +28,7 @@ export function CardDefault(props: any) {
         <img src={TIL} alt="ui/ux review check " className="h-full w-full object-cover" />
       </CardHeader>
       <CardBody className="h-2/3">
-        <Typography variant="h4" color="blue-gray">
-          {` ${currentMonth}월 ${currentDay}일 TIL`}
-        </Typography>
+        <p className={'text-blue-gray-500'}>{` ${currentMonth}월 ${currentDay}일 TIL`}</p>
         <div className="m-5"></div>
         <ReactMarkdown>{shortenedContents}</ReactMarkdown>
       </CardBody>
@@ -54,7 +39,7 @@ export function CardDefault(props: any) {
             <Avatar size="sm" variant="circular" src={userImage || undefined} />
           </Tooltip>
         </div>
-        <Typography className="font-normal">{`${currentYear}년 ${currentMonth}월 ${currentDay}일`}</Typography>
+        <p className="font-normal">{`${currentYear}년 ${currentMonth}월 ${currentDay}일`}</p>
       </CardFooter>
     </Card>
   );

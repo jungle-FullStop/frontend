@@ -1,4 +1,3 @@
-import { Typography } from '@material-tailwind/react';
 import anonymousImage from '@assets/image/anonymousImage.png';
 import { useFriendRankListDataQuery } from '@hooks/useFriendListQuery.ts';
 
@@ -24,20 +23,20 @@ export const FriendInfo = () => {
 
   return (
     <div className="contents-container">
-      <Typography className="text-center text-2xl font-bold">TIL 연속 작성 순위</Typography>
+      <p className="text-center text-2xl font-bold">TIL 연속 작성 순위</p>
       <div className="grid grid-cols-3">
         {friendListData.data.friends.length !== 0 ? (
           friendListData.data.friends
             .map((data: FriendListResponse, index: number) => (
               <div className="flex flex-col items-center" key={index}>
-                <Typography className="font-extrabold">{index + 1}위</Typography>
+                <p className="font-extrabold">{index + 1}위</p>
                 <img
                   className={`border-brown-25 h-20 rounded-full border-2 border-solid object-cover transition duration-1000 ease-in-out sm:mb-0`}
                   src={data.profileImage ? data.profileImage : anonymousImage}
                   alt="프로필 사진"
                 />
-                <Typography className="font-bold">{data.name}</Typography>
-                <Typography className="font-bold text-green-500">현재 {data.tilScore}일</Typography>
+                <p className="font-normal">{data.name}</p>
+                <p className="font-bold text-green-500">현재 {data.tilScore}일</p>
               </div>
             ))
             .slice(0, 3)

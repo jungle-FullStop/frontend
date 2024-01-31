@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import NavBar from '@components/Common/NavBar';
 import ProgressBar from '@components/Loading/ProgressBar';
-import { Mindmap } from '@/components/Loading/Mindmap';
+import { Mindmap } from '@components/Loading/Mindmap/Mindmap.tsx';
 import LoadingButton from '@components/Loading/LoadingButton';
-import { Button, Typography } from '@material-tailwind/react';
+import { Button } from '@material-tailwind/react';
 
 const Loading = () => {
   const [layout, setLayout] = useState('fcose');
@@ -11,19 +11,17 @@ const Loading = () => {
   return (
     <div className="main-container">
       <NavBar />
-
-      <div className=" flex mb-5 flex-wrap items-center justify-between pt-3">
+      <div className="mb-5 flex flex-wrap items-center justify-between pt-3">
         <div className="w-2/3">
           <ProgressBar />
         </div>
-        <div className='h-14'>
+        <div className="h-14">
           <LoadingButton />
         </div>
       </div>
 
       <Mindmap name={layout} />
-      
-
+      <div className={'flex flex-row place-content-between pt-1'}>
         <div className="flex flex-row gap-x-3">
           <Button
             variant="outlined"
@@ -66,8 +64,9 @@ const Loading = () => {
             트리
           </Button>
         </div>
-        <Typography className="text-right text-4xl font-extrabold">키워드 마인드맵</Typography>
+        <p className="text-right text-4xl font-extrabold">키워드 마인드맵</p>
       </div>
+    </div>
   );
 };
 
