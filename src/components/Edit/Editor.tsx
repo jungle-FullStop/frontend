@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MDEditor from '@uiw/react-md-editor';
 import { Button } from '@material-tailwind/react';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { dummyReport } from '@/types/components/Edit/dummyReport';
 import API_PATH from '@util/apiPath';
 
 import axios from 'axios';
+import apiPath from '@util/apiPath';
 
 const Editor = () => {
   const navigate = useNavigate();
@@ -13,6 +14,26 @@ const Editor = () => {
   if (report === null) {
     report = dummyReport;
   }
+
+  // 사용자 상태 업데이트 함수
+  const updateUserStatus = async (status) => {
+    try {
+      await axios.post(apiPath.TEAM.updateState(), { status });
+    } catch (error) {
+      console.error('Error updating user status:', error);
+    }
+  };
+
+  useEffect(() => {
+    // 페이지 접근 시 사용자 상태를 'writing'으로 변경
+    updateUserStatus('writing');
+
+    // 컴포넌트가 언마운트될 때 'not_written'으로 상태 변경
+    return () => {
+      updateUserStatus('not_written');
+    };
+  }, []); // 빈 배열을 넣어 처음 마운트될 때만 실행되도록 함
+
   const [value, setValue] = useState(report);
 
   const [, setLoading] = useState(false);

@@ -11,6 +11,7 @@ import AuthRoutes from '@util/AuthRoutes';
 import { PAGE_URL } from '@/util/Constants/constants';
 import { Board } from './pages/Board';
 import BoardDetail from './pages/BoardDeTail';
+import Team from '@pages/Team.tsx';
 
 const Router = () => {
   return (
@@ -22,6 +23,7 @@ const Router = () => {
           <Route path={`${PAGE_URL.EDIT}`} element={<EDIT />} />
           <Route path={`${PAGE_URL.BOARD}`} element={<Board />} />
           <Route path={`${PAGE_URL.BOARD_DETAIL}`} element={<BoardDetail />} />
+          <Route path={`${PAGE_URL.TEAM}`} element={<Team />} />
         </Route>
         <Route element={<AuthRoutes />}>
           <Route path={`${PAGE_URL.LANDING}`} element={<Landing />} />

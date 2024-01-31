@@ -5,6 +5,7 @@ export const PAGE_URL = {
   LOADING: '/loading',
   EDIT: '/edit',
   NOT_FOUND: '/not/found',
+  TEAM: '/team',
   BOARD: '/Board',
   BOARD_DETAIL: '/Board/:id',
 };
