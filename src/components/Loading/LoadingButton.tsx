@@ -37,7 +37,7 @@ const LoadingButton = () => {
       ) : (
         <Button
           color="amber"
-          className="text-2xl font-bold"
+          className="text-2xl text-center font-bold "
           onClick={() => {
             getReport();
           }}

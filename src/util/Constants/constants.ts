@@ -5,6 +5,7 @@ export const PAGE_URL = {
   LOADING: '/loading',
   EDIT: '/edit',
   NOT_FOUND: '/not/found',
+  TEAM: '/team',
   BOARD: '/Board',
   BOARD_DETAIL: '/Board/:id',
 };
@@ -31,6 +32,11 @@ export const PROFILE_MODAL_CONTENT_TYPE = {
   LIST: 'list',
   REQUEST: 'request',
   EDIT: 'edit',
+};
+
+export const NAVBAR_MODAL_CONTENT_TYPE = {
+  MYPAGE: 'mypage',
+  TEAM: 'Team',
 };
 
 export const PROFILE_BUTTON_TYPE = {
@@ -77,3 +83,5 @@ export const KEYWORDS = [
   'Page Fault와 TLB',
   'B Tree와 B+ Tree',
 ];
+
+export const INVITE_CODE_LENGTH = 8;

@@ -4,6 +4,7 @@
 import axios from 'axios';
 import { initializeApp } from 'firebase/app';
 import { getMessaging, getToken, onMessage } from 'firebase/messaging';
+import { onBackgroundMessage } from 'firebase/messaging/sw';
 
 export const firebase_config = {
   apiKey: 'AIzaSyCxDY16C3DftbV_kMYLtqrzcoZkHgHYxvA',
@@ -60,6 +61,15 @@ const saveTokenOnServer = async (id: number, token: string) => {
 export const onMessageListener = () =>
   new Promise((resolve) => {
     onMessage(messaging, (payload) => {
+      console.log(payload);
+      resolve(payload);
+    });
+  });
+
+
+export const onBackground = () =>
+  new Promise((resolve) => {
+    onBackgroundMessage(messaging, (payload) => {
       console.log(payload);
       resolve(payload);
     });

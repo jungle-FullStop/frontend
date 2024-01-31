@@ -8,6 +8,7 @@ const MINDMAP = '/mindmap';
 const BOARD = '/Board';
 const FRIEND = '/friends';
 const MEMBER = '/member';
+const TEAM = '/team';
 
 const API_PATH = {
   AUTH: {
@@ -44,6 +45,10 @@ const API_PATH = {
     list: (userId: number) => SERVER_URL + MEMBER + `/${userId}`,
     request: (userId: number) => SERVER_URL + MEMBER + '/request' + `/${userId}`,
     allow: (senderId: number) => SERVER_URL + MEMBER + '/allow' + `/${senderId}`,
+  },
+  TEAM: {
+    list: () => SERVER_URL + TEAM + '/my',
+    updateState: () => SERVER_URL + TEAM + '/change-status',
   },
 };
 

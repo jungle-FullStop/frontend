@@ -3,6 +3,11 @@ import { TeamGrass } from '@/components/Common/TeamGrass';
 
 
 export const TeamGrassDiv = () => {
+  let teamName = localStorage.getItem('teamName');
+  if (teamName === null || teamName === '') {
+    teamName = '정글 3기';
+  }
+
   const grassElements = dateRange.map((date, i) => {
     return <TeamGrass date={date} i={i} key={i} />;
   });
@@ -10,7 +15,7 @@ export const TeamGrassDiv = () => {
   return (
     <div className="contents-container">
       <div>
-        <p className="text-center text-lg font-bold sm:text-2xl">Team TIL HISTORY </p>
+        <p className="text-center text-lg font-bold sm:text-2xl">{teamName} 잔디밭 </p>
         <div className="mx-auto grid w-80 grid-cols-7 grid-rows-1 p-2 text-center">
           <p>Sun</p>
           <p>Mon</p>

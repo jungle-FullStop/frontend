@@ -12,7 +12,7 @@ export const UserGrassDiv = () => {
   return (
     <div className="contents-container">
       <div>
-        <p className="text-center text-2xl font-bold">User TIL HISTORY</p>
+        <p className="text-center text-2xl font-bold">나의 TIL 잔디밭</p>
         <div className="mx-auto grid w-80 grid-cols-7 grid-rows-1 p-2 text-center">
           <p>Sun</p>
           <p>Mon</p>
