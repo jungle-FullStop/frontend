@@ -5,9 +5,9 @@ import { useRecoilValue } from 'recoil';
 import useGenerateReport from '@hooks/useGenerateReport.ts';
 
 export const WriteTIL = (props: any) => {
+  const navigate = useNavigate();
   const todayWrite = useRecoilValue(todayState);
   const todayTILPage = useRecoilValue(todayTILState);
-  const navigate = useNavigate();
 
   return (
     <div className="contents-container">
@@ -17,18 +17,19 @@ export const WriteTIL = (props: any) => {
       {todayWrite ? (
         <Button
           className={`bg-${props.color}-600 rounded-full px-4 py-2 text-2xl font-bold text-white`}
-          onClick={() => {
-            useGenerateReport(Number(props.id));
-          }}
+          onClick={() => navigate(`/board/${todayTILPage}`)}
         >
-          {todayWrite ? 'TIL 보러가기' : 'TIL 작성하기'}
+          TIL 보러가기
         </Button>
       ) : (
         <Button
           className={`bg-${props.color}-600 rounded-full px-4 py-2 text-2xl font-bold text-white`}
-          onClick={() => navigate(`/board/${todayTILPage}`)}
+          onClick={() => {
+            useGenerateReport(Number(props.id));
+            navigate('/loading');
+          }}
         >
-          {todayWrite ? 'TIL 보러가기' : 'TIL 작성하기'}
+          TIL 작성하기
         </Button>
       )}
     </div>
