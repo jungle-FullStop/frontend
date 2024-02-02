@@ -52,7 +52,8 @@ const API_PATH = {
     updateState: () => SERVER_URL + TEAM + '/change-status',
   },
   PUSH: {
-    push: (memberId: number) => SERVER_URL + PUSH + `/${memberId}`,
+    push: () => SERVER_URL + PUSH,
+    token: () => SERVER_URL + PUSH + `/token`,
   },
 };
 
