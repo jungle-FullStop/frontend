@@ -34,7 +34,9 @@ const LoadingButton = () => {
   return (
     <>
       {componentType === 'button' ? (
-        <LoadingCircle />
+        <div className="pe-5">
+          <LoadingCircle />
+        </div>
       ) : (
         <Button
           color="amber"

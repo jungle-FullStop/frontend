@@ -61,7 +61,7 @@
 }
 
 .progress-bar {
-  height: 18px;
+  height: 10px;
   border-radius: 30px;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
   transition: 0.4s linear;

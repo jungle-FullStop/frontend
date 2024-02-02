@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import NavBar from '@components/Common/NavBar';
-import ProgressBar from '@components/Loading/ProgressBar';
 import { Mindmap } from '@components/Loading/Mindmap/Mindmap.tsx';
 import LoadingButton from '@components/Loading/LoadingButton';
 import { Button } from '@material-tailwind/react';
@@ -11,10 +10,7 @@ const Loading = () => {
   return (
     <div className="main-container">
       <NavBar />
-      <div className="mb-5 flex flex-wrap items-center justify-between pt-3">
-        <div className="w-2/3">
-          <ProgressBar />
-        </div>
+      <div className="flex flex-wrap items-center justify-end py-3">
         <div className="h-14">
           <LoadingButton />
         </div>
