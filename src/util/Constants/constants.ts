@@ -10,7 +10,7 @@ export const PAGE_URL = {
   BOARD_DETAIL: '/Board/:id',
 };
 
-export const WAITING_TIME = 10;
+export const WAITING_TIME = 5;
 
 export const GOOGLE_LOGIN_FORM_URL =
   'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&' +
@@ -48,6 +48,7 @@ export const PROFILE_BUTTON_TYPE = {
 
 export const reactQueryKeys = {
   Grass: 'grass',
+  Report: 'report',
   ProfileData: 'profileData',
   SearchDataList: 'searchDataList',
   FriendList: 'friendList',

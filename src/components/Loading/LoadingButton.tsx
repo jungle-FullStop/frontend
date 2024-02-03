@@ -6,12 +6,13 @@ import { WAITING_TIME } from '@/util/Constants/constants';
 import { findReport } from '@/api/ReportAPI';
 
 const LoadingButton = () => {
+  const userId = localStorage.getItem('userId') as string;
   const navigate = useNavigate();
   const [componentType, setComponentType] = useState('button');
   const [timer, setTimer] = useState(WAITING_TIME);
 
-  const getReport = async () => {
-    const report = await findReport();
+  const getReport = async (userId: number) => {
+    const report = await findReport(userId);
     localStorage.setItem('todayReport', report?.report);
     navigate('/edit');
   };
@@ -33,13 +34,15 @@ const LoadingButton = () => {
   return (
     <>
       {componentType === 'button' ? (
-        <LoadingCircle />
+        <div className="pe-5">
+          <LoadingCircle />
+        </div>
       ) : (
         <Button
           color="amber"
-          className="text-2xl text-center font-bold "
+          className="text-center text-2xl font-bold "
           onClick={() => {
-            getReport();
+            getReport(Number(userId));
           }}
         >
           가이드라인 보러가기
