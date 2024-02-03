@@ -2,11 +2,9 @@ import API_PATH from '@util/apiPath';
 
 import interceptor from '@api/fetchInterceptor';
 
-export const getTeamUsers = async () => {
+export const getHistroyList = async (keyword: string) => {
   try {
-    const fetchUrl = API_PATH.TEAM.list();
-    const response = await interceptor(fetchUrl, {
-      method: 'POST',
+    const response = await interceptor(API_PATH.HISTROY.search(keyword), {
       credentials: 'include',
     });
 
@@ -14,6 +12,6 @@ export const getTeamUsers = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('일기 목록 조회에 실패했습니다.', error);
+    console.log('검색기록 조회에 실패했습니다.', error);
   }
 };

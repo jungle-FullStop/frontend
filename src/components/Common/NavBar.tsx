@@ -9,8 +9,10 @@ import useModal from '@hooks/useModal.tsx';
 import { NAVBAR_MODAL_CONTENT_TYPE } from '@util/Constants/constants.ts';
 import ProfileEdit from '@components/Profile/ProfileEdit.tsx';
 import TeamSetting from '@components/Team/TeamSetting.tsx';
+import useGenerateReport from '@hooks/useGenerateReport.ts';
 
 export function NavBar(props: any) {
+  const userId = localStorage.getItem('userId') as string;
   const name = localStorage.getItem('userName');
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
@@ -108,7 +110,8 @@ export function NavBar(props: any) {
         </svg>
         <button
           onClick={() => {
-            openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.MYPAGE) });
+            useGenerateReport(Number(userId));
+            navigate('/loading');
           }}
         >
           가이드라인

@@ -1,10 +1,9 @@
 // Firebase Cloud Messaging Configuration File.
 // Read more at https://firebase.google.com/docs/cloud-messaging/js/client && https://firebase.google.com/docs/cloud-messaging/js/receive
 
-import axios from 'axios';
+import { saveTokenOnServer } from '@/api/FirebaseApi';
 import { initializeApp } from 'firebase/app';
 import { getMessaging, getToken, onMessage } from 'firebase/messaging';
-import { onBackgroundMessage } from 'firebase/messaging/sw';
 
 export const firebase_config = {
   apiKey: 'AIzaSyCxDY16C3DftbV_kMYLtqrzcoZkHgHYxvA',
@@ -43,32 +42,12 @@ export const requestForToken = async () => {
     });
 };
 
-const saveTokenOnServer = async (id: number, token: string) => {
-  try {
-    const response = await axios.post('/api/push/token', {
-      id: id,
-      token: token,
-    });
-    console.log('Token saved successfully on server:', response.data);
-  } catch (error) {
-    console.error('Error while saving token on server:', error);
-  }
-};
-
 // Handle incoming messages. Called when:
 // - a message is received while the app has focus
 // - the user clicks on an app notification created by a service worker `messaging.onBackgroundMessage` handler.
 export const onMessageListener = () =>
   new Promise((resolve) => {
     onMessage(messaging, (payload) => {
-      console.log(payload);
-      resolve(payload);
-    });
-  });
-
-export const onBackground = () =>
-  new Promise((resolve) => {
-    onBackgroundMessage(messaging, (payload) => {
       console.log(payload);
       resolve(payload);
     });

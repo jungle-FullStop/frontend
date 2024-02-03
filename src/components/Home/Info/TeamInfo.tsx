@@ -3,7 +3,7 @@ import TeamItem from '@components/Team/TeamItem.tsx';
 import { useEffect } from 'react';
 import useTeamListQuery from '@hooks/useTeamListQuery.ts';
 import { useQueryClient } from '@tanstack/react-query';
-import { cockPush } from '@/api/TeamAPI';
+import { cockPush } from '@/api/FirebaseApi';
 
 interface MemberListResponse {
   id: string;
@@ -44,10 +44,18 @@ const TeamInfo = () => {
     }
   }, [queryClient, teamListData]);
 
-  const handlePoke = async (memberId: number) => {
-    await cockPush(memberId);
-    console.log(`${memberId}가 콕 찌르기 당했습니다.`);
-    // 콕 찌르기 로직 구현
+  const handlePoke = async (memberId: number, body?: string) => {
+    const pusher = localStorage.getItem('userName');
+    if (pusher !== null) {
+      await cockPush(memberId, pusher, body);
+      console.log(`${pusher}가 ${memberId}를 콕 찔렀습니다.`);
+      // 콕 찌르기 로직 구현
+    }
+  };
+
+  const handleCheer = async (memberId: number) => {
+    const message = prompt('응원 메시지를 입력하세요:');
+    if (message !== null) handlePoke(memberId, message);
   };
 
   if (teamListData.isLoading) return <div>Loading...</div>;
@@ -66,6 +74,7 @@ const TeamInfo = () => {
               status={data.status}
               profileImage={data.profileImage}
               onPoke={() => handlePoke(Number(data.id))}
+              cheerUp={() => handleCheer(Number(data.id))}
             />
           </div>
         ))}
@@ -73,7 +82,6 @@ const TeamInfo = () => {
     </div>
   );
 };
-
 export default TeamInfo;
 
 // // import NavBar from '@components/Common/NavBar';

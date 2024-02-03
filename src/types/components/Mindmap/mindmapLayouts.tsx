@@ -18,5 +18,6 @@ export const layouts: Record<string, any> = {
     name: 'fcose',
     animate: true,
     fit: true,
+    spacingFactor: 2,
   },
 };

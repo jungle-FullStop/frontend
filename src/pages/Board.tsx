@@ -14,7 +14,7 @@ export const Board = () => {
   const [userName, setUserName] = useState<string | null>(null);
   const navigate = useNavigate();
   const userID = localStorage.getItem('userId');
-  console.log(userID)
+  console.log(userID);
 
   useEffect(() => {
     axios

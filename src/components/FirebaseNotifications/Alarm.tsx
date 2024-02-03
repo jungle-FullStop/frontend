@@ -1,5 +1,6 @@
 import React from 'react';
-import { Alert, Button } from '@material-tailwind/react';
+import { Alert } from '@material-tailwind/react';
+import image from '../../assets/image/cockcock.png';
 
 function Icon() {
   return (
@@ -18,18 +19,18 @@ function Icon() {
   );
 }
 
-export default function Alarm() {
+export default function Alarm(props: any) {
   const [open, setOpen] = React.useState(true);
+  // const pusher = props.pusher;
+  const title = props.title;
+  const body = props.body;
+  // const image = props.image;
 
   return (
-      <Alert
-        variant="gradient"
-        open={open}
-        color={'yellow'}
-        icon={<Icon />}
-        
-      >
-        <p>누군가 콕 찔렀습니다 !</p>
-      </Alert>
+    <Alert variant="gradient" open={open} color={'yellow'} icon={<Icon />}>
+      <p>{title}</p>
+      <p>{body}</p>
+      <img src={image} alt="Cockcock Image" />
+    </Alert>
   );
 }

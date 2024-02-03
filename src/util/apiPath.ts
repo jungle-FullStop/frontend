@@ -10,6 +10,7 @@ const FRIEND = '/friends';
 const MEMBER = '/member';
 const TEAM = '/team';
 const PUSH = '/push';
+const HISTROY = '/extension';
 
 const API_PATH = {
   AUTH: {
@@ -37,7 +38,7 @@ const API_PATH = {
   FRIEND: {
     search: (name: string) => SERVER_URL + FRIEND + '/search' + `/${name}`,
     list: (userId: number) => SERVER_URL + FRIEND + `/${userId}`,
-    rankList: (userId: number) => SERVER_URL + FRIEND + `/rank/${userId}`,
+    rankList: (userId: number) => SERVER_URL + FRIEND + '/rank' + `/${userId}`,
     request: (userId: number) => SERVER_URL + FRIEND + '/request' + `/${userId}`,
     allow: (senderId: number) => SERVER_URL + FRIEND + '/allow' + `/${senderId}`,
   },
@@ -52,7 +53,11 @@ const API_PATH = {
     updateState: () => SERVER_URL + TEAM + '/change-status',
   },
   PUSH: {
-    push: (memberId: number) => SERVER_URL + PUSH + `/${memberId}`,
+    push: () => SERVER_URL + PUSH,
+    token: () => SERVER_URL + PUSH + `/token`,
+  },
+  HISTROY: {
+    search: (keyword: string) => SERVER_URL + HISTROY + '/search' + `/${keyword}`,
   },
 };
 

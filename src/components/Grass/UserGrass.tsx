@@ -34,7 +34,7 @@ export const UserGrass = (props: any) => {
       const date = formatDate(props.date);
       // 클릭 이벤트 핸들러 함수
       try {
-        const response = await axios.get(`${API_PATH.BOARD.find()}/${userId}/${date}`);
+        const response = await axios.get(`${API_PATH.BOARD.find()}${userId}/${date}`);
         // 서버로부터 받은 데이터를 처리하는 코드
         console.log(response.data); // 서버에서 받은 데이터 출력
         const timeStamp = response.data.timestamp;

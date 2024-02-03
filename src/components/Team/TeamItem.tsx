@@ -7,6 +7,7 @@ interface MemberListProps {
   status: string;
   tilScore: number;
   onPoke: any;
+  cheerUp: any;
 }
 
 interface StatusStyles {
@@ -21,7 +22,7 @@ const statusStyles: Record<string, StatusStyles> = {
   written: { bgClass: 'bg-green-500', text: '작성완료', live: false },
 };
 
-const TeamItem = ({ name, tilScore, status, profileImage, onPoke }: MemberListProps) => {
+const TeamItem = ({ name, tilScore, status, profileImage, onPoke, cheerUp }: MemberListProps) => {
   const { bgClass, text, live } = statusStyles[status] || statusStyles.not_written;
 
   return (
@@ -44,13 +45,24 @@ const TeamItem = ({ name, tilScore, status, profileImage, onPoke }: MemberListPr
         <p className="text-sm font-semibold leading-6 text-indigo-600">
           잔디 기여도 {tilScore * 10}%
         </p>
-        <button
-          onClick={onPoke}
-          className="mt-1 flex items-center rounded-md bg-blue-500 px-2 py-1 text-xs font-medium leading-5 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          <img src={cokImage} className={'cock-button-img w-5'} />
-          <p>콕 찌르기</p>
-        </button>
+        {live && (
+          <button
+            onClick={cheerUp}
+            className="mt-1 flex items-center rounded-md bg-blue-500 px-2 py-1 text-xs font-medium leading-5 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          >
+            <img src={cokImage} className={'cock-button-img w-5'} />
+            <p>응원하기</p>
+          </button>
+        )}
+        {live || (
+          <button
+            onClick={onPoke}
+            className="mt-1 flex items-center rounded-md bg-blue-500 px-2 py-1 text-xs font-medium leading-5 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          >
+            <img src={cokImage} className={'cock-button-img w-5'} />
+            <p>콕 찌르기</p>
+          </button>
+        )}
       </div>
     </div>
   );

@@ -13,14 +13,8 @@ import { useRecoilValue } from 'recoil';
 export const UserProfile = () => {
   const todayWrite = useRecoilValue(todayState);
   const userId = localStorage.getItem('userId');
-  let name = localStorage.getItem('userName');
-  if (name === null || name === '') {
-    name = '익명';
-  }
-  let profileImage = localStorage.getItem('userProfileImage');
-  if (profileImage === null || profileImage === '') {
-    profileImage = anonymousImage;
-  }
+  const name = localStorage.getItem('userName') || '익명';
+  const profileImage = localStorage.getItem('userProfileImage') || anonymousImage;
 
   const { openModal } = useModal();
 
