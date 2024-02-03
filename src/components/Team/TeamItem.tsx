@@ -1,5 +1,7 @@
 import anonymousImage from '@assets/image/anonymousImage.png';
 import cokImage from '@assets/image/cokImage.png';
+import debounce from 'lodash';
+import { useState } from 'react';
 
 interface MemberListProps {
   name: string;
@@ -24,6 +26,23 @@ const statusStyles: Record<string, StatusStyles> = {
 
 const TeamItem = ({ name, tilScore, status, profileImage, onPoke, cheerUp }: MemberListProps) => {
   const { bgClass, text, live } = statusStyles[status] || statusStyles.not_written;
+
+  const [throttled, setThrottled] = useState(false);
+
+  const handlePokeClick = () => {
+    if (!throttled) {
+      // 함수 실행
+      onPoke();
+
+      // 쓰로틀링 상태로 변경
+      setThrottled(true);
+
+      // 일정 시간(예: 1초) 후에 쓰로틀링 상태를 해제합니다.
+      setTimeout(() => {
+        setThrottled(false);
+      }, 5000); // 5초
+    }
+  };
 
   return (
     <div className="flex items-center gap-x-3">
@@ -56,7 +75,8 @@ const TeamItem = ({ name, tilScore, status, profileImage, onPoke, cheerUp }: Mem
         )}
         {live || (
           <button
-            onClick={onPoke}
+            // onClick={onPoke}
+            onClick={handlePokeClick}
             className="mt-1 flex items-center rounded-md bg-blue-500 px-2 py-1 text-xs font-medium leading-5 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             <img src={cokImage} className={'cock-button-img w-5'} />

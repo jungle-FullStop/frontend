@@ -12,7 +12,7 @@ export const cockPush = async (memberId: number, pusher: string, body?: string) 
       body: JSON.stringify({
         memberId: memberId,
         title: pusher,
-        body: body !== undefined ? body : null, 
+        body: body !== undefined ? body : null,
       }),
     });
     if (!response.ok) throw new Error('올바른 네트워크 응답이 아닙니다.');

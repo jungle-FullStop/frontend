@@ -15,8 +15,6 @@ export const Board = () => {
   const navigate = useNavigate();
   const userID = localStorage.getItem('userId');
 
-  
-
   useEffect(() => {
     axios
       .get(`${API_PATH.BOARD.find()}/${userID}`)
@@ -34,7 +32,6 @@ export const Board = () => {
       });
   }, []);
 
- 
   return (
     <div className="main-container">
       <NavBar></NavBar>
