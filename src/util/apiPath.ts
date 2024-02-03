@@ -24,12 +24,12 @@ const API_PATH = {
     searchUser: (name: string) => SERVER_URL + USER + '/search' + `/${name}`,
   },
   REPORT: {
-    find: (id: any) => SERVER_URL + REPROT + `/find/${id}`,
-    create: (id: any) => SERVER_URL + REPROT + `/create/${id}`,
+    find: () => SERVER_URL + REPROT + `/find`,
+    create: () => SERVER_URL + REPROT + `/create`,
   },
   MINDMAP: {
-    find: (id: any) => SERVER_URL + MINDMAP + `/find/${id}`,
-    create: (id: any) => SERVER_URL + MINDMAP + `/create/${id}`,
+    find: () => SERVER_URL + MINDMAP + `/find`,
+    create: () => SERVER_URL + MINDMAP + `/create`,
   },
   BOARD: {
     find: () => SERVER_URL + BOARD + `/find/`,
