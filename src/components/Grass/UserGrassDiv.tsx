@@ -4,10 +4,12 @@ import { useEffect, useState } from 'react';
 import API_PATH from '@util/apiPath.ts';
 import axios from 'axios';
 import { TIL } from '@/types/TIL';
-
+import { todayState, todayTILState } from '@/store/Store';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 export const UserGrassDiv = () => {
-
+  const [todayWrite, setTodayWrite] = useRecoilState(todayState);
+  const [todayTILPage, setTodayTILPage] = useRecoilState(todayTILState);
 
   let [TILData, setTILdata] = useState<TIL[]>(() => {
     return dateRange.map((item, i) => {
@@ -28,10 +30,10 @@ export const UserGrassDiv = () => {
       const userID = localStorage.getItem('userId');
       try {
         const response = await axios.get(`${API_PATH.BOARD.find()}/${userID}`);
-        console.log(response.data)
-        
+        // console.log(response.data);
+        const currentDate = new Date();
 
-        const newTILData = [...TILData];
+        let newTILData = [...TILData];
         for (let i = 0; i < response.data.boards.length; i++) {
           const wirteDate = new Date(response.data.boards[i].timestamp);
           const writeId = response.data.boards[i].id;
@@ -41,13 +43,22 @@ export const UserGrassDiv = () => {
               wirteDate.getMonth() == daysInCurrentMonth[j].getMonth() &&
               wirteDate.getDate() == daysInCurrentMonth[j].getDate()
             ) {
-              newTILData[i + numberOfZeros].write = true;
-              newTILData[i + numberOfZeros].id = writeId;
+              if (
+                wirteDate.getFullYear() == currentDate.getFullYear() &&
+                wirteDate.getMonth() == currentDate.getMonth() &&
+                wirteDate.getDate() == currentDate.getDate()
+              ) {
+                setTodayWrite(true);
+                setTodayTILPage(writeId);
+              }
+              newTILData[j + numberOfZeros].write = true;
+              newTILData[j + numberOfZeros].id = writeId;
+
               setTILdata(newTILData);
             }
           }
         }
-        console.log(TILData)
+        console.log(TILData);
       } catch (error) {
         console.log('Error fetching data:', error);
       }
@@ -58,7 +69,6 @@ export const UserGrassDiv = () => {
   const grassElements = TILData.map((data, i) => {
     return <UserGrass date={data.date} write={data.write} pageId={data.id} key={i} />;
   });
-
 
   return (
     <div className="contents-container">
