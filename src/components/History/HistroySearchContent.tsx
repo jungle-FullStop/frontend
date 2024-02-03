@@ -9,8 +9,10 @@ interface HistroySearchContentProps {
 
 interface HistroyListResponse {
   rawData: string;
-  createdAt: Date;
+  description: string;
   visitedURL: string;
+  thumbnail: string;
+  createdAt: Date;
 }
 
 const HistroySearchContent = ({ keyword }: HistroySearchContentProps) => {
@@ -27,14 +29,14 @@ const HistroySearchContent = ({ keyword }: HistroySearchContentProps) => {
 
   if (historyList.length === 0) {
     return (
-      <div className="flex h-full w-full flex-col items-center justify-center gap-3 border-2">
+      <div className="flex h-[500px] w-full flex-col items-center justify-center gap-3 border-2">
         <p className="text-3xl font-bold">검색 결과가 없어요.</p>
       </div>
     );
   }
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-3 border-2 p-5">
+    <div className="flex h-[500px] w-full flex-col items-center gap-3 overflow-scroll border-2 p-5">
       {historyList.map((data: HistroyListResponse, index: number) => (
         <HistroyItem key={index} {...data} />
       ))}
