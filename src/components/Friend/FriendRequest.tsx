@@ -27,7 +27,7 @@ const FriendRequest = ({ userId }: FriendRequestProps) => {
           type="text"
           name="userSearch"
           id="userSearch"
-          placeholder="닉네임"
+          placeholder="이름 입력"
           value={name}
           onChange={onChangeName}
         />

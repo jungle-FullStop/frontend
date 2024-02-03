@@ -51,7 +51,7 @@ const MemberList = ({ userId }: MemberListProps) => {
           type="text"
           name="memberSearch"
           id="memberSearch"
-          placeholder="닉네임"
+          placeholder="이름 입력"
           value={name}
           onChange={onChangeName}
         />

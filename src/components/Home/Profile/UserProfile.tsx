@@ -69,7 +69,7 @@ export const UserProfile = () => {
           className="cursor-pointer text-xl font-bold"
           onClick={() => openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.EDIT) })}
         >
-          내 TIL 정보
+          내 TIL 기록
         </Button>
       </ButtonGroup>
     </div>

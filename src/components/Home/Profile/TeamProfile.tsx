@@ -65,7 +65,7 @@ export const TeamProfile = () => {
           className="cursor-pointer text-xl font-bold"
           onClick={() => openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.EDIT) })}
         >
-          팀 TIL 정보
+          팀 TIL 기록
         </Button>
       </ButtonGroup>
     </div>
