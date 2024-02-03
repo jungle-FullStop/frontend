@@ -14,7 +14,8 @@ export const Board = () => {
   const [userName, setUserName] = useState<string | null>(null);
   const navigate = useNavigate();
   const userID = localStorage.getItem('userId');
-  console.log(userID);
+
+  
 
   useEffect(() => {
     axios
@@ -26,13 +27,14 @@ export const Board = () => {
         setCardList(cardList);
         setUserImage(userImage);
         setUserName(userName);
-        console.log(cardList);
+        // console.log(cardList);
       })
       .catch(() => {
         console.log('여기서 실패');
       });
   }, []);
 
+ 
   return (
     <div className="main-container">
       <NavBar></NavBar>
