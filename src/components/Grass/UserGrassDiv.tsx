@@ -47,7 +47,7 @@ export const UserGrassDiv = () => {
             }
           }
         }
-        // console.log(TILData)
+        console.log(TILData)
       } catch (error) {
         console.log('Error fetching data:', error);
       }

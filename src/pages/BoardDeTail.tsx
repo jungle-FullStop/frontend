@@ -31,11 +31,9 @@ const BoardDetail = () => {
           const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
           if (daysDifference >= 1) {
-            console.log(`날짜 차이 (일): ${daysDifference}`);
             setBeforeTime(`${daysDifference}일 전`);
           } else {
             const hoursDifference = Math.floor(timeDifference / (1000 * 60 * 60));
-            console.log(`몇 시간 전: ${hoursDifference}`);
             setBeforeTime(`${hoursDifference}시간 전`);
           }
         } else {
