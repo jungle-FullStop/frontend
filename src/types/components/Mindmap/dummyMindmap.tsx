@@ -8,15 +8,24 @@ export const dummyMindmap: ElementDefinition[] = [
     data: { id: 'REDIS', label: 'REDIS' },
   },
   {
-    data: { id: '레디스', label: '레디스' },
+    data: { id: 'NoSearch', label: '검색 결과가 없습니다' },
   },
   {
-    data: { source: 'REDIS', target: '레디스' },
+    data: { id: 'Example', label: '이 마인드맵은 예시입니다' },
   },
   {
-    data: { source: 'NESTJS', target: 'REDIS' },
+    data: { source: 'REDIS', target: 'NESTJS' },
   },
   {
-    data: { source: 'REDIS', target: '레디스' },
+    data: { source: 'NoSearch', target: 'Example' },
+  },
+  {
+    data: { source: 'Example', target: 'NoSearch' },
+  },
+  {
+    data: { source: 'NoSearch', target: 'Example' },
+  },
+  {
+    data: { source: 'Example', target: 'NoSearch' },
   },
 ];
