@@ -9,12 +9,14 @@ export const WriteTIL = (props: any) => {
   const todayWrite = useRecoilValue(todayState)
   const todayTILPage = useRecoilValue(todayTILState)
   const navigate = useNavigate();
+  
+
 
 
   const generateReport = () => {
     createReport();
     document.documentElement.style.backgroundColor = '#FFFFE6';
-    if(todayState){
+    if(todayWrite){
       navigate(`/board/${todayTILPage}`)
     }else{
       navigate('/loading');

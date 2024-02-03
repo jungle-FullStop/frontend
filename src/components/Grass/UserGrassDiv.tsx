@@ -1,10 +1,64 @@
-import { dateRange } from '@util/Constants/dateConstants.ts';
+import { dateRange, daysInCurrentMonth } from '@util/Constants/dateConstants.ts';
 import { UserGrass } from '@components/Grass/UserGrass.tsx';
+import { useEffect, useState } from 'react';
+import API_PATH from '@util/apiPath.ts';
+import axios from 'axios';
+import { TIL } from '@/types/TIL';
+
 
 export const UserGrassDiv = () => {
-  const grassElements = dateRange.map((date, i) => {
-    return <UserGrass date={date} i={i} key={i} />;
+
+
+  let [TILData, setTILdata] = useState<TIL[]>(() => {
+    return dateRange.map((item, i) => {
+      return {
+        date: item,
+        id: -1,
+        write: false,
+      };
+    });
   });
+
+  const numberOfZeros = dateRange.filter((value) => value === '0').length;
+
+  // console.log(daysInCurrentMonth);
+
+  useEffect(() => {
+    const getData = async () => {
+      const userID = localStorage.getItem('userId');
+      try {
+        const response = await axios.get(`${API_PATH.BOARD.find()}/${userID}`);
+        console.log(response.data)
+        
+
+        const newTILData = [...TILData];
+        for (let i = 0; i < response.data.boards.length; i++) {
+          const wirteDate = new Date(response.data.boards[i].timestamp);
+          const writeId = response.data.boards[i].id;
+          for (let j = 0; j < daysInCurrentMonth.length; j++) {
+            if (
+              wirteDate.getFullYear() == daysInCurrentMonth[j].getFullYear() &&
+              wirteDate.getMonth() == daysInCurrentMonth[j].getMonth() &&
+              wirteDate.getDate() == daysInCurrentMonth[j].getDate()
+            ) {
+              newTILData[i + numberOfZeros].write = true;
+              newTILData[i + numberOfZeros].id = writeId;
+              setTILdata(newTILData);
+            }
+          }
+        }
+        // console.log(TILData)
+      } catch (error) {
+        console.log('Error fetching data:', error);
+      }
+    };
+    getData();
+  }, []);
+
+  const grassElements = TILData.map((data, i) => {
+    return <UserGrass date={data.date} write={data.write} pageId={data.id} key={i} />;
+  });
+
 
   return (
     <div className="contents-container">
