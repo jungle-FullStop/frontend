@@ -9,14 +9,8 @@ import TeamDetail from '@components/Profile/TeamDetail.tsx';
 
 export const TeamProfile = () => {
   const userId = localStorage.getItem('userId');
-  let teamName = localStorage.getItem('teamName');
-  if (teamName === null || teamName === '') {
-    teamName = '정글 3기';
-  }
-  let teamImage = localStorage.getItem('teamProfileImage');
-  if (teamImage === null || teamImage === '') {
-    teamImage = teamDefaultImage;
-  }
+  const teamName = localStorage.getItem('teamName') || '정글 3기';
+  const teamImage = localStorage.getItem('teamProfileImage') || teamDefaultImage;
 
   const { openModal } = useModal();
 

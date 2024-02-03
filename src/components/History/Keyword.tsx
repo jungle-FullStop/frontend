@@ -5,9 +5,7 @@ interface KeywordProps {
 
 const Keyword = ({ text, styles }: KeywordProps) => {
   return (
-    <div
-      className={`bg-orange-300 mb-3 w-max rounded-lg px-3 py-2 font-semibold ${styles ? styles : ''}`}
-    >
+    <div className={`w-max rounded-lg bg-orange-300 px-3 py-2 font-bold ${styles ? styles : ''}`}>
       <p>#{text}</p>
     </div>
   );

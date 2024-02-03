@@ -4,7 +4,7 @@ import { Stylesheet } from 'cytoscape';
 import setupCy from '@util/SetupCy.ts';
 import { generateStylesheet, getPageRank } from '@hooks/Mindmap/useMindmapStylesheet.tsx';
 import { setDimStyle, setFocus, setResetFocus } from '@hooks/Mindmap/useMindmapFunc.tsx';
-import { generateMindmap } from '@hooks/Mindmap/useMindmapGenerate.tsx';
+import { generateMindmap } from '@hooks/Mindmap/useGenerateMindmap.tsx';
 import { nodePopper } from '@components/Loading/Mindmap/NodePopper.tsx';
 import { edgePopper } from '@components/Loading/Mindmap/EdgePopper.tsx';
 import { layouts } from '@type/components/Mindmap/mindmapLayouts.tsx';
@@ -12,7 +12,7 @@ import { layouts } from '@type/components/Mindmap/mindmapLayouts.tsx';
 setupCy();
 
 export const Mindmap = (props: any) => {
-  let resizeTimer: number;
+  // let resizeTimer: number;
   const [elements] = useState(() => generateMindmap());
   const layout = layouts[props.name];
   const [stylesheet] = useState<Stylesheet[]>(generateStylesheet(getPageRank(elements)));
@@ -37,12 +37,12 @@ export const Mindmap = (props: any) => {
           setResetFocus(e.cy.elements(), getPageRank(elements));
         });
 
-        window.addEventListener('resize', function () {
-          this.clearTimeout(resizeTimer);
-          resizeTimer = this.setTimeout(function () {
-            cy.fit();
-          }, 200);
-        });
+        // window.addEventListener('resize', function () {
+        //   this.clearTimeout(resizeTimer);
+        //   resizeTimer = this.setTimeout(function () {
+        //     cy.fit();
+        //   }, 200);
+        // });
       }}
       elements={elements}
       style={{
