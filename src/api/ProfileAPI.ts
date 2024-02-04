@@ -11,6 +11,7 @@ export const getProfile = async (userId: number) => {
     return user;
   } catch (error) {
     console.error('프로필 불러오기에 실패했습니다.', error);
+    return null;
   }
 };
 

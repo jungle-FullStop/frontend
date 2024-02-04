@@ -13,6 +13,7 @@ import useGenerateReport from '@hooks/useGenerateReport.ts';
 
 export function NavBar(props: any) {
   const userId = localStorage.getItem('userId') as string;
+  const teamId = localStorage.getItem('teamId') as string;
   const name = localStorage.getItem('userName');
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
@@ -56,6 +57,18 @@ export function NavBar(props: any) {
       case NAVBAR_MODAL_CONTENT_TYPE.TEAM:
         return <TeamSetting />;
     }
+  };
+
+  const handleMode = () => {
+    if (teamId === '0') {
+      alert('팀에 가입해야 사용할 수 있습니다.');
+      return openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.TEAM) });
+    }
+    props.flipCard();
+    setTimeout(() => {
+      changeColor();
+      modifyMode();
+    }, 200);
   };
 
   const navList = (
@@ -208,13 +221,7 @@ export function NavBar(props: any) {
               className="hidden lg:inline-block"
               color="green"
               id="modeButton"
-              onClick={() => {
-                props.flipCard();
-                setTimeout(() => {
-                  changeColor();
-                  modifyMode();
-                }, 200);
-              }}
+              onClick={handleMode}
             >
               팀으로 전환
             </Button>
@@ -224,13 +231,7 @@ export function NavBar(props: any) {
               className="hidden lg:inline-block"
               color="yellow"
               id="modeButton"
-              onClick={() => {
-                props.flipCard();
-                setTimeout(() => {
-                  changeColor();
-                  modifyMode();
-                }, 200);
-              }}
+              onClick={handleMode}
             >
               유저로 전환
             </Button>

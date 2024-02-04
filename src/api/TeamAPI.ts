@@ -12,7 +12,8 @@ export const getTeamProfile = async (teamCode: string) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('일기 목록 조회에 실패했습니다.', error);
+    console.log('팀 조회에 실패했습니다.', error);
+    return null;
   }
 };
 
