@@ -3,7 +3,6 @@ import teamDefaultImage from '@assets/image/teamDefaultImage.jpeg';
 import useModal from '@hooks/useModal.tsx';
 import MemberList from '@components/Member/MemberList.tsx';
 import { PROFILE_MODAL_CONTENT_TYPE } from '@util/Constants/constants.ts';
-import MemberRequest from '@components/Member/MemberRequest.tsx';
 import TeamDetail from '@components/Profile/TeamDetail.tsx';
 import useTeamListQuery from '@hooks/useTeamListQuery.ts';
 
@@ -17,20 +16,28 @@ export const TeamProfile = () => {
   const teamListData = useTeamListQuery();
 
   if (teamListData.isLoading) {
-    return <p>팀원목록 가져오는 중...</p>;
+    return (
+      <div className="flex h-full items-center justify-center gap-5">
+        <p>Loading...</p>
+        <div className="border-mint h-10 w-10 animate-spin rounded-full border-t-4"></div>
+      </div>
+    );
   }
 
   if (teamListData.isError) {
-    return <p>팀원목록을 불러오지 못했습니다!</p>;
+    return (
+      <div className="flex h-full items-center justify-center gap-5">
+        <p>Error!</p>
+        <div className="border-mint h-10 w-10 animate-spin rounded-full border-t-4"></div>
+      </div>
+    );
   }
 
   const getModalContent = (type: string) => {
     switch (type) {
       case PROFILE_MODAL_CONTENT_TYPE.LIST:
         return <MemberList userId={Number(userId)} />;
-      case PROFILE_MODAL_CONTENT_TYPE.REQUEST:
-        return <MemberRequest userId={Number(userId)} />;
-      case PROFILE_MODAL_CONTENT_TYPE.EDIT:
+      case PROFILE_MODAL_CONTENT_TYPE.DETAIL:
         return <TeamDetail />;
     }
   };
@@ -53,21 +60,15 @@ export const TeamProfile = () => {
           className="cursor-pointer text-xl font-bold"
           onClick={() => openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.LIST) })}
         >
-          팀 {teamName}에 소속된 팀원 {teamListData.data.length}명
+          팀에 소속된 팀원 {teamListData.data.length}명
         </Button>
         <Button
           className="cursor-pointer text-xl font-bold"
           onClick={() =>
-            openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.REQUEST) })
+            openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.DETAIL) })
           }
         >
-          팀원 관리
-        </Button>
-        <Button
-          className="cursor-pointer text-xl font-bold"
-          onClick={() => openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.EDIT) })}
-        >
-          팀 TIL 정보
+          팀 {teamName} 정보
         </Button>
       </ButtonGroup>
     </div>

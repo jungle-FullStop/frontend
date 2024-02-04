@@ -6,7 +6,6 @@ import FriendList from '@components/Friend/FriendList.tsx';
 import { PROFILE_MODAL_CONTENT_TYPE } from '@util/Constants/constants';
 import FriendRequest from '@components/Friend/FriendRequest.tsx';
 import { useFriendRankListDataQuery } from '@hooks/useFriendListQuery.ts';
-import UserDetail from '@components/Profile/UserDetail.tsx';
 import { todayState } from '@/store/Store';
 import { useRecoilValue } from 'recoil';
 
@@ -44,8 +43,6 @@ export const UserProfile = () => {
         return <FriendList userId={Number(userId)} />;
       case PROFILE_MODAL_CONTENT_TYPE.REQUEST:
         return <FriendRequest userId={Number(userId)} />;
-      case PROFILE_MODAL_CONTENT_TYPE.EDIT:
-        return <UserDetail />;
     }
   };
 
@@ -74,12 +71,6 @@ export const UserProfile = () => {
           }
         >
           친구 관리
-        </Button>
-        <Button
-          className="cursor-pointer text-xl font-bold"
-          onClick={() => openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.EDIT) })}
-        >
-          내 TIL 정보
         </Button>
       </ButtonGroup>
     </div>

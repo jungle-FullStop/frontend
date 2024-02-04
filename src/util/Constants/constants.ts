@@ -31,11 +31,11 @@ export const LARGE_VIEWBOX_HEIGHT = 82;
 export const PROFILE_MODAL_CONTENT_TYPE = {
   LIST: 'list',
   REQUEST: 'request',
-  EDIT: 'edit',
+  DETAIL: 'detail',
 };
 
 export const NAVBAR_MODAL_CONTENT_TYPE = {
-  MYPAGE: 'mypage',
+  DETAIL: 'detail',
   TEAM: 'Team',
 };
 

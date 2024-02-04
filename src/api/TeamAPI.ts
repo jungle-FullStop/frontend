@@ -57,7 +57,7 @@ export const getTeamProfile = async (teamCode: string) => {
   }
 };
 
-export const getTeamUsers = async () => {
+export const getMemberList = async () => {
   try {
     const fetchUrl = API_PATH.TEAM.list();
     const response = await interceptor(fetchUrl, {
@@ -69,6 +69,50 @@ export const getTeamUsers = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('일기 목록 조회에 실패했습니다.', error);
+    console.log('팀원목록 조회에 실패했습니다.', error);
+  }
+};
+
+export const getMemberRankList = async () => {
+  try {
+    const fetchUrl = API_PATH.TEAM.rankList();
+    const response = await interceptor(fetchUrl, {
+      method: 'POST',
+      credentials: 'include',
+    });
+
+    if (!response.ok) throw new Error('올바른 네트워크 응답이 아닙니다.');
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log('팀원목록 조회에 실패했습니다.', error);
+  }
+};
+
+export const recommendMember = async (name: string) => {
+  try {
+    const response = await interceptor(API_PATH.TEAM.search(name), {
+      credentials: 'include',
+    });
+
+    if (!response.ok) throw new Error('올바른 네트워크 응답이 아닙니다.');
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log('내 팀원목록 검색에 실패했습니다.', error);
+  }
+};
+
+export const exileMember = async (memberId: number) => {
+  try {
+    const response = await interceptor(API_PATH.TEAM.exile(), {
+      method: 'POST',
+      credentials: 'include',
+      body: JSON.stringify({ memberId: memberId }),
+    });
+
+    if (!response.ok) throw new Error('올바른 네트워크 응답이 아닙니다.');
+  } catch (error) {
+    console.error('팀원 삭제에 실패했습니다.', error);
   }
 };

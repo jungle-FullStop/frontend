@@ -7,14 +7,13 @@ import teamLogo from '@assets/image/logo-team-love-three.png';
 import { logout } from '@/api/LoginAPI';
 import useModal from '@hooks/useModal.tsx';
 import { NAVBAR_MODAL_CONTENT_TYPE } from '@util/Constants/constants.ts';
-import ProfileEdit from '@components/Profile/ProfileEdit.tsx';
 import TeamSetting from '@components/Team/TeamSetting.tsx';
 import useGenerateReport from '@hooks/useGenerateReport.ts';
+import UserDetail from '@components/Profile/UserDetail.tsx';
 
 export function NavBar(props: any) {
   const userId = localStorage.getItem('userId') as string;
   const teamCode = localStorage.getItem('teamCode') as string;
-  const name = localStorage.getItem('userName');
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
   const [mode, setMode] = useState('user');
@@ -52,8 +51,8 @@ export function NavBar(props: any) {
   const { openModal } = useModal();
   const getModalContent = (type: string) => {
     switch (type) {
-      case NAVBAR_MODAL_CONTENT_TYPE.MYPAGE:
-        return <ProfileEdit name={String(name)} />;
+      case NAVBAR_MODAL_CONTENT_TYPE.DETAIL:
+        return <UserDetail />;
       case NAVBAR_MODAL_CONTENT_TYPE.TEAM:
         return <TeamSetting />;
     }
@@ -152,7 +151,7 @@ export function NavBar(props: any) {
         </svg>
         <button
           onClick={() => {
-            openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.MYPAGE) });
+            openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.DETAIL) });
           }}
         >
           마이페이지
