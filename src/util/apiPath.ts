@@ -7,7 +7,6 @@ const REPROT = '/report';
 const MINDMAP = '/mindmap';
 const BOARD = '/Board';
 const FRIEND = '/friends';
-const MEMBER = '/member';
 const TEAM = '/team';
 const PUSH = '/push';
 const HISTROY = '/extension';
@@ -19,7 +18,6 @@ const API_PATH = {
     updateToken: () => SERVER_URL + AUTH + '/refresh_token',
   },
   USER: {
-    profile: () => SERVER_URL + USER,
     userProfile: (id: number) => SERVER_URL + USER + `/${id}`,
     searchUser: (name: string) => SERVER_URL + USER + '/search' + `/${name}`,
   },
@@ -42,14 +40,14 @@ const API_PATH = {
     request: (userId: number) => SERVER_URL + FRIEND + '/request' + `/${userId}`,
     allow: (senderId: number) => SERVER_URL + FRIEND + '/allow' + `/${senderId}`,
   },
-  MEMBER: {
-    search: (name: string) => SERVER_URL + MEMBER + '/search' + `/${name}`,
-    list: (userId: number) => SERVER_URL + MEMBER + `/${userId}`,
-    request: (userId: number) => SERVER_URL + MEMBER + '/request' + `/${userId}`,
-    allow: (senderId: number) => SERVER_URL + MEMBER + '/allow' + `/${senderId}`,
-  },
   TEAM: {
-    list: () => SERVER_URL + TEAM + '/my',
+    search: (name: string) => SERVER_URL + TEAM + '/search' + `/${name}`,
+    list: () => SERVER_URL + TEAM + '/member',
+    rankList: () => SERVER_URL + TEAM + '/rank',
+    exile: () => SERVER_URL + TEAM + '/exile',
+    create: () => SERVER_URL + TEAM + '/create',
+    join: () => SERVER_URL + TEAM + '/join',
+    teamProfile: (teamCode: string) => SERVER_URL + TEAM + `/${teamCode}`,
     updateState: () => SERVER_URL + TEAM + '/change-status',
   },
   PUSH: {

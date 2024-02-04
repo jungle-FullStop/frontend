@@ -7,13 +7,13 @@ import teamLogo from '@assets/image/logo-team-love-three.png';
 import { logout } from '@/api/LoginAPI';
 import useModal from '@hooks/useModal.tsx';
 import { NAVBAR_MODAL_CONTENT_TYPE } from '@util/Constants/constants.ts';
-import ProfileEdit from '@components/Profile/ProfileEdit.tsx';
 import TeamSetting from '@components/Team/TeamSetting.tsx';
 import useGenerateReport from '@hooks/useGenerateReport.ts';
+import UserDetail from '@components/Profile/UserDetail.tsx';
 
 export function NavBar(props: any) {
   const userId = localStorage.getItem('userId') as string;
-  const name = localStorage.getItem('userName');
+  const teamCode = localStorage.getItem('teamCode') as string;
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
   const [mode, setMode] = useState('user');
@@ -51,11 +51,23 @@ export function NavBar(props: any) {
   const { openModal } = useModal();
   const getModalContent = (type: string) => {
     switch (type) {
-      case NAVBAR_MODAL_CONTENT_TYPE.MYPAGE:
-        return <ProfileEdit name={String(name)} />;
+      case NAVBAR_MODAL_CONTENT_TYPE.DETAIL:
+        return <UserDetail />;
       case NAVBAR_MODAL_CONTENT_TYPE.TEAM:
         return <TeamSetting />;
     }
+  };
+
+  const handleMode = () => {
+    if (teamCode === 'default') {
+      alert('팀에 가입해야 사용할 수 있습니다.');
+      return openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.TEAM) });
+    }
+    props.flipCard();
+    setTimeout(() => {
+      changeColor();
+      modifyMode();
+    }, 200);
   };
 
   const navList = (
@@ -139,7 +151,7 @@ export function NavBar(props: any) {
         </svg>
         <button
           onClick={() => {
-            openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.MYPAGE) });
+            openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.DETAIL) });
           }}
         >
           마이페이지
@@ -208,13 +220,7 @@ export function NavBar(props: any) {
               className="hidden lg:inline-block"
               color="green"
               id="modeButton"
-              onClick={() => {
-                props.flipCard();
-                setTimeout(() => {
-                  changeColor();
-                  modifyMode();
-                }, 200);
-              }}
+              onClick={handleMode}
             >
               팀으로 전환
             </Button>
@@ -224,13 +230,7 @@ export function NavBar(props: any) {
               className="hidden lg:inline-block"
               color="yellow"
               id="modeButton"
-              onClick={() => {
-                props.flipCard();
-                setTimeout(() => {
-                  changeColor();
-                  modifyMode();
-                }, 200);
-              }}
+              onClick={handleMode}
             >
               유저로 전환
             </Button>

@@ -4,9 +4,9 @@ interface reportInfo {
   report: any;
 }
 
-export const createReport = async (userId: number) => {
+export const createReport = async () => {
   try {
-    const response = await fetch(API_PATH.REPORT.create(userId), {
+    const response = await fetch(API_PATH.REPORT.create(), {
       method: 'GET',
     });
     if (!response.ok) throw new Error('올바른 네트워크 응답이 아닙니다.');
@@ -17,9 +17,9 @@ export const createReport = async (userId: number) => {
   }
 };
 
-export const findReport = async (userId: number) => {
+export const findReport = async () => {
   try {
-    const response = await fetch(API_PATH.REPORT.find(userId), {
+    const response = await fetch(API_PATH.REPORT.find(), {
       method: 'GET',
     });
     const report: reportInfo = await response.json();

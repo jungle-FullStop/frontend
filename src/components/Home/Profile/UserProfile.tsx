@@ -6,7 +6,6 @@ import FriendList from '@components/Friend/FriendList.tsx';
 import { PROFILE_MODAL_CONTENT_TYPE } from '@util/Constants/constants';
 import FriendRequest from '@components/Friend/FriendRequest.tsx';
 import { useFriendRankListDataQuery } from '@hooks/useFriendListQuery.ts';
-import UserDetail from '@components/Profile/UserDetail.tsx';
 import { todayState } from '@/store/Store';
 import { useRecoilValue } from 'recoil';
 
@@ -21,11 +20,21 @@ export const UserProfile = () => {
   const friendListData = useFriendRankListDataQuery(Number(userId));
 
   if (friendListData.isLoading) {
-    return <p>친구목록 가져오는 중...</p>;
+    return (
+      <div className="flex h-full items-center justify-center gap-5">
+        <p>Loading...</p>
+        <div className="border-mint h-10 w-10 animate-spin rounded-full border-t-4"></div>
+      </div>
+    );
   }
 
   if (friendListData.isError) {
-    return <p>친구목록을 불러오지 못했습니다!</p>;
+    return (
+      <div className="flex h-full items-center justify-center gap-5">
+        <p>Error!</p>
+        <div className="border-mint h-10 w-10 animate-spin rounded-full border-t-4"></div>
+      </div>
+    );
   }
 
   const getModalContent = (type: string) => {
@@ -34,8 +43,6 @@ export const UserProfile = () => {
         return <FriendList userId={Number(userId)} />;
       case PROFILE_MODAL_CONTENT_TYPE.REQUEST:
         return <FriendRequest userId={Number(userId)} />;
-      case PROFILE_MODAL_CONTENT_TYPE.EDIT:
-        return <UserDetail />;
     }
   };
 
@@ -64,12 +71,6 @@ export const UserProfile = () => {
           }
         >
           친구 관리
-        </Button>
-        <Button
-          className="cursor-pointer text-xl font-bold"
-          onClick={() => openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.EDIT) })}
-        >
-          내 TIL 기록
         </Button>
       </ButtonGroup>
     </div>

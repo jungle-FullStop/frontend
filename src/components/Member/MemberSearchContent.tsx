@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { recommendMember } from '@api/MemberModal.ts';
+import { recommendMember } from '@api/TeamAPI.ts';
 
 import MemberModalItem from '@components/Member/MemberModalItem.tsx';
 
