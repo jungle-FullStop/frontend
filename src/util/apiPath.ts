@@ -19,7 +19,6 @@ const API_PATH = {
     updateToken: () => SERVER_URL + AUTH + '/refresh_token',
   },
   USER: {
-    profile: () => SERVER_URL + USER,
     userProfile: (id: number) => SERVER_URL + USER + `/${id}`,
     searchUser: (name: string) => SERVER_URL + USER + '/search' + `/${name}`,
   },
@@ -49,6 +48,7 @@ const API_PATH = {
     allow: (senderId: number) => SERVER_URL + MEMBER + '/allow' + `/${senderId}`,
   },
   TEAM: {
+    teamProfile: (teamCode: string) => SERVER_URL + TEAM + `/${teamCode}`,
     list: () => SERVER_URL + TEAM + '/my',
     updateState: () => SERVER_URL + TEAM + '/change-status',
   },

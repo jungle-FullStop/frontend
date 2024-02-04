@@ -5,14 +5,14 @@ import API_PATH from '@util/apiPath.ts';
 import axios from 'axios';
 import { TIL } from '@/types/TIL';
 import { todayState, todayTILState } from '@/store/Store';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 export const UserGrassDiv = () => {
-  const [todayWrite, setTodayWrite] = useRecoilState(todayState);
-  const [todayTILPage, setTodayTILPage] = useRecoilState(todayTILState);
+  const [, setTodayWrite] = useRecoilState(todayState);
+  const [, setTodayTILPage] = useRecoilState(todayTILState);
 
-  let [TILData, setTILdata] = useState<TIL[]>(() => {
-    return dateRange.map((item, i) => {
+  const [TILData, setTILdata] = useState<TIL[]>(() => {
+    return dateRange.map((item) => {
       return {
         date: item,
         id: -1,
@@ -33,7 +33,7 @@ export const UserGrassDiv = () => {
         // console.log(response.data);
         const currentDate = new Date();
 
-        let newTILData = [...TILData];
+        const newTILData = [...TILData];
         for (let i = 0; i < response.data.boards.length; i++) {
           const wirteDate = new Date(response.data.boards[i].timestamp);
           const writeId = response.data.boards[i].id;

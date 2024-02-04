@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { googleLogin } from '@/api/LoginAPI';
 import { getProfile } from '@api/ProfileAPI.ts';
+import { getTeamProfile } from '@api/TeamAPI.ts';
 
 const AuthLogin = () => {
   const getUserId = async () => {
@@ -10,11 +11,21 @@ const AuthLogin = () => {
     // const state = new URL(window.location.href).searchParams.get('state') ?? '';
     const userId = await googleLogin(code);
     const profile = await getProfile(userId);
+    const teamProfile = await getTeamProfile(profile.teamCode);
 
+    // 유저 정보
     localStorage.setItem('userId', userId);
     localStorage.setItem('email', profile.email);
     localStorage.setItem('userName', profile.name);
     localStorage.setItem('userProfileImage', profile.profileImage);
+    localStorage.setItem('userCreateAt', profile.createdAt);
+    localStorage.setItem('tilScore', profile.tilScore);
+    // 팀 정보
+    localStorage.setItem('teamId', teamProfile.id);
+    localStorage.setItem('teamName', teamProfile.name);
+    localStorage.setItem('teamDescription', teamProfile.description);
+    localStorage.setItem('teamCreateAt', teamProfile.createdAt);
+
     navigate('/home');
   };
 
