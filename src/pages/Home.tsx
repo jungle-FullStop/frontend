@@ -4,7 +4,6 @@ import { UserProfile } from '@components/Home/Profile/UserProfile.tsx';
 import { FriendInfo } from '@components/Home/Info/FriendInfo.tsx';
 import { WriteTIL } from '@/components/Home/WriteTIL';
 import { UserGrassDiv } from '@components/Grass/UserGrassDiv.tsx';
-import { getProfile } from '@/api/ProfileAPI';
 import { createMindmap } from '@/api/MindmapAPI';
 import { TeamGrassDiv } from '@components/Grass/TeamGrassDiv.tsx';
 import { TeamProfile } from '@components/Home/Profile/TeamProfile.tsx';
@@ -26,12 +25,6 @@ const Home = () => {
     setIsFlipped(!isFlipped);
   };
 
-  const getUserProfile = async () => {
-    const userProfile = await getProfile();
-    localStorage.setItem('userName', userProfile?.name);
-    localStorage.setItem('userProfileImage', userProfile?.profileImage);
-  };
-
   const getMindmap = async () => {
     const mindmap = await createMindmap();
     localStorage.setItem('todayMindmap', mindmap?.data);
@@ -49,7 +42,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    getUserProfile();
     getMindmap();
     getToken();
     closeModal();

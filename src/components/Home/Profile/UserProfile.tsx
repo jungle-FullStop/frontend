@@ -35,7 +35,7 @@ export const UserProfile = () => {
       case PROFILE_MODAL_CONTENT_TYPE.REQUEST:
         return <FriendRequest userId={Number(userId)} />;
       case PROFILE_MODAL_CONTENT_TYPE.EDIT:
-        return <UserDetail name={String(name)} />;
+        return <UserDetail />;
     }
   };
 

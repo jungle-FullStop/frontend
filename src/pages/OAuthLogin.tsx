@@ -2,26 +2,20 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { googleLogin } from '@/api/LoginAPI';
+import { getProfile } from '@api/ProfileAPI.ts';
 
 const AuthLogin = () => {
   const getUserId = async () => {
     const code = new URL(window.location.href).searchParams.get('code') ?? '';
     // const state = new URL(window.location.href).searchParams.get('state') ?? '';
     const userId = await googleLogin(code);
-
-    const email = await getEmail(code);
-    localStorage.setItem('email', email);
+    const profile = await getProfile(userId);
 
     localStorage.setItem('userId', userId);
+    localStorage.setItem('email', profile.email);
+    localStorage.setItem('userName', profile.name);
+    localStorage.setItem('userProfileImage', profile.profileImage);
     navigate('/home');
-  };
-
-  const getEmail = async (code: string) => {
-    const userInfoResponse = await fetch(
-      'https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=' + code,
-    );
-    const userInfo = await userInfoResponse.json();
-    return userInfo.email;
   };
 
   const navigate = useNavigate();
