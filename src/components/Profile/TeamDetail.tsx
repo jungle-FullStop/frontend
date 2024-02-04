@@ -2,6 +2,7 @@ import teamDefaultImage from '@assets/image/teamDefaultImage.jpeg';
 
 const TeamDetail = () => {
   const teamId = localStorage.getItem('teamId');
+  const teamCode = localStorage.getItem('teamCode');
   const teamName = localStorage.getItem('teamName');
   const teamProfileImage = localStorage.getItem('teamProfileImage') || teamDefaultImage;
   const description = localStorage.getItem('teamDescription');
@@ -25,7 +26,9 @@ const TeamDetail = () => {
           alt="프로필 사진"
         />
         <div className={'pt-5'}>
-          <p className={'text-2xl font-bold'}> 티.나.끝의 {teamId}번째 정원</p>
+          <p className={'text-3xl font-bold'}> 티.나.끝의 {teamId}번째 정원</p>
+          <p className={'text-xl font-bold text-blue-gray-500'}> 초대코드 {teamCode}</p>
+
           <div className={'pt-5'}>
             <p className={'text-xl'}> 팀 이름: {teamName}</p>
             <p className={'text-xl'}> 팀 설명: {description}</p>

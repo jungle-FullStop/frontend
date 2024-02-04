@@ -5,6 +5,7 @@ const UserDetail = () => {
   const userName = localStorage.getItem('userName');
   const userProfileImage = localStorage.getItem('userProfileImage') || anonymousImage;
   const tilScore = localStorage.getItem('tilScore');
+  const teamName = localStorage.getItem('teamName');
 
   const createdAt = localStorage.getItem('userCreateAt') || '';
 
@@ -25,7 +26,8 @@ const UserDetail = () => {
           alt="프로필 사진"
         />
         <div className={'pt-5'}>
-          <p className={'text-2xl font-bold'}> 티.나.끝의 {userId}번째 정원사</p>
+          <p className={'text-xl font-bold text-blue-gray-500'}> 팀 {teamName}</p>
+          <p className={'text-3xl font-bold'}> 티.나.끝의 {userId}번째 정원사</p>
           <div className={'pt-5'}>
             <p className={'text-xl'}> 이름: {userName}</p>
             <p className={'text-xl'}>

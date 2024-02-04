@@ -13,7 +13,7 @@ import useGenerateReport from '@hooks/useGenerateReport.ts';
 
 export function NavBar(props: any) {
   const userId = localStorage.getItem('userId') as string;
-  const teamId = localStorage.getItem('teamId') as string;
+  const teamCode = localStorage.getItem('teamCode') as string;
   const name = localStorage.getItem('userName');
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
@@ -60,7 +60,7 @@ export function NavBar(props: any) {
   };
 
   const handleMode = () => {
-    if (teamId === '0') {
+    if (teamCode === 'default') {
       alert('팀에 가입해야 사용할 수 있습니다.');
       return openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.TEAM) });
     }

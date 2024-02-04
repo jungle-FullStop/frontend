@@ -24,14 +24,13 @@ const AuthLogin = () => {
     // 팀 정보
     if (teamProfile) {
       localStorage.setItem('teamId', teamProfile.id);
+      localStorage.setItem('teamCode', teamProfile.code);
       localStorage.setItem('teamName', teamProfile.name);
       localStorage.setItem('teamDescription', teamProfile.description);
       localStorage.setItem('teamCreateAt', teamProfile.createdAt);
     } else {
-      localStorage.setItem('teamId', '0');
+      localStorage.setItem('teamCode', 'default');
       localStorage.setItem('teamName', '티.나.끝');
-      localStorage.setItem('teamDescription', '소속된 팀이 없습니다');
-      localStorage.setItem('teamCreateAt', '');
     }
 
     navigate('/home');

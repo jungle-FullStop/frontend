@@ -2,14 +2,14 @@ import API_PATH from '@util/apiPath';
 
 import interceptor from '@api/fetchInterceptor';
 
-export const createTeam = async (teamName: string) => {
+export const createTeam = async (teamName: string, teamDescription: string) => {
   try {
     const response = await interceptor(API_PATH.TEAM.create(), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: teamName }),
+      body: JSON.stringify({ name: teamName, description: teamDescription }),
       credentials: 'include',
     });
 

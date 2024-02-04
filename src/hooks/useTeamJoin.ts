@@ -33,7 +33,7 @@ export const useTeamJoin = (inputRef: RefObject<HTMLInputElement>) => {
     setInviteCode(() => code.slice(0, INVITE_CODE_LENGTH));
   };
 
-  const handleTeamNameSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+  const handleTeamNameSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
     if (inviteCode.length !== INVITE_CODE_LENGTH) {
@@ -42,7 +42,18 @@ export const useTeamJoin = (inputRef: RefObject<HTMLInputElement>) => {
       return;
     }
 
-    joinTeam(inviteCode);
+    // 새 팀 정보
+    const newTeam = await joinTeam(inviteCode);
+    if (newTeam) {
+      localStorage.setItem('teamId', newTeam.id);
+      localStorage.setItem('teamCode', newTeam.code);
+      localStorage.setItem('teamName', newTeam.name);
+      localStorage.setItem('teamDescription', newTeam.description);
+      localStorage.setItem('teamCreateAt', newTeam.createdAt);
+    } else {
+      alert('팀 가입에 실패했습니다. 팀이 존재하지 않습니다');
+      return;
+    }
     window.location.href = '/home';
   };
 

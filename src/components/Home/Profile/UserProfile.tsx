@@ -21,11 +21,21 @@ export const UserProfile = () => {
   const friendListData = useFriendRankListDataQuery(Number(userId));
 
   if (friendListData.isLoading) {
-    return <p>친구목록 가져오는 중...</p>;
+    return (
+      <div className="flex h-full items-center justify-center gap-5">
+        <p>Loading...</p>
+        <div className="border-mint h-10 w-10 animate-spin rounded-full border-t-4"></div>
+      </div>
+    );
   }
 
   if (friendListData.isError) {
-    return <p>친구목록을 불러오지 못했습니다!</p>;
+    return (
+      <div className="flex h-full items-center justify-center gap-5">
+        <p>Error!</p>
+        <div className="border-mint h-10 w-10 animate-spin rounded-full border-t-4"></div>
+      </div>
+    );
   }
 
   const getModalContent = (type: string) => {

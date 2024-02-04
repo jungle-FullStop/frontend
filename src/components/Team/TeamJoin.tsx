@@ -22,7 +22,6 @@ const TeamJoin = () => {
             value={inviteCode}
             onChange={handleInviteCodeChange}
             size={'lg'}
-            className="shadow-lg"
             required
           />
           <div className={'mt-5 flex flex-row items-center gap-x-3'}>
