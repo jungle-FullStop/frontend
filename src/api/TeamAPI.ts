@@ -107,8 +107,11 @@ export const exileMember = async (memberId: number) => {
   try {
     const response = await interceptor(API_PATH.TEAM.exile(), {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: memberId }),
       credentials: 'include',
-      body: JSON.stringify({ memberId: memberId }),
     });
 
     if (!response.ok) throw new Error('올바른 네트워크 응답이 아닙니다.');
