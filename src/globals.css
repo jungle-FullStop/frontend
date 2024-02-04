@@ -6,13 +6,13 @@
   html {
     font-family: 'SUIT Variable', 'Noto Sans KR', sans-serif;
     color: #4b4b4b;
-    background-color: #FFFFE6;
+    background-color: white;
     transition: background-color 0.3s ease;
   }
 }
 
 .main-container {
-  @apply flex h-screen max-w-screen-2xl flex-col mx-auto px-4 py-2 lg:px-8 lg:py-4;
+  @apply flex h-screen w-full flex-col mx-auto px-4 py-2 lg:px-8 lg:py-4;
 }
 
 .sub-container {
@@ -21,6 +21,10 @@
 
 .contents-container {
   @apply mx-auto flex w-full flex-col gap-y-5 rounded-lg bg-white p-7 shadow-md;
+}
+
+.fi{
+ 
 }
 
 .profileImg{
