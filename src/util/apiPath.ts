@@ -48,6 +48,8 @@ const API_PATH = {
     allow: (senderId: number) => SERVER_URL + MEMBER + '/allow' + `/${senderId}`,
   },
   TEAM: {
+    create: () => SERVER_URL + TEAM + '/create',
+    join: () => SERVER_URL + TEAM + '/join',
     teamProfile: (teamCode: string) => SERVER_URL + TEAM + `/${teamCode}`,
     list: () => SERVER_URL + TEAM + '/my',
     updateState: () => SERVER_URL + TEAM + '/change-status',

@@ -47,13 +47,14 @@ export const PROFILE_BUTTON_TYPE = {
 };
 
 export const reactQueryKeys = {
-  Grass: 'grass',
   Report: 'report',
   ProfileData: 'profileData',
   SearchDataList: 'searchDataList',
   FriendList: 'friendList',
   FriendRankList: 'friendRankList',
   MemberList: 'memberList',
+  CreateTeam: 'createTeam',
+  JoinTeam: 'joinTeam',
   SendList: 'sendList',
   ReceivedList: 'receivedList',
 };

@@ -6,6 +6,7 @@ import {
   useState,
 } from 'react';
 import { INVITE_CODE_LENGTH } from '@util/Constants/constants.ts';
+import { joinTeam } from '@api/TeamAPI.ts';
 
 export const useTeamJoin = (inputRef: RefObject<HTMLInputElement>) => {
   const [inviteCode, setInviteCode] = useState('');
@@ -40,6 +41,9 @@ export const useTeamJoin = (inputRef: RefObject<HTMLInputElement>) => {
       inputRef.current?.focus();
       return;
     }
+
+    joinTeam(inviteCode);
+    window.location.href = '/home';
   };
 
   const handleCreatePageClicked: MouseEventHandler<HTMLButtonElement> = (e) => {
