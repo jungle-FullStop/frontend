@@ -48,6 +48,7 @@ export const PROFILE_BUTTON_TYPE = {
 
 export const reactQueryKeys = {
   Report: 'report',
+  BOARD: 'board',
   ProfileData: 'profileData',
   SearchDataList: 'searchDataList',
   FriendList: 'friendList',
