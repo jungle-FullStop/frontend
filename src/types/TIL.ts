@@ -1,5 +1,5 @@
 export interface TIL {
-    date : string,
-    id : number,
-    write : boolean
+  date: string;
+  id: number;
+  count: number;
 }
