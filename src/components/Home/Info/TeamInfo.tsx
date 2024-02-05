@@ -3,7 +3,7 @@ import TeamItem from '@components/Team/TeamItem.tsx';
 import { useEffect } from 'react';
 import useTeamListQuery from '@hooks/useTeamListQuery.ts';
 import { useQueryClient } from '@tanstack/react-query';
-import { cockPush } from '@/api/FirebaseApi';
+import { cockPush } from '@api/FirebaseApi.ts';
 
 interface MemberListResponse {
   id: string;

@@ -1,7 +1,7 @@
 // Firebase Cloud Messaging Configuration File.
 // Read more at https://firebase.google.com/docs/cloud-messaging/js/client && https://firebase.google.com/docs/cloud-messaging/js/receive
 
-import { saveTokenOnServer } from '@/api/FirebaseApi';
+import { saveTokenOnServer } from '@api/FirebaseApi.ts';
 import { initializeApp } from 'firebase/app';
 import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 
@@ -27,7 +27,7 @@ export const requestForToken = async () => {
   })
     .then((currentToken) => {
       if (currentToken) {
-        console.log('current token for client: ', currentToken);
+        // console.log('current token for client: ', currentToken);
         // return currentToken;
         const id = parseInt(localStorage.getItem('userId') as string, 10);
         saveTokenOnServer(id, currentToken);
