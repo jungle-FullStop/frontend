@@ -122,7 +122,7 @@ export function NavBar(props: any) {
         </svg>
         <button
           onClick={() => {
-            useGenerateReport(Number(userId));
+            useGenerateReport().then(r => console.log('수정필요'));
             navigate('/loading');
           }}
         >

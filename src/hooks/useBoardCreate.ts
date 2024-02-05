@@ -1,7 +1,7 @@
 import { createBoard } from '@api/BoardApi.ts';
 import { ChangeEventHandler, FormEventHandler, useState } from 'react';
 import { createReport } from '@api/ReportAPI.ts';
-import { dummyReport } from '@type/components/Edit/dummyReport.tsx';
+import { dummyReport } from '@type/components/EDIT/dummyReport.tsx';
 
 export const useBoardCreate = () => {
   const report = localStorage.getItem('todayReport') || dummyReport;
