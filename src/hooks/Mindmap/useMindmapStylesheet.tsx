@@ -3,7 +3,7 @@ import * as graph from '@/util/Constants/mindmapConstants';
 
 import typeormImage from '@assets/mindmapImage/typeormImage.png';
 import typescriptImage from '@assets/mindmapImage/typescriptImage.png';
-import tailwindImage from '@assets/mindmapImage/tailwindImage.png';
+import tailwindImage from '@assets/mindmapImage/tailwindImage.jpg';
 import nginxImage from '@assets/mindmapImage/nginxImage.png';
 import dockerImage from '@assets/mindmapImage/dockerImage.png';
 import cytoscapejsImage from '@assets/mindmapImage/cytoscapejsImage.png';

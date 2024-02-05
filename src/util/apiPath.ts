@@ -10,6 +10,7 @@ const FRIEND = '/friends';
 const TEAM = '/team';
 const PUSH = '/push';
 const HISTROY = '/extension';
+const GRASS = '/grass';
 
 const API_PATH = {
   AUTH: {
@@ -31,6 +32,7 @@ const API_PATH = {
   },
   BOARD: {
     find: () => SERVER_URL + BOARD + `/find/`,
+    userFind: (userId: number) => SERVER_URL + BOARD + `/find/` + `/${userId}`,
     create: () => SERVER_URL + BOARD + `/create/`,
   },
   FRIEND: {
@@ -56,6 +58,10 @@ const API_PATH = {
   },
   HISTROY: {
     search: (keyword: string) => SERVER_URL + HISTROY + '/search' + `/${keyword}`,
+  },
+  Grass: {
+    user: (userId: number, date: Date) => SERVER_URL + GRASS + `/${userId}` + `/${date}`,
+    team: (userId: number, date: Date) => SERVER_URL + GRASS + TEAM + `/${userId}` + `/${date}`,
   },
 };
 

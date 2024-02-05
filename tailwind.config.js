@@ -1,5 +1,5 @@
 /** @type {(tailwindConfig: object) => object} */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// eslint-disable-next-line @typescript-eslint/no-var-requires,no-undef
 const withMT = require('@material-tailwind/react/utils/withMT');
 
 export default withMT({
@@ -15,9 +15,12 @@ export default withMT({
         grassColor: '#B56F2A',
       },
       backgroundImage: {
-        landing: "url('./src/assets/image/landingBackground.jpeg')",
-        grass: "url('./src/assets/Grass/grass.png')",
-        noGrass: "url('./src/assets/Grass/noGrass.png')",
+        landing: "url('./src/assets/image/landingBackground.png')",
+        grass: "url('./src/assets/Grass/Grass.png')",
+        noGrass: "url('./src/assets/Grass/NoGrass.png')",
+        stage1: "url('./src/assets/Grass/Sunflower_1.png')",
+        stage2: "url('./src/assets/Grass/Sunflower_2.png')",
+        stage3: "url('./src/assets/Grass/Sunflower_3.png')",
       },
     },
   },

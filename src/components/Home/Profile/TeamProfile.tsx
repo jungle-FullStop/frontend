@@ -1,5 +1,5 @@
 import { Button, ButtonGroup } from '@material-tailwind/react';
-import teamDefaultImage from '@assets/image/teamDefaultImage.jpeg';
+import teamDefaultImage from '@assets/image/teamDefaultImage.jpg';
 import useModal from '@hooks/useModal.tsx';
 import MemberList from '@components/Member/MemberList.tsx';
 import { PROFILE_MODAL_CONTENT_TYPE } from '@util/Constants/constants.ts';

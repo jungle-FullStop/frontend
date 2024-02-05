@@ -1,20 +1,21 @@
-import { dateRange } from '@util/Constants/dateConstants.ts';
 import { TeamGrass } from '@/components/Grass/TeamGrass';
+import { useGetTeamGrass } from '@hooks/useGetTeamGrass.ts';
 
 export const TeamGrassDiv = () => {
   const teamName = localStorage.getItem('teamName');
+  const TilData = useGetTeamGrass();
 
-  const grassElements = dateRange.map((date, i) => {
-    return <TeamGrass date={date} i={i} key={i} />;
+  const grassElements = TilData.map((data, i) => {
+    return <TeamGrass date={data.date} count={data.count} pageId={data.id} key={i} />;
   });
 
   return (
     <div className="contents-container">
       <div>
         <p className="text-center text-lg font-bold sm:text-2xl">
-          팀 <span className={'text-green-500'}>{teamName}</span> 잔디밭
+          팀 <span className={'text-green-500'}>{teamName}</span> 텃밭
         </p>
-        <div className="mx-auto grid w-80 grid-cols-7 grid-rows-1 p-2 text-center">
+        <div className="mx-auto grid w-[350px] grid-cols-7 grid-rows-1 p-2 text-center">
           <p>Sun</p>
           <p>Mon</p>
           <p>Tue</p>
@@ -23,7 +24,7 @@ export const TeamGrassDiv = () => {
           <p>Fri</p>
           <p>Sat</p>
         </div>
-        <div className="border-brown bg-grassColor mx-auto grid w-80 grid-cols-7 grid-rows-5 rounded-lg border p-2 ">
+        <div className="mx-auto grid h-[250px] w-[350px] grid-cols-7 grid-rows-5 rounded-lg bg-grassColor p-2">
           {grassElements}
         </div>
       </div>
