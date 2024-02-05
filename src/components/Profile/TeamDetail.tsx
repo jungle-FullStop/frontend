@@ -1,4 +1,4 @@
-import teamDefaultImage from '@assets/image/teamDefaultImage.jpeg';
+import teamDefaultImage from '@assets/image/teamDefaultImage.jpg';
 
 const TeamDetail = () => {
   const teamId = localStorage.getItem('teamId');
