@@ -23,7 +23,7 @@ export const TeamGrassDiv = () => {
           <p>Fri</p>
           <p>Sat</p>
         </div>
-        <div className="border-brown mx-auto grid w-80 grid-cols-7 grid-rows-5 rounded-lg border p-2 ">
+        <div className="border-brown bg-grassColor mx-auto grid w-80 grid-cols-7 grid-rows-5 rounded-lg border p-2 ">
           {grassElements}
         </div>
       </div>
