@@ -5,6 +5,15 @@ export const UserGrass = (props: any) => {
   const [showToolTip, setShowToolTip] = useState(false);
   const navigate = useNavigate();
 
+  const grassType = () => {
+    switch (props.count) {
+      case 1:
+        return 'bg-grass bg-contain';
+      default:
+        return 'bg-noGrass bg-contain';
+    }
+  };
+
   return (
     <div
       className="flex cursor-pointer whitespace-pre"
@@ -14,14 +23,14 @@ export const UserGrass = (props: any) => {
       onMouseLeave={() => setShowToolTip(false)}
     >
       <div
-        className={`m-[0.3rem] h-8 flex-grow rounded ${props.date !== '0' ? (props.write ? 'bg-grass bg-contain' : 'bg-noGrass') : 'bg-grassColor'}`}
+        className={`h-[50px] w-[50px] flex-grow rounded ${props.date !== '0' ? grassType() : 'bg-grassColor'}`}
         onClick={() => {
-          if (props.write) {
+          if (props.count >= 1) {
             navigate(`/board/${props.pageId}`);
           }
         }}
       ></div>
-      {props.write && showToolTip && props.date !== '0' && (
+      {props.count >= 1 && showToolTip && props.date !== '0' && (
         <div className="bg-default absolute -translate-x-1/2 -translate-y-full rounded bg-yellow-100 p-2 opacity-70">
           <p>
             <strong> Check TIL</strong> on {props.date}

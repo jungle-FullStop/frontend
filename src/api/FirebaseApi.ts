@@ -39,8 +39,8 @@ export const saveTokenOnServer = async (id: number, token: string) => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    const responseData = await response.json();
-    console.log('Token saved successfully on server:', responseData);
+    // const responseData = await response.json();
+    // console.log('Token saved successfully on server:', responseData);
   } catch (error) {
     console.error('Error while saving token on server:', error);
   }

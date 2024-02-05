@@ -1,9 +1,10 @@
 import API_PATH from '@/util/apiPath';
+import interceptor from '@api/fetchInterceptor.ts';
 
-export const userGrassInfo = async (userId: number, date: Date) => {
+export const getUserGrass = async (userId: number, date: Date) => {
   try {
-    const response = await fetch(API_PATH.Grass.user(userId, date), {
-      method: 'GET',
+    const response = await interceptor(API_PATH.Grass.user(userId, date), {
+      credentials: 'include',
     });
     const userGrass = await response.json();
     return userGrass;
@@ -12,10 +13,10 @@ export const userGrassInfo = async (userId: number, date: Date) => {
   }
 };
 
-export const teamGrassInfo = async (userId: number, date: Date) => {
+export const getTeamGrass = async (userId: number, date: Date) => {
   try {
-    const response = await fetch(API_PATH.Grass.team(userId, date), {
-      method: 'GET',
+    const response = await interceptor(API_PATH.Grass.team(userId, date), {
+      credentials: 'include',
     });
     const teamGrass = await response.json();
     return teamGrass;
