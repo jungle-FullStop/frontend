@@ -17,11 +17,10 @@ export const useGetTeamGrass = () => {
   });
 
   const getData = async () => {
-    const userId = localStorage.getItem('userId');
     const numberOfZeros = dateRange.filter((value) => value === '0').length;
 
     try {
-      const response = await getTeamGrass(Number(userId), today);
+      const response = await getTeamGrass(today);
       const newTILData = [...TilData];
       // 팀원이
       for (let teamUser = 0; teamUser < response.length; teamUser++) {

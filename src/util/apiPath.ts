@@ -60,8 +60,8 @@ const API_PATH = {
     search: (keyword: string) => SERVER_URL + HISTROY + '/search' + `/${keyword}`,
   },
   Grass: {
-    user: (userId: number, date: Date) => SERVER_URL + GRASS + `/${userId}` + `/${date}`,
-    team: (userId: number, date: Date) => SERVER_URL + GRASS + TEAM + `/${userId}` + `/${date}`,
+    user: () => SERVER_URL + GRASS + USER,
+    team: () => SERVER_URL + GRASS + TEAM,
   },
 };
 
