@@ -10,7 +10,6 @@ import apiPath from '@util/apiPath';
 import { createReport } from '@api/ReportAPI.ts';
 
 const Editor = () => {
-  const userId = localStorage.getItem('userId');
   const [title, setTitle] = useState<string>('');
   const navigate = useNavigate();
   const report = localStorage.getItem('todayReport') || dummyReport;
@@ -41,7 +40,7 @@ const Editor = () => {
 
   const refreshClickHandler = async () => {
     setReportRefresh(true);
-    const report = await createReport(Number(userId));
+    const report = await createReport();
     setReportRefresh(false);
     setValue(report?.report);
   };

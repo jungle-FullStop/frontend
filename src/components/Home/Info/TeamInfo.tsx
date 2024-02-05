@@ -64,7 +64,7 @@ const TeamInfo = () => {
   return (
     <div className="contents-container">
       <p className="text-center text-2xl font-bold">이달의 우수 정원사</p>
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-2 gap-5">
         {teamListData.data.map((data: MemberListResponse, index: number) => (
           <div className="flex flex-col items-center" key={index}>
             <TeamItem

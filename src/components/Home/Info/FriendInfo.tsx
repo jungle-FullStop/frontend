@@ -23,7 +23,7 @@ export const FriendInfo = () => {
 
   return (
     <div className="contents-container">
-      <p className="text-center text-2xl font-bold">TIL 연속 작성 순위</p>
+      <p className="text-center text-2xl font-bold">이달의 TIL 작성 순위</p>
       <div className="grid grid-cols-3">
         {friendListData.data.friends.length !== 0 ? (
           friendListData.data.friends
@@ -36,7 +36,7 @@ export const FriendInfo = () => {
                   alt="프로필 사진"
                 />
                 <p className="font-normal">{data.name}</p>
-                <p className="font-bold text-green-500">현재 {data.tilScore}일</p>
+                <p className="font-bold text-green-500">총 {data.tilScore}일</p>
               </div>
             ))
             .slice(0, 3)

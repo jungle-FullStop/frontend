@@ -51,7 +51,7 @@ const FriendList = ({ userId }: FriendListProps) => {
           type="text"
           name="friendSearch"
           id="friendSearch"
-          placeholder="닉네임"
+          placeholder="이름 입력"
           value={name}
           onChange={onChangeName}
         />

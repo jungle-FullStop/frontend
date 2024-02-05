@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export const TeamGrass = (props: any) => {
   const [showToolTip, setShowToolTip] = useState(false);
 
-  const [isWrite, SetIsWrite] = useState(false);
+  const [isWrite, setIsWrite] = useState(false);
 
   return (
     <div

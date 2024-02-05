@@ -1,14 +1,12 @@
 import API_PATH from '@util/apiPath';
 
-const TEMP_ID = 1;
-
 interface mindmapInfo {
   data: any;
 }
 
 export const createMindmap = async () => {
   try {
-    const response = await fetch(API_PATH.MINDMAP.create(TEMP_ID), {
+    const response = await fetch(API_PATH.MINDMAP.create(), {
       method: 'GET',
     });
     const mindmap: mindmapInfo = await response.json();
@@ -20,7 +18,7 @@ export const createMindmap = async () => {
 
 export const findMindmap = async () => {
   try {
-    const response = await fetch(API_PATH.MINDMAP.find(TEMP_ID), {
+    const response = await fetch(API_PATH.MINDMAP.find(), {
       method: 'GET',
     });
     const mindmap: mindmapInfo = await response.json();

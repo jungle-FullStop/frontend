@@ -10,7 +10,7 @@
     transition: background-color 0.3s ease;
   }
 }
-
+/* test  */
 .main-container {
   @apply flex h-screen w-full flex-col mx-auto px-4 py-2 lg:px-8 lg:py-4;
 }

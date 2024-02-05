@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { cancelRequestMember, deleteMember, allowMember, rejectMember } from '@api/MemberModal.ts';
+import { exileMember } from '@api/TeamAPI.ts';
 
 import { useToast } from '@hooks/useToast.tsx';
 
@@ -16,59 +16,20 @@ interface MemberModalItemProps {
   type: string;
 }
 
-const DB_WAITING_TIME = 100;
-
 const MemberModalItem = ({ email, profileImage, name, id, type }: MemberModalItemProps) => {
   const queryClient = useQueryClient();
   const openToast = useToast();
 
-  const cancelRequestMutation = useMutation({
-    mutationFn: (receiverId: number) => cancelRequestMember(receiverId),
-    onSuccess() {
-      openToast('팀원 신청을 취소했습니다.');
-      setTimeout(() => {
-        queryClient.invalidateQueries({
-          queryKey: [reactQueryKeys.SendList],
-        });
-      }, DB_WAITING_TIME);
-    },
-  });
-
   const deleteMemberMutation = useMutation({
-    mutationFn: (memberId: number) => deleteMember(memberId),
+    mutationFn: (memberId: number) => exileMember(memberId),
     onSuccess() {
-      openToast('팀원가 삭제되었습니다.');
+      openToast('팀원이 삭제되었습니다.');
       queryClient.invalidateQueries({
         queryKey: [reactQueryKeys.MemberList],
       });
       queryClient.invalidateQueries({
         queryKey: [reactQueryKeys.ProfileData],
       });
-    },
-  });
-
-  const allowMemberMutation = useMutation({
-    mutationFn: (senderId: number) => allowMember(senderId),
-    onSuccess() {
-      openToast('팀원 요청을 수락하였습니다.');
-      queryClient.invalidateQueries({
-        queryKey: [reactQueryKeys.ReceivedList],
-      });
-      queryClient.invalidateQueries({
-        queryKey: [reactQueryKeys.ProfileData],
-      });
-    },
-  });
-
-  const rejectMemberMutation = useMutation({
-    mutationFn: (senderId: number) => rejectMember(senderId),
-    onSuccess() {
-      openToast('팀원 요청을 거절하였습니다.');
-      setTimeout(() => {
-        queryClient.invalidateQueries({
-          queryKey: [reactQueryKeys.ReceivedList],
-        });
-      }, DB_WAITING_TIME);
     },
   });
 
@@ -84,38 +45,6 @@ const MemberModalItem = ({ email, profileImage, name, id, type }: MemberModalIte
           >
             팀원 삭제
           </Button>
-        );
-      case PROFILE_BUTTON_TYPE.RECEIVED:
-        return (
-          <div className="flex gap-2">
-            <button
-              onClick={() => {
-                rejectMemberMutation.mutate(+id);
-              }}
-              className="btn-reject"
-            >
-              거절
-            </button>
-            <button
-              onClick={() => {
-                allowMemberMutation.mutate(+id);
-              }}
-              className="btn-accept"
-            >
-              수락
-            </button>
-          </div>
-        );
-      case PROFILE_BUTTON_TYPE.SEND:
-        return (
-          <button
-            onClick={() => {
-              cancelRequestMutation.mutate(+id);
-            }}
-            className="btn-cancel"
-          >
-            신청 취소
-          </button>
         );
       case PROFILE_BUTTON_TYPE.STRANGER:
         return <div></div>;

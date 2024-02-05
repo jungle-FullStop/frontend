@@ -26,7 +26,8 @@ const MemberList = ({ userId }: MemberListProps) => {
     setName(e.target.value);
   };
 
-  const memberListData = useMemberListDataQuery(userId);
+  const memberListData = useMemberListDataQuery();
+  // console.log(memberListData.data);
 
   if (memberListData.isLoading) {
     return <p>팀원목록 가져오는 중...</p>;
@@ -51,7 +52,7 @@ const MemberList = ({ userId }: MemberListProps) => {
           type="text"
           name="memberSearch"
           id="memberSearch"
-          placeholder="닉네임"
+          placeholder="이름 입력"
           value={name}
           onChange={onChangeName}
         />
@@ -62,8 +63,8 @@ const MemberList = ({ userId }: MemberListProps) => {
         <div>
           <p className="mb-2 text-2xl font-bold">팀원 목록</p>
           <div className="flex h-60 flex-wrap justify-between overflow-scroll">
-            {memberListData.data.member.length !== 0 ? (
-              memberListData.data.member.map((data: MemberListResponse, index: number) => (
+            {memberListData.data.length !== 0 ? (
+              memberListData.data.map((data: MemberListResponse, index: number) => (
                 <MemberModalItem key={index} {...data} type={profileItemType} />
               ))
             ) : (

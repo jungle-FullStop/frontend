@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {(tailwindConfig: object) => object} */
 const withMT = require('@material-tailwind/react/utils/withMT');
 
 export default withMT({
@@ -15,5 +15,5 @@ export default withMT({
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/line-clamp')],
 });

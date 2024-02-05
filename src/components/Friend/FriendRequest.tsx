@@ -27,7 +27,7 @@ const FriendRequest = ({ userId }: FriendRequestProps) => {
           type="text"
           name="userSearch"
           id="userSearch"
-          placeholder="닉네임"
+          placeholder="이름 입력"
           value={name}
           onChange={onChangeName}
         />
@@ -54,7 +54,7 @@ const FriendRequest = ({ userId }: FriendRequestProps) => {
         <div>
           <p className="mb-6 text-2xl font-bold">검색 결과</p>
           <div className="flex flex-wrap justify-between">
-            <UserSearchContent name={name} />
+            <UserSearchContent name={name} mode={'friend'} />
           </div>
         </div>
       )}

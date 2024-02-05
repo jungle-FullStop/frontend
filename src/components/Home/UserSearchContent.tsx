@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import { getSearchUserList } from '@api/FriendModal';
 import FriendModalItem from '@components/Friend/FriendModalItem';
 import { PROFILE_BUTTON_TYPE, DEBOUNCE_TIME } from '@util/Constants/constants';
+import MemberModalItem from '@components/Member/MemberModalItem.tsx';
 
 interface UserSearchContentProps {
   name: string;
+  mode: string;
 }
 
 interface UserListResponse {
@@ -14,7 +16,7 @@ interface UserListResponse {
   profileImage: string;
 }
 
-const UserSearchContent = ({ name }: UserSearchContentProps) => {
+const UserSearchContent = ({ name, mode }: UserSearchContentProps) => {
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
@@ -36,10 +38,15 @@ const UserSearchContent = ({ name }: UserSearchContentProps) => {
       </div>
     );
   }
-
-  return AnotherUserData.map((data: UserListResponse, index: number) => (
-    <FriendModalItem key={index} {...data} type={PROFILE_BUTTON_TYPE.STRANGER} />
-  ));
+  if (mode === 'friend') {
+    return AnotherUserData.map((data: UserListResponse, index: number) => (
+      <FriendModalItem key={index} {...data} type={PROFILE_BUTTON_TYPE.STRANGER} />
+    ));
+  } else {
+    return AnotherUserData.map((data: UserListResponse, index: number) => (
+      <MemberModalItem key={index} {...data} type={PROFILE_BUTTON_TYPE.STRANGER} />
+    ));
+  }
 };
 
 export default UserSearchContent;

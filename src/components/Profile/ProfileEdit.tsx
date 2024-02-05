@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { updateProfile } from '@api/FriendModal.ts';
+import { updateProfile } from '@api/ProfileAPI.ts';
 
 import { useToast } from '@hooks/useToast.tsx';
 import { Button } from '@material-tailwind/react';
@@ -22,7 +22,7 @@ const ProfileEdit = ({ name }: ProfileEditProps) => {
   }
 
   const updateMutation = useMutation({
-    mutationFn: (formData: FormData) => updateProfile(formData),
+    mutationFn: (formData: FormData) => updateProfile(Number(userId), formData),
     onSuccess() {
       queryClient.invalidateQueries({
         queryKey: ['profileData', userId],

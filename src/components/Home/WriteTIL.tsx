@@ -25,7 +25,7 @@ export const WriteTIL = (props: any) => {
         <Button
           className={`bg-${props.color}-600 rounded-full px-4 py-2 text-2xl font-bold text-white`}
           onClick={() => {
-            useGenerateReport(Number(props.id));
+            useGenerateReport();
             navigate('/loading');
           }}
         >

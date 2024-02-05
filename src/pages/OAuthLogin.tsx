@@ -2,26 +2,38 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { googleLogin } from '@/api/LoginAPI';
+import { getProfile } from '@api/ProfileAPI.ts';
+import { getTeamProfile } from '@api/TeamAPI.ts';
 
 const AuthLogin = () => {
   const getUserId = async () => {
     const code = new URL(window.location.href).searchParams.get('code') ?? '';
     // const state = new URL(window.location.href).searchParams.get('state') ?? '';
     const userId = await googleLogin(code);
+    const profile = await getProfile(userId);
+    const teamProfile = await getTeamProfile(profile.teamCode);
 
-    const email = await getEmail(code);
-    localStorage.setItem('email', email);
-
+    // 유저 정보
     localStorage.setItem('userId', userId);
-    navigate('/home');
-  };
+    localStorage.setItem('email', profile.email);
+    localStorage.setItem('userName', profile.name);
+    localStorage.setItem('userProfileImage', profile.profileImage);
+    localStorage.setItem('userCreateAt', profile.createdAt);
+    localStorage.setItem('tilScore', profile.tilScore);
 
-  const getEmail = async (code: string) => {
-    const userInfoResponse = await fetch(
-      'https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=' + code,
-    );
-    const userInfo = await userInfoResponse.json();
-    return userInfo.email;
+    // 팀 정보
+    if (teamProfile) {
+      localStorage.setItem('teamId', teamProfile.id);
+      localStorage.setItem('teamCode', teamProfile.code);
+      localStorage.setItem('teamName', teamProfile.name);
+      localStorage.setItem('teamDescription', teamProfile.description);
+      localStorage.setItem('teamCreateAt', teamProfile.createdAt);
+    } else {
+      localStorage.setItem('teamCode', 'default');
+      localStorage.setItem('teamName', '티.나.끝');
+    }
+
+    navigate('/home');
   };
 
   const navigate = useNavigate();

@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { getMemberList } from '@api/MemberModal';
+import { getMemberList } from '@api/TeamAPI.ts';
 
 import { reactQueryKeys } from '@util/Constants/constants';
 
-const useMemberListDataQuery = (userId: number) => {
+const useMemberListDataQuery = () => {
   return useQuery({
-    queryKey: [reactQueryKeys.MemberList, userId],
-    queryFn: () => getMemberList(userId),
+    queryKey: [reactQueryKeys.MemberList],
+    queryFn: () => getMemberList(),
   });
 };
 
