@@ -47,10 +47,7 @@ export const getTeamProfile = async (teamCode: string) => {
     const response = await interceptor(API_PATH.TEAM.teamProfile(teamCode), {
       credentials: 'include',
     });
-
-    if (!response.ok) throw new Error('올바른 네트워크 응답이 아닙니다.');
-    const data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
     console.log('팀 조회에 실패했습니다.', error);
     return null;
@@ -64,10 +61,7 @@ export const getMemberList = async () => {
       method: 'POST',
       credentials: 'include',
     });
-
-    if (!response.ok) throw new Error('올바른 네트워크 응답이 아닙니다.');
-    const data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
     console.log('팀원목록 조회에 실패했습니다.', error);
   }
@@ -80,10 +74,7 @@ export const getMemberRankList = async () => {
       method: 'POST',
       credentials: 'include',
     });
-
-    if (!response.ok) throw new Error('올바른 네트워크 응답이 아닙니다.');
-    const data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
     console.log('팀원목록 조회에 실패했습니다.', error);
   }
@@ -94,10 +85,7 @@ export const recommendMember = async (name: string) => {
     const response = await interceptor(API_PATH.TEAM.search(name), {
       credentials: 'include',
     });
-
-    if (!response.ok) throw new Error('올바른 네트워크 응답이 아닙니다.');
-    const data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
     console.log('내 팀원목록 검색에 실패했습니다.', error);
   }
@@ -105,7 +93,7 @@ export const recommendMember = async (name: string) => {
 
 export const exileMember = async (memberId: number) => {
   try {
-    const response = await interceptor(API_PATH.TEAM.exile(), {
+    await interceptor(API_PATH.TEAM.exile(), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -113,8 +101,6 @@ export const exileMember = async (memberId: number) => {
       body: JSON.stringify({ id: memberId }),
       credentials: 'include',
     });
-
-    if (!response.ok) throw new Error('올바른 네트워크 응답이 아닙니다.');
   } catch (error) {
     console.error('팀원 삭제에 실패했습니다.', error);
   }

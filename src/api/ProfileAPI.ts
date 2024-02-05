@@ -6,9 +6,7 @@ export const getProfile = async (userId: number) => {
     const response = await interceptor(API_PATH.USER.userProfile(userId), {
       credentials: 'include',
     });
-    if (!response.ok) throw new Error('올바른 네트워크 응답이 아닙니다.');
-    const user = await response.json();
-    return user;
+    return await response.json();
   } catch (error) {
     console.error('프로필 불러오기에 실패했습니다.', error);
     return null;
