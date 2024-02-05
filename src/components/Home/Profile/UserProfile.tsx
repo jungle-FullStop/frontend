@@ -40,13 +40,21 @@ export const UserProfile = () => {
   };
 
   return (
-    <div className="contents-container">
+    <div className="contents-container flex flex-r">
+
+      <div>
       <img
         className={`border-brown profileImg mx-auto mb-5 h-40 w-40 rounded-full border-4 border-solid object-cover transition duration-1000 ease-in-out sm:mb-0 ${todayWrite ? 'border-green-500' : null}`}
         src={profileImage}
         alt="프로필 사진"
       />
-      <p className="text-3xl font-bold">{name}님, 안녕하세요 !</p>
+      </div>
+
+      <div>
+      <p className="text-2xl font-bold">{name}님, 안녕하세요 !</p>
+      </div>
+
+      <div>
       <ButtonGroup
         variant={'text'}
         className="border-brown grid w-max grid-flow-col rounded-2xl border-2 border-solid bg-white p-3"
@@ -72,6 +80,7 @@ export const UserProfile = () => {
           내 TIL 정보
         </Button>
       </ButtonGroup>
+      </div>
     </div>
   );
 };

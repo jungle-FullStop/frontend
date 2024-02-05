@@ -60,12 +60,12 @@ const Home = () => {
       <NavBar flipCard={flipCard} />
       <div className={`card ${isFlipped ? 'flipped' : ''}`}>
         <div className="sub-container card-front">
-          <div className="flex flex-row place-content-center gap-x-10">
-            <div className="flex flex-col gap-y-5">
+          <div className="w-full flex flex-row place-content-center gap-x-10">
+            <div className="w-1/2 flex flex-col gap-y-5">
               <UserProfile />
               <FriendInfo />
             </div>
-            <div className="flex flex-col gap-y-5">
+            <div className="w-1/3 flex flex-col gap-y-5">
               <WriteTIL id={userId} color="yellow" />
               <Quotes mode="user" />
               <UserGrassDiv />

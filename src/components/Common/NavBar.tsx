@@ -10,9 +10,18 @@ import { NAVBAR_MODAL_CONTENT_TYPE } from '@util/Constants/constants.ts';
 import ProfileEdit from '@components/Profile/ProfileEdit.tsx';
 import TeamSetting from '@components/Team/TeamSetting.tsx';
 import useGenerateReport from '@hooks/useGenerateReport.ts';
+import settingLogo from '@assets/image/settingLogo.png';
+import myPage from '@assets/image/myPage.png';
+import edit from '@assets/image/edit.png';
+import storage from '@assets/image/storage.png';
+import { todayState } from '@/store/Store';
+import { useRecoilValue } from 'recoil';
+
 
 
 export function NavBar(props: any) {
+  const todayWrite = useRecoilValue(todayState);
+
   const userId = localStorage.getItem('userId') as string;
   const name = localStorage.getItem('userName');
   const [openNav, setOpenNav] = useState(false);
@@ -67,14 +76,14 @@ export function NavBar(props: any) {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-semibold"
       >
-        <img src='./free-icon-font-apps-3917618 (1).png'/>
+        <img src={storage} className='w-5'></img>
         <button
           onClick={() => {
             navigate('/board');
           }}
           className="flex items-center"
         >
-          TIL 보러가기
+          TIL 저장소
         </button>
       </Typography>
       <Typography
@@ -83,13 +92,18 @@ export function NavBar(props: any) {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 semibold"
       >
+        <img src={edit} className='w-6'></img>
         <button
           onClick={() => {
-            useGenerateReport(Number(userId));
-            navigate('/loading');
+            if(todayWrite){
+              useGenerateReport(Number(userId));
+              navigate('/loading');
+            }else{
+              window.alert('아직 오늘의 TIL을 작성하지 않았습니다.')
+            }
           }}
         >
-          가이드라인
+          TIL 수정
         </button>
       </Typography>
       <Typography
@@ -98,6 +112,7 @@ export function NavBar(props: any) {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 semibold"
       >
+        <img src={myPage} className='w-5'></img>
         <button
           onClick={() => {
             openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.MYPAGE) });
@@ -112,7 +127,7 @@ export function NavBar(props: any) {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 semibold"
       >
-        <i className="fi fi-rr-apps"></i>
+       <img src={settingLogo} className='w-5'></img>
         <button
           onClick={() => {
             openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.TEAM) });
