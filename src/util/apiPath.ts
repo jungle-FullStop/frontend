@@ -31,7 +31,8 @@ const API_PATH = {
     create: () => SERVER_URL + MINDMAP + `/create`,
   },
   BOARD: {
-    find: (userId: number) => SERVER_URL + BOARD + `/find` + `/${userId}`,
+    find: () => SERVER_URL + BOARD + `/find/`,
+    userFind: (userId: number) => SERVER_URL + BOARD + `/find/` + `/${userId}`,
     create: () => SERVER_URL + BOARD + `/create/`,
   },
   FRIEND: {
@@ -57,6 +58,10 @@ const API_PATH = {
   },
   HISTROY: {
     search: (keyword: string) => SERVER_URL + HISTROY + '/search' + `/${keyword}`,
+  },
+  Grass: {
+    user: (userId: number, date: Date) => SERVER_URL + GRASS + `/${userId}` + `/${date}`,
+    team: (userId: number, date: Date) => SERVER_URL + GRASS + TEAM + `/${userId}` + `/${date}`,
   },
 };
 
