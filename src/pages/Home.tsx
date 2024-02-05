@@ -52,29 +52,37 @@ const Home = () => {
       <NavBar flipCard={flipCard} />
       <div className={`card ${isFlipped ? 'flipped' : ''}`}>
         <div className="sub-container card-front">
-          <div className="w-full flex flex-row place-content-center gap-x-10">
-            <div className="w-1/2 flex flex-col gap-y-5">
+          <div className="flex w-full flex-row place-content-center ">
+            <div className="flex w-[700px] flex-col">
+              <Quotes mode="user" />
+              <p className="mt-8 inline-block text-base font-bold text-gray-600">
+                이번 달 n개의 TIL을 작성하셨습니다 !
+              </p>
+              <UserGrassDiv />
+            </div>
+
+            <div className="flex w-1/3 flex-col gap-y-8">
               <UserProfile />
               <FriendInfo />
-            </div>
-            <div className="w-1/3 flex flex-col gap-y-5">
               <WriteTIL id={userId} color="yellow" />
-              <Quotes mode="user" />
-              <UserGrassDiv />
             </div>
           </div>
         </div>
 
         <div className="sub-container card-back">
-          <div className="flex flex-row place-content-center gap-x-10">
-            <div className="flex flex-col gap-y-5">
+          <div className="flex w-full flex-row place-content-center ">
+            <div className="flex w-[700px] flex-col gap-y-5">
+              <Quotes mode="team" />
+              <p className="mt-8 inline-block text-base font-bold text-gray-600">
+                이번 달 n개의 TIL을 작성하셨습니다 !
+              </p>
+              <TeamGrassDiv />
+            </div>
+
+            <div className="flex w-1/3 flex-col gap-y-8">
               <TeamProfile />
               <TeamInfo />
-            </div>
-            <div className="flex flex-col gap-y-5">
               <WriteTIL id={userId} color="green" />
-              <Quotes mode="team" />
-              <TeamGrassDiv />
             </div>
           </div>
         </div>

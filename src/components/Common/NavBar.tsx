@@ -28,13 +28,7 @@ export function NavBar(props: any) {
   const navigate = useNavigate();
   const [mode, setMode] = useState('user');
 
-  const changeColor = () => {
-    if (mode === 'Team') {
-      document.documentElement.style.backgroundColor = 'white';
-    } else if (mode === 'user') {
-      document.documentElement.style.backgroundColor = '#F5FFEC';
-    }
-  };
+
 
   const modifyMode = () => {
     if (mode === 'user') {
@@ -75,7 +69,6 @@ export function NavBar(props: any) {
     }
     props.flipCard();
     setTimeout(() => {
-      changeColor();
       modifyMode();
     }, 200);
   };
@@ -152,7 +145,7 @@ export function NavBar(props: any) {
   );
 
   return (
-    <Navbar fullWidth={true} className="mx-auto px-4 py-2 lg:px-8 lg:py-4">
+    <Navbar fullWidth={true} className="mx-auto py-2 lg:px-8 lg:py-4">
       <div className="w-full flex items-center justify-between text-blue-gray-900">
         <button
           className="flex flex-row gap-x-3"

@@ -11,19 +11,19 @@ export const WriteTIL = (props: any) => {
 
   return (
     <div className="contents-container">
-      <p className="text-center text-2xl font-bold">
+      <p className="text-center text-2xl font-bold mb-5">
         {todayWrite ? 'TIL을 작성하셨군요 !' : '아직 TIL을 작성하지 않으셨나요?'}
       </p>
       {todayWrite ? (
         <Button
-          className={`bg-${props.color}-600 rounded-full px-4 py-2 text-2xl font-bold text-white`}
+          className={`bg-${props.color}-600 rounded-full w-60 px-4 py-2 mx-auto text-2xl font-bold text-white`}
           onClick={() => navigate(`/board/${todayTILPage}`)}
         >
           TIL 보러가기
         </Button>
       ) : (
         <Button
-          className={`bg-${props.color}-600 rounded-full px-4 py-2 text-2xl font-bold text-white`}
+          className={`bg-${props.color}-600 rounded-full mx-auto w-60 px-4 py-2 text-2xl font-bold text-white`}
           onClick={() => {
             useGenerateReport();
             navigate('/loading');

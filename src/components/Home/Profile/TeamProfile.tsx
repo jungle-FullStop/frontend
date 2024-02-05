@@ -43,27 +43,35 @@ export const TeamProfile = () => {
   };
 
   return (
-    <div className="contents-container">
-      <img
-        className={`border-brown mx-auto mb-5 h-40 w-40 rounded-full border-4 border-solid object-cover transition duration-1000 ease-in-out sm:mb-0`}
-        src={teamImage}
-        alt="프로필 사진"
-      />
-      <p className="text-3xl font-bold">
-        팀 <span className={'text-green-500'}>{teamName}</span>에 어서오세요 !
-      </p>
+    <div className="profile-container">
+      <div className="flex w-full items-center gap-4 p-5">
+        <div className=''>
+          <img
+            className={`profileImg float-left mb-5 h-32 w-64 rounded-full object-cover  border-4 transition duration-1000 ease-in-out  sm:mb-0`}
+            src={teamImage}
+            alt="프로필 사진"
+          />
+        </div>
+        <div className='w-full'>
+        <p className="mb-0 text-2xl font-bold">
+          팀 <span className={'text-green-500'}>{teamName}</span>에 어서오세요 !
+        </p>
+        </div>
+      </div>
+      
+      <div>
       <ButtonGroup
         variant={'text'}
-        className="border-brown grid w-full grid-flow-col rounded-2xl border-2 border-solid bg-white p-4 text-lg font-bold"
+        className="border-brown grid  grid-flow-col border-t-2 border-solid bg-white"
       >
         <Button
-          className="cursor-pointer text-xl font-bold"
+          className="cursor-pointer text-base before:font-bold"
           onClick={() => openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.LIST) })}
         >
           팀에 소속된 팀원 {teamListData.data.length}명
         </Button>
         <Button
-          className="cursor-pointer text-xl font-bold"
+          className="cursor-pointer text-base font-bold"
           onClick={() =>
             openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.DETAIL) })
           }
@@ -71,6 +79,7 @@ export const TeamProfile = () => {
           팀 {teamName} 정보
         </Button>
       </ButtonGroup>
+      </div>
     </div>
   );
 };

@@ -25,7 +25,7 @@ export const TeamGrass = (props: any) => {
       onMouseLeave={() => setShowToolTip(false)}
     >
       <div
-        className={`h-[50px] w-[50px] flex-grow rounded ${props.date !== '0' ? grassType() : 'bg-grassColor'}`}
+        className={`h-[60px] flex-grow rounded ${props.date !== '0' ? grassType() : 'bg-grassColor'}`}
       ></div>
       {props.count >= 1 && showToolTip && props.date !== '0' && (
         <div className="bg-default absolute -translate-x-1/2 -translate-y-full rounded bg-yellow-100 p-2 opacity-70">

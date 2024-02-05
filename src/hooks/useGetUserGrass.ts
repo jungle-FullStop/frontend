@@ -8,7 +8,7 @@ import { getUserGrass } from '@api/GrassApi.ts';
 const today = new Date();
 
 export const useGetUserGrass = () => {
-  const [, setTodayWrite] = useRecoilState(todayState);
+  const [todayWrite, setTodayWrite] = useRecoilState(todayState);
   const [, setTodayTILPage] = useRecoilState(todayTILState);
 
   const [TilData, setTilDta] = useState<TIL[]>(() => {
@@ -55,11 +55,12 @@ export const useGetUserGrass = () => {
             newTILData[j + numberOfZeros].count += 1;
 
             // 다음 글로 넘어가기
-            break;
+            break;  
           }
         }
       }
       setTilDta(newTILData);
+      console.log(TilData)
     } catch (error) {
       console.log('Error fetching data:', error);
     }

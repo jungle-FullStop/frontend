@@ -16,14 +16,14 @@ export const UserGrass = (props: any) => {
 
   return (
     <div
-      className="flex cursor-pointer whitespace-pre"
+      className="flex cursor-pointer whitespace-pre  "
       onMouseEnter={() => {
         setShowToolTip(true);
       }}
       onMouseLeave={() => setShowToolTip(false)}
     >
       <div
-        className={`h-[50px] w-[50px] flex-grow rounded ${props.date !== '0' ? grassType() : 'bg-grassColor'}`}
+        className={`h-[60px] flex-grow rounded ${props.date !== '0' ? grassType() : 'bg-grassColor'}`}
         onClick={() => {
           if (props.count >= 1) {
             navigate(`/board/${props.pageId}`);
