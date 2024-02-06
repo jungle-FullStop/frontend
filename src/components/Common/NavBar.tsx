@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Navbar, Collapse, Typography, Button, IconButton } from '@material-tailwind/react';
 
 import logo from '@assets/image/logo.png';
-import teamLogo from '@assets/image/logo-team-love-three.png';
+import teamLogo from '@assets/image/logo-team.png';
 import { logout } from '@/api/LoginAPI';
 import useModal from '@hooks/useModal.tsx';
 import { NAVBAR_MODAL_CONTENT_TYPE } from '@util/Constants/constants.ts';
