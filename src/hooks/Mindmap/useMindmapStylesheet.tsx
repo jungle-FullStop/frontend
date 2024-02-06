@@ -68,21 +68,21 @@ export function generateStylesheet(elements: any): any {
       },
     },
     {
-      selector: '#react',
+      selector: '#REACT',
       style: {
         backgroundImage: reactImage,
         backgroundFit: 'cover',
       },
     },
     {
-      selector: '#nestjs',
+      selector: '#NESTJS',
       style: {
         backgroundImage: nestjsImage,
         backgroundFit: 'cover',
       },
     },
     {
-      selector: '#redis',
+      selector: '#REDIS',
       style: {
         backgroundImage: redisImage,
         backgroundFit: 'cover',
@@ -96,56 +96,56 @@ export function generateStylesheet(elements: any): any {
       },
     },
     {
-      selector: '#zustand',
+      selector: '#ZUSTAND',
       style: {
         backgroundImage: zustandImage,
         backgroundFit: 'cover',
       },
     },
     {
-      selector: '#recoil',
+      selector: '#RECOIL',
       style: {
         backgroundImage: recoilImage,
         backgroundFit: 'cover',
       },
     },
     {
-      selector: '#cytoscapejs',
+      selector: '#CYTOSCAPEJS',
       style: {
         backgroundImage: cytoscapejsImage,
         backgroundFit: 'cover',
       },
     },
     {
-      selector: '#docker',
+      selector: '#DOCKER',
       style: {
         backgroundImage: dockerImage,
         backgroundFit: 'cover',
       },
     },
     {
-      selector: '#nginx',
+      selector: '#NGINX',
       style: {
         backgroundImage: nginxImage,
         backgroundFit: 'cover',
       },
     },
     {
-      selector: '#tailwind',
+      selector: '#TAILWIND',
       style: {
         backgroundImage: tailwindImage,
         backgroundFit: 'cover',
       },
     },
     {
-      selector: '#typescript',
+      selector: '#TYPESCRIPT',
       style: {
         backgroundImage: typescriptImage,
         backgroundFit: 'cover',
       },
     },
     {
-      selector: '#typeorm',
+      selector: '#TYPEORM',
       style: {
         backgroundImage: typeormImage,
         backgroundFit: 'cover',
