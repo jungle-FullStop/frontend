@@ -14,7 +14,7 @@ export const useBoardCreate = () => {
   };
 
   const handleContentsChange = (e: any) => {
-    setContents(() => e.target.value);
+    setContents(() => e);
   };
   const handleBoardSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
