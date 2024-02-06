@@ -78,8 +78,8 @@ const Home = () => {
             <div className="flex w-1/3 flex-col gap-y-8">
               <Quotes mode="team" />
               <TeamProfile />
-              <TeamInfo />
-              <WriteTIL id={userId} color="green" />
+              <TeamInfo /> 
+              {/* <WriteTIL id={userId} color="green" /> */}
             </div>
           </div>
         </div>
