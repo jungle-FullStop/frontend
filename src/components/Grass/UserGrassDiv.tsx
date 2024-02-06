@@ -5,7 +5,7 @@ export const UserGrassDiv = () => {
   const TilData = useGetUserGrass();
 
   const grassElements = TilData.map((data, i) => {
-    return <UserGrass date={data.date} count={data.count} pageId={data.id} key={i} />;
+    return <UserGrass date={data.date} count={data.count} pageId={data.id} key={i} iter={i} />;
   });
 
   return (
