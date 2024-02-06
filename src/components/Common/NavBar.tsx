@@ -12,7 +12,6 @@ import useGenerateReport from '@hooks/useGenerateReport.ts';
 import UserDetail from '@components/Profile/UserDetail.tsx';
 
 export function NavBar(props: any) {
-  const userId = localStorage.getItem('userId') as string;
   const teamCode = localStorage.getItem('teamCode') as string;
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
@@ -122,7 +121,7 @@ export function NavBar(props: any) {
         </svg>
         <button
           onClick={() => {
-            useGenerateReport(Number(userId));
+            useGenerateReport();
             navigate('/loading');
           }}
         >

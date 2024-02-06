@@ -15,11 +15,11 @@ const DimStyle = {
 };
 
 // cytoscape 관련 함수
-export function setDimStyle(target_cy: NodeCollection) {
-  target_cy.nodes().forEach(function (target) {
+export function setDimStyle(target_cy: NodeCollection | undefined) {
+  target_cy?.nodes().forEach(function (target) {
     target.style(DimStyle);
   });
-  target_cy.edges().forEach(function (target) {
+  target_cy?.edges().forEach(function (target) {
     target.style(DimStyle);
   });
 }

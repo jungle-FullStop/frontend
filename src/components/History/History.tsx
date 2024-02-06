@@ -1,10 +1,12 @@
 import { ChangeEvent, useState } from 'react';
 import Keyword from '@components/History/Keyword.tsx';
 import HistroySearchContent from '@components/History/HistroySearchContent.tsx';
+import { useRecoilValue } from 'recoil';
+import { todayKeyword } from '@store/Store.ts';
 
 const History = () => {
   const [keyword, setKeyword] = useState<string>('');
-  const [keywordList] = useState<string[]>(['React', 'Redux']);
+  const keywordList = useRecoilValue(todayKeyword);
 
   const changeKeyword = (e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
@@ -25,15 +27,15 @@ const History = () => {
             className="border-brown ml-3 h-10 rounded-xl border px-4 outline-none"
           />
         </div>
-        <div className="ml-auto flex flex-wrap gap-2">
-          {keywordList.map((keyword, index) => (
-            <div className="cursor-pointer" key={index} onClick={() => setKeyword(keyword)}>
-              <Keyword text={keyword} />
-            </div>
-          ))}
-        </div>
       </div>
       <HistroySearchContent keyword={keyword} />
+      <div className="mr-auto flex flex-wrap gap-2">
+        {keywordList.map((keyword, index) => (
+          <div className="cursor-pointer" key={index} onClick={() => setKeyword(keyword)}>
+            <Keyword text={keyword} />
+          </div>
+        ))}
+      </div>
     </>
   );
 };

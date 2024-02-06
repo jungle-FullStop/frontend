@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
 import { Stylesheet } from 'cytoscape';
 import setupCy from '@util/SetupCy.ts';
@@ -8,6 +8,7 @@ import { generateMindmap } from '@hooks/Mindmap/useGenerateMindmap.tsx';
 import { nodePopper } from '@components/Loading/Mindmap/NodePopper.tsx';
 import { edgePopper } from '@components/Loading/Mindmap/EdgePopper.tsx';
 import { layouts } from '@type/components/Mindmap/mindmapLayouts.tsx';
+import { useContextMenuOptions } from '@hooks/Mindmap/useContextMenuOptions.ts';
 
 setupCy();
 
@@ -16,27 +17,36 @@ export const Mindmap = (props: any) => {
   const [elements] = useState(() => generateMindmap());
   const layout = layouts[props.name];
   const [stylesheet] = useState<Stylesheet[]>(generateStylesheet(getPageRank(elements)));
+  const cyRef = useRef<cytoscape.Core | null>(null);
+  const { contextMenuOptions } = useContextMenuOptions();
+
+  useEffect(() => {
+    cyRef.current?.cxtmenu(contextMenuOptions);
+
+    cyRef.current?.filter('node').forEach((t) => {
+      nodePopper(t);
+    });
+
+    cyRef.current?.filter('edge').forEach((t) => {
+      edgePopper(t);
+    });
+
+    cyRef.current?.on('select', 'node', function (e) {
+      setDimStyle(cyRef.current?.nodes());
+      setFocus(e.target);
+    });
+
+    cyRef.current?.on('unselect', function (e) {
+      setResetFocus(e.cy.elements(), getPageRank(elements));
+    });
+  }, []);
 
   return (
     <CytoscapeComponent
       cy={(cy) => {
-        cy.filter('node').forEach((t) => {
-          nodePopper(t);
-        });
-
-        cy.filter('edge').forEach((t) => {
-          edgePopper(t);
-        });
-
-        cy.on('select', 'node', function (e) {
-          setDimStyle(cy.nodes());
-          setFocus(e.target);
-        });
-
-        cy.on('unselect', function (e) {
-          setResetFocus(e.cy.elements(), getPageRank(elements));
-        });
-
+        if (!cyRef.current) {
+          cyRef.current = cy;
+        }
         // window.addEventListener('resize', function () {
         //   this.clearTimeout(resizeTimer);
         //   resizeTimer = this.setTimeout(function () {
