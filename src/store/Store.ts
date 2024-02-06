@@ -1,5 +1,4 @@
-import { RecoilState, atom } from 'recoil';
-import { BoardType } from '@/types/board/BoardType';
+import { atom } from 'recoil';
 import { Data } from '@/types/board/BoardType';
 
 const cardListState = atom({
@@ -16,14 +15,19 @@ const todayTILState = atom({
   default: 0,
 });
 
-let currentDate = new Date();
+const todayKeyword = atom({
+  key: 'todayKeyword',
+  default: [] as string[],
+});
 
-const TILArrayState= atom<Data>({
+const currentDate = new Date();
+
+const TILArrayState = atom<Data>({
   key: 'TILArray',
   default: {
     user: { id: -1, ProfileImg: '' },
-    boards: [{ contents: '', id: -1, userId: -1, timestamp: currentDate }]
+    boards: [{ contents: '', id: -1, userId: -1, timestamp: currentDate }],
   },
 });
 
-export { cardListState, todayState, todayTILState,TILArrayState };
+export { cardListState, todayState, todayTILState, TILArrayState, todayKeyword };
