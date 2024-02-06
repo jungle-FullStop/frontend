@@ -30,7 +30,7 @@ const LoadingButton = () => {
   }, [timer]);
 
   return (
-    <>
+    <div className=''>
       {componentType === 'button' ? (
         <div className="pe-5">
           <LoadingCircle />
@@ -47,7 +47,7 @@ const LoadingButton = () => {
         </Button>
       )}
       {timer > 0}
-    </>
+    </div>
   );
 };
 

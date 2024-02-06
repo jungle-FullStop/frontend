@@ -12,6 +12,7 @@ import Modal from '@components/Common/Modal';
 import useModal from '@hooks/useModal.tsx';
 import { Quotes } from '@components/Home/Quotes.tsx';
 import TeamInfo from '@components/Home/Info/TeamInfo.tsx';
+import { Slogan } from '@/components/Home/Slogan';
 
 const Home = () => {
   const userId = localStorage.getItem('userId') as string;
@@ -52,29 +53,33 @@ const Home = () => {
       <NavBar flipCard={flipCard} />
       <div className={`card ${isFlipped ? 'flipped' : ''}`}>
         <div className="sub-container card-front">
-          <div className="flex flex-row place-content-center gap-x-10">
-            <div className="flex flex-col gap-y-5">
+          <div className="flex w-full flex-row place-content-center ">
+            <div className="flex w-[700px] flex-col">
+              <Slogan color="yellow" />
+              <UserGrassDiv />
+            </div>
+
+            <div className="flex w-1/3 flex-col gap-y-8">
+              <Quotes mode="user" />
               <UserProfile />
               <FriendInfo />
-            </div>
-            <div className="flex flex-col gap-y-5">
-              <WriteTIL id={userId} color="yellow" />
-              <Quotes mode="user" />
-              <UserGrassDiv />
+              {/* <WriteTIL id={userId} color="yellow" /> */}
             </div>
           </div>
         </div>
 
         <div className="sub-container card-back">
-          <div className="flex flex-row place-content-center gap-x-10">
-            <div className="flex flex-col gap-y-5">
+          <div className="flex w-full flex-row place-content-center ">
+            <div className="flex w-[700px] flex-col">
+              <Slogan color="green" />
+              <TeamGrassDiv />
+            </div>
+
+            <div className="flex w-1/3 flex-col gap-y-8">
+              <Quotes mode="team" />
               <TeamProfile />
               <TeamInfo />
-            </div>
-            <div className="flex flex-col gap-y-5">
               <WriteTIL id={userId} color="green" />
-              <Quotes mode="team" />
-              <TeamGrassDiv />
             </div>
           </div>
         </div>

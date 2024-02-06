@@ -14,9 +14,9 @@ const History = () => {
 
   return (
     <>
-      <p className="text-end text-3xl font-bold">키워드를 검색해서</p>
+      <p className="text-xl font-bold mb-3">마인드맵의 키워드를 검색하세요 !</p>
       <div className="flex flex-row">
-        <div className={'flex flex-row items-center'}>
+        <div className={'flex flex-row items-center mb-2'}>
           <p className="text-xl font-bold">키워드:</p>
           <input
             type="text"

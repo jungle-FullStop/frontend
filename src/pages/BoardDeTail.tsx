@@ -48,7 +48,7 @@ const BoardDetail = () => {
   return (
     <div className="main-container">
       <NavBar></NavBar>
-      <div className="mb-5 mt-5 flex flex-row items-end">
+      <div className="mb-5 mt-5 flex flex-row items-end w-[90%] mx-auto">
         <img
           className="mr-5 h-10 w-10 rounded-full object-cover object-center"
           src={userImage as string | undefined}
@@ -56,8 +56,8 @@ const BoardDetail = () => {
         />
         <p className={'text-lg'}> 작성 {beforeTime}</p>
       </div>
-      <div className="contents-container">
-        <div data-color-mode="light">
+      <div className="w-[90%] mx-auto border-4 border-gray-300 p-5">
+        <div data-color-mode="light ">
           <MDEditor.Markdown source={content} />
         </div>
       </div>
