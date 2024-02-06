@@ -1,5 +1,3 @@
-import { isDevelopment } from '../../../vite.config.ts';
-
 export const PAGE_URL = {
   LANDING: '/',
   HOME: '/home',
@@ -14,8 +12,11 @@ export const PAGE_URL = {
 
 export const WAITING_TIME = 5;
 
-const redirect_page = isDevelopment ? 'http://localhost:5173/' : 'https://tilfullstop.site/';
-import.meta.env.DEV;
+const redirect_page = import.meta.env.VITE_APP_ENV
+  ? import.meta.env.VITE_APP_ENV === 'development'
+    ? 'http://localhost:5173/'
+    : 'https://tilfullstop.site/'
+  : 'http://localhost:5173/';
 
 export const GOOGLE_LOGIN_FORM_URL =
   'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&' +
