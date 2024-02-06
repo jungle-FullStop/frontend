@@ -20,7 +20,7 @@ const TeamInfo = () => {
   useEffect(() => {
     // 데이터 로딩 완료를 확인합니다.
     if (!teamListData.isLoading && !teamListData.isError) {
-      const eventSource = new EventSource(`/api/team/team.status`);
+      const eventSource = new EventSource(`/team/team.status`);
 
       eventSource.onmessage = (event) => {
         let newStatusData = JSON.parse(event.data);
