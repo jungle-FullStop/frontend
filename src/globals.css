@@ -10,9 +10,34 @@
     transition: background-color 0.3s ease;
   }
 }
+
+@font-face {
+  font-family: 'MaplestoryOTFBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HSYuji-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.TTLFont{
+  font-family: 'MaplestoryOTFBold'
+}
+
+.grassFont{
+  font-family: 'HSYuji-Regular'
+}
+
+
+
 /* test  */
 .main-container {
-  @apply mx-auto flex h-screen w-full flex-col ;
+  @apply mx-auto flex h-screen w-full flex-col;
 }
 
 .sub-container {
@@ -28,7 +53,7 @@
 }
 
 .quote-container {
-  @apply border-2 flex w-[500px] flex-col rounded-lg border-gray-200 bg-white pt-5 pl-5 pr-5;
+  @apply border-2 mt-3 flex w-[500px] flex-col rounded-lg border-gray-200 bg-white pt-5 pl-5 pr-5;
 }
 
 .grass-container {
@@ -54,7 +79,7 @@
 .TIL {
   margin-top: 2%;
   margin-bottom: 2%;
-  width: 30%;
+  width: 25%;
   height: 50vh;
   max-height: 400px;
   transition: 0.4s ease-in-out;

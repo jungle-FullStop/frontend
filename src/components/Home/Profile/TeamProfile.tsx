@@ -5,6 +5,7 @@ import MemberList from '@components/Member/MemberList.tsx';
 import { PROFILE_MODAL_CONTENT_TYPE } from '@util/Constants/constants.ts';
 import TeamDetail from '@components/Profile/TeamDetail.tsx';
 import useTeamListQuery from '@hooks/useTeamListQuery.ts';
+import { WriteTIL } from '../WriteTIL';
 
 export const TeamProfile = () => {
   const userId = localStorage.getItem('userId');
@@ -53,9 +54,10 @@ export const TeamProfile = () => {
           />
         </div>
         <div className='w-full'>
-        <p className="mb-0 text-2xl font-bold">
+        <p className="mb-3 text-2xl font-bold">
           팀 <span className={'text-green-500'}>{teamName}</span>에 어서오세요 !
         </p>
+        <WriteTIL id={userId} color="green" />
         </div>
       </div>
       

@@ -61,7 +61,8 @@ export const Mindmap = (props: any) => {
         // border: '3px solid black',
         backgroundColor: '#ffffff',
         borderRadius: '10px',
-        margin : '0 auto'
+        margin : '0 auto',
+        marginTop : '20px'
       }}
       layout={layout}
       stylesheet={stylesheet}

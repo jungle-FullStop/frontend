@@ -145,7 +145,7 @@ export function NavBar(props: any) {
   );
 
   return (
-    <Navbar fullWidth={true} className="mx-auto py-2 lg:px-8 lg:py-4">
+    <Navbar fullWidth={true} className="mx-auto py-2 lg:px-8 lg:py-4 ">
       <div className="w-full flex items-center justify-between text-blue-gray-900">
         <button
           className="flex flex-row gap-x-3"
@@ -156,14 +156,14 @@ export function NavBar(props: any) {
           {mode === 'user' ? (
             <>
               <img src={logo} alt="메인로고" className="w-12" />
-              <Typography color="amber" className="self-center text-4xl font-extrabold">
+              <Typography color="amber" className="self-center text-3xl font-extrabold">
                 티.나.끝
               </Typography>
             </>
           ) : (
             <>
               <img src={teamLogo} alt="메인로고" className="w-12" />
-              <Typography color="green" className="self-center text-4xl font-extrabold">
+              <Typography color="green" className="self-center text-3xl font-extrabold">
                 팀.나.끝
               </Typography>
             </>

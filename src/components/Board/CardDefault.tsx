@@ -18,7 +18,7 @@ export function CardDefault(props: any) {
   const userName = props.userName;
 
   return (
-    <Card className="h-full max-w-[24rem] overflow-hidden">
+    <Card className="h-full w-full overflow-hidden">
       <CardHeader
         floated={false}
         shadow={false}

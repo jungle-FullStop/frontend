@@ -2,6 +2,7 @@ import { Button, ButtonGroup } from '@material-tailwind/react';
 import anonymousImage from '@assets/image/anonymousImage.png';
 import useModal from '@hooks/useModal.tsx';
 import FriendList from '@components/Friend/FriendList.tsx';
+import { WriteTIL } from '../WriteTIL';
 
 import { PROFILE_MODAL_CONTENT_TYPE } from '@util/Constants/constants';
 import FriendRequest from '@components/Friend/FriendRequest.tsx';
@@ -57,7 +58,8 @@ export const UserProfile = () => {
           />
         </div>
         <div className="w-full">
-          <p className="mb-0 text-2xl font-bold">{name}님, 안녕하세요 !</p>
+          <p className="mb-3 text-2xl font-bold">{name}님, 안녕하세요 !</p>
+          <WriteTIL id={userId} color="yellow"/>
         </div>
       </div>
 

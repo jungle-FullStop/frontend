@@ -8,24 +8,28 @@ const Loading = () => {
   const [layout, setLayout] = useState('fcose');
 
 
-  useEffect(()=>{
-    setTimeout(() => {
-      setLayout('circle');
-    }, 1500);
-    setTimeout(() => {
-      setLayout('grid');
-    }, 3000);
-    setTimeout(() => {
-      setLayout('fcose');
-    }, 5000);
-  },[])
+  useEffect(() => {
+    const delay = (sec : number) => new Promise(resolve => setTimeout(resolve,sec));
   
+    const updateLayout = async () => {
+      await delay(1300);
+      setLayout('circle');
+      await delay(700);
+      setLayout('grid');
+      await delay(1000); 
+      setLayout('breadthfirst');
+      await delay(700); 
+      setLayout('fcose');
+    };
+  
+    updateLayout();
+  }, []);
 
   return (
     <div className="main-container">
       <NavBar />
       <div></div>
-      <div className=" mx-auto mb-5 mt-5 flex w-[90%] items-center justify-between last:py-3">
+      <div className=" mx-auto h-[40px] mt-10 flex w-[90%] items-center justify-between last:py-3">
         <div className="">
           <ButtonGroup variant="outlined">
             <Button

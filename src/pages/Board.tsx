@@ -11,11 +11,7 @@ export const Board = () => {
   return (
     <div className="main-container">
       <NavBar></NavBar>
-      <div className=" mt-5 flex w-1/3 min-w-96">
-        <div className="w-full">
-          <TabsWithIcon />
-        </div>
-      </div>
+      <div className='w-[90%}'>
       <div className="TIL-container">
         {cardList
           ? cardList.map((data: any, items: number) => {
@@ -37,6 +33,7 @@ export const Board = () => {
               );
             })
           : null}
+      </div>
       </div>
     </div>
   );

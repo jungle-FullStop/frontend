@@ -12,6 +12,7 @@ import Modal from '@components/Common/Modal';
 import useModal from '@hooks/useModal.tsx';
 import { Quotes } from '@components/Home/Quotes.tsx';
 import TeamInfo from '@components/Home/Info/TeamInfo.tsx';
+import { Slogan } from '@/components/Home/Slogan';
 
 const Home = () => {
   const userId = localStorage.getItem('userId') as string;
@@ -54,32 +55,28 @@ const Home = () => {
         <div className="sub-container card-front">
           <div className="flex w-full flex-row place-content-center ">
             <div className="flex w-[700px] flex-col">
-              <Quotes mode="user" />
-              <p className="mt-8 inline-block text-base font-bold text-gray-600">
-                이번 달 n개의 TIL을 작성하셨습니다 !
-              </p>
+              <Slogan color="yellow" />
               <UserGrassDiv />
             </div>
 
             <div className="flex w-1/3 flex-col gap-y-8">
+              <Quotes mode="user" />
               <UserProfile />
               <FriendInfo />
-              <WriteTIL id={userId} color="yellow" />
+              {/* <WriteTIL id={userId} color="yellow" /> */}
             </div>
           </div>
         </div>
 
         <div className="sub-container card-back">
           <div className="flex w-full flex-row place-content-center ">
-            <div className="flex w-[700px] flex-col gap-y-5">
-              <Quotes mode="team" />
-              <p className="mt-8 inline-block text-base font-bold text-gray-600">
-                이번 달 n개의 TIL을 작성하셨습니다 !
-              </p>
+            <div className="flex w-[700px] flex-col">
+              <Slogan color="green" />
               <TeamGrassDiv />
             </div>
 
             <div className="flex w-1/3 flex-col gap-y-8">
+              <Quotes mode="team" />
               <TeamProfile />
               <TeamInfo />
               <WriteTIL id={userId} color="green" />

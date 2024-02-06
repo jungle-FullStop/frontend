@@ -34,4 +34,9 @@ const TILArrayState = atom<Data>({
   },
 });
 
-export { cardListState, todayState, todayTILState, TILArrayState, todayKeyword };
+const numberOfTILSate = atom({
+  key : 'numberOfTIL',
+  default : 0
+})
+
+export { cardListState, numberOfTILSate, todayState, todayTILState, TILArrayState, todayKeyword };
