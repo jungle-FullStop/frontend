@@ -5,7 +5,7 @@ import { resolve } from 'path';
 // 현재 작업 디렉토리에서 환경 변수 로드
 const env = loadEnv('', process.cwd())['VITE_APP_ENV'];
 // 환경 변수가 'development'이거나 설정되지 않았으면 개발 환경으로 간주
-const isDevelopment = !env || env === 'development';
+export const isDevelopment = !env || env === 'development';
 export default defineConfig({
   plugins: [react()],
   resolve: {
