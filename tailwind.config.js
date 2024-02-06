@@ -15,7 +15,7 @@ export default withMT({
         grassColor: '#B56F2A',
       },
       backgroundImage: {
-        landing: "url('./src/assets/image/landingBackground.png')",
+        landing: "url('./src/assets/image/landingBackground.jpg')",
         grass: "url('./src/assets/Grass/Grass.png')",
         noGrass: "url('./src/assets/Grass/NoGrass.png')",
         stage1: "url('./src/assets/Grass/Sunflower_1.png')",

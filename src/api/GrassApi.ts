@@ -1,9 +1,14 @@
 import API_PATH from '@/util/apiPath';
 import interceptor from '@api/fetchInterceptor.ts';
 
-export const getUserGrass = async (userId: number, date: Date) => {
+export const getUserGrass = async (date: Date) => {
   try {
-    const response = await interceptor(API_PATH.Grass.user(userId, date), {
+    const response = await interceptor(API_PATH.Grass.user(), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ date: date }),
       credentials: 'include',
     });
     return await response.json();
@@ -12,9 +17,14 @@ export const getUserGrass = async (userId: number, date: Date) => {
   }
 };
 
-export const getTeamGrass = async (userId: number, date: Date) => {
+export const getTeamGrass = async (date: Date) => {
   try {
-    const response = await interceptor(API_PATH.Grass.team(userId, date), {
+    const response = await interceptor(API_PATH.Grass.team(), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ date: date }),
       credentials: 'include',
     });
     return await response.json();

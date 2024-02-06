@@ -22,11 +22,10 @@ export const useGetUserGrass = () => {
   });
 
   const getData = async () => {
-    const userId = localStorage.getItem('userId');
     const numberOfZeros = dateRange.filter((value) => value === '0').length;
 
     try {
-      const response = await getUserGrass(Number(userId), today);
+      const response = await getUserGrass(today);
       const currentDate = new Date();
       const newTILData = [...TilData];
       // 작성한 글 중에

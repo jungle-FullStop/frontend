@@ -101,8 +101,8 @@ export function NavBar(props: any) {
         <button
           onClick={() => {
             if(todayWrite){
-              useGenerateReport(Number(userId));
-              navigate('/loading');
+              useGenerateReport();
+            navigate('/loading');
             }else{
               window.alert('아직 오늘의 TIL을 작성하지 않았습니다.')
             }

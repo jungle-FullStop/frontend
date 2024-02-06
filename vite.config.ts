@@ -1,8 +1,11 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 
-// https://vitejs.dev/config/
+// 현재 작업 디렉토리에서 환경 변수 로드
+const env = loadEnv('', process.cwd())['VITE_APP_ENV'];
+// 환경 변수가 'development'이거나 설정되지 않았으면 개발 환경으로 간주
+const isDevelopment = !env || env === 'development';
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -19,14 +22,16 @@ export default defineConfig({
     },
   },
   server: {
-    proxy: {
-      // 프록시 설정
-      '/api': {
-        target: 'http://localhost:3000', // 백엔드 서버 주소
-        changeOrigin: true, // cross-origin 요청을 위해 필요
-        rewrite: (path) => path.replace(/^\/api/, ''), // 경로 재작성 옵션
-      },
-      // 다른 프록시 규칙 추가 가능
-    },
+    // 개발 환경일 때만 프록시 설정 적용
+    proxy: isDevelopment
+      ? {
+          '/api': {
+            target: 'http://localhost:3000',
+            changeOrigin: true,
+            rewrite: (path) => path.replace(/^\/api/, ''),
+          },
+        // 추가 프록시 규칙
+        }
+      : {},
   },
 });

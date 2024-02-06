@@ -9,7 +9,6 @@ const LoadingButton = () => {
   const navigate = useNavigate();
   const [componentType, setComponentType] = useState('button');
   const [timer, setTimer] = useState(WAITING_TIME);
-
   const getReport = async () => {
     const report = await findReport();
     localStorage.setItem('todayReport', report?.report);
