@@ -8,5 +8,7 @@ export default function () {
   if (typeof Cytoscape('core', 'popper') == 'undefined') {
     Cytoscape.use(popper);
   }
-  Cytoscape.use(cxtmenu);
+  if (typeof Cytoscape('core', 'cxtmenu') == 'undefined') {
+    Cytoscape.use(cxtmenu);
+  }
 }

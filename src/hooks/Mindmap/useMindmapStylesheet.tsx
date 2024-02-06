@@ -39,8 +39,12 @@ export function generateStylesheet(pageRank: SearchPageRankResult) {
         'font-size': function (ele: NodeCollection) {
           return graph.fontMaxSize * pageRank.rank(ele) + graph.fontMinSize;
         },
+        'font-weight': 'bold',
+
+        'outline-color': graph.nodeColor,
+        'outline-width': 10,
+        'outline-opacity': 0.5,
       },
-      color: graph.nodeColor,
     },
     {
       selector: 'edge',

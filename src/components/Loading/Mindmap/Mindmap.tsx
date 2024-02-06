@@ -32,7 +32,7 @@ export const Mindmap = (props: any) => {
     });
 
     cyRef.current?.on('select', 'node', function (e) {
-      setDimStyle(cyRef.current?.nodes());
+      setDimStyle(cyRef.current?.elements());
       setFocus(e.target);
     });
 

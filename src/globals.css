@@ -115,16 +115,10 @@
 
 /* 마인드맵 */
 .target-popper {
-  display: none;
-  padding: 1rem;
-  text-align: left;
-  border-radius: 10%;
-  border: 1px solid #ccc;
-  background: #fff;
-  z-index: 2;
+  @apply p-2 text-center hidden rounded bg-yellow-100 opacity-70 z-20;
 }
 .target-popper.active {
-  display: block;
+  @apply block;
 }
 
 /* 모달창 버튼 */

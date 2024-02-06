@@ -1,21 +1,16 @@
-import {
-  CollectionReturnValue,
-  NodeCollection,
-  SearchPageRankResult,
-  SingularElementReturnValue,
-} from 'cytoscape';
+import { CollectionReturnValue, SearchPageRankResult, SingularElementReturnValue } from 'cytoscape';
 import * as graph from '@/util/Constants/mindmapConstants';
 
 const dimColor = '#dfe4ea';
 const DimStyle = {
   'background-color': dimColor,
   'line-color': dimColor,
-  'target-arrow-color': dimColor,
+  'source-arrow-color': dimColor,
   color: dimColor,
 };
 
 // cytoscape 관련 함수
-export function setDimStyle(target_cy: NodeCollection | undefined) {
+export function setDimStyle(target_cy: SingularElementReturnValue | undefined) {
   target_cy?.nodes().forEach(function (target) {
     target.style(DimStyle);
   });
