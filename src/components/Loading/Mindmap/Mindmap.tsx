@@ -2,13 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
 import { Stylesheet } from 'cytoscape';
 import setupCy from '@util/SetupCy.ts';
-import { generateStylesheet, getPageRank } from '@hooks/Mindmap/useMindmapStylesheet.tsx';
+import { generateStylesheet } from '@hooks/Mindmap/useMindmapStylesheet.tsx';
 import { setDimStyle, setFocus, setResetFocus } from '@hooks/Mindmap/useMindmapFunc.tsx';
 import { generateMindmap } from '@hooks/Mindmap/useGenerateMindmap.tsx';
 import { nodePopper } from '@components/Loading/Mindmap/NodePopper.tsx';
 import { edgePopper } from '@components/Loading/Mindmap/EdgePopper.tsx';
 import { layouts } from '@type/components/Mindmap/mindmapLayouts.tsx';
 import { useContextMenuOptions } from '@hooks/Mindmap/useContextMenuOptions.ts';
+import { getPageRank } from '@hooks/Mindmap/useGetPageRank.ts';
 
 setupCy();
 
@@ -16,7 +17,7 @@ export const Mindmap = (props: any) => {
   // let resizeTimer: number;
   const [elements] = useState(() => generateMindmap());
   const layout = layouts[props.name];
-  const [stylesheet] = useState<Stylesheet[]>(generateStylesheet(getPageRank(elements)));
+  const [stylesheet] = useState<Stylesheet[]>(generateStylesheet(elements));
   const cyRef = useRef<cytoscape.Core | null>(null);
   const { contextMenuOptions } = useContextMenuOptions();
 
@@ -32,7 +33,7 @@ export const Mindmap = (props: any) => {
     });
 
     cyRef.current?.on('select', 'node', function (e) {
-      setDimStyle(cyRef.current?.nodes());
+      setDimStyle(cyRef.current?.elements());
       setFocus(e.target);
     });
 
