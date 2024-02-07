@@ -6,7 +6,7 @@ const Edit = () => {
   return (
     <div className="main-container">
       <NavBar />
-      <div className="w-[90%] mx-auto">
+      <div className="mx-auto w-[90%] py-10">
         <div className="flex flex-row gap-x-3">
           <div className="contents-container">
             <History />

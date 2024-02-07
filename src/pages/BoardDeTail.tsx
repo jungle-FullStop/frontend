@@ -4,9 +4,11 @@ import { BoardType } from '@/types/board/BoardType';
 import MDEditor from '@uiw/react-md-editor';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import anonymousImage from '@assets/image/anonymousImage.png';
 
 const BoardDetail = () => {
   const { id } = useParams();
+  const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [beforeTime, setBeforeTime] = useState<string>();
   const userImage = localStorage.getItem('userProfileImage');
@@ -20,6 +22,7 @@ const BoardDetail = () => {
           const selectedCard: BoardType = cardList.find(
             (card: BoardType) => card.id === parseInt(id as string, 10),
           );
+          setTitle(selectedCard.title);
           setContent(selectedCard.contents);
           const writeDate = new Date(selectedCard.timestamp);
           const currentDate = new Date();
@@ -47,16 +50,17 @@ const BoardDetail = () => {
 
   return (
     <div className="main-container">
-      <NavBar></NavBar>
-      <div className="mb-5 mt-5 flex flex-row items-end w-[90%] mx-auto">
+      <NavBar />
+      <div className="mx-auto mb-5 mt-5 flex w-[90%] flex-row items-end">
         <img
           className="mr-5 h-10 w-10 rounded-full object-cover object-center"
-          src={userImage as string | undefined}
+          src={userImage ? userImage : anonymousImage}
           alt="nature image"
         />
+        <p className={'pr-5 text-3xl font-bold'}> {title}</p>
         <p className={'text-lg'}> 작성 {beforeTime}</p>
       </div>
-      <div className="w-[90%] mx-auto border-4 border-gray-300 p-5">
+      <div className="mx-auto w-[90%] border-4 border-gray-300 p-5">
         <div data-color-mode="light ">
           <MDEditor.Markdown source={content} />
         </div>
