@@ -89,7 +89,7 @@ export function generateStylesheet(elements: any): any {
       },
     },
     {
-      selector: '#jotai',
+      selector: '#JOTAI',
       style: {
         backgroundImage: jotaiImage,
         backgroundFit: 'cover',

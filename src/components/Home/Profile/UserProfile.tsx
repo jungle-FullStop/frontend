@@ -59,7 +59,7 @@ export const UserProfile = () => {
         </div>
         <div className="w-full">
           <p className="mb-3 text-2xl font-bold">{name}님, 안녕하세요 !</p>
-          <WriteTIL id={userId} color="yellow"/>
+          <WriteTIL id={userId} color="yellow" />
         </div>
       </div>
 
@@ -86,7 +86,6 @@ export const UserProfile = () => {
           </Button>
         </ButtonGroup>
       </div>
-
     </div>
   );
 };

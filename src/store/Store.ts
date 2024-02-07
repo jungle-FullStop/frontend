@@ -6,14 +6,13 @@ const cardListState = atom({
   default: [],
 });
 
-
 //오늘 TIL을 썼으면 true 안 썼으면 false 가지는 변수
 const todayState = atom({
   key: 'today',
   default: false,
 });
 
-//오늘 TIL의 id(페이지) 값 저장할 변수 
+//오늘 TIL의 id(페이지) 값 저장할 변수
 const todayTILState = atom({
   key: 'todayTIL',
   default: 0,
@@ -30,13 +29,13 @@ const TILArrayState = atom<Data>({
   key: 'TILArray',
   default: {
     user: { id: -1, ProfileImg: '' },
-    boards: [{ contents: '', id: -1, userId: -1, timestamp: currentDate }],
+    boards: [{ title: '', contents: '', id: -1, userId: -1, timestamp: currentDate }],
   },
 });
 
 const numberOfTILSate = atom({
-  key : 'numberOfTIL',
-  default : 0
-})
+  key: 'numberOfTIL',
+  default: 0,
+});
 
 export { cardListState, numberOfTILSate, todayState, todayTILState, TILArrayState, todayKeyword };

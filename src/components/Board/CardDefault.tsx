@@ -28,6 +28,7 @@ export function CardDefault(props: any) {
         <img src={TIL} alt="ui/ux review check " className="h-full w-full object-cover" />
       </CardHeader>
       <CardBody className="h-2/3">
+        <h2 className="text-2xl font-semibold">{props.cardTitle}</h2>
         <p className={'text-blue-gray-500'}>{` ${currentMonth}월 ${currentDay}일 TIL`}</p>
         <div className="m-5"></div>
         <ReactMarkdown>{shortenedContents}</ReactMarkdown>
