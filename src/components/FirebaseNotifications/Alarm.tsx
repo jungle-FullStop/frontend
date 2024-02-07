@@ -20,7 +20,7 @@ function Icon() {
 }
 
 export default function Alarm(props: any) {
-  const [open, setOpen] = React.useState(true);
+  const [open] = React.useState(true);
   // const pusher = props.pusher;
   const title = props.title;
   const body = props.body;

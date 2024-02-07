@@ -16,19 +16,15 @@ import storage from '@assets/image/storage.png';
 import { todayState } from '@/store/Store';
 import { useRecoilValue } from 'recoil';
 
-
 import UserDetail from '@components/Profile/UserDetail.tsx';
 
 export function NavBar(props: any) {
   const todayWrite = useRecoilValue(todayState);
 
-  const userId = localStorage.getItem('userId') as string;
   const teamCode = localStorage.getItem('teamCode') as string;
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
   const [mode, setMode] = useState('user');
-
-
 
   const modifyMode = () => {
     if (mode === 'user') {
@@ -77,11 +73,11 @@ export function NavBar(props: any) {
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-10">
       <Typography
         as="li"
-        variant ="h6"
+        variant="h6"
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-semibold"
       >
-        <img src={storage} className='w-5'></img>
+        <img src={storage} className="w-5"></img>
         <button
           onClick={() => {
             navigate('/board');
@@ -95,16 +91,16 @@ export function NavBar(props: any) {
         as="li"
         variant="h6"
         color="blue-gray"
-        className="flex items-center gap-x-2 p-1 semibold"
+        className="semibold flex items-center gap-x-2 p-1"
       >
-        <img src={edit} className='w-6'></img>
+        <img src={edit} className="w-6"></img>
         <button
           onClick={() => {
-            if(todayWrite){
+            if (todayWrite) {
               useGenerateReport();
-            navigate('/loading');
-            }else{
-              window.alert('아직 오늘의 TIL을 작성하지 않았습니다.')
+              navigate('/loading');
+            } else {
+              window.alert('아직 오늘의 TIL을 작성하지 않았습니다.');
             }
           }}
         >
@@ -115,9 +111,9 @@ export function NavBar(props: any) {
         as="li"
         variant="h6"
         color="blue-gray"
-        className="flex items-center gap-x-2 p-1 semibold"
+        className="semibold flex items-center gap-x-2 p-1"
       >
-        <img src={myPage} className='w-5'></img>
+        <img src={myPage} className="w-5"></img>
         <button
           onClick={() => {
             openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.DETAIL) });
@@ -130,9 +126,9 @@ export function NavBar(props: any) {
         as="li"
         variant="h6"
         color="blue-gray"
-        className="flex items-center gap-x-2 p-1 semibold"
+        className="semibold flex items-center gap-x-2 p-1"
       >
-       <img src={settingLogo} className='w-5'></img>
+        <img src={settingLogo} className="w-5"></img>
         <button
           onClick={() => {
             openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.TEAM) });
@@ -146,7 +142,7 @@ export function NavBar(props: any) {
 
   return (
     <Navbar fullWidth={true} className="mx-auto py-2 lg:px-8 lg:py-4 ">
-      <div className="w-full flex items-center justify-between text-blue-gray-900">
+      <div className="flex w-full items-center justify-between text-blue-gray-900">
         <button
           className="flex flex-row gap-x-3"
           onClick={() => {
@@ -171,7 +167,7 @@ export function NavBar(props: any) {
         </button>
 
         <div className="hidden lg:block">{navList}</div>
-        
+
         <div className="flex items-center gap-x-1">
           {mode === 'user' ? (
             <Button

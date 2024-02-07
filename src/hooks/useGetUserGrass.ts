@@ -9,9 +9,9 @@ import { numberOfTILSate } from '@store/Store.ts';
 const today = new Date();
 
 export const useGetUserGrass = () => {
-  const [todayWrite, setTodayWrite] = useRecoilState(todayState);
+  const [, setTodayWrite] = useRecoilState(todayState);
   const [, setTodayTILPage] = useRecoilState(todayTILState);
-  const [numberOfTIL, setNumberOfTIL] =  useRecoilState(numberOfTILSate);
+  const [numberOfTIL, setNumberOfTIL] = useRecoilState(numberOfTILSate);
 
   const [TilData, setTilDta] = useState<TIL[]>(() => {
     return dateRange.map((item) => {
@@ -52,17 +52,17 @@ export const useGetUserGrass = () => {
               setTodayTILPage(writeId);
             }
             // 그 날짜에 잔디 심기
-            setNumberOfTIL(prevNumberOfTIL => prevNumberOfTIL + 1)
+            setNumberOfTIL((prevNumberOfTIL) => prevNumberOfTIL + 1);
             newTILData[j + numberOfZeros].id = writeId;
             newTILData[j + numberOfZeros].count += 1;
-            
+
             // 다음 글로 넘어가기
-            break;  
+            break;
           }
         }
       }
       setTilDta(newTILData);
-      console.log(TilData)
+      console.log(TilData);
       console.log(numberOfTIL);
     } catch (error) {
       console.log('Error fetching data:', error);
