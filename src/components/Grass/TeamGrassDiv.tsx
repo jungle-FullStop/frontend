@@ -16,7 +16,7 @@ export const TeamGrassDiv = () => {
           <p className=" grassFont text-center text-2xl ">
             팀 <span className={'text-green-500'}>{teamName}</span> 텃밭
           </p>
-          <div className=" grassFont mx-auto mb-4 grid w-[450px] grid-cols-7 grid-rows-1 p-2 text-center text-xl font-bold">
+          <div className=" grassFont mx-auto mb-4 grid w-[600px] grid-cols-7 grid-rows-1 p-2 text-center text-xl font-bold">
             <p>Sun</p>
             <p>Mon</p>
             <p>Tue</p>
@@ -25,7 +25,7 @@ export const TeamGrassDiv = () => {
             <p>Fri</p>
             <p>Sat</p>
           </div>
-          <div className="mx-auto grid h-[300px] w-[450px] grid-cols-7 grid-rows-5 rounded-lg bg-grassColor  p-2">
+          <div className="mx-auto grid h-[450px] w-[600px] grid-cols-7 grid-rows-5 rounded-lg bg-grassColor  p-2">
             {grassElements}
           </div>
         </div>

@@ -13,6 +13,7 @@ import useModal from '@hooks/useModal.tsx';
 import { Quotes } from '@components/Home/Quotes.tsx';
 import TeamInfo from '@components/Home/Info/TeamInfo.tsx';
 import { Slogan } from '@/components/Home/Slogan';
+import { Footer } from '@components/Common/Footer.tsx';
 
 const Home = () => {
   const userId = localStorage.getItem('userId') as string;
@@ -51,7 +52,7 @@ const Home = () => {
   const [barPosition, setBarPosition] = useState(0);
 
   const handleScroll = () => {
-    const position = 500 < 0 + window.scrollY ? 500 : 0 + window.scrollY;
+    const position = 800 < 0 + window.scrollY ? 800 : 0 + window.scrollY;
     setBarPosition(position);
   };
 
@@ -71,8 +72,8 @@ const Home = () => {
           <div className={'float-left'}>
             <div className="flex flex-col gap-y-8">
               <Slogan color="yellow" />
-              <UserGrassDiv />
               <FriendInfo />
+              <UserGrassDiv />
             </div>
           </div>
 
@@ -88,8 +89,8 @@ const Home = () => {
         <div className="sub-container card-back">
           <div className="flex flex-col gap-y-8">
             <Slogan color="green" />
-            <TeamGrassDiv />
             <TeamInfo />
+            <TeamGrassDiv />
           </div>
 
           <div className={'sidebar-container'} style={{ top: barPosition }}>
@@ -101,6 +102,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Footer />
       <Modal />
     </div>
   );
