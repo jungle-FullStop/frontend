@@ -34,7 +34,7 @@ const Editor = () => {
 
   return (
     <>
-      <p className="text-xl font-bold mb-2">오늘의 TIL을 적어보세요!</p>
+      <p className="mb-2 text-xl font-bold">오늘의 TIL을 적어보세요!</p>
       <form onSubmit={handleBoardSubmit} className={'flex flex-col gap-y-4'}>
         <div className="flex flex-row items-center">
           <p className="text-xl font-bold">제목:</p>

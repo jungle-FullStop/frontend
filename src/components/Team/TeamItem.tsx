@@ -1,6 +1,5 @@
 import anonymousImage from '@assets/image/anonymousImage.png';
 import cokImage from '@assets/image/cokImage.png';
-import debounce from 'lodash';
 import { useState } from 'react';
 
 interface MemberListProps {
