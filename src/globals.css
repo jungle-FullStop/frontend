@@ -37,31 +37,39 @@
 
 /* test  */
 .main-container {
-  @apply mx-auto flex h-screen w-full flex-col;
+  @apply mx-auto flex flex-col;
 }
 
 .sub-container {
-  @apply mx-auto w-full pt-10;
+  @apply relative mx-auto w-full py-10 flex flex-row gap-x-5;
 }
 
 .contents-container {
   @apply border-2 mx-auto flex w-full flex-col rounded-lg border-gray-200 bg-white p-6 ;
 }
 
+.sidebar-container {
+  @apply relative float-left ease-out h-fit;
+}
+
+.teaminfo-container {
+  @apply border-2 mx-auto flex w-full flex-col rounded-lg border-gray-200 bg-white p-6 ;
+}
+
 .write-container {
-  @apply border-2 mx-auto flex justify-between w-full rounded-lg border-gray-200 bg-white p-6 ;
+  @apply border-2 mx-auto flex flex-col justify-between w-full rounded-lg border-gray-200 bg-white p-6 ;
 }
 
 .quote-container {
-  @apply border-2 mt-3 flex w-[500px] flex-col rounded-lg border-gray-200 bg-white pt-5 pl-5 pr-5;
+  @apply border-2 mt-3 flex w-[400px] flex-col rounded-lg border-gray-200 bg-white pl-5 pr-5;
 }
 
 .grass-container {
-  @apply border-2 flex w-[600px] flex-col rounded-lg border-gray-200  bg-white p-6 ;
+  @apply border-2 flex w-[800px] flex-col rounded-lg border-gray-200 bg-white p-6 ;
 }
 
 .profile-container {
-  @apply border-2 mx-auto flex w-full flex-col rounded-lg border-gray-200 bg-white ;
+  @apply border-2 mx-auto flex w-[400px] flex-col rounded-lg border-gray-200 bg-white ;
 }
 
 .profileImg {

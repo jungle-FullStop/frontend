@@ -48,38 +48,55 @@ const Home = () => {
     closeModal();
   }, [userId]);
 
+  const [barPosition, setBarPosition] = useState(0);
+
+  const handleScroll = () => {
+    const position = 500 < 0 + window.scrollY ? 500 : 0 + window.scrollY;
+    setBarPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className="main-container">
       <NavBar flipCard={flipCard} />
-      <div className={`card ${isFlipped ? 'flipped' : ''}`}>
+      <div className={`card ${isFlipped ? 'flipped' : ''} mx-auto`}>
         <div className="sub-container card-front">
-          <div className="flex w-full flex-row place-content-center ">
-            <div className="flex w-[700px] flex-col">
+          <div className={'float-left'}>
+            <div className="flex flex-col gap-y-8">
               <Slogan color="yellow" />
               <UserGrassDiv />
-            </div>
-
-            <div className="flex w-1/3 flex-col gap-y-8">
-              <Quotes mode="user" />
-              <UserProfile />
               <FriendInfo />
-              {/* <WriteTIL id={userId} color="yellow" /> */}
+            </div>
+          </div>
+
+          <div className={'sidebar-container'} style={{ top: barPosition }}>
+            <div className="flex flex-col gap-y-3">
+              <UserProfile />
+              <WriteTIL color="yellow" />
+              <Quotes mode="user" />
             </div>
           </div>
         </div>
 
         <div className="sub-container card-back">
-          <div className="flex w-full flex-row place-content-center ">
-            <div className="flex w-[700px] flex-col">
-              <Slogan color="green" />
-              <TeamGrassDiv />
-            </div>
+          <div className="flex flex-col gap-y-8">
+            <Slogan color="green" />
+            <TeamGrassDiv />
+            <TeamInfo />
+          </div>
 
-            <div className="flex w-1/3 flex-col gap-y-8">
-              <Quotes mode="team" />
+          <div className={'sidebar-container'} style={{ top: barPosition }}>
+            <div className="flex flex-col gap-y-3">
               <TeamProfile />
-              <TeamInfo />
-              <WriteTIL id={userId} color="green" />
+              <WriteTIL color="green" />
+              <Quotes mode="team" />
             </div>
           </div>
         </div>

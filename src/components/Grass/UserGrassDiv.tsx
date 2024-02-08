@@ -13,9 +13,6 @@ export const UserGrassDiv = () => {
 
   return (
     <>
-      <p className="mt-10  inline-block text-lg font-bold text-gray-600">
-        이번 달 {numberOfTIL}개의 TIL을 작성하셨습니다 !
-      </p>
       <div className="grass-container">
         <div>
           <p className="grassFont text-center  text-2xl text-black ">
@@ -34,6 +31,9 @@ export const UserGrassDiv = () => {
             {grassElements}
           </div>
         </div>
+        <p className="mt-10 inline-block text-lg font-bold text-gray-600">
+          이번 달 {numberOfTIL}개의 TIL을 작성하셨습니다 !
+        </p>
       </div>
     </>
   );

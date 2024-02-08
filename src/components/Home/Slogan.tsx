@@ -1,6 +1,6 @@
 export const Slogan = (props: any) => {
   return (
-    <div className={`TTLFont mb-5 text-${props.color}-900`}>
+    <div className={`TTLFont text-${props.color}-900`}>
       <p className={`mb-3 inline-block bg-gradient-to-r from-${props.color}-300 to-white text-3xl`}>
         <span className="text-6xl">TIL</span>을 쓰지 않으면
       </p>
