@@ -51,13 +51,15 @@ export const UserProfile = () => {
       <div className="flex w-full items-center gap-4 p-5">
         <div>
           <img
-            className={` profileImg float-left mb-5 rounded-full  border-4 object-cover transition duration-1000 ease-in-out sm:mb-0 ${todayWrite ? 'border-green-400' : null}`}
+            className={`profileImg float-left mb-5 h-32 w-64 rounded-full border-4 object-cover transition duration-1000 ease-in-out sm:mb-0 ${todayWrite ? 'border-green-400' : null}`}
             src={profileImage}
             alt="프로필 사진"
           />
         </div>
         <div className="w-full">
-          <p className="mb-3 text-2xl font-bold">{name}님, 안녕하세요 !</p>
+          <p className="TTLFont whitespace-pre-wrap text-3xl font-bold">
+            <span className={'text-amber-500'}>{name}</span>님,{'\n'} 안녕하세요 !
+          </p>
         </div>
       </div>
 

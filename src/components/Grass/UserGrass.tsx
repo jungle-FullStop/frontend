@@ -23,7 +23,7 @@ export const UserGrass = (props: any) => {
       onMouseLeave={() => setShowToolTip(false)}
     >
       <div
-        className={`h-[60px] flex-grow rounded ${props.date !== '0' ? grassType(props.count) : 'bg-grassColor'} ${props.iter % 2 == 0 && 'scale-x-[-1]'}`}
+        className={`flex-grow rounded ${props.date !== '0' ? grassType(props.count) : 'bg-grassColor'} ${props.iter % 2 == 0 && 'scale-x-[-1]'}`}
         onClick={() => {
           if (props.count >= 1) {
             navigate(`/board/${props.pageId}`);

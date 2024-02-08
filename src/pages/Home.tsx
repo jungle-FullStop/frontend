@@ -52,7 +52,7 @@ const Home = () => {
   const [barPosition, setBarPosition] = useState(0);
 
   const handleScroll = () => {
-    const position = 800 < 0 + window.scrollY ? 800 : 0 + window.scrollY;
+    const position = 612 < window.scrollY ? 612 : window.scrollY;
     setBarPosition(position);
   };
 

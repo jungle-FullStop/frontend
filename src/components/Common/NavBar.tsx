@@ -141,7 +141,7 @@ export function NavBar(props: any) {
   );
 
   return (
-    <Navbar fullWidth={true} className="mx-auto py-2 lg:px-8 lg:py-4 ">
+    <Navbar fullWidth={true} className="z-50 mx-auto py-2 lg:px-8 lg:py-4 ">
       <div className="flex w-full items-center justify-between text-blue-gray-900">
         <button
           className="flex flex-row gap-x-3"

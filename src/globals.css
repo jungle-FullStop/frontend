@@ -26,18 +26,18 @@
 }
 
 .TTLFont{
-  font-family: 'MaplestoryOTFBold'
+  font-family: 'MaplestoryOTFBold', serif
 }
 
 .grassFont{
-  font-family: 'HSYuji-Regular'
+  font-family: 'HSYuji-Regular', serif
 }
 
 
 
 /* test  */
 .main-container {
-  @apply mx-auto flex flex-col;
+  @apply mx-auto flex flex-col h-screen;
 }
 
 .sub-container {
@@ -61,7 +61,7 @@
 }
 
 .quote-container {
-  @apply border-2 mt-3 flex w-[400px] flex-col rounded-lg border-gray-200 bg-white pl-5 pr-5;
+  @apply border-2 mx-auto flex flex-col justify-between w-full rounded-lg border-gray-200 bg-white p-6 ;
 }
 
 .grass-container {

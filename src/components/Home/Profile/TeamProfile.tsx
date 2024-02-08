@@ -47,14 +47,14 @@ export const TeamProfile = () => {
       <div className="flex w-full items-center gap-4 p-5">
         <div className="">
           <img
-            className={`profileImg float-left mb-5 h-32 w-64 rounded-full border-4  object-cover transition duration-1000 ease-in-out  sm:mb-0`}
+            className={`profileImg float-left mb-5 h-32 w-64 rounded-full border-4 object-cover sm:mb-0`}
             src={teamImage}
             alt="프로필 사진"
           />
         </div>
         <div className="w-full">
-          <p className="mb-3 text-2xl font-bold">
-            팀 <span className={'text-green-500'}>{teamName}</span>에 어서오세요 !
+          <p className="TTLFont whitespace-pre-wrap text-3xl font-bold">
+            팀 <span className={'text-green-500'}>{teamName}</span>에{'\n'} 어서오세요 !
           </p>
         </div>
       </div>
