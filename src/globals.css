@@ -48,6 +48,10 @@
   @apply border-2 mx-auto flex w-full flex-col rounded-lg border-gray-200 bg-white p-6 ;
 }
 
+.rank-container {
+  @apply border-2 w-[800px] h-[312px] mx-auto flex flex-col rounded-lg border-gray-200 bg-white p-6 ;
+}
+
 .sidebar-container {
   @apply relative float-left ease-out h-fit;
 }
@@ -69,7 +73,7 @@
 }
 
 .profile-container {
-  @apply border-2 mx-auto flex w-[400px] flex-col rounded-lg border-gray-200 bg-white ;
+  @apply border-2 mx-auto flex w-[400px] h-[222px] flex-col rounded-lg border-gray-200 bg-white ;
 }
 
 .profileImg {

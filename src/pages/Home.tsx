@@ -14,6 +14,7 @@ import { Quotes } from '@components/Home/Quotes.tsx';
 import TeamInfo from '@components/Home/Info/TeamInfo.tsx';
 import { Slogan } from '@/components/Home/Slogan';
 import { Footer } from '@components/Common/Footer.tsx';
+import useThrottleScroll from '@hooks/useThrottleScroll.ts';
 
 const Home = () => {
   const userId = localStorage.getItem('userId') as string;
@@ -49,20 +50,7 @@ const Home = () => {
     closeModal();
   }, [userId]);
 
-  const [barPosition, setBarPosition] = useState(0);
-
-  const handleScroll = () => {
-    const position = 612 < window.scrollY ? 612 : window.scrollY;
-    setBarPosition(position);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const barPosition = useThrottleScroll();
 
   return (
     <div className="main-container">
