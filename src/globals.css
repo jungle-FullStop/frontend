@@ -81,6 +81,10 @@
   @apply border-2 mx-auto flex w-[400px] h-[222px] flex-col rounded-lg border-gray-200 bg-white ;
 }
 
+.ad-container {
+  @apply border-2 mx-auto flex w-[400px] flex-col rounded-lg border-gray-200 bg-white ;
+}
+
 .profileImg {
   transition: 1.5s;
 }

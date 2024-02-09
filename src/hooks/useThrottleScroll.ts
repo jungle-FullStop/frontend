@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { SetStateAction, useEffect, useRef, useState } from 'react';
 
 const useThrottleScroll = (delay: number, top: number, bottom: number): number => {
-  const [scrollPosition, setScrollPosition] = useState(top);
+  const [scrollPosition, setScrollPosition] = useState(0);
   const throttleTimeout = useRef<NodeJS.Timeout | null>(null);
   const requestRef = useRef<number | null>(null);
 
@@ -9,7 +9,14 @@ const useThrottleScroll = (delay: number, top: number, bottom: number): number =
     const handleScroll = () => {
       if (!throttleTimeout.current) {
         throttleTimeout.current = setTimeout(() => {
-          const position = bottom < window.scrollY ? bottom : window.scrollY;
+          let position: SetStateAction<number>;
+          if (bottom < window.scrollY) {
+            position = bottom;
+          } else if (window.scrollY <= top) {
+            position = 0;
+          } else {
+            position = window.scrollY - top;
+          }
           requestRef.current = requestAnimationFrame(() => {
             setScrollPosition(position);
           });

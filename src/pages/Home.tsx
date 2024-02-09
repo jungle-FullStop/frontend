@@ -15,6 +15,7 @@ import TeamInfo from '@components/Home/Info/TeamInfo.tsx';
 import { Slogan } from '@/components/Home/Slogan';
 import { Footer } from '@components/Common/Footer.tsx';
 import useThrottleScroll from '@hooks/useThrottleScroll.ts';
+import { Ad } from '@components/Common/Ad.tsx';
 
 const Home = () => {
   const userId = localStorage.getItem('userId') as string;
@@ -50,7 +51,7 @@ const Home = () => {
     closeModal();
   }, [userId]);
 
-  const barPosition = useThrottleScroll(100, 0, 612);
+  const barPosition = useThrottleScroll(100, 50, 450);
 
   return (
     <div className="main-container">
@@ -71,6 +72,7 @@ const Home = () => {
                 <UserProfile />
                 <WriteTIL color="yellow" />
                 <Quotes mode="user" />
+                <Ad />
               </div>
             </div>
           </div>
@@ -89,6 +91,7 @@ const Home = () => {
                 <TeamProfile />
                 <WriteTIL color="green" />
                 <Quotes mode="team" />
+                <Ad />
               </div>
             </div>
           </div>
