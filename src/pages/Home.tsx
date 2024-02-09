@@ -50,12 +50,12 @@ const Home = () => {
     closeModal();
   }, [userId]);
 
-  const barPosition = useThrottleScroll();
+  const barPosition = useThrottleScroll(100, 0, 612);
 
   return (
     <div className="main-container">
       <NavBar flipCard={flipCard} />
-      <div className={`card ${isFlipped ? 'flipped' : ''} mx-auto`}>
+      <div className={`card ${isFlipped ? 'flipped' : ''}`}>
         <div className="sub-container card-front">
           <div className={'float-left'}>
             <div className="flex flex-col gap-y-8">
@@ -65,11 +65,13 @@ const Home = () => {
             </div>
           </div>
 
-          <div className={'sidebar-container'} style={{ top: barPosition }}>
-            <div className="flex flex-col gap-y-3">
-              <UserProfile />
-              <WriteTIL color="yellow" />
-              <Quotes mode="user" />
+          <div className={'sidebar-container'}>
+            <div className={'sidebar'} style={{ transform: `translateY(${barPosition}px)` }}>
+              <div className="flex flex-col gap-y-3">
+                <UserProfile />
+                <WriteTIL color="yellow" />
+                <Quotes mode="user" />
+              </div>
             </div>
           </div>
         </div>
@@ -81,11 +83,13 @@ const Home = () => {
             <TeamGrassDiv />
           </div>
 
-          <div className={'sidebar-container'} style={{ top: barPosition }}>
-            <div className="flex flex-col gap-y-3">
-              <TeamProfile />
-              <WriteTIL color="green" />
-              <Quotes mode="team" />
+          <div className={'sidebar-container'}>
+            <div className={'sidebar'} style={{ transform: `translateY(${barPosition}px)` }}>
+              <div className="flex flex-col gap-y-3">
+                <TeamProfile />
+                <WriteTIL color="green" />
+                <Quotes mode="team" />
+              </div>
             </div>
           </div>
         </div>
