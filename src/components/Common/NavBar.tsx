@@ -13,8 +13,8 @@ import settingLogo from '@assets/image/settingLogo.png';
 import myPage from '@assets/image/myPage.png';
 import edit from '@assets/image/edit.png';
 import storage from '@assets/image/storage.png';
-import { todayState } from '@/store/Store';
-import { useRecoilValue } from 'recoil';
+import { pageMode, todayState } from '@/store/Store';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import UserDetail from '@components/Profile/UserDetail.tsx';
 
@@ -24,7 +24,7 @@ export function NavBar(props: any) {
   const teamCode = localStorage.getItem('teamCode') as string;
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
-  const [mode, setMode] = useState('user');
+  const [mode, setMode] = useRecoilState(pageMode);
 
   const modifyMode = () => {
     if (mode === 'user') {
@@ -104,7 +104,7 @@ export function NavBar(props: any) {
             }
           }}
         >
-          TIL 수정
+          TIL 작성
         </button>
       </Typography>
       <Typography

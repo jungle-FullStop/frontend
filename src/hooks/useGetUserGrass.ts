@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil';
-import { todayState, todayTILState } from '@store/Store.ts';
+import { todayState } from '@store/Store.ts';
 import { useEffect, useState } from 'react';
 import { TIL } from '@type/TIL.ts';
 import { dateRange, daysInCurrentMonth } from '@util/Constants/dateConstants.ts';
@@ -9,7 +9,6 @@ const today = new Date();
 
 export const useGetUserGrass = () => {
   const [, setTodayWrite] = useRecoilState(todayState);
-  const [, setTodayTILPage] = useRecoilState(todayTILState);
 
   const [TilData, setTilDta] = useState<TIL[]>(() => {
     return dateRange.map((item) => {
@@ -47,7 +46,6 @@ export const useGetUserGrass = () => {
               wirteDate.getDate() == currentDate.getDate()
             ) {
               setTodayWrite(true);
-              setTodayTILPage(writeId);
             }
             // 그 날짜에 잔디 심기
             newTILData[j + numberOfZeros].id = writeId;

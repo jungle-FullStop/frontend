@@ -12,10 +12,9 @@ const todayState = atom({
   default: false,
 });
 
-//오늘 TIL의 id(페이지) 값 저장할 변수
-const todayTILState = atom({
-  key: 'todayTIL',
-  default: 0,
+const pageMode = atom({
+  key: 'mode',
+  default: 'user',
 });
 
 const todayKeyword = atom({
@@ -33,4 +32,4 @@ const TILArrayState = atom<Data>({
   },
 });
 
-export { cardListState, todayState, todayTILState, TILArrayState, todayKeyword };
+export { cardListState, todayState, pageMode, TILArrayState, todayKeyword };

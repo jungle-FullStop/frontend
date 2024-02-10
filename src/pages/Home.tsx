@@ -71,7 +71,7 @@ const Home = () => {
             <div className={'sidebar'} style={{ transform: `translateY(${barPosition}px)` }}>
               <div className="flex flex-col gap-y-3">
                 <UserProfile />
-                <WriteTIL color="yellow" />
+                <WriteTIL color="yellow" flipCard={flipCard} />
                 <Quotes mode="user" />
                 <Ad />
               </div>
@@ -90,7 +90,7 @@ const Home = () => {
             <div className={'sidebar'} style={{ transform: `translateY(${barPosition}px)` }}>
               <div className="flex flex-col gap-y-3">
                 <TeamProfile />
-                <WriteTIL color="green" />
+                <WriteTIL color="green" flipCard={flipCard} />
                 <Quotes mode="team" />
                 <Ad />
               </div>
