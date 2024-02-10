@@ -208,3 +208,24 @@ button:hover .cock-button-img {
   transform: translateX(-6px); /* 이미지를 왼쪽으로 10px 이동 */
   transition: transform 0.5s ease; /* 애니메이션 효과 적용 */
 }
+
+@keyframes highContrastTwinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(100%);
+  }
+  25%, 75% {
+    opacity: 0.8;
+    transform: scale(1.1);
+    filter: brightness(100%);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+    filter: brightness(100%);
+  }
+}
+.highlight-effect {
+  animation: highContrastTwinkle 2s ease-in-out infinite;
+}
