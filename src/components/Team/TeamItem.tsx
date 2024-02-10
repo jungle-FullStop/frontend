@@ -1,13 +1,12 @@
 import anonymousImage from '@assets/image/anonymousImage.png';
 import cokImage from '@assets/image/cokImage.png';
-import debounce from 'lodash';
 import { useState } from 'react';
 
 interface MemberListProps {
   name: string;
   profileImage: string;
   status: string;
-  tilScore: number;
+  tilRatio: number;
   onPoke: any;
   cheerUp: any;
 }
@@ -24,7 +23,7 @@ const statusStyles: Record<string, StatusStyles> = {
   written: { bgClass: 'bg-green-500', text: '작성완료', live: false },
 };
 
-const TeamItem = ({ name, tilScore, status, profileImage, onPoke, cheerUp }: MemberListProps) => {
+const TeamItem = ({ name, tilRatio, status, profileImage, onPoke, cheerUp }: MemberListProps) => {
   const { bgClass, text, live } = statusStyles[status] || statusStyles.not_written;
 
   const [throttled, setThrottled] = useState(false);
@@ -61,9 +60,7 @@ const TeamItem = ({ name, tilScore, status, profileImage, onPoke, cheerUp }: Mem
       </div>
       <div>
         <p className="text-base font-semibold leading-7 tracking-tight text-gray-900">{name}</p>
-        <p className="text-sm font-semibold leading-6 text-indigo-600">
-          잔디 기여도 {tilScore * 10}%
-        </p>
+        <p className="text-sm font-semibold leading-6 text-indigo-600">잔디 기여도 {tilRatio}%</p>
         {live && (
           <button
             onClick={cheerUp}

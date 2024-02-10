@@ -4,11 +4,12 @@ import { useGetTeamGrass } from '@hooks/useGetTeamGrass.ts';
 export const TeamGrassDiv = () => {
   const teamName = localStorage.getItem('teamName');
   const TilData = useGetTeamGrass();
-  const tilScore = localStorage.getItem('tilScore');
 
   const grassElements = TilData.map((data, i) => {
     return <TeamGrass date={data.date} count={data.count} pageId={data.id} key={i} iter={i} />;
   });
+
+  const teamScore = TilData.reduce((acc, cur) => acc + cur.count, 0);
 
   return (
     <>
@@ -31,7 +32,7 @@ export const TeamGrassDiv = () => {
           </div>
         </div>
         <p className="ml-auto mr-[30px] mt-3 text-xl font-bold text-gray-600">
-          이번 달 {tilScore}개의 Team TIL가 작성되었습니다 !
+          이번 달 {teamScore}개의 Team TIL가 작성되었습니다 !
         </p>
       </div>
     </>

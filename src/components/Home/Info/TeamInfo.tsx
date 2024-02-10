@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import useTeamListQuery from '@hooks/useTeamListQuery.ts';
 import { useQueryClient } from '@tanstack/react-query';
 import { cockPush } from '@api/FirebaseApi.ts';
+import { round } from 'lodash';
 
 interface MemberListResponse {
   id: string;
@@ -61,6 +62,10 @@ const TeamInfo = () => {
   if (teamListData.isLoading) return <div>Loading...</div>;
   if (teamListData.isError) return <div>Error loading teams</div>;
 
+  const teamTotalScore = teamListData.data
+    .map((data: MemberListResponse) => data.tilScore)
+    .reduce((acc: number, cur: number) => acc + cur, 0);
+
   return (
     <div className="teaminfo-container">
       <p className="TTLFont pb-3 text-center text-2xl font-bold">이달의 우수 정원사</p>
@@ -70,7 +75,7 @@ const TeamInfo = () => {
             <TeamItem
               key={data.id}
               name={data.name}
-              tilScore={data.tilScore}
+              tilRatio={round((data.tilScore / teamTotalScore) * 100, 0)}
               status={data.status}
               profileImage={data.profileImage}
               onPoke={() => handlePoke(Number(data.id))}
