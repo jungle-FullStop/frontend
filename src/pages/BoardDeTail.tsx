@@ -1,52 +1,12 @@
 import { useParams } from 'react-router-dom';
 import NavBar from '@/components/Common/NavBar';
-import { BoardType } from '@/types/board/BoardType';
 import MDEditor from '@uiw/react-md-editor';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import anonymousImage from '@assets/image/anonymousImage.png';
+import { useFindBoardDetail } from '@hooks/useFindBoardDetail.ts';
 
 const BoardDetail = () => {
   const { id } = useParams();
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [beforeTime, setBeforeTime] = useState<string>();
-  const userImage = localStorage.getItem('userProfileImage');
-
-  useEffect(() => {
-    axios
-      .get('http://localhost:3000/board/find')
-      .then((response) => {
-        const cardList = response.data;
-        if (typeof id === 'string') {
-          const selectedCard: BoardType = cardList.find(
-            (card: BoardType) => card.id === parseInt(id as string, 10),
-          );
-          setTitle(selectedCard.title);
-          setContent(selectedCard.contents);
-          const writeDate = new Date(selectedCard.timestamp);
-          const currentDate = new Date();
-
-          // 밀리초로 변환 후 차이 계산
-          const timeDifference = currentDate.getTime() - writeDate.getTime();
-
-          // 밀리초를 일로 변환 (1초 = 1000밀리초, 1분 = 60초, 1시간 = 60분, 1일 = 24시간)
-          const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-
-          if (daysDifference >= 1) {
-            setBeforeTime(`${daysDifference}일 전`);
-          } else {
-            const hoursDifference = Math.floor(timeDifference / (1000 * 60 * 60));
-            setBeforeTime(`${hoursDifference}시간 전`);
-          }
-        } else {
-          console.log('해당 id의 카드를 찾을 수 없습니다.');
-        }
-      })
-      .catch(() => {
-        console.log('실패');
-      });
-  }, []);
+  const { userImage, title, content, beforeTime } = useFindBoardDetail(id);
 
   return (
     <div className="main-container">
