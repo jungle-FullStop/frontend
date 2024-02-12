@@ -7,7 +7,7 @@ export const PAGE_URL = {
   NOT_FOUND: '/not/found',
   TEAM: '/team',
   BOARD: '/Board',
-  BOARD_DETAIL: '/Board/:id',
+  BOARD_DETAIL: '/Board/:boardId',
 };
 
 export const WAITING_TIME = 5;
@@ -66,6 +66,8 @@ export const reactQueryKeys = {
   JoinTeam: 'joinTeam',
   SendList: 'sendList',
   ReceivedList: 'receivedList',
+  USERBOARD: 'userBoard',
+  USERBOARDDETAIL: 'userBoardDetail',
 };
 
 export const DEBOUNCE_TIME = 500;

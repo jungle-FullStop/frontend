@@ -31,8 +31,8 @@ const API_PATH = {
     create: () => SERVER_URL + MINDMAP + `/create`,
   },
   BOARD: {
-    find: () => SERVER_URL + BOARD + `/find/`,
     userFind: (userId: number) => SERVER_URL + BOARD + `/find/` + `/${userId}`,
+    userFindDetail: (boardId: number) => SERVER_URL + BOARD + `/find` + `/detail` + `/${boardId}`,
     create: () => SERVER_URL + BOARD + `/create/`,
   },
   FRIEND: {

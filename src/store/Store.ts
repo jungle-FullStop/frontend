@@ -1,10 +1,4 @@
 import { atom } from 'recoil';
-import { Data } from '@/types/board/BoardType';
-
-const cardListState = atom({
-  key: 'cardList',
-  default: [],
-});
 
 //오늘 TIL을 썼으면 true 안 썼으면 false 가지는 변수
 const todayState = atom({
@@ -22,14 +16,4 @@ const todayKeyword = atom({
   default: [] as string[],
 });
 
-const currentDate = new Date();
-
-const TILArrayState = atom<Data>({
-  key: 'TILArray',
-  default: {
-    user: { id: -1, ProfileImg: '' },
-    boards: [{ title: '', contents: '', id: -1, userId: -1, timestamp: currentDate }],
-  },
-});
-
-export { cardListState, todayState, pageMode, TILArrayState, todayKeyword };
+export { todayState, pageMode, todayKeyword };

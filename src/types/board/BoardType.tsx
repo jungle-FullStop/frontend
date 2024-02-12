@@ -11,7 +11,12 @@ export type User = {
   ProfileImg: string;
 };
 
-export type Data = {
+export type DataArray = {
   user: User;
   boards: BoardType[];
+};
+
+export type Data = {
+  user: User;
+  board: BoardType;
 };

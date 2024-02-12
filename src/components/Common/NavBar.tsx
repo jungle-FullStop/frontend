@@ -14,12 +14,10 @@ import settingLogo from '@assets/image/settingLogo.png';
 import myPage from '@assets/image/myPage.png';
 import edit from '@assets/image/edit.png';
 import storage from '@assets/image/storage.png';
-import { pageMode, todayState } from '@/store/Store';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { pageMode } from '@/store/Store';
+import { useRecoilState } from 'recoil';
 
 export function NavBar(props: any) {
-  const todayWrite = useRecoilValue(todayState);
-
   const teamCode = localStorage.getItem('teamCode') as string;
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
@@ -69,7 +67,7 @@ export function NavBar(props: any) {
   };
 
   const [throttled, setThrottled] = useState(false);
-  const handleModeClick = (fn: Function) => {
+  const handleModeClick = (fn: any) => {
     if (!throttled) {
       // 함수 실행
       fn();
@@ -83,6 +81,11 @@ export function NavBar(props: any) {
       }, 1000); // 5초
     }
   };
+
+  const {
+    handlers: { generateReport },
+  } = useGenerateReport();
+
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-10">
       <Typography
@@ -110,12 +113,8 @@ export function NavBar(props: any) {
         <img src={edit} alt={'TIL 작성'} className="w-6"></img>
         <button
           onClick={() => {
-            if (todayWrite) {
-              useGenerateReport().then(r => console.log('수정필요'));
-              navigate('/loading');
-            } else {
-              window.alert('아직 오늘의 TIL을 작성하지 않았습니다.');
-            }
+            generateReport();
+            navigate('/loading');
           }}
         >
           TIL 작성

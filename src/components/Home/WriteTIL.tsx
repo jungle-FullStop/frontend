@@ -43,6 +43,10 @@ export const WriteTIL = (props: any) => {
     }
   };
 
+  const {
+    handlers: { generateReport },
+  } = useGenerateReport();
+
   return (
     <div className={'write-container'}>
       <p className="TTLFont mb-5 text-center text-2xl font-bold">
@@ -59,7 +63,7 @@ export const WriteTIL = (props: any) => {
         <Button
           className={`bg-${props.color}-900 mx-auto w-full rounded-full px-4 py-2 text-2xl font-bold text-white`}
           onClick={() => {
-            useGenerateReport();
+            generateReport();
             navigate('/loading');
           }}
         >
