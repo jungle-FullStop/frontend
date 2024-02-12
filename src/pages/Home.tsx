@@ -16,6 +16,7 @@ import { Slogan } from '@/components/Home/Slogan';
 import { Footer } from '@components/Common/Footer.tsx';
 import useThrottleScroll from '@hooks/useThrottleScroll.ts';
 import { Ad } from '@components/Common/Ad.tsx';
+import { Setting } from '@components/Common/Setting.tsx';
 
 const Home = () => {
   const userId = localStorage.getItem('userId') as string;
@@ -70,7 +71,7 @@ const Home = () => {
             <div className={'sidebar'} style={{ transform: `translateY(${barPosition}px)` }}>
               <div className="flex flex-col gap-y-3">
                 <UserProfile />
-                <WriteTIL color="yellow" />
+                <WriteTIL color="yellow" flipCard={flipCard} />
                 <Quotes mode="user" />
                 <Ad />
               </div>
@@ -89,7 +90,7 @@ const Home = () => {
             <div className={'sidebar'} style={{ transform: `translateY(${barPosition}px)` }}>
               <div className="flex flex-col gap-y-3">
                 <TeamProfile />
-                <WriteTIL color="green" />
+                <WriteTIL color="green" flipCard={flipCard} />
                 <Quotes mode="team" />
                 <Ad />
               </div>
@@ -97,6 +98,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Setting />
       <Footer />
       <Modal />
     </div>

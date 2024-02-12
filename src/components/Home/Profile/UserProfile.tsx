@@ -47,7 +47,7 @@ export const UserProfile = () => {
             </div>
             <div className="w-full">
               <p className="TTLFont whitespace-pre-wrap text-3xl font-bold">
-                <span className={'text-amber-500'}>{name}</span>님,{'\n'} 안녕하세요 !
+                <span className={'text-yellow-800'}>{name}</span>님,{'\n'} 안녕하세요 !
               </p>
             </div>
           </div>
