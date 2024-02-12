@@ -33,44 +33,45 @@ const TeamInfo = () => {
   const queryClient = useQueryClient();
   const { isLoading, isError, data: teamListData } = useTeamListQuery();
 
+  const updateTeamMembersStatus = (newStatusData: Record<string, keyof typeof StatusPriority>) => {
+    queryClient.setQueryData(['teamList'], (oldTeams?: MemberListResponse[]) => {
+      const updatedTeams = oldTeams
+        ?.map((member) => {
+          const newStatus = newStatusData[member.id];
+          const isUpdated = newStatus && member.status !== newStatus;
+
+          if (isUpdated) {
+            // Reset highlight after 2 seconds
+            setTimeout(() => {
+              queryClient.setQueryData(
+                ['teamList'],
+                (currentTeams?: MemberListResponse[]) =>
+                  currentTeams?.map((currentMember) => ({
+                    ...currentMember,
+                    highlight: currentMember.id === member.id ? false : currentMember.highlight,
+                  })) || [],
+              );
+            }, 2000);
+          }
+
+          return {
+            ...member,
+            status: isUpdated ? newStatus : member.status,
+            highlight: isUpdated,
+          };
+        })
+        .sort(sortTeamMembers);
+
+      return updatedTeams;
+    });
+  };
+
   useEffect(() => {
     const eventSource = new EventSource(`/api/team/team.status`);
 
     eventSource.onmessage = (event) => {
       const newStatusData = JSON.parse(event.data)?.data;
-
-      queryClient.setQueryData(['teamList'], (oldTeams?: MemberListResponse[]) => {
-        const updatedTeams =
-          oldTeams
-            ?.map((member) => {
-              const isUpdated =
-                newStatusData[member.id] !== undefined &&
-                member.status !== newStatusData[member.id];
-              if (isUpdated) {
-                setTimeout(() => {
-                  queryClient.setQueryData(
-                    ['teamList'],
-                    (currentTeams?: MemberListResponse[]) =>
-                      currentTeams?.map((currentMember) => {
-                        if (currentMember.id === member.id) {
-                          return { ...currentMember, highlight: false };
-                        }
-                        return currentMember;
-                      }) || [],
-                  );
-                }, 2000); // Adjusted to 2 seconds as per your code, though you mentioned 5 seconds initially
-              }
-
-              return {
-                ...member,
-                status: isUpdated ? newStatusData[member.id] : member.status,
-                highlight: isUpdated,
-              };
-            })
-            ?.sort(sortTeamMembers) || [];
-
-        return updatedTeams;
-      });
+      updateTeamMembersStatus(newStatusData);
     };
 
     return () => eventSource.close();
