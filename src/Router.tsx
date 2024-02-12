@@ -9,8 +9,8 @@ import NotFound from '@pages/NotFound';
 import PrivateRoutes from '@util/PrivateRoutes';
 import AuthRoutes from '@util/AuthRoutes';
 import { PAGE_URL } from '@/util/Constants/constants';
-import { Board } from './pages/Board';
-import BoardDetail from './pages/BoardDeTail';
+import { Board } from '@pages/Board';
+import { BoardDetail } from '@pages/BoardDeTail';
 
 const Router = () => {
   return (

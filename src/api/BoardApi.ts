@@ -24,3 +24,12 @@ export const findUserBoard = async (userId: number) => {
     console.error('해당 유저의 글을 찾는데 실패했습니다.', error);
   }
 };
+
+export const findBoardDetail = async (boardId: number) => {
+  try {
+    const response = await interceptor(API_PATH.BOARD.userFindDetail(boardId), {});
+    return await response.json();
+  } catch (error) {
+    console.error('해당 유저의 글을 찾는데 실패했습니다.', error);
+  }
+};
