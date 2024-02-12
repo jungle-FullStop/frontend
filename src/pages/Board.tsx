@@ -24,8 +24,8 @@ export const Board = () => {
       <div className="main-container">
         <NavBar />
         <div className="flex h-screen items-center justify-center gap-5">
-          <p>TIL 저장소를 불러오지 못했습니다!</p>;
-          <div className="border-mint h-10 w-10 animate-spin rounded-full border-t-4"></div>;
+          <p>TIL 저장소를 불러오지 못했습니다!</p>
+          <div className="border-mint h-10 w-10 animate-spin rounded-full border-t-4"></div>
         </div>
       </div>
     );
@@ -37,21 +37,21 @@ export const Board = () => {
       <div className="w-[90%}">
         <div className="TIL-container">
           {data.boards.length > 0 ? (
-            data.boards.map((data: any, items: number) => {
+            data.boards.map((card: any, items: number) => {
               return (
                 <div
                   className="TIL opacity-85 shadow-xl"
                   key={items}
                   onClick={() => {
-                    navigate(`/board/${data.id}`);
+                    navigate(`/board/${card.id}`);
                   }}
                 >
                   <CardDefault
-                    cardTitle={data.title}
-                    cardContents={data.contents}
-                    cardDate={data.timestamp}
-                    userImage={data.userImage}
-                    userName={data.userName}
+                    cardTitle={card.title}
+                    cardContents={card.contents}
+                    cardDate={card.timestamp}
+                    userImage={data.user.profileImage}
+                    userName={data.user.name}
                   />
                 </div>
               );
