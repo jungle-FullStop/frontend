@@ -12,7 +12,8 @@ import Modal from '@components/Common/Modal';
 import useModal from '@hooks/useModal.tsx';
 import { Quotes } from '@components/Home/Quotes.tsx';
 import TeamInfo from '@components/Home/Info/TeamInfo.tsx';
-import { Slogan } from '@/components/Home/Slogan';
+import { TeamSlogan } from '@/components/Home/Slogan/TeamSlogan';
+import { UserSlogan } from '@/components/Home/Slogan/UserSlogan';
 
 const Home = () => {
   const userId = localStorage.getItem('userId') as string;
@@ -55,7 +56,7 @@ const Home = () => {
         <div className="sub-container card-front">
           <div className="flex w-full flex-row place-content-center ">
             <div className="flex w-[700px] flex-col">
-              <Slogan color="yellow" />
+              <UserSlogan/>
               <UserGrassDiv />
             </div>
 
@@ -71,14 +72,14 @@ const Home = () => {
         <div className="sub-container card-back">
           <div className="flex w-full flex-row place-content-center ">
             <div className="flex w-[700px] flex-col">
-              <Slogan color="green" />
+              <TeamSlogan/>
               <TeamGrassDiv />
             </div>
 
             <div className="flex w-1/3 flex-col gap-y-8">
               <Quotes mode="team" />
               <TeamProfile />
-              <TeamInfo /> 
+              <TeamInfo />
               {/* <WriteTIL id={userId} color="green" /> */}
             </div>
           </div>

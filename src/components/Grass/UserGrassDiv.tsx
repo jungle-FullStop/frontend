@@ -13,7 +13,7 @@ export const UserGrassDiv = () => {
 
   return (
     <>
-      <p className="mt-10  inline-block text-lg font-bold text-gray-600">
+      <p className="mt-10 inline-block text-lg font-bold text-gray-600">
         이번 달 {numberOfTIL}개의 TIL을 작성하셨습니다 !
       </p>
       <div className="grass-container">
@@ -30,7 +30,7 @@ export const UserGrassDiv = () => {
             <p>Fri</p>
             <p>Sat</p>
           </div>
-          <div className="mx-auto grid h-[300px] w-[450px] grid-cols-7 grid-rows-5 rounded-lg bg-grassColor  p-2">
+          <div className="bg-grassColor mx-auto grid h-[300px] w-[450px] grid-cols-7 grid-rows-5 rounded-lg  p-2">
             {grassElements}
           </div>
         </div>

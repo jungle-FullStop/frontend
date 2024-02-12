@@ -17,10 +17,10 @@ export const TeamGrassDiv = () => {
       </p>
       <div className="grass-container">
         <div>
-          <p className=" grassFont text-center text-2xl ">
+          <p className=" grassFont text-center text-2xl text-black">
           팀 <span className={'text-green-500'}>{teamName}</span> 텃밭
         </p>
-          <div className=" grassFont mx-auto mb-4 grid w-[450px] grid-cols-7 grid-rows-1 p-2 text-center text-xl font-bold">
+          <div className=" grassFont mx-auto mb-4 grid w-[450px] grid-cols-7 grid-rows-1 p-2 text-center text-xl font-bold text-black">
             <p>Sun</p>
             <p>Mon</p>
             <p>Tue</p>
