@@ -61,16 +61,19 @@ const MemberList = ({ userId }: MemberListProps) => {
 
       {!name && (
         <div>
-          <p className="mb-2 text-2xl font-bold">팀원 목록</p>
-          <div className="flex h-60 flex-wrap justify-between overflow-scroll">
+          <p className="mb-5 text-2xl font-bold">팀원 목록</p>
+          <div className="flex flex-wrap justify-between gap-y-5 overflow-scroll">
             {memberListData.data.length !== 0 ? (
               memberListData.data.map((data: MemberListResponse, index: number) => (
                 <MemberModalItem key={index} {...data} type={profileItemType} />
               ))
             ) : (
-              <div className="flex w-full flex-col items-center justify-center gap-3">
-                <p className="font-bold">아직 팀원이 없어요.</p>
-              </div>
+              <>
+                <div></div>
+                <div className="mx-auto">
+                  <p className="flex pt-[80px] text-2xl font-bold">아직 팀원이 없어요.</p>
+                </div>
+              </>
             )}
           </div>
         </div>
