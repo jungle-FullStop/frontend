@@ -1,18 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const UserGrass = (props: any) => {
   const [showToolTip, setShowToolTip] = useState(false);
   const navigate = useNavigate();
 
+
   const grassType = (count: number) => {
     switch (count) {
       case 1:
-        return 'bg-grass bg-contain';
+        return 'bg-grass bg-contain ';
       default:
         return 'bg-noGrass bg-contain';
     }
   };
+
+
 
   return (
     <div
@@ -23,7 +26,7 @@ export const UserGrass = (props: any) => {
       onMouseLeave={() => setShowToolTip(false)}
     >
       <div
-        className={`flex-grow rounded ${props.date !== '0' ? grassType(props.count) : 'bg-grassColor'} ${props.iter % 2 == 0 && 'scale-x-[-1]'}`}
+        className={`flex-grow rounded  ${props.date !== '0' ? grassType(props.count) : 'bg-grassColor'} ${props.iter % 2 == 0 && 'scale-x-[-1]'}`}
         onClick={() => {
           if (props.count >= 1) {
             navigate(`/board/${props.pageId}`);

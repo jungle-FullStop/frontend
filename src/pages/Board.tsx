@@ -7,7 +7,7 @@ export const Board = () => {
     <>
       <div className="main-container">
         <NavBar></NavBar>
-        <div className="flex h-full items-center">
+        <div className="flex w-full h-full mx-auto items-center">
           <SliderCard />
         </div>
       <Footer></Footer>

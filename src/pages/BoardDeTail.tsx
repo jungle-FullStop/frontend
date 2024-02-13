@@ -5,6 +5,7 @@ import { useFindBoardDetail } from '@hooks/Board/useFindBoardDetail.tsx';
 import teamspartaAd from '@assets/image/teamspartaAd.png';
 import { Footer } from '@/components/Common/Footer';
 import { useParams } from 'react-router-dom';
+import { Setting } from '@/components/Common/Setting';
 
 export const BoardDetail = () => {
   const { boardId } = useParams();
@@ -67,20 +68,28 @@ export const BoardDetail = () => {
             />
           </div>
           <div>
-            <p className='text-lg'> 2024년 2월 11일 </p>
+            <p className="text-lg"> 2024년 2월 11일 </p>
           </div>
           <div className="ml-auto font-bold">
-            <p className='text-lg'>  작성 {beforeTime}</p>    
+            <p className="text-lg"> 작성 {beforeTime}</p>
           </div>
         </div>
-        <img src={teamspartaAd} className='mt-10 mb-20'></img>
+        <img
+          src={teamspartaAd}
+          alt={'광고'}
+          className={'mb-10 mt-10 cursor-pointer rounded-lg w-full'}
+          onClick={() => {
+            window.open('https://spartacodingclub.kr/');
+          }}
+        ></img>
       </div>
       <div className="mx-auto w-[60%]">
         <div data-color-mode="light ">
           <MDEditor.Markdown source={data.board.contents} style={{ fontSize: '23px' }} />
         </div>
       </div>
-      <div className='mb-10 mt-10'></div>
+      <div className="mb-10 mt-10"></div>
+      <Setting />
       <Footer></Footer>
     </div>
   );
