@@ -7,21 +7,20 @@ import { Button, ButtonGroup } from '@material-tailwind/react';
 const Loading = () => {
   const [layout, setLayout] = useState('fcose');
 
-
   useEffect(() => {
-    const delay = (sec : number) => new Promise(resolve => setTimeout(resolve,sec));
-  
+    const delay = (sec: number) => new Promise((resolve) => setTimeout(resolve, sec));
+
     const updateLayout = async () => {
       await delay(1300);
       setLayout('circle');
       await delay(700);
       setLayout('grid');
-      await delay(1000); 
+      await delay(1000);
       setLayout('breadthfirst');
-      await delay(700); 
+      await delay(700);
       setLayout('fcose');
     };
-  
+
     updateLayout();
   }, []);
 
@@ -29,7 +28,7 @@ const Loading = () => {
     <div className="main-container">
       <NavBar />
       <div></div>
-      <div className=" mx-auto h-[40px] mt-10 flex w-[90%] items-center justify-between last:py-3">
+      <div className=" mx-auto mt-10 flex h-[40px] w-[90%] items-center justify-between last:py-3">
         <div className="">
           <ButtonGroup variant="outlined">
             <Button
@@ -61,9 +60,6 @@ const Loading = () => {
               <p className="text-base">트리</p>
             </Button>
           </ButtonGroup>
-        </div>
-        <div>
-          {/* <p className="text-right text-4xl font-extrabold">키워드 마인드맵</p> */}
         </div>
         <div>
           <LoadingButton />
