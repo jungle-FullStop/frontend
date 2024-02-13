@@ -262,11 +262,11 @@ button:hover .cock-button-img {
 }
 
 .animation-container .star {
-  background-image: url('../public/images/logo-with-pen.png');
+  background-image: url('/images/logo-with-pen.png');
 }
 
 .animation-container .diary {
-  background-image: url('../public/images/yellow-diary.png')
+  background-image: url('/images/yellow-diary.png')
 }
 
 @keyframes star-move {
