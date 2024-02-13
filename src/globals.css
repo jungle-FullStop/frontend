@@ -35,6 +35,10 @@
   font-family: 'HSYuji-Regular', serif;
 }
 
+.title {
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+}
+
 /* test  */
 .main-container {
   @apply mx-auto flex h-screen flex-col;
