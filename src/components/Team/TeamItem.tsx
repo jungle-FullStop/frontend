@@ -6,7 +6,7 @@ interface MemberListProps {
   name: string;
   profileImage: string;
   status: string;
-  tilScore: number;
+  tilRatio: number;
   onPoke: any;
   cheerUp: any;
 }
@@ -23,11 +23,20 @@ const statusStyles: Record<string, StatusStyles> = {
   written: { bgClass: 'bg-green-500', text: '작성완료', live: false },
 };
 
-const TeamItem = ({ name, tilScore, status, profileImage, onPoke, cheerUp }: MemberListProps) => {
+const TeamItem = ({
+  name,
+  tilRatio,
+  status,
+  profileImage,
+  onPoke,
+  cheerUp,
+  highlight,
+}: MemberListProps & { highlight?: boolean }) => {
   const { bgClass, text, live } = statusStyles[status] || statusStyles.not_written;
 
   const [throttled, setThrottled] = useState(false);
 
+  const itemClass = highlight ? 'highlight-effect' : '';
   const handlePokeClick = () => {
     if (!throttled) {
       // 함수 실행
@@ -44,7 +53,7 @@ const TeamItem = ({ name, tilScore, status, profileImage, onPoke, cheerUp }: Mem
   };
 
   return (
-    <div className="flex items-center gap-x-3">
+    <div className={`flex items-center gap-x-3 ${itemClass}`}>
       <div className="relative flex flex-col items-center">
         <img
           className={`h-16 w-16 rounded-full ${live ? 'border-2 border-red-500' : ''}`}
@@ -60,9 +69,7 @@ const TeamItem = ({ name, tilScore, status, profileImage, onPoke, cheerUp }: Mem
       </div>
       <div>
         <p className="text-base font-semibold leading-7 tracking-tight text-gray-900">{name}</p>
-        <p className="text-sm font-semibold leading-6 text-indigo-600">
-          잔디 기여도 {tilScore * 10}%
-        </p>
+        <p className="text-sm font-semibold leading-6 text-indigo-600">잔디 기여도 {tilRatio}%</p>
         {live && (
           <button
             onClick={cheerUp}

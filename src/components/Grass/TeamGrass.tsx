@@ -6,13 +6,15 @@ export const TeamGrass = (props: any) => {
   const grassType = (count: number) => {
     switch (count) {
       case 1:
-        return 'bg-stage1 bg-contain';
+        return 'bg-stage1 bg-cover';
       case 2:
-        return 'bg-stage2 bg-contain';
+        return 'bg-stage2 bg-cover';
       case 3:
-        return 'bg-stage3 bg-contain';
+        return 'bg-stage3 bg-cover';
+      case 4:
+        return 'bg-stage4 bg-cover';
       default:
-        return 'bg-noGrass bg-contain';
+        return 'bg-noGrass bg-cover';
     }
   };
 
@@ -25,7 +27,7 @@ export const TeamGrass = (props: any) => {
       onMouseLeave={() => setShowToolTip(false)}
     >
       <div
-        className={`h-[60px] flex-grow rounded ${props.date !== '0' ? grassType(props.count) : 'bg-grassColor'} ${props.iter % 2 == 0 && 'scale-x-[-1]'}`}
+        className={`flex-grow rounded ${props.date !== '0' ? grassType(props.count) : 'bg-grassColor'} ${props.iter % 2 == 0 && 'scale-x-[-1]'}`}
       ></div>
       {props.count >= 1 && showToolTip && props.date !== '0' && (
         <div className="bg-default absolute -translate-x-1/2 -translate-y-full rounded bg-yellow-100 p-2 opacity-70">

@@ -1,52 +1,53 @@
-import { useParams } from 'react-router-dom';
 import NavBar from '@/components/Common/NavBar';
-import { BoardType } from '@/types/board/BoardType';
 import MDEditor from '@uiw/react-md-editor';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import anonymousImage from '@assets/image/anonymousImage.png';
+import { useFindBoardDetail } from '@hooks/Board/useFindBoardDetail.tsx';
+import { useParams } from 'react-router-dom';
 
-const BoardDetail = () => {
-  const { id } = useParams();
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [beforeTime, setBeforeTime] = useState<string>();
-  const userImage = localStorage.getItem('userProfileImage');
+export const BoardDetail = () => {
+  const { boardId } = useParams();
+  const { data, isLoading, isError } = useFindBoardDetail(Number(boardId));
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:3000/board/find')
-      .then((response) => {
-        const cardList = response.data;
-        if (typeof id === 'string') {
-          const selectedCard: BoardType = cardList.find(
-            (card: BoardType) => card.id === parseInt(id as string, 10),
-          );
-          setTitle(selectedCard.title);
-          setContent(selectedCard.contents);
-          const writeDate = new Date(selectedCard.timestamp);
-          const currentDate = new Date();
+  if (isLoading) {
+    return (
+      <div className="main-container">
+        <NavBar />
+        <div className="flex h-screen items-center justify-center gap-5">
+          <p>선택된 TIL 정보를 불러오는 중...</p>
+          <div className="border-mint h-10 w-10 animate-spin rounded-full border-t-4"></div>
+        </div>
+      </div>
+    );
+  }
+  if (isError) {
+    return (
+      <div className="main-container">
+        <NavBar />
+        <div className="flex h-screen items-center justify-center gap-5">
+          <p>선택된 TIL 정보를 불러오지 못했습니다!</p>;
+          <div className="border-mint h-10 w-10 animate-spin rounded-full border-t-4"></div>;
+        </div>
+      </div>
+    );
+  }
 
-          // 밀리초로 변환 후 차이 계산
-          const timeDifference = currentDate.getTime() - writeDate.getTime();
+  // 작성 시간 계산
+  const writeDate = new Date(data.board.timestamp);
+  const currentDate = new Date();
+  let beforeTime;
 
-          // 밀리초를 일로 변환 (1초 = 1000밀리초, 1분 = 60초, 1시간 = 60분, 1일 = 24시간)
-          const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  // 밀리초로 변환 후 차이 계산
+  const timeDifference = currentDate.getTime() - writeDate.getTime();
 
-          if (daysDifference >= 1) {
-            setBeforeTime(`${daysDifference}일 전`);
-          } else {
-            const hoursDifference = Math.floor(timeDifference / (1000 * 60 * 60));
-            setBeforeTime(`${hoursDifference}시간 전`);
-          }
-        } else {
-          console.log('해당 id의 카드를 찾을 수 없습니다.');
-        }
-      })
-      .catch(() => {
-        console.log('실패');
-      });
-  }, []);
+  // 밀리초를 일로 변환 (1초 = 1000밀리초, 1분 = 60초, 1시간 = 60분, 1일 = 24시간)
+  const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+  if (daysDifference >= 1) {
+    beforeTime = `${daysDifference}일 전`;
+  } else {
+    const hoursDifference = Math.floor(timeDifference / (1000 * 60 * 60));
+    beforeTime = `${hoursDifference}시간 전`;
+  }
 
   return (
     <div className="main-container">
@@ -54,19 +55,17 @@ const BoardDetail = () => {
       <div className="mx-auto mb-5 mt-5 flex w-[90%] flex-row items-end">
         <img
           className="mr-5 h-10 w-10 rounded-full object-cover object-center"
-          src={userImage ? userImage : anonymousImage}
+          src={data.user.profileImage ? data.user.profileImage : anonymousImage}
           alt="nature image"
         />
-        <p className={'pr-5 text-3xl font-bold'}> {title}</p>
+        <p className={'pr-5 text-3xl font-bold'}> {data.board.title}</p>
         <p className={'text-lg'}> 작성 {beforeTime}</p>
       </div>
       <div className="mx-auto w-[90%] border-4 border-gray-300 p-5">
         <div data-color-mode="light ">
-          <MDEditor.Markdown source={content} />
+          <MDEditor.Markdown source={data.board.contents} />
         </div>
       </div>
     </div>
   );
 };
-
-export default BoardDetail;

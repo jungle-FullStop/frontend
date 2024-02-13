@@ -11,16 +11,27 @@ export default withMT({
   ],
   theme: {
     extend: {
+      textColor: {
+        gold: '#D5A11E',
+        silver: '#A3A3A3',
+        bronze: '#CD7F32',
+      },
+      borderColor: {
+        gold: '#D5A11E',
+        silver: '#A3A3A3',
+        bronze: '#CD7F32',
+      },
       backgroundColor: {
-        grassColor: '#B56F2A',
+        grassColor: '#B35B1C',
       },
       backgroundImage: {
-        landing: "url('./src/assets/image/landingBackground.jpg')",
-        grass: "url('./src/assets/Grass/Grass.png')",
-        noGrass: "url('./src/assets/Grass/NoGrass.png')",
-        stage1: "url('./src/assets/Grass/Sunflower_1.png')",
-        stage2: "url('./src/assets/Grass/Sunflower_2.png')",
-        stage3: "url('./src/assets/Grass/Sunflower_3.png')",
+        landing: "url('/images/landingBackground.jpg')",
+        grass: "url('/Grass/Grass.png')",
+        noGrass: "url('/Grass/NoGrass.png')",
+        stage1: "url('/Grass/RedCabbage_1.png')",
+        stage2: "url('/Grass/RedCabbage_2.png')",
+        stage3: "url('/Grass/RedCabbage_3.png')",
+        stage4: "url('/Grass/RedCabbage_4.png')",
       },
     },
   },

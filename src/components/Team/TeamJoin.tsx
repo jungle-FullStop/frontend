@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Button, Input } from '@material-tailwind/react';
-import { useTeamJoin } from '@hooks/useTeamJoin.ts';
+import { useTeamJoin } from '@hooks/Team/useTeamJoin.ts';
 import BackButton from '@components/Common/BackButton.tsx';
 
 const TeamJoin = () => {
