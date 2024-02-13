@@ -18,16 +18,16 @@ export function CardDefault(props: any) {
   const userName = props.userName;
 
   return (
-    <Card className="h-full w-full overflow-hidden">
+    <Card className="h-full overflow-hidden">
       <CardHeader
         floated={false}
         shadow={false}
         color="transparent"
-        className="m-0 h-20 w-full rounded-none"
+        className="m-0 h-16 w-full rounded-none overflow-visible"
       >
         <img src={TIL} alt="ui/ux review check " className="h-full w-full object-cover" />
       </CardHeader>
-      <CardBody className="h-2/3">
+      <CardBody className="h-2/3 overflow-hidden">
         <h2 className="text-2xl font-semibold">{props.cardTitle}</h2>
         <p className={'text-blue-gray-500'}>{` ${currentMonth}월 ${currentDay}일 TIL`}</p>
         <div className="m-5"></div>
