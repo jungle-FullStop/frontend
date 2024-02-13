@@ -10,7 +10,7 @@ const today = new Date();
 export const useGetUserGrass = () => {
   const [, setTodayWrite] = useRecoilState(todayState);
 
-  const [TilData, setTilDta] = useState<TIL[]>(() => {
+  const [TilData, setTilData] = useState<TIL[]>(() => {
     return dateRange.map((item) => {
       return {
         date: item,
@@ -56,7 +56,7 @@ export const useGetUserGrass = () => {
           }
         }
       }
-      setTilDta(newTILData);
+      setTilData(newTILData);
       console.log(TilData);
     } catch (error) {
       console.log('Error fetching data:', error);

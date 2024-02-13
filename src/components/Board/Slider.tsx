@@ -47,7 +47,7 @@ function SliderCard() {
       </div>
     );
   }
- 
+
   const settings = {
     dots: true,
     infinite: false,
@@ -55,42 +55,62 @@ function SliderCard() {
     slidesToShow: 3,
     slidesToScroll: 3,
     arrow: true,
-    touchThreshold : 100,
+    touchThreshold: 100,
     // rtl: true,
     beforeChange: handleBeforeChange,
     afterChange: handleAfterChange,
   };
   return (
-    <div className="slider-container">
-      <Slider {...settings}>
-        { data.boards.length > 0
-          ?  (data.boards.map((boards: any, items: number) => {
-              return (
-                <div
-                  className="TIL shadow-base"
-                  key={items}
-                  onClick={() => {
-                    navigate(`/board/${boards.id}`);
-                  }}
-                >
-                  <CardDefault
-                    cardTitle={boards.title}
-                    cardContents={boards.contents}
-                    cardDate={boards.timestamp}
-                    userImage={data.user.profileImage}
-                    userName={data.user.name}
-                  />
-                </div>
-              );
-            }))
-          :(
-            <div className="mx-auto flex h-[500px] flex-col justify-center gap-y-8">
-              <p className="text-5xl font-bold">작성하신 TIL이 없어요.</p>
-              <WriteTIL color={'yellow'} />
+    <>
+      {data.boards.length >= 3 ? (
+        <div className="slider-container">
+          <Slider {...settings}>
+            {data.boards.map((board: any, index: number) => (
+              <div
+                className="TIL shadow-base"
+                key={index}
+                onClick={() => {
+                  navigate(`/board/${board.id}`);
+                }}
+              >
+                <CardDefault
+                  cardTitle={board.title}
+                  cardContents={board.contents}
+                  cardDate={board.timestamp}
+                  userImage={data.user.profileImage}
+                  userName={data.user.name}
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
+      ) : data.boards.length > 0 ? (
+        <div className="mx-auto flex w-[80%] justify-evenly ">
+          {data.boards.map((board: any, index: number) => (
+            <div
+              className="TIL shadow-base"
+              key={index}
+              onClick={() => {
+                navigate(`/board/${board.id}`);
+              }}
+            >
+              <CardDefault
+                cardTitle={board.title}
+                cardContents={board.contents}
+                cardDate={board.timestamp}
+                userImage={data.user.profileImage}
+                userName={data.user.name}
+              />
             </div>
-          )}
-      </Slider>
-    </div>
+          ))}
+        </div>
+      ) : (
+        <div className="mx-auto flex h-[500px] flex-col justify-center gap-y-8">
+          <p className="text-5xl font-bold">작성하신 TIL이 없어요.</p>
+          <WriteTIL color={'yellow'} />
+        </div>
+      )}
+    </>
   );
 }
 
