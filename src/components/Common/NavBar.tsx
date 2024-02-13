@@ -165,14 +165,14 @@ export function NavBar(props: any) {
           {mode === 'user' ? (
             <>
               <img src={logo} alt="메인로고" className="w-14" />
-              <Typography color="yellow" className="title self-center text-4xl font-extrabold">
+              <Typography className="TILFont self-center text-4xl font-extrabold text-yellow-800">
                 티.나.끝
               </Typography>
             </>
           ) : (
             <>
               <img src={teamLogo} alt="메인로고" className="w-14" />
-              <Typography color="green" className="title self-center text-4xl font-extrabold">
+              <Typography className="TILFont self-center text-4xl font-extrabold text-green-500">
                 팀.나.끝
               </Typography>
             </>
@@ -195,8 +195,8 @@ export function NavBar(props: any) {
           ) : (
             <Button
               variant="gradient"
-              className="hidden lg:inline-block"
-              color="yellow"
+              className="hidden text-white lg:inline-block"
+              color="amber"
               id="modeButton"
               onClick={() => handleModeClick(handleMode)}
             >
