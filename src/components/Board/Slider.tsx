@@ -20,6 +20,9 @@ function SliderCard() {
 
   const { data, isLoading, isError } = useFindUserBoard();
 
+  // const sortedData = [...data.boards].sort((a, b) => a.id - b.id)
+  // console.log(sortedData)
+
   console.log(data);
 
   if (isLoading) {
@@ -48,11 +51,12 @@ function SliderCard() {
   const settings = {
     dots: true,
     infinite: false,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 3,
     slidesToScroll: 3,
     arrow: true,
     touchThreshold : 100,
+    // rtl: true,
     beforeChange: handleBeforeChange,
     afterChange: handleAfterChange,
   };
