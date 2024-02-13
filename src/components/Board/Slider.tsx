@@ -62,7 +62,7 @@ function SliderCard() {
   };
   return (
     <>
-      {data.boards.length >= 3 ? (
+      {data.boards.length >= 4 ? (
         <div className="slider-container">
           <Slider {...settings}>
             {data.boards.map((board: any, index: number) => (
