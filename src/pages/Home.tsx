@@ -9,11 +9,14 @@ import { TeamGrassDiv } from '@components/Grass/TeamGrassDiv.tsx';
 import { TeamProfile } from '@components/Home/Profile/TeamProfile.tsx';
 import { requestForToken } from '@/components/FirebaseNotifications/Firebase';
 import Modal from '@components/Common/Modal';
-import useModal from '@hooks/useModal.tsx';
+import useModal from '@hooks/Common/useModal.tsx';
 import { Quotes } from '@components/Home/Quotes.tsx';
 import TeamInfo from '@components/Home/Info/TeamInfo.tsx';
-import { TeamSlogan } from '@/components/Home/Slogan/TeamSlogan';
-import { UserSlogan } from '@/components/Home/Slogan/UserSlogan';
+import { Slogan } from '@/components/Home/Slogan';
+import { Footer } from '@components/Common/Footer.tsx';
+import useThrottleScroll from '@hooks/Common/useThrottleScroll.ts';
+import { Ad } from '@components/Common/Ad.tsx';
+import { Setting } from '@components/Common/Setting.tsx';
 
 const Home = () => {
   const userId = localStorage.getItem('userId') as string;
@@ -49,42 +52,54 @@ const Home = () => {
     closeModal();
   }, [userId]);
 
+  const barPosition = useThrottleScroll(100, 50, 450);
+
   return (
     <div className="main-container">
       <NavBar flipCard={flipCard} />
       <div className={`card ${isFlipped ? 'flipped' : ''}`}>
         <div className="sub-container card-front">
-          <div className="flex w-full flex-row place-content-center ">
-            <div className="flex w-[700px] flex-col">
-              <UserSlogan/>
+          <div className={'float-left'}>
+            <div className="flex flex-col gap-y-8">
+              <Slogan color="yellow" />
+              <FriendInfo />
               <UserGrassDiv />
             </div>
+          </div>
 
-            <div className="flex w-1/3 flex-col gap-y-8">
-              <Quotes mode="user" />
-              <UserProfile />
-              <FriendInfo />
-              {/* <WriteTIL id={userId} color="yellow" /> */}
+          <div className={'sidebar-container'}>
+            <div className={'sidebar'} style={{ transform: `translateY(${barPosition}px)` }}>
+              <div className="flex flex-col gap-y-3">
+                <UserProfile />
+                <WriteTIL color="yellow" flipCard={flipCard} />
+                <Quotes mode="user" />
+                <Ad />
+              </div>
             </div>
           </div>
         </div>
 
         <div className="sub-container card-back">
-          <div className="flex w-full flex-row place-content-center ">
-            <div className="flex w-[700px] flex-col">
-              <TeamSlogan/>
-              <TeamGrassDiv />
-            </div>
+          <div className="flex flex-col gap-y-8">
+            <Slogan color="green" />
+            <TeamInfo />
+            <TeamGrassDiv />
+          </div>
 
-            <div className="flex w-1/3 flex-col gap-y-8">
-              <Quotes mode="team" />
-              <TeamProfile />
-              <TeamInfo />
-              {/* <WriteTIL id={userId} color="green" /> */}
+          <div className={'sidebar-container'}>
+            <div className={'sidebar'} style={{ transform: `translateY(${barPosition}px)` }}>
+              <div className="flex flex-col gap-y-3">
+                <TeamProfile />
+                <WriteTIL color="green" flipCard={flipCard} />
+                <Quotes mode="team" />
+                <Ad />
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <Setting />
+      <Footer />
       <Modal />
     </div>
   );

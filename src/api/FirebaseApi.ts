@@ -1,7 +1,7 @@
 import API_PATH from '@/util/apiPath';
 import interceptor from './fetchInterceptor';
 
-export const cockPush = async (memberId: number, pusher: string, body?: string) => {
+export const cockPush = async (memberId: string, pusher: string, body?: string | undefined) => {
   try {
     const fetchUrl = API_PATH.PUSH.push();
     const response = await interceptor(fetchUrl, {

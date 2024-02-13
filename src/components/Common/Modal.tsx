@@ -1,7 +1,7 @@
 import { MouseEvent } from 'react';
 import { createPortal } from 'react-dom';
 
-import useModal from '@hooks/useModal';
+import useModal from '@hooks/Common/useModal.tsx';
 import Icon from '@components/Common/Icon.tsx';
 
 const Modal = () => {

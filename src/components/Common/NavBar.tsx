@@ -5,26 +5,23 @@ import { Navbar, Collapse, Typography, Button, IconButton } from '@material-tail
 import logo from '@assets/image/logo.png';
 import teamLogo from '@assets/image/logo-team.png';
 import { logout } from '@/api/LoginAPI';
-import useModal from '@hooks/useModal.tsx';
+import useModal from '@hooks/Common/useModal.tsx';
 import { NAVBAR_MODAL_CONTENT_TYPE } from '@util/Constants/constants.ts';
 import TeamSetting from '@components/Team/TeamSetting.tsx';
+import UserDetail from '@components/Profile/UserDetail.tsx';
 import useGenerateReport from '@hooks/useGenerateReport.ts';
 import settingLogo from '@assets/image/settingLogo.png';
 import myPage from '@assets/image/myPage.png';
 import edit from '@assets/image/edit.png';
 import storage from '@assets/image/storage.png';
-import { todayState } from '@/store/Store';
-import { useRecoilValue } from 'recoil';
-
-import UserDetail from '@components/Profile/UserDetail.tsx';
+import { pageMode } from '@/store/Store';
+import { useRecoilState } from 'recoil';
 
 export function NavBar(props: any) {
-  const todayWrite = useRecoilValue(todayState);
-
   const teamCode = localStorage.getItem('teamCode') as string;
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
-  const [mode, setMode] = useState('user');
+  const [mode, setMode] = useRecoilState(pageMode);
 
   const modifyMode = () => {
     if (mode === 'user') {
@@ -69,6 +66,26 @@ export function NavBar(props: any) {
     }, 200);
   };
 
+  const [throttled, setThrottled] = useState(false);
+  const handleModeClick = (fn: any) => {
+    if (!throttled) {
+      // 함수 실행
+      fn();
+
+      // 쓰로틀링 상태로 변경
+      setThrottled(true);
+
+      // 일정 시간(예: 1초) 후에 쓰로틀링 상태를 해제합니다.
+      setTimeout(() => {
+        setThrottled(false);
+      }, 1000); // 5초
+    }
+  };
+
+  const {
+    handlers: { generateReport },
+  } = useGenerateReport();
+
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-10">
       <Typography
@@ -77,7 +94,7 @@ export function NavBar(props: any) {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-semibold"
       >
-        <img src={storage} className="w-5"></img>
+        <img src={storage} alt={'TIL 저장소'} className="w-5"></img>
         <button
           onClick={() => {
             navigate('/board');
@@ -93,18 +110,14 @@ export function NavBar(props: any) {
         color="blue-gray"
         className="semibold flex items-center gap-x-2 p-1"
       >
-        <img src={edit} className="w-6"></img>
+        <img src={edit} alt={'TIL 작성'} className="w-6"></img>
         <button
           onClick={() => {
-            if (todayWrite) {
-              useGenerateReport();
-              navigate('/loading');
-            } else {
-              window.alert('아직 오늘의 TIL을 작성하지 않았습니다.');
-            }
+            generateReport();
+            navigate('/loading');
           }}
         >
-          TIL 수정
+          TIL 작성
         </button>
       </Typography>
       <Typography
@@ -113,7 +126,7 @@ export function NavBar(props: any) {
         color="blue-gray"
         className="semibold flex items-center gap-x-2 p-1"
       >
-        <img src={myPage} className="w-5"></img>
+        <img src={myPage} alt={'마이페이지'} className="w-5"></img>
         <button
           onClick={() => {
             openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.DETAIL) });
@@ -128,7 +141,7 @@ export function NavBar(props: any) {
         color="blue-gray"
         className="semibold flex items-center gap-x-2 p-1"
       >
-        <img src={settingLogo} className="w-5"></img>
+        <img src={settingLogo} alt={'팀 설정'} className="w-5"></img>
         <button
           onClick={() => {
             openModal({ children: getModalContent(NAVBAR_MODAL_CONTENT_TYPE.TEAM) });
@@ -141,7 +154,7 @@ export function NavBar(props: any) {
   );
 
   return (
-    <Navbar fullWidth={true} className="mx-auto py-2 lg:px-8 lg:py-4 ">
+    <Navbar fullWidth={true} className="z-50 mx-auto py-2 lg:px-8 lg:py-4 ">
       <div className="flex w-full items-center justify-between text-blue-gray-900">
         <button
           className="flex flex-row gap-x-3"
@@ -175,7 +188,7 @@ export function NavBar(props: any) {
               className="hidden lg:inline-block"
               color="green"
               id="modeButton"
-              onClick={handleMode}
+              onClick={() => handleModeClick(handleMode)}
             >
               팀으로 전환
             </Button>
@@ -185,7 +198,7 @@ export function NavBar(props: any) {
               className="hidden lg:inline-block"
               color="yellow"
               id="modeButton"
-              onClick={handleMode}
+              onClick={() => handleModeClick(handleMode)}
             >
               유저로 전환
             </Button>

@@ -13,73 +13,107 @@
 
 @font-face {
   font-family: 'MaplestoryOTFBold';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'HSYuji-Regular';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
-.TTLFont{
-  font-family: 'MaplestoryOTFBold'
+.TTLFont {
+  font-family: 'MaplestoryOTFBold', serif;
 }
 
-.grassFont{
-  font-family: 'HSYuji-Regular'
+.grassFont {
+  font-family: 'HSYuji-Regular', serif;
 }
-
-
 
 /* test  */
 .main-container {
-  @apply mx-auto flex h-screen w-full flex-col;
+  @apply mx-auto flex h-screen flex-col;
 }
 
 .sub-container {
-  @apply mx-auto w-full pt-10;
+  @apply relative mx-auto flex w-full flex-row gap-x-5 py-10;
 }
 
 .contents-container {
-  @apply border-2 mx-auto flex w-full flex-col rounded-lg border-gray-200 bg-white p-6 ;
+  @apply mx-auto flex w-full flex-col rounded-lg border-2 border-gray-200 bg-white p-6;
+}
+
+.rank-container {
+  @apply mx-auto flex h-[312px] w-[800px] flex-col rounded-lg border-2 border-gray-200 bg-white p-6;
+}
+
+.sidebar-container {
+  @apply relative float-left h-fit w-[400px];
+}
+
+.sidebar {
+  position: absolute;
+  transition: transform 0.3s linear;
+}
+
+.teaminfo-container {
+  @apply mx-auto flex w-full flex-col rounded-lg border-2 border-gray-200 bg-white p-6;
 }
 
 .write-container {
-  @apply border-2 mx-auto flex justify-between w-full rounded-lg border-gray-200 bg-white p-6 ;
+  @apply mx-auto flex w-full flex-col justify-between rounded-lg border-2 border-gray-200 bg-white p-6;
 }
 
 .quote-container {
-  @apply border-2 mt-3 flex w-[500px] flex-col rounded-lg border-gray-200 bg-white pt-5 pl-5 pr-5;
+  @apply mx-auto flex w-full flex-col justify-between rounded-lg border-2 border-gray-200 bg-white p-6;
 }
 
 .grass-container {
-  @apply border-2 flex w-[600px] flex-col rounded-lg border-gray-200  bg-white p-6 ;
+  @apply flex w-[800px] flex-col rounded-lg border-2 border-gray-200 bg-white p-6;
 }
 
 .profile-container {
-  @apply border-2 mx-auto flex w-full flex-col rounded-lg border-gray-200 bg-white ;
+  @apply mx-auto flex h-[222px] w-[400px] flex-col rounded-lg border-2 border-gray-200 bg-white;
+}
+
+.ad-container {
+  @apply mx-auto flex w-[400px] flex-col rounded-lg border-2 border-gray-200 bg-white;
+}
+
+.setting-container {
+  @apply fixed bottom-[24px] right-[24px] z-50 flex flex-row gap-x-2;
 }
 
 .profileImg {
   transition: 1.5s;
 }
 
-.TIL-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 100%;
+.slider-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* .slick-list {
+  margin-right: -20px;
+} */
+
+.slick-slide {
+  padding-right: 20px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
 }
 
 .TIL {
-  margin-top: 2%;
-  margin-bottom: 2%;
-  width: 25%;
+  margin-top: 20px;
+  margin-bottom: 10px;
   height: 50vh;
   max-height: 400px;
   transition: 0.4s ease-in-out;
@@ -126,10 +160,12 @@
 }
 
 .card {
+  position: relative;
   transition: transform 1.2s;
   transform: perspective(3000px) rotateY(0deg);
   transform-style: preserve-3d;
   display: inline-grid;
+  margin: 0 auto;
 }
 
 .card.flipped {
@@ -137,7 +173,7 @@
 }
 
 .card-back {
-  transform: rotateY(180deg);
+  transform: perspective(3000px) rotateY(180deg);
 }
 
 .card > * {
@@ -154,7 +190,7 @@
 
 /* 마인드맵 */
 .target-popper {
-  @apply p-2 text-center hidden rounded bg-yellow-100 opacity-70 z-20;
+  @apply z-20 hidden rounded bg-yellow-100 p-2 text-center opacity-70;
 }
 .target-popper.active {
   @apply block;
@@ -180,4 +216,27 @@
 button:hover .cock-button-img {
   transform: translateX(-6px); /* 이미지를 왼쪽으로 10px 이동 */
   transition: transform 0.5s ease; /* 애니메이션 효과 적용 */
+}
+
+@keyframes highContrastTwinkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(100%);
+  }
+  25%,
+  75% {
+    opacity: 0.8;
+    transform: scale(1.1);
+    filter: brightness(100%);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+    filter: brightness(100%);
+  }
+}
+.highlight-effect {
+  animation: highContrastTwinkle 2s ease-in-out infinite;
 }

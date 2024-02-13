@@ -31,7 +31,7 @@ const FriendSearchContent = ({ name }: FriendSearchContentProps) => {
 
   if (friendList.length === 0) {
     return (
-      <div className="flex w-full flex-col items-center justify-center gap-3">
+      <div className="flex flex-col items-center justify-center gap-3">
         <p className="font-bold">검색된 친구가 없어요.</p>
       </div>
     );

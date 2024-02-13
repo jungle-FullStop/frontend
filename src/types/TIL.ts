@@ -3,3 +3,7 @@ export interface TIL {
   id: number;
   count: number;
 }
+
+export interface Report {
+  report: string;
+}

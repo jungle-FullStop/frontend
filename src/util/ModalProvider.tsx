@@ -1,5 +1,5 @@
 import { createContext, useState, ReactNode } from 'react';
-import { useKeyEscClose } from '@hooks/useKeyEscClose.ts';
+import { useKeyEscClose } from '@hooks/Common/useKeyEscClose.ts';
 
 interface ModalData {
   children?: ReactNode;
