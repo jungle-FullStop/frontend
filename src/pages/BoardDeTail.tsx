@@ -1,7 +1,7 @@
 import NavBar from '@/components/Common/NavBar';
 import MDEditor from '@uiw/react-md-editor';
 import anonymousImage from '@assets/image/anonymousImage.png';
-import { useFindBoardDetail } from '@hooks/useFindBoardDetail.tsx';
+import { useFindBoardDetail } from '@hooks/Board/useFindBoardDetail.tsx';
 import { useParams } from 'react-router-dom';
 
 export const BoardDetail = () => {

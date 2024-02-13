@@ -1,7 +1,7 @@
 import NavBar from '@/components/Common/NavBar';
 import { CardDefault } from '@components/Board/CardDefault';
 import { useNavigate } from 'react-router-dom';
-import { useFindUserBoard } from '@hooks/useFindUserBoard.ts';
+import { useFindUserBoard } from '@hooks/Board/useFindUserBoard.ts';
 import { WriteTIL } from '@components/Home/WriteTIL.tsx';
 
 export const Board = () => {

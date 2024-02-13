@@ -1,7 +1,7 @@
 // TeamInfo.jsx 또는 TeamInfo.tsx
 import TeamItem from '@components/Team/TeamItem.tsx';
 import { useEffect } from 'react';
-import useTeamListQuery from '@hooks/useTeamListQuery.ts';
+import useTeamListQuery from '@hooks/Team/useTeamListQuery.ts';
 import { useQueryClient } from '@tanstack/react-query';
 import { cockPush } from '@api/FirebaseApi.ts';
 import { round } from 'lodash';

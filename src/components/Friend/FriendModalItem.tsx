@@ -8,7 +8,7 @@ import {
   requestFriend,
 } from '@api/FriendModal.ts';
 
-import { useToast } from '@hooks/useToast.tsx';
+import { useToast } from '@hooks/Common/useToast.tsx';
 
 import { PROFILE_BUTTON_TYPE, reactQueryKeys } from '@util/Constants/constants.ts';
 import { Button } from '@material-tailwind/react';
