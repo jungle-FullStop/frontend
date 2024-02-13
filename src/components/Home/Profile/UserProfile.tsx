@@ -1,6 +1,6 @@
 import { Button, ButtonGroup } from '@material-tailwind/react';
 import anonymousImage from '@assets/image/anonymousImage.png';
-import useModal from '@hooks/useModal.tsx';
+import useModal from '@hooks/Common/useModal.tsx';
 import FriendList from '@components/Friend/FriendList.tsx';
 
 import { PROFILE_MODAL_CONTENT_TYPE } from '@util/Constants/constants';

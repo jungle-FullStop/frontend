@@ -9,12 +9,12 @@ import { TeamGrassDiv } from '@components/Grass/TeamGrassDiv.tsx';
 import { TeamProfile } from '@components/Home/Profile/TeamProfile.tsx';
 import { requestForToken } from '@/components/FirebaseNotifications/Firebase';
 import Modal from '@components/Common/Modal';
-import useModal from '@hooks/useModal.tsx';
+import useModal from '@hooks/Common/useModal.tsx';
 import { Quotes } from '@components/Home/Quotes.tsx';
 import TeamInfo from '@components/Home/Info/TeamInfo.tsx';
 import { Slogan } from '@/components/Home/Slogan';
 import { Footer } from '@components/Common/Footer.tsx';
-import useThrottleScroll from '@hooks/useThrottleScroll.ts';
+import useThrottleScroll from '@hooks/Common/useThrottleScroll.ts';
 import { Ad } from '@components/Common/Ad.tsx';
 import { Setting } from '@components/Common/Setting.tsx';
 

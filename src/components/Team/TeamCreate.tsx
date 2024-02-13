@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Button, Input } from '@material-tailwind/react';
-import { useTeamCreate } from '@hooks/useTeamCreate.ts';
+import { useTeamCreate } from '@hooks/Team/useTeamCreate.ts';
 import BackButton from '@components/Common/BackButton.tsx';
 const TeamCreate = () => {
   const inputRef = useRef<HTMLInputElement>(null);

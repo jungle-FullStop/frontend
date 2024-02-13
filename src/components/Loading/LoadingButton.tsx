@@ -4,15 +4,15 @@ import LoadingCircle from '@/components/Loading/LoadingCircle';
 import { Button } from '@material-tailwind/react';
 import { WAITING_TIME } from '@/util/Constants/constants';
 import { findReport } from '@/api/ReportAPI';
+import { Report } from '@type/TIL.ts';
 
 const LoadingButton = () => {
   const navigate = useNavigate();
   const [componentType, setComponentType] = useState('button');
   const [timer, setTimer] = useState(WAITING_TIME);
   const getReport = async () => {
-    const report = await findReport();
-    localStorage.setItem('todayReport', report?.report);
-    navigate('/edit');
+    const res: Report = await findReport();
+    localStorage.setItem('todayReport', res.report);
   };
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const LoadingButton = () => {
   }, [timer]);
 
   return (
-    <div className=''>
+    <div className="">
       {componentType === 'button' ? (
         <div className="pe-5">
           <LoadingCircle />
@@ -40,7 +40,7 @@ const LoadingButton = () => {
           color="amber"
           className="text-center text-2xl font-bold "
           onClick={() => {
-            getReport();
+            getReport().then(() => navigate('/edit'));
           }}
         >
           가이드라인 보러가기
