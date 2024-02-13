@@ -164,15 +164,15 @@ export function NavBar(props: any) {
         >
           {mode === 'user' ? (
             <>
-              <img src={logo} alt="메인로고" className="w-12" />
-              <Typography color="amber" className="self-center text-3xl font-extrabold">
+              <img src={logo} alt="메인로고" className="w-14" />
+              <Typography color="yellow" className="title self-center text-4xl font-extrabold">
                 티.나.끝
               </Typography>
             </>
           ) : (
             <>
-              <img src={teamLogo} alt="메인로고" className="w-12" />
-              <Typography color="green" className="self-center text-3xl font-extrabold">
+              <img src={teamLogo} alt="메인로고" className="w-14" />
+              <Typography color="green" className="title self-center text-4xl font-extrabold">
                 팀.나.끝
               </Typography>
             </>
