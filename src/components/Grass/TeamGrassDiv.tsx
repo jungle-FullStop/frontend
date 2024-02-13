@@ -5,13 +5,16 @@ import { useEffect, useState } from 'react';
 export const TeamGrassDiv = () => {
   const teamName = localStorage.getItem('teamName');
   const [TilData, setTilData] = useState(useGetTeamGrass());
+  console.log(TilData);
 
   useEffect(() => {
-    const eventSource = new EventSource(`/api/team/grass.status`);
+    const eventSource = new EventSource(`/api/grass/grass.status`);
 
     eventSource.onmessage = (event) => {
       let newGrassData = JSON.parse(event.data);
+      console.log(newGrassData);
       newGrassData = newGrassData.data;
+      console.log(newGrassData);
 
       const today = new Date().toLocaleDateString('ko-KR', {
         year: 'numeric',
@@ -30,7 +33,7 @@ export const TeamGrassDiv = () => {
     return () => {
       eventSource.close();
     };
-  }, []); // TilData나 setTilData가 변경될 때마다 useEffect가 다시 실행되도록
+  }, []);
 
   const grassElements = TilData.map((data, i) => {
     return <TeamGrass date={data.date} count={data.count} pageId={data.id} key={i} iter={i} />;
