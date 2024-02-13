@@ -13,47 +13,47 @@
 
 @font-face {
   font-family: 'MaplestoryOTFBold';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'HSYuji-Regular';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
-.TTLFont{
-  font-family: 'MaplestoryOTFBold', serif
+.TTLFont {
+  font-family: 'MaplestoryOTFBold', serif;
 }
 
-.grassFont{
-  font-family: 'HSYuji-Regular', serif
+.grassFont {
+  font-family: 'HSYuji-Regular', serif;
 }
-
-
 
 /* test  */
 .main-container {
-  @apply mx-auto flex flex-col h-screen;
+  @apply mx-auto flex h-screen flex-col;
 }
 
 .sub-container {
-  @apply relative mx-auto w-full py-10 flex flex-row gap-x-5;
+  @apply relative mx-auto flex w-full flex-row gap-x-5 py-10;
 }
 
 .contents-container {
-  @apply border-2 mx-auto flex w-full flex-col rounded-lg border-gray-200 bg-white p-6 ;
+  @apply mx-auto flex w-full flex-col rounded-lg border-2 border-gray-200 bg-white p-6;
 }
 
 .rank-container {
-  @apply border-2 w-[800px] h-[312px] mx-auto flex flex-col rounded-lg border-gray-200 bg-white p-6 ;
+  @apply mx-auto flex h-[312px] w-[800px] flex-col rounded-lg border-2 border-gray-200 bg-white p-6;
 }
 
 .sidebar-container {
-  @apply relative w-[400px] float-left h-fit;
+  @apply relative float-left h-fit w-[400px];
 }
 
 .sidebar {
@@ -62,49 +62,59 @@
 }
 
 .teaminfo-container {
-  @apply border-2 mx-auto flex w-full flex-col rounded-lg border-gray-200 bg-white p-6 ;
+  @apply mx-auto flex w-full flex-col rounded-lg border-2 border-gray-200 bg-white p-6;
 }
 
 .write-container {
-  @apply border-2 mx-auto flex flex-col justify-between w-full rounded-lg border-gray-200 bg-white p-6 ;
+  @apply mx-auto flex w-full flex-col justify-between rounded-lg border-2 border-gray-200 bg-white p-6;
 }
 
 .quote-container {
-  @apply border-2 mx-auto flex flex-col justify-between w-full rounded-lg border-gray-200 bg-white p-6 ;
+  @apply mx-auto flex w-full flex-col justify-between rounded-lg border-2 border-gray-200 bg-white p-6;
 }
 
 .grass-container {
-  @apply border-2 flex w-[800px] flex-col rounded-lg border-gray-200 bg-white p-6 ;
+  @apply flex w-[800px] flex-col rounded-lg border-2 border-gray-200 bg-white p-6;
 }
 
 .profile-container {
-  @apply border-2 mx-auto flex w-[400px] h-[222px] flex-col rounded-lg border-gray-200 bg-white ;
+  @apply mx-auto flex h-[222px] w-[400px] flex-col rounded-lg border-2 border-gray-200 bg-white;
 }
 
 .ad-container {
-  @apply border-2 mx-auto flex w-[400px] flex-col rounded-lg border-gray-200 bg-white ;
+  @apply mx-auto flex w-[400px] flex-col rounded-lg border-2 border-gray-200 bg-white;
 }
 
 .setting-container {
-  @apply fixed right-[24px] bottom-[24px] z-50 flex flex-row gap-x-2;
+  @apply fixed bottom-[24px] right-[24px] z-50 flex flex-row gap-x-2;
 }
 
 .profileImg {
   transition: 1.5s;
 }
 
-.TIL-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 100%;
+.slider-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* .slick-list {
+  margin-right: -20px;
+} */
+
+.slick-slide {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
 }
 
 .TIL {
-  margin-top: 2%;
-  margin-bottom: 2%;
-  width: 25%;
+  margin-top: 20px;
+  margin-bottom: 10px;
   height: 50vh;
   max-height: 400px;
   transition: 0.4s ease-in-out;
@@ -156,7 +166,7 @@
   transform: perspective(3000px) rotateY(0deg);
   transform-style: preserve-3d;
   display: inline-grid;
-  margin: 0 auto
+  margin: 0 auto;
 }
 
 .card.flipped {
@@ -181,7 +191,7 @@
 
 /* 마인드맵 */
 .target-popper {
-  @apply p-2 text-center hidden rounded bg-yellow-100 opacity-70 z-20;
+  @apply z-20 hidden rounded bg-yellow-100 p-2 text-center opacity-70;
 }
 .target-popper.active {
   @apply block;
@@ -210,12 +220,14 @@ button:hover .cock-button-img {
 }
 
 @keyframes highContrastTwinkle {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
     filter: brightness(100%);
   }
-  25%, 75% {
+  25%,
+  75% {
     opacity: 0.8;
     transform: scale(1.1);
     filter: brightness(100%);
