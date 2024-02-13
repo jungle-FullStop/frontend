@@ -1,9 +1,39 @@
 import { TeamGrass } from '@/components/Grass/TeamGrass';
 import { useGetTeamGrass } from '@hooks/useGetTeamGrass.ts';
+import { useEffect, useState } from 'react';
 
 export const TeamGrassDiv = () => {
   const teamName = localStorage.getItem('teamName');
-  const TilData = useGetTeamGrass();
+  const [TilData, setTilData] = useState(useGetTeamGrass());
+  console.log(TilData);
+
+  useEffect(() => {
+    const eventSource = new EventSource(`/api/grass/grass.status`);
+
+    eventSource.onmessage = (event) => {
+      let newGrassData = JSON.parse(event.data);
+      console.log(newGrassData);
+      newGrassData = newGrassData.data;
+      console.log(newGrassData);
+
+      const today = new Date().toLocaleDateString('ko-KR', {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        weekday: 'long',
+      });
+      const todayDataIndex = TilData.findIndex((data) => data.date === today);
+      if (todayDataIndex !== -1) {
+        const updatedTilData = [...TilData];
+        updatedTilData[todayDataIndex].count = newGrassData.grass;
+        setTilData(updatedTilData);
+      }
+    };
+
+    return () => {
+      eventSource.close();
+    };
+  }, []);
 
   const grassElements = TilData.map((data, i) => {
     return <TeamGrass date={data.date} count={data.count} pageId={data.id} key={i} iter={i} />;
