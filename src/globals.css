@@ -27,7 +27,7 @@
   font-style: normal;
 }
 
-.TTLFont {
+.TILFont {
   font-family: 'MaplestoryOTFBold', serif;
 }
 
@@ -87,6 +87,10 @@
 
 .setting-container {
   @apply fixed bottom-[24px] right-[24px] z-50 flex flex-row gap-x-2;
+}
+
+.slogan-container {
+  @apply flex flex-row justify-center w-[800px] h-[150px]
 }
 
 .profileImg {
@@ -240,4 +244,66 @@ button:hover .cock-button-img {
 }
 .highlight-effect {
   animation: highContrastTwinkle 2s ease-in-out infinite;
+}
+
+/* slogan 애니메이션 */
+.animation-container {
+  @apply rounded w-[400px] overflow-hidden
+}
+
+.star {
+  animation: star-move 15s infinite;
+  @apply relative z-10 mx-auto w-[100px] h-[100px] bg-cover
+}
+
+.diary {
+  animation: diary-move 15s infinite;
+  @apply relative z-0 mx-auto w-[100px] h-[100px] bg-cover
+}
+
+.animation-container .star {
+  background-image: url('/images/logo-with-pen.png');
+}
+
+.animation-container .diary {
+  background-image: url('/images/yellow-diary.png')
+}
+
+@keyframes star-move {
+  0% {
+    transform: translateX(-200px) translateY(200px) rotate(-30deg);
+  }
+  30% {
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+  }
+  40% {
+    transform: translateX(10px)
+  }
+  50% {
+    transform: translateX(-10px)
+  }
+  60% {
+    transform: translateX(10px)
+  }
+  70% {
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(200px) translateY(200px) rotate(30deg);
+  }
+}
+
+@keyframes diary-move {
+  0% {
+    transform: translateX(400px) translateY(-100px);
+  }
+  30% {
+    transform: translateX(30px) translateY(-100px);
+  }
+  70% {
+    transform: translateX(30px) translateY(-100px);
+  }
+  100% {
+    transform: translateX(-400px) translateY(-100px);
+  }
 }

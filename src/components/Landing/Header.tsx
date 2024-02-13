@@ -12,7 +12,7 @@ export const Header = () => {
         onClick={() => navigate('/')}
         aria-label="메인 페이지로 이동"
       >
-        <img src={logo} alt="메인로고" className="w-14" />
+        <img src={logo} alt="메인로고" className="w-16" />
         <p className="text-4xl font-extrabold text-amber-500">티.나.끝</p>
       </Button>
     </div>

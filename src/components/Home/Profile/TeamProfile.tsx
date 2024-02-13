@@ -42,7 +42,7 @@ export const TeamProfile = () => {
               />
             </div>
             <div className="w-full">
-              <p className="TTLFont whitespace-pre-wrap text-3xl font-bold">
+              <p className="TILFont whitespace-pre-wrap text-3xl font-bold">
                 팀 <span className={'text-green-500'}>{teamName}</span>에{'\n'} 어서오세요 !
               </p>
             </div>

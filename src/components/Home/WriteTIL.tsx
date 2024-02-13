@@ -49,7 +49,7 @@ export const WriteTIL = (props: any) => {
 
   return (
     <div className={'write-container'}>
-      <p className="TTLFont mb-5 text-center text-2xl font-bold">
+      <p className="TILFont mb-5 text-center text-2xl font-bold">
         {todayWrite ? '오늘 하루 수고하셨습니다 !' : '아직 TIL을 작성하지 않으셨나요?'}
       </p>
       {todayWrite ? (

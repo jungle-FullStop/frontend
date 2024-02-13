@@ -1,9 +1,39 @@
 import { TeamGrass } from '@/components/Grass/TeamGrass';
 import { useGetTeamGrass } from '@hooks/useGetTeamGrass.ts';
+import { useEffect, useState } from 'react';
 
 export const TeamGrassDiv = () => {
   const teamName = localStorage.getItem('teamName');
-  const TilData = useGetTeamGrass();
+  const [TilData, setTilData] = useState(useGetTeamGrass());
+  console.log(TilData);
+
+  useEffect(() => {
+    const eventSource = new EventSource(`/api/grass/grass.status`);
+
+    eventSource.onmessage = (event) => {
+      let newGrassData = JSON.parse(event.data);
+      console.log(newGrassData);
+      newGrassData = newGrassData.data;
+      console.log(newGrassData);
+
+      const today = new Date().toLocaleDateString('ko-KR', {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        weekday: 'long',
+      });
+      const todayDataIndex = TilData.findIndex((data) => data.date === today);
+      if (todayDataIndex !== -1) {
+        const updatedTilData = [...TilData];
+        updatedTilData[todayDataIndex].count = newGrassData.grass;
+        setTilData(updatedTilData);
+      }
+    };
+
+    return () => {
+      eventSource.close();
+    };
+  }, []);
 
   const grassElements = TilData.map((data, i) => {
     return <TeamGrass date={data.date} count={data.count} pageId={data.id} key={i} iter={i} />;
@@ -15,7 +45,7 @@ export const TeamGrassDiv = () => {
     <>
       <div className="grass-container">
         <div>
-          <p className="TTLFont pb-3 text-center text-2xl">
+          <p className="TILFont pb-3 text-center text-2xl">
             팀 <span className={'text-green-500'}>{teamName}</span> 텃밭
           </p>
           <div className="grassFont mx-auto grid w-[700px] grid-cols-7 grid-rows-1 p-2 text-center text-xl font-bold">
