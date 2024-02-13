@@ -105,7 +105,9 @@ const TeamInfo = () => {
   return (
     <Flipper flipKey={teamListData?.map((item: { id: any }) => item.id).join('')}>
       <div className="teaminfo-container">
-        <p className="TTLFont pb-3 text-center text-2xl font-bold">이달의 우수 정원사</p>
+        <p className="TILFont pb-3 text-center text-2xl font-bold">
+          이달의 <span className={'text-green-500'}>우수</span> 정원사
+        </p>
         <div className="grid grid-cols-3 gap-5">
           {teamListData?.sort(sortTeamMembers).map((member: MemberListResponse) => (
             // Wrap each item in a Flipped component for individual animation

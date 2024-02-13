@@ -27,16 +27,12 @@
   font-style: normal;
 }
 
-.TTLFont {
+.TILFont {
   font-family: 'MaplestoryOTFBold', serif;
 }
 
 .grassFont {
   font-family: 'HSYuji-Regular', serif;
-}
-
-.title {
-  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
 }
 
 /* test  */

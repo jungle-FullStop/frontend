@@ -9,7 +9,7 @@ export const Quotes = (props: any) => {
       {props.mode === 'user' ? (
         <div className="quote-container">
           <div>
-            <p className="TTLFont mb-3 text-center text-2xl font-bold">오늘의 Quotes</p>
+            <p className="TILFont mb-3 text-center text-2xl font-bold">오늘의 Quotes</p>
           </div>
           <div className="flex h-[70px] items-center justify-center rounded bg-gray-200 p-3">
             <p className="whitespace-pre-wrap text-center font-normal italic">
@@ -23,7 +23,7 @@ export const Quotes = (props: any) => {
       ) : (
         <div className="quote-container">
           <div>
-            <p className="TTLFont mb-3 text-center text-2xl font-bold">오늘의 공부 Keyword</p>
+            <p className="TILFont mb-3 text-center text-2xl font-bold">오늘의 공부 Keyword</p>
           </div>
           <div className="flex h-[70px] items-center justify-center rounded bg-gray-200 p-3">
             <p className="whitespace-pre-wrap text-center font-normal italic">
