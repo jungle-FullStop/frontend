@@ -1,7 +1,7 @@
 import NavBar from '@/components/Common/NavBar';
 import MDEditor from '@uiw/react-md-editor';
 import anonymousImage from '@assets/image/anonymousImage.png';
-import { useFindBoardDetail } from '@hooks/useFindBoardDetail.ts';
+import { useFindBoardDetail } from '@/hooks/useFindBoardDetail';
 import { Ad } from '@/components/Common/Ad';
 import teamspartaAd from '@assets/image/teamspartaAd.png';
 import { Footer } from '@/components/Common/Footer';

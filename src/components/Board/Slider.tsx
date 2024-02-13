@@ -20,6 +20,8 @@ function MultipleItems() {
 
   const { data, isLoading, isError } = useFindUserBoard();
 
+  console.log(data);
+
   if (isLoading) {
     return (
       <div className="main-container">
@@ -58,19 +60,19 @@ function MultipleItems() {
     <div className="slider-container">
       <Slider {...settings}>
         { data.boards.length > 0
-          ?  (data.boards.map((data: any, items: number) => {
+          ?  (data.boards.map((boards: any, items: number) => {
               return (
                 <div
                   className="TIL shadow-base"
                   key={items}
                   onClick={() => {
-                    navigate(`/board/${data.id}`);
+                    navigate(`/board/${boards.id}`);
                   }}
                 >
                   <CardDefault
-                    cardTitle={data.title}
-                    cardContents={data.contents}
-                    cardDate={data.timestamp}
+                    cardTitle={boards.title}
+                    cardContents={boards.contents}
+                    cardDate={boards.timestamp}
                     userImage={data.user.profileImage}
                     userName={data.user.name}
                   />
