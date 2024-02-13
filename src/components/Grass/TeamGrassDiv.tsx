@@ -45,7 +45,7 @@ export const TeamGrassDiv = () => {
     <>
       <div className="grass-container">
         <div>
-          <p className="TTLFont pb-3 text-center text-2xl">
+          <p className="TILFont pb-3 text-center text-2xl">
             팀 <span className={'text-green-500'}>{teamName}</span> 텃밭
           </p>
           <div className="grassFont mx-auto grid w-[700px] grid-cols-7 grid-rows-1 p-2 text-center text-xl font-bold">

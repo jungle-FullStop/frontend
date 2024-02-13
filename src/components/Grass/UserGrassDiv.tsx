@@ -13,7 +13,7 @@ export const UserGrassDiv = () => {
     <>
       <div className="grass-container">
         <div>
-          <p className="TTLFont pb-3  text-center text-2xl text-black">
+          <p className="TILFont pb-3  text-center text-2xl text-black">
             나의 <span className="text-yellow-800">TIL</span> 텃밭
           </p>
           <div className="grassFont mx-auto grid w-[700px] grid-cols-7 grid-rows-1 p-2 text-center text-xl font-bold text-black">

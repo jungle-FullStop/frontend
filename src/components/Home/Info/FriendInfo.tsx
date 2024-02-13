@@ -44,7 +44,9 @@ export const FriendInfo = () => {
         </div>
       ) : (
         <>
-          <p className="TTLFont pb-3 text-center text-2xl font-bold">이달의 TIL 작성 순위</p>
+          <p className="TILFont pb-3 text-center text-2xl font-bold">
+            이달의 <span className="text-yellow-800">TIL</span> 작성 순위
+          </p>
           <div className="grid grid-cols-3">
             {friendListData.data.friends.length !== 0 ? (
               friendListData.data.friends
