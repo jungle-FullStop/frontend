@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { useFindUserBoard } from '@/hooks/useFindUserBoard';
 import { CardDefault } from './CardDefault';
 import { useCallback, useState } from 'react';
+import { WriteTIL } from '@components/Home/WriteTIL.tsx';
+import NavBar from '../Common/NavBar';
 
 function MultipleItems() {
   const navigate = useNavigate();
@@ -16,8 +18,31 @@ function MultipleItems() {
     setDragging(false);
   }, []);
 
-  const { userImage, userName, cardList } = useFindUserBoard();
-  console.log(cardList)
+  const { data, isLoading, isError } = useFindUserBoard();
+
+  if (isLoading) {
+    return (
+      <div className="main-container">
+        <NavBar />
+        <div className="flex h-screen items-center justify-center gap-5">
+          <p>TIL 저장소를 불러오는 중...</p>
+          <div className="border-mint h-10 w-10 animate-spin rounded-full border-t-4"></div>
+        </div>
+      </div>
+    );
+  }
+  if (isError) {
+    return (
+      <div className="main-container">
+        <NavBar />
+        <div className="flex h-screen items-center justify-center gap-5">
+          <p>TIL 저장소를 불러오지 못했습니다!</p>
+          <div className="border-mint h-10 w-10 animate-spin rounded-full border-t-4"></div>
+        </div>
+      </div>
+    );
+  }
+ 
   const settings = {
     dots: true,
     infinite: false,
@@ -32,8 +57,8 @@ function MultipleItems() {
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        {cardList
-          ? cardList.map((data: any, items: number) => {
+        { data.boards.length > 0
+          ?  (data.boards.map((data: any, items: number) => {
               return (
                 <div
                   className="TIL shadow-base"
@@ -46,13 +71,18 @@ function MultipleItems() {
                     cardTitle={data.title}
                     cardContents={data.contents}
                     cardDate={data.timestamp}
-                    userImage={userImage}
-                    userName={userName}
+                    userImage={data.user.profileImage}
+                    userName={data.user.name}
                   />
                 </div>
               );
-            })
-          : null}
+            }))
+          :(
+            <div className="mx-auto flex h-[500px] flex-col justify-center gap-y-8">
+              <p className="text-5xl font-bold">작성하신 TIL이 없어요.</p>
+              <WriteTIL color={'yellow'} />
+            </div>
+          )}
       </Slider>
     </div>
   );

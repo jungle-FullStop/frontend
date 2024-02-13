@@ -66,8 +66,9 @@ export const FriendInfo = () => {
                 .slice(0, 3)
             ) : (
               <>
-                <div className="flex w-full flex-col items-center justify-center gap-3">
-                  <p className="font-bold">아직 친구가 없어요.</p>
+                <div></div>
+                <div className="mx-auto">
+                  <p className="flex pt-[80px] text-2xl font-bold">아직 친구가 없어요.</p>
                 </div>
               </>
             )}

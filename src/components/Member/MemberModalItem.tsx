@@ -59,15 +59,13 @@ const MemberModalItem = ({ email, profileImage, name, id, type }: MemberModalIte
   }
 
   return (
-    <div className="mb-5 mr-3 flex w-full">
-      <div className="w-28">
-        <img
-          className="mr-3 h-16 w-16 cursor-pointer rounded-full object-cover"
-          src={profileImage}
-          alt={`${name} 프로필 이미지`}
-        />
-      </div>
-      <div className="flex w-full flex-col">
+    <div className="flex flex-row">
+      <img
+        className="mr-3 h-16 w-16 cursor-pointer rounded-full object-cover"
+        src={profileImage}
+        alt={`${name} 프로필 이미지`}
+      />
+      <div className="flex flex-col">
         <p className="text-sm font-bold">{name}</p>
         <p className="text-gray text-xs">{email}</p>
         {buttonContent}
