@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { pageMode, todayState } from '@/store/Store';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { NAVBAR_MODAL_CONTENT_TYPE } from '@util/Constants/constants.ts';
-import useModal from '@hooks/useModal.tsx';
+import useModal from '@hooks/Common/useModal.tsx';
 import UserDetail from '@components/Profile/UserDetail.tsx';
 import TeamSetting from '@components/Team/TeamSetting.tsx';
 import useGenerateReport from '@hooks/useGenerateReport.ts';

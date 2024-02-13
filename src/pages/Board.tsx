@@ -1,5 +1,5 @@
 import NavBar from '@/components/Common/NavBar';
-import MultipleItems from '@/components/Board/Slider';
+import SliderCard from '@/components/Board/Slider';
 import { Footer } from '@/components/Common/Footer';
 
 export const Board = () => {
@@ -8,7 +8,7 @@ export const Board = () => {
       <div className="main-container">
         <NavBar></NavBar>
         <div className="flex h-full items-center">
-          <MultipleItems />
+          <SliderCard />
         </div>
       <Footer></Footer>
       </div>

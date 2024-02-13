@@ -1,10 +1,10 @@
 import { Button, ButtonGroup } from '@material-tailwind/react';
 import teamDefaultImage from '@assets/image/teamDefaultImage.jpg';
-import useModal from '@hooks/useModal.tsx';
+import useModal from '@hooks/Common/useModal.tsx';
 import MemberList from '@components/Member/MemberList.tsx';
 import { PROFILE_MODAL_CONTENT_TYPE } from '@util/Constants/constants.ts';
 import TeamDetail from '@components/Profile/TeamDetail.tsx';
-import useTeamListQuery from '@hooks/useTeamListQuery.ts';
+import useTeamListQuery from '@hooks/Team/useTeamListQuery.ts';
 
 export const TeamProfile = () => {
   const userId = localStorage.getItem('userId');

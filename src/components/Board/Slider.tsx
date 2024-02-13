@@ -2,13 +2,13 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import { useNavigate } from 'react-router-dom';
-import { useFindUserBoard } from '@/hooks/useFindUserBoard';
+import { useFindUserBoard } from '@hooks/Board/useFindUserBoard.ts';
 import { CardDefault } from './CardDefault';
 import { useCallback, useState } from 'react';
 import { WriteTIL } from '@components/Home/WriteTIL.tsx';
 import NavBar from '../Common/NavBar';
 
-function MultipleItems() {
+function SliderCard() {
   const navigate = useNavigate();
   const [dragging, setDragging] = useState<boolean>(false);
   const handleBeforeChange = useCallback(() => {
@@ -90,4 +90,4 @@ function MultipleItems() {
   );
 }
 
-export default MultipleItems;
+export default SliderCard;

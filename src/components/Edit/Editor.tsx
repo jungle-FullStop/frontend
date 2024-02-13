@@ -4,7 +4,7 @@ import { Button } from '@material-tailwind/react';
 
 import axios from 'axios';
 import apiPath from '@util/apiPath';
-import { useBoardCreate } from '@hooks/useBoardCreate.ts';
+import { useBoardCreate } from '@hooks/Board/useBoardCreate.ts';
 
 const Editor = () => {
   // 사용자 상태 업데이트 함수/**/

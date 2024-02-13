@@ -5,7 +5,7 @@ import { Navbar, Collapse, Typography, Button, IconButton } from '@material-tail
 import logo from '@assets/image/logo.png';
 import teamLogo from '@assets/image/logo-team.png';
 import { logout } from '@/api/LoginAPI';
-import useModal from '@hooks/useModal.tsx';
+import useModal from '@hooks/Common/useModal.tsx';
 import { NAVBAR_MODAL_CONTENT_TYPE } from '@util/Constants/constants.ts';
 import TeamSetting from '@components/Team/TeamSetting.tsx';
 import UserDetail from '@components/Profile/UserDetail.tsx';
