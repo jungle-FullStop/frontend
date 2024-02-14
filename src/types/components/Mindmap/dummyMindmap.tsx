@@ -8,6 +8,6 @@ export const dummyMindmap: ElementDefinition[] = [
     data: { id: 'team', label: '검색을 통해 마인드맵을 만들어보세요', cnt: 0 },
   },
   {
-    data: { source: 'team', target: 'user' },
+    data: { source: 'team', target: 'user', cnt: 0 },
   },
 ];
