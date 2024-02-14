@@ -36,14 +36,13 @@ export const TeamGrassDiv = () => {
     };
   }, []);
 
+  const teamScore = TilData.reduce((acc, cur) => acc + cur.count, 0);
+
   const grassElements = TilData.map((data, i) => {
     return (
       <TeamGrass date={data.date} proportion={data.proportion} pageId={data.id} key={i} iter={i} />
     );
   });
-
-  const teamScore = TilData.reduce((acc, cur) => acc + cur.count, 0);
-  console.log(TilData);
   return (
     <>
       <div className="grass-container">
