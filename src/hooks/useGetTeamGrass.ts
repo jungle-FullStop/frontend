@@ -21,12 +21,17 @@ export const useGetTeamGrass = () => {
 
     try {
       const response = await getTeamGrass(today);
+      console.log(response);
+      const teamBoard = response[0].teamBoard;
+      console.log(teamBoard);
+      const totalMember = response[0].totalMember;
+      console.log(totalMember);
       const newTILData = [...TilData];
       // 팀원이
-      for (let teamUser = 0; teamUser < response.length; teamUser++) {
+      for (let teamUser = 0; teamUser < teamBoard.length; teamUser++) {
         // 작성한 글 중에
-        for (let i = 0; i < response[teamUser].boards.length; i++) {
-          const currentBoard = response[teamUser];
+        for (let i = 0; i < teamBoard[teamUser].boards.length; i++) {
+          const currentBoard = teamBoard[teamUser];
           const wirteDate = new Date(currentBoard.boards[i].timestamp);
           const writeId = currentBoard.boards[i].id;
           // 특정 날짜가 있는지 확인
@@ -46,6 +51,10 @@ export const useGetTeamGrass = () => {
           }
         }
       }
+      newTILData.map((Til) => {
+        Til.count = Math.floor((Til.count / totalMember) * 100);
+        return Til;
+      });
       setTilDta(newTILData);
     } catch (error) {
       console.log('Error fetching data:', error);
