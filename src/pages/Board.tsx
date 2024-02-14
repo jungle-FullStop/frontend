@@ -1,6 +1,7 @@
 import NavBar from '@/components/Common/NavBar';
 import SliderCard from '@/components/Board/Slider';
 import { Footer } from '@/components/Common/Footer';
+import Modal from '@components/Common/Modal.tsx';
 
 export const Board = () => {
   return (
@@ -10,6 +11,7 @@ export const Board = () => {
         <SliderCard />
       </div>
       <Footer />
+      <Modal />
     </div>
   );
 };

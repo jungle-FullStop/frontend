@@ -2,6 +2,7 @@ import NavBar from '@components/Common/NavBar';
 import Editor from '@components/Edit/Editor';
 import History from '@components/History/History.tsx';
 import { Footer } from '@components/Common/Footer.tsx';
+import Modal from '@components/Common/Modal.tsx';
 
 const Edit = () => {
   return (
@@ -18,6 +19,7 @@ const Edit = () => {
         </div>
       </div>
       <Footer />
+      <Modal />
     </div>
   );
 };

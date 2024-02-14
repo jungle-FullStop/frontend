@@ -3,6 +3,7 @@ import NavBar from '@components/Common/NavBar';
 import { Mindmap } from '@components/Loading/Mindmap/Mindmap.tsx';
 import LoadingButton from '@components/Loading/LoadingButton';
 import { Button, ButtonGroup } from '@material-tailwind/react';
+import Modal from '@components/Common/Modal.tsx';
 
 const Loading = () => {
   const [layout, setLayout] = useState('fcose');
@@ -61,6 +62,7 @@ const Loading = () => {
         <LoadingButton />
       </div>
       <Mindmap name={layout} />
+      <Modal />
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { Footer } from '@/components/Common/Footer';
 import { useParams } from 'react-router-dom';
 import { Setting } from '@/components/Common/Setting';
 import { Ad } from '@components/Common/Ad.tsx';
+import Modal from '@components/Common/Modal.tsx';
 
 export const BoardDetail = () => {
   const { boardId } = useParams();
@@ -87,6 +88,7 @@ export const BoardDetail = () => {
       </div>
       <Setting />
       <Footer />
+      <Modal />
     </div>
   );
 };
