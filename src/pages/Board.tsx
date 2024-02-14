@@ -4,14 +4,12 @@ import { Footer } from '@/components/Common/Footer';
 
 export const Board = () => {
   return (
-    <>
-      <div className="main-container">
-        <NavBar></NavBar>
-        <div className="flex w-full h-full mx-auto items-center">
-          <SliderCard />
-        </div>
-      <Footer></Footer>
+    <div className="main-container">
+      <NavBar />
+      <div className="mx-auto flex h-screen w-full items-center">
+        <SliderCard />
       </div>
-    </>
+      <Footer />
+    </div>
   );
 };

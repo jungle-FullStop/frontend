@@ -58,7 +58,7 @@ const Home = () => {
     <div className="main-container">
       <NavBar flipCard={flipCard} />
       <div className={`card ${isFlipped ? 'flipped' : ''}`}>
-        <div className="sub-container card-front">
+        <div className="home-container card-front">
           <div className={'float-left'}>
             <div className="flex flex-col gap-y-8">
               <Slogan color="yellow" />
@@ -73,13 +73,13 @@ const Home = () => {
                 <UserProfile />
                 <WriteTIL color="yellow" flipCard={flipCard} />
                 <Quotes mode="user" />
-                <Ad />
+                <Ad mode={'jungle'} />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="sub-container card-back">
+        <div className="home-container card-back">
           <div className="flex flex-col gap-y-8">
             <Slogan color="green" />
             <TeamInfo />
@@ -92,7 +92,7 @@ const Home = () => {
                 <TeamProfile />
                 <WriteTIL color="green" flipCard={flipCard} />
                 <Quotes mode="team" />
-                <Ad />
+                <Ad mode={'jungle'} />
               </div>
             </div>
           </div>

@@ -27,45 +27,39 @@ const Loading = () => {
   return (
     <div className="main-container">
       <NavBar />
-      <div></div>
-      <div className=" mx-auto mt-10 flex h-[40px] w-[90%] items-center justify-between last:py-3">
-        <div className="">
-          <ButtonGroup variant="outlined">
-            <Button
-              onClick={() => {
-                setLayout('fcose');
-              }}
-            >
-              <p className="text-base"> 마인드맵</p>
-            </Button>
-            <Button
-              onClick={() => {
-                setLayout('circle');
-              }}
-            >
-              <p className="text-base">원형</p>
-            </Button>
-            <Button
-              onClick={() => {
-                setLayout('grid');
-              }}
-            >
-              <p className="text-base">그리드</p>
-            </Button>
-            <Button
-              onClick={() => {
-                setLayout('breadthfirst');
-              }}
-            >
-              <p className="text-base">트리</p>
-            </Button>
-          </ButtonGroup>
-        </div>
-        <div>
-          <LoadingButton />
-        </div>
+      <div className="loading-container">
+        <ButtonGroup variant="outlined">
+          <Button
+            onClick={() => {
+              setLayout('fcose');
+            }}
+          >
+            <p className="text-base"> 마인드맵</p>
+          </Button>
+          <Button
+            onClick={() => {
+              setLayout('circle');
+            }}
+          >
+            <p className="text-base">원형</p>
+          </Button>
+          <Button
+            onClick={() => {
+              setLayout('grid');
+            }}
+          >
+            <p className="text-base">그리드</p>
+          </Button>
+          <Button
+            onClick={() => {
+              setLayout('breadthfirst');
+            }}
+          >
+            <p className="text-base">트리</p>
+          </Button>
+        </ButtonGroup>
+        <LoadingButton />
       </div>
-
       <Mindmap name={layout} />
     </div>
   );

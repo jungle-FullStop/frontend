@@ -41,11 +41,16 @@
 }
 
 .sub-container {
-  @apply relative mx-auto flex w-full flex-row gap-x-5 py-10;
+  @apply p-10
 }
 
 .contents-container {
   @apply mx-auto flex w-full flex-col rounded-lg border-2 border-gray-200 bg-white p-6;
+}
+
+/* 홈 화면 */
+.home-container {
+  @apply relative mx-auto flex w-full flex-row gap-x-5 py-10;
 }
 
 .rank-container {
@@ -81,8 +86,12 @@
   @apply mx-auto flex h-[222px] w-[400px] flex-col rounded-lg border-2 border-gray-200 bg-white;
 }
 
-.ad-container {
+.home-ad-container {
   @apply mx-auto flex w-[400px] flex-col rounded-lg border-2 border-gray-200 bg-white;
+}
+
+.board-ad-container {
+  @apply mx-auto flex w-[600px] flex-col rounded-lg border-2 border-gray-200 bg-white;
 }
 
 .setting-container {
@@ -91,6 +100,15 @@
 
 .slogan-container {
   @apply flex flex-row justify-center w-[800px] h-[150px]
+}
+
+/*로딩 화면*/
+.loading-container {
+  @apply mx-auto mt-10 flex h-[40px] w-[90%] items-center justify-between last:py-3
+}
+
+.board-contents-container {
+  @apply mx-auto flex w-[800px] gap-y-8 flex-col rounded-lg border-2 border-gray-200 bg-white p-10;
 }
 
 .profileImg {
