@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { onMessageListener } from './Firebase';
 import Alarm from './Alarm';
-import customSound from '../../assets/sound/chicken.mp3';
+import customSound from '../../assets/sound/alarm.mp3';
 
 const Notification = () => {
   const [notification, setNotification] = useState({ title: '', body: '', image: '' });
