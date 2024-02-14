@@ -21,10 +21,9 @@ export const useGetTeamGrass = () => {
 
     try {
       const response = await getTeamGrass(today);
-      console.log(response);
-      const teamBoard = response[0].teamBoard;
+      const teamBoard = response.teamBoard;
       console.log(teamBoard);
-      const totalMember = response[0].totalMember;
+      const totalMember = response.totalMember;
       console.log(totalMember);
       const newTILData = [...TilData];
       // 팀원이
