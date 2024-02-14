@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 export const TeamGrassDiv = () => {
   const teamName = localStorage.getItem('teamName');
   const [TilData, setTilData] = useState(useGetTeamGrass());
-  console.log(TilData);
+  // console.log(TilData);
 
   useEffect(() => {
     const eventSource = new EventSource(`/api/grass/grass.status`);
@@ -40,7 +40,7 @@ export const TeamGrassDiv = () => {
   });
 
   const teamScore = TilData.reduce((acc, cur) => acc + cur.count, 0);
-
+  console.log(TilData);
   return (
     <>
       <div className="grass-container">

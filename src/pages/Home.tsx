@@ -1,22 +1,17 @@
 import { useEffect, useState } from 'react';
 import NavBar from '@/components/Common/NavBar';
-import { UserProfile } from '@components/Home/Profile/UserProfile.tsx';
 import { FriendInfo } from '@components/Home/Info/FriendInfo.tsx';
-import { WriteTIL } from '@/components/Home/WriteTIL';
 import { UserGrassDiv } from '@components/Grass/UserGrassDiv.tsx';
 import { createMindmap } from '@/api/MindmapAPI';
 import { TeamGrassDiv } from '@components/Grass/TeamGrassDiv.tsx';
-import { TeamProfile } from '@components/Home/Profile/TeamProfile.tsx';
 import { requestForToken } from '@/components/FirebaseNotifications/Firebase';
 import Modal from '@components/Common/Modal';
 import useModal from '@hooks/Common/useModal.tsx';
-import { Quotes } from '@components/Home/Quotes.tsx';
 import TeamInfo from '@components/Home/Info/TeamInfo.tsx';
 import { Slogan } from '@/components/Home/Slogan';
 import { Footer } from '@components/Common/Footer.tsx';
-import useThrottleScroll from '@hooks/Common/useThrottleScroll.ts';
-import { Ad } from '@components/Common/Ad.tsx';
 import { Setting } from '@components/Common/Setting.tsx';
+import { HomeSideBar } from '@components/Common/HomeSideBar.tsx';
 
 const Home = () => {
   const userId = localStorage.getItem('userId') as string;
@@ -52,8 +47,6 @@ const Home = () => {
     closeModal();
   }, [userId]);
 
-  const barPosition = useThrottleScroll(100, 50, 450);
-
   return (
     <div className="main-container">
       <NavBar flipCard={flipCard} />
@@ -67,16 +60,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className={'sidebar-container'}>
-            <div className={'sidebar'} style={{ transform: `translateY(${barPosition}px)` }}>
-              <div className="flex flex-col gap-y-3">
-                <UserProfile />
-                <WriteTIL color="yellow" flipCard={flipCard} />
-                <Quotes mode="user" />
-                <Ad mode={'jungle'} />
-              </div>
-            </div>
-          </div>
+          <HomeSideBar flipCard={flipCard} color={'yellow'} mode={'user'} />
         </div>
 
         <div className="home-container card-back">
@@ -86,16 +70,7 @@ const Home = () => {
             <TeamGrassDiv />
           </div>
 
-          <div className={'sidebar-container'}>
-            <div className={'sidebar'} style={{ transform: `translateY(${barPosition}px)` }}>
-              <div className="flex flex-col gap-y-3">
-                <TeamProfile />
-                <WriteTIL color="green" flipCard={flipCard} />
-                <Quotes mode="team" />
-                <Ad mode={'jungle'} />
-              </div>
-            </div>
-          </div>
+          <HomeSideBar flipCard={flipCard} color={'green'} mode={'team'} />
         </div>
       </div>
       <Setting />
