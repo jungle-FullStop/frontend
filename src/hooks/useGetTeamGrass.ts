@@ -6,7 +6,7 @@ import { getTeamGrass } from '@api/GrassApi.ts';
 const today = new Date();
 
 export const useGetTeamGrass = () => {
-  const [TilData, setTilDta] = useState<TIL[]>(() => {
+  const [TilData, setTilData] = useState<TIL[]>(() => {
     return dateRange.map((item) => {
       return {
         date: item,
@@ -21,21 +21,25 @@ export const useGetTeamGrass = () => {
 
     try {
       const response = await getTeamGrass(today);
+      const teamBoard = response.teamBoard;
+      // console.log(teamBoard);
+      const totalMember = response.totalMember;
+      // console.log(totalMember);
       const newTILData = [...TilData];
       // 팀원이
-      for (let teamUser = 0; teamUser < response.length; teamUser++) {
+      for (let teamUser = 0; teamUser < teamBoard.length; teamUser++) {
         // 작성한 글 중에
-        for (let i = 0; i < response[teamUser].boards.length; i++) {
-          const currentBoard = response[teamUser];
-          const wirteDate = new Date(currentBoard.boards[i].timestamp);
+        for (let i = 0; i < teamBoard[teamUser].boards.length; i++) {
+          const currentBoard = teamBoard[teamUser];
+          const writeDate = new Date(currentBoard.boards[i].timestamp);
           const writeId = currentBoard.boards[i].id;
           // 특정 날짜가 있는지 확인
           for (let j = 0; j < daysInCurrentMonth.length; j++) {
             // 작성한 글이 있으면
             if (
-              wirteDate.getFullYear() == daysInCurrentMonth[j].getFullYear() &&
-              wirteDate.getMonth() == daysInCurrentMonth[j].getMonth() &&
-              wirteDate.getDate() == daysInCurrentMonth[j].getDate()
+              writeDate.getFullYear() == daysInCurrentMonth[j].getFullYear() &&
+              writeDate.getMonth() == daysInCurrentMonth[j].getMonth() &&
+              writeDate.getDate() == daysInCurrentMonth[j].getDate()
             ) {
               newTILData[j + numberOfZeros].id = writeId;
               newTILData[j + numberOfZeros].count += 1;
@@ -46,7 +50,11 @@ export const useGetTeamGrass = () => {
           }
         }
       }
-      setTilDta(newTILData);
+      newTILData.map((Til) => {
+        Til.count = Math.floor((Til.count / totalMember) * 100);
+        return Til;
+      });
+      setTilData(newTILData);
     } catch (error) {
       console.log('Error fetching data:', error);
     }

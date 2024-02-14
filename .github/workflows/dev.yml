@@ -60,4 +60,8 @@ jobs:
         run: |
           cp -R dist/* /var/www/html/
 
+      - name: Invalidate Cache
+        run: |
+          find /var/www/html/ -type f -name '*.js' -exec mv {} {}?v=$(date +%s) \;
+
     

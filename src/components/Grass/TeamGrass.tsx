@@ -3,18 +3,31 @@ import { useState } from 'react';
 export const TeamGrass = (props: any) => {
   const [showToolTip, setShowToolTip] = useState(false);
 
+  // const grassType = (count: number) => {
+  //   switch (count) {
+  //     case 1:
+  //       return 'bg-stage1 bg-cover';
+  //     case 2:
+  //       return 'bg-stage2 bg-cover';
+  //     case 3:
+  //       return 'bg-stage3 bg-cover';
+  //     case 4:
+  //       return 'bg-stage4 bg-cover';
+  //     default:
+  //       return 'bg-noGrass bg-cover';
+  //   }
+  // };
   const grassType = (count: number) => {
-    switch (count) {
-      case 1:
-        return 'bg-stage1 bg-cover';
-      case 2:
-        return 'bg-stage2 bg-cover';
-      case 3:
-        return 'bg-stage3 bg-cover';
-      case 4:
-        return 'bg-stage4 bg-cover';
-      default:
-        return 'bg-noGrass bg-cover';
+    if (count > 0 && count <= 25) {
+      return 'bg-stage1 bg-cover';
+    } else if (count > 25 && count <= 50) {
+      return 'bg-stage2 bg-cover';
+    } else if (count > 50 && count <= 75) {
+      return 'bg-stage3 bg-cover';
+    } else if (count > 75 && count <= 100) {
+      return 'bg-stage4 bg-cover';
+    } else {
+      return 'bg-noGrass bg-cover';
     }
   };
 

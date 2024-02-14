@@ -3,8 +3,8 @@ import teamLogoBlack from '@assets/image/teamLogoBlack.png';
 
 export function Footer() {
   return (
-    <footer className="w-full bg-[#f8fafdfd] p-4">
-      <div className="flex flex-row flex-wrap items-center justify-center pl-4 pr-4 bg-[#f8fafdfd] text-center md:justify-between">
+    <footer className="h-full w-full bg-[#f8fafdfd] p-4">
+      <div className="flex flex-row flex-wrap items-center justify-center bg-[#f8fafdfd] pl-4 pr-4 text-center md:justify-between">
         <img src={teamLogoBlack} alt="logo-ct" className="w-[200px]" />
         <ul className="flex  flex-wrap items-center gap-x-8 ">
           <li>

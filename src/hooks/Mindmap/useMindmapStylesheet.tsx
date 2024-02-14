@@ -35,8 +35,6 @@ export function generateStylesheet(elements: any): any {
           return graph.fontMaxSize * pageRank.rank(ele) + graph.fontMinSize;
         },
         'font-weight': 'bold',
-        'text-transform': 'capitalize',
-
         'outline-color': graph.nodeColor,
         'outline-width': 10,
         'outline-opacity': 0.5,

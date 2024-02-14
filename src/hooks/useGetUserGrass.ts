@@ -29,21 +29,21 @@ export const useGetUserGrass = () => {
       const newTILData = [...TilData];
       // 작성한 글 중에
       for (let i = 0; i < response.boards.length; i++) {
-        const wirteDate = new Date(response.boards[i].timestamp);
+        const writeDate = new Date(response.boards[i].timestamp);
         const writeId = response.boards[i].id;
         // 특정 날짜가 있는지 확인
         for (let j = 0; j < daysInCurrentMonth.length; j++) {
           // 작성한 글이 있으면
           if (
-            wirteDate.getFullYear() == daysInCurrentMonth[j].getFullYear() &&
-            wirteDate.getMonth() == daysInCurrentMonth[j].getMonth() &&
-            wirteDate.getDate() == daysInCurrentMonth[j].getDate()
+            writeDate.getFullYear() == daysInCurrentMonth[j].getFullYear() &&
+            writeDate.getMonth() == daysInCurrentMonth[j].getMonth() &&
+            writeDate.getDate() == daysInCurrentMonth[j].getDate()
           ) {
             // 오늘 작성한 글이면
             if (
-              wirteDate.getFullYear() == currentDate.getFullYear() &&
-              wirteDate.getMonth() == currentDate.getMonth() &&
-              wirteDate.getDate() == currentDate.getDate()
+              writeDate.getFullYear() == currentDate.getFullYear() &&
+              writeDate.getMonth() == currentDate.getMonth() &&
+              writeDate.getDate() == currentDate.getDate()
             ) {
               setTodayWrite(true);
             }
@@ -57,7 +57,7 @@ export const useGetUserGrass = () => {
         }
       }
       setTilData(newTILData);
-      console.log(TilData);
+      // console.log(TilData);
     } catch (error) {
       console.log('Error fetching data:', error);
     }
