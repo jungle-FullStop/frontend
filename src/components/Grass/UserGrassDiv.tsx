@@ -3,7 +3,8 @@ import { useGetUserGrass } from '@hooks/useGetUserGrass.ts';
 
 export const UserGrassDiv = () => {
   const TilData = useGetUserGrass();
-  const tilScore = localStorage.getItem('tilScore');
+  // const tilScore = localStorage.getItem('tilScore');
+  const tilScore = TilData.reduce((acc, cur) => acc + cur.count, 0);
 
   const grassElements = TilData.map((data, i) => {
     return <UserGrass date={data.date} count={data.count} pageId={data.id} key={i} iter={i} />;

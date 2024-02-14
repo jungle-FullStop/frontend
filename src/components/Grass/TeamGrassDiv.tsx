@@ -14,7 +14,7 @@ export const TeamGrassDiv = () => {
       let newGrassData = JSON.parse(event.data);
       console.log(newGrassData);
       newGrassData = newGrassData.data;
-      console.log(newGrassData);
+      console.log(newGrassData.count);
 
       const today = new Date().toLocaleDateString('ko-KR', {
         year: 'numeric',
@@ -25,7 +25,8 @@ export const TeamGrassDiv = () => {
       const todayDataIndex = TilData.findIndex((data) => data.date === today);
       if (todayDataIndex !== -1) {
         const updatedTilData = [...TilData];
-        updatedTilData[todayDataIndex].count = newGrassData.grass;
+        updatedTilData[todayDataIndex].count = newGrassData.count;
+        updatedTilData[todayDataIndex].proportion = newGrassData.grass;
         setTilData(updatedTilData);
       }
     };
@@ -36,7 +37,9 @@ export const TeamGrassDiv = () => {
   }, []);
 
   const grassElements = TilData.map((data, i) => {
-    return <TeamGrass date={data.date} count={data.count} pageId={data.id} key={i} iter={i} />;
+    return (
+      <TeamGrass date={data.date} proportion={data.proportion} pageId={data.id} key={i} iter={i} />
+    );
   });
 
   const teamScore = TilData.reduce((acc, cur) => acc + cur.count, 0);

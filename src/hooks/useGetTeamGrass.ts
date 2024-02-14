@@ -12,6 +12,7 @@ export const useGetTeamGrass = () => {
         date: item,
         id: -1,
         count: 0,
+        proportion: 0,
       };
     });
   });
@@ -43,6 +44,7 @@ export const useGetTeamGrass = () => {
             ) {
               newTILData[j + numberOfZeros].id = writeId;
               newTILData[j + numberOfZeros].count += 1;
+              // newTILData[j + numberOfZeros].proportion += 1;
 
               // 다음 글로 넘어가기
               break;
@@ -51,7 +53,7 @@ export const useGetTeamGrass = () => {
         }
       }
       newTILData.map((Til) => {
-        Til.count = Math.floor((Til.count / totalMember) * 100);
+        Til.proportion = Math.floor((Til.count / totalMember) * 100);
         return Til;
       });
       setTilData(newTILData);
