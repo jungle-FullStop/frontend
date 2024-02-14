@@ -20,12 +20,3 @@ firebase.initializeApp({
 // Retrieve an instance of Firebase Messaging so that it can handle background
 // messages.
 const messaging = firebase.messaging();
-
-self.addEventListener('notificationclick', function (event) {
-  event.notification.close(); // 알림 닫기
-
-  // 클릭한 알림과 관련된 URL로 이동
-  event.waitUntil(
-    clients.openWindow('https://tilfullstop.site'), // 원하는 URL로 수정
-  );
-});
