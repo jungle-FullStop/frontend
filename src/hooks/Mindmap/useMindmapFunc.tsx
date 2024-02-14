@@ -2,6 +2,7 @@ import { CollectionReturnValue, SearchPageRankResult, SingularElementReturnValue
 import * as graph from '@/util/Constants/mindmapConstants';
 
 const dimColor = '#dfe4ea';
+// eslint-disable-next-line react-refresh/only-export-components
 const DimStyle = {
   'background-color': dimColor,
   'line-color': dimColor,
@@ -34,18 +35,18 @@ export function setFocus(target_element: SingularElementReturnValue) {
     e.style('source-arrow-color', graph.successorColor);
     setOpacityElement(e, 0.5);
   });
-  target_element.predecessors().each(function (e) {
-    // 하위 엣지와 노드
-    if (e.isEdge()) {
-      e.style('width', graph.edgeActiveWidth);
-      e.style('arrow-scale', graph.arrowActiveScale);
-    }
-    e.style('color', graph.nodeColor);
-    e.style('background-color', graph.predecessorsColor);
-    e.style('line-color', graph.predecessorsColor);
-    e.style('source-arrow-color', graph.predecessorsColor);
-    setOpacityElement(e, 0.5);
-  });
+  // target_element.predecessors().each(function (e) {
+  //   // 하위 엣지와 노드
+  //   if (e.isEdge()) {
+  //     e.style('width', graph.edgeActiveWidth);
+  //     e.style('arrow-scale', graph.arrowActiveScale);
+  //   }
+  //   e.style('color', graph.nodeColor);
+  //   e.style('background-color', graph.predecessorsColor);
+  //   e.style('line-color', graph.predecessorsColor);
+  //   e.style('source-arrow-color', graph.predecessorsColor);
+  //   setOpacityElement(e, 0.5);
+  // });
   target_element.neighborhood().each(function (e) {
     // 이웃한 엣지와 노드
     setOpacityElement(e, 0.5);
@@ -71,7 +72,7 @@ export function setOpacityElement(target_element: any, degree: any) {
 export function setResetFocus(target_cy: CollectionReturnValue, pageRank: SearchPageRankResult) {
   target_cy.nodes().forEach(function (target) {
     target.style('background-color', graph.nodeColor);
-    var rank = pageRank.rank(target);
+    const rank = pageRank.rank(target);
     target.style('width', graph.nodeMaxSize * rank + graph.nodeMinSize);
     target.style('height', graph.nodeMaxSize * rank + graph.nodeMinSize);
     target.style('font-size', graph.fontMaxSize * rank + graph.fontMinSize);
@@ -79,7 +80,17 @@ export function setResetFocus(target_cy: CollectionReturnValue, pageRank: Search
     target.style('opacity', 1);
   });
   target_cy.edges().forEach(function (target) {
-    target.style('line-color', graph.edgeColor);
+    if (target.data().cnt >= 80) {
+      target.style('line-color', '#1e3a8a');
+    } else if (target.data().cnt >= 60) {
+      target.style('line-color', '#1d4ed8');
+    } else if (target.data().cnt >= 40) {
+      target.style('line-color', '#3b82f6');
+    } else if (target.data().cnt >= 20) {
+      target.style('line-color', '#93c5fd');
+    } else {
+      target.style('line-color', '#dbeafe');
+    }
     target.style('source-arrow-color', graph.edgeColor);
     target.style('width', graph.edgeWidth);
     target.style('arrow-scale', graph.arrowScale);
