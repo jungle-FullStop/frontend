@@ -5,7 +5,6 @@ export const UserGrass = (props: any) => {
   const [showToolTip, setShowToolTip] = useState(false);
   const navigate = useNavigate();
 
-
   const grassType = (count: number) => {
     switch (count) {
       case 1:
@@ -14,8 +13,6 @@ export const UserGrass = (props: any) => {
         return 'bg-noGrass bg-contain';
     }
   };
-
-
 
   return (
     <div

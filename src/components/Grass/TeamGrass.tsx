@@ -3,8 +3,8 @@ import { useState } from 'react';
 export const TeamGrass = (props: any) => {
   const [showToolTip, setShowToolTip] = useState(false);
 
-  // const grassType = (count: number) => {
-  //   switch (count) {
+  // const grassType = (proportion: number) => {
+  //   switch (proportion) {
   //     case 1:
   //       return 'bg-stage1 bg-cover';
   //     case 2:
@@ -17,14 +17,14 @@ export const TeamGrass = (props: any) => {
   //       return 'bg-noGrass bg-cover';
   //   }
   // };
-  const grassType = (count: number) => {
-    if (count > 0 && count <= 25) {
+  const grassType = (proportion: number) => {
+    if (proportion > 0 && proportion <= 25) {
       return 'bg-stage1 bg-cover';
-    } else if (count > 25 && count <= 50) {
+    } else if (proportion > 25 && proportion <= 50) {
       return 'bg-stage2 bg-cover';
-    } else if (count > 50 && count <= 75) {
+    } else if (proportion > 50 && proportion <= 75) {
       return 'bg-stage3 bg-cover';
-    } else if (count > 75 && count <= 100) {
+    } else if (proportion > 75 && proportion <= 100) {
       return 'bg-stage4 bg-cover';
     } else {
       return 'bg-noGrass bg-cover';
@@ -40,9 +40,9 @@ export const TeamGrass = (props: any) => {
       onMouseLeave={() => setShowToolTip(false)}
     >
       <div
-        className={`flex-grow rounded ${props.date !== '0' ? grassType(props.count) : 'bg-grassColor'} ${props.iter % 2 == 0 && 'scale-x-[-1]'}`}
+        className={`flex-grow rounded ${props.date !== '0' ? grassType(props.proportion) : 'bg-grassColor'} ${props.iter % 2 == 0 && 'scale-x-[-1]'}`}
       ></div>
-      {props.count >= 1 && showToolTip && props.date !== '0' && (
+      {props.proportion >= 1 && showToolTip && props.date !== '0' && (
         <div className="bg-default absolute -translate-x-1/2 -translate-y-full rounded bg-yellow-100 p-2 opacity-70">
           <p>
             <strong> Check TIL</strong> on {props.date}

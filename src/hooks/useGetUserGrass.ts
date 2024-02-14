@@ -16,6 +16,7 @@ export const useGetUserGrass = () => {
         date: item,
         id: -1,
         count: 0,
+        proportion: 0,
       };
     });
   });
