@@ -1,4 +1,4 @@
-import { NodeCollection } from 'cytoscape';
+import { EdgeCollection, NodeCollection } from 'cytoscape';
 import * as graph from '@/util/Constants/mindmapConstants';
 import { getPageRank } from '@hooks/Mindmap/useGetPageRank.ts';
 
@@ -44,9 +44,20 @@ export function generateStylesheet(elements: any): any {
       selector: 'edge',
       style: {
         width: graph.edgeWidth,
-        lineColor: graph.edgeColor,
+        lineColor: function (ele: EdgeCollection) {
+          if (ele.data().cnt >= 80) {
+            return '#1e3a8a';
+          } else if (ele.data().cnt >= 60) {
+            return '#1d4ed8';
+          } else if (ele.data().cnt >= 40) {
+            return '#3b82f6';
+          } else if (ele.data().cnt >= 20) {
+            return '#93c5fd';
+          } else {
+            return '#dbeafe';
+          }
+        },
         sourceArrowColor: graph.edgeColor,
-        sourceArrowShape: 'triangle',
         curveStyle: 'bezier',
         arrowScale: graph.arrowScale,
       },

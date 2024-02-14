@@ -21,7 +21,7 @@ export const edgePopper = (target: any) => {
 
       // popper 데이터 추가
       const targetData: edgeData = target.data();
-      textcontainer.append('연관도: ' + targetData.cnt);
+      textcontainer.append('연관도: ' + targetData.cnt + '%');
       tooltip.append(textcontainer);
       document.body.appendChild(tooltip);
 
