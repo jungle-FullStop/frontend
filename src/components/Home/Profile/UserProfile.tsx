@@ -63,7 +63,7 @@ export const UserProfile = () => {
                   openModal({ children: getModalContent(PROFILE_MODAL_CONTENT_TYPE.LIST) })
                 }
               >
-                TIL을 함께하는 친구 {friendListData.data.friends.length}명
+                TIL을 함께하는 친구 {friendListData.data.friends.length - 1}명
               </Button>
               <Button
                 className="cursor-pointer text-base font-bold"

@@ -62,7 +62,7 @@ const MemberList = ({ userId }: MemberListProps) => {
       {!name && (
         <div>
           <p className="mb-5 text-2xl font-bold">팀원 목록</p>
-          <div className="flex flex-wrap justify-between gap-y-5 overflow-scroll">
+          <div className="grid grid-cols-2 justify-between gap-5 overflow-scroll">
             {memberListData.data.length !== 0 ? (
               memberListData.data.map((data: MemberListResponse, index: number) => (
                 <MemberModalItem key={index} {...data} type={profileItemType} />
