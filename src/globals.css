@@ -40,6 +40,7 @@
   @apply mx-auto flex h-screen flex-col;
 }
 
+
 .sub-container {
   @apply p-10
 }
@@ -116,17 +117,18 @@
 }
 
 .slider-container {
-  width: 80%;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 70vh;  
 }
-
-/* .slick-list {
-  margin-right: -20px;
-} */
 
 .slick-slide {
   padding-right: 20px;
   padding-left: 20px;
+}
+
+.slick-slider{
+  width: 100%;
 }
 
 .slick-prev:before,
@@ -137,9 +139,10 @@
 .TIL {
   margin-top: 20px;
   margin-bottom: 10px;
-  height: 50vh;
-  max-height: 400px;
+  height: 360px;
   transition: 0.4s ease-in-out;
+  width: 400px !important;
+  
 }
 
 .TIL:hover {

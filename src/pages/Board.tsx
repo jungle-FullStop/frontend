@@ -7,11 +7,11 @@ export const Board = () => {
   return (
     <div className="main-container">
       <NavBar />
-      <div className="mx-auto flex h-screen w-full items-center">
+      <div className="mx-auto">
         <SliderCard />
       </div>
-      <Footer />
-      <Modal />
+        <Footer />
+        <Modal />
     </div>
   );
 };
