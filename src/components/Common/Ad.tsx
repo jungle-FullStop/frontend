@@ -19,7 +19,7 @@ export const Ad = ({ mode }: AdProps) => {
         />
       </div>
     );
-  } else {
+  } else if (mode === 'jungle') {
     return (
       <div className={'home-ad-container'}>
         <img

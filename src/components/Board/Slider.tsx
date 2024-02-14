@@ -10,11 +10,11 @@ import NavBar from '../Common/NavBar';
 
 function SliderCard() {
   const navigate = useNavigate();
-  const [dragging, setDragging] = useState<boolean>(false);
+  const [, setDragging] = useState<boolean>(false);
   const handleBeforeChange = useCallback(() => {
     setDragging(true);
   }, []);
-  const handleAfterChange = useCallback((i: number) => {
+  const handleAfterChange = useCallback(() => {
     setDragging(false);
   }, []);
 
@@ -33,7 +33,6 @@ function SliderCard() {
       }
     }
   }, [data, isLoading, isError]);
-
 
   console.log(data);
 
