@@ -2,10 +2,11 @@ import NavBar from '@/components/Common/NavBar';
 import MDEditor from '@uiw/react-md-editor';
 import anonymousImage from '@assets/image/anonymousImage.png';
 import { useFindBoardDetail } from '@hooks/Board/useFindBoardDetail.tsx';
-import teamspartaAd from '@assets/image/teamspartaAd.png';
 import { Footer } from '@/components/Common/Footer';
 import { useParams } from 'react-router-dom';
 import { Setting } from '@/components/Common/Setting';
+import { Ad } from '@components/Common/Ad.tsx';
+import Modal from '@components/Common/Modal.tsx';
 
 export const BoardDetail = () => {
   const { boardId } = useParams();
@@ -36,6 +37,11 @@ export const BoardDetail = () => {
 
   // 작성 시간 계산
   const writeDate = new Date(data.board.timestamp);
+  // 년도, 달, 요일 변수에 담기
+  const writeYear: number = writeDate.getFullYear();
+  const writeMonth: number = writeDate.getMonth() + 1; // 월은 0부터 시작하므로 1을 더함
+  const writeDay: number = writeDate.getDate();
+
   const currentDate = new Date();
   let beforeTime;
 
@@ -57,40 +63,32 @@ export const BoardDetail = () => {
       <NavBar />
       {/* <div className="mx-auto mb-5 mt-5 flex w-[90%] flex-row items-end">
       </div> */}
-      <div className="mx-auto w-[60%]  p-5">
-        <p className={'mb-10 mt-8 pr-5 text-5xl font-bold text-black'}> {data.board.title}</p>
-        <div className="flex items-center">
+      <div className={'sub-container'}>
+        <div className={'board-contents-container'}>
           <div>
-            <img
-              className="mr-5 h-12 w-12 rounded-full object-cover object-center"
-              src={data.user.profileImage ? data.user.profileImage : anonymousImage}
-              alt="nature image"
+            <p className={'pb-5 text-5xl font-bold text-black'}> {data.board.title}</p>
+            <div className="flex items-center">
+              <img
+                className="mr-5 h-12 w-12 rounded-full object-cover object-center"
+                src={data.user.profileImage ? data.user.profileImage : anonymousImage}
+                alt="nature image"
+              />
+              <p className="text-lg"> {`${writeYear}년 ${writeMonth}월 ${writeDay}일`} </p>
+              <p className="ml-auto text-lg font-bold"> 작성 {beforeTime} </p>
+            </div>
+          </div>
+          <Ad mode={'sparta'} />
+          <div data-color-mode="light" className={'mx-auto'}>
+            <MDEditor.Markdown
+              source={data.board.contents}
+              style={{ fontSize: '23px', width: 700 }}
             />
           </div>
-          <div>
-            <p className="text-lg"> 2024년 2월 11일 </p>
-          </div>
-          <div className="ml-auto font-bold">
-            <p className="text-lg"> 작성 {beforeTime}</p>
-          </div>
-        </div>
-        <img
-          src={teamspartaAd}
-          alt={'광고'}
-          className={'mb-10 mt-10 cursor-pointer rounded-lg w-full'}
-          onClick={() => {
-            window.open('https://spartacodingclub.kr/');
-          }}
-        ></img>
-      </div>
-      <div className="mx-auto w-[60%]">
-        <div data-color-mode="light ">
-          <MDEditor.Markdown source={data.board.contents} style={{ fontSize: '23px' }} />
         </div>
       </div>
-      <div className="mb-10 mt-10"></div>
       <Setting />
-      <Footer></Footer>
+      <Footer />
+      <Modal />
     </div>
   );
 };
