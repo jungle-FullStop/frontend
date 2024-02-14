@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import { useNavigate } from 'react-router-dom';
 import { useFindUserBoard } from '@hooks/Board/useFindUserBoard.ts';
 import { CardDefault } from './CardDefault';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { WriteTIL } from '@components/Home/WriteTIL.tsx';
 import NavBar from '../Common/NavBar';
 
@@ -19,9 +19,21 @@ function SliderCard() {
   }, []);
 
   const { data, isLoading, isError } = useFindUserBoard();
+  const [sliderWidth, setSliderWidth] = useState(1340);
 
-  // const sortedData = [...data.boards].sort((a, b) => a.id - b.id)
-  // console.log(sortedData)
+  useEffect(() => {
+    // data가 비동기적으로 실행되므로 업데이트 되었을 때 실행
+    if (!isLoading && !isError && data && data.boards) {
+      if (data.boards.length === 1) {
+        setSliderWidth(450);
+      } else if (data.boards.length === 2) {
+        setSliderWidth(900);
+      } else {
+        setSliderWidth(1340);
+      }
+    }
+  }, [data, isLoading, isError]);
+
 
   console.log(data);
 
@@ -52,18 +64,19 @@ function SliderCard() {
     dots: true,
     infinite: false,
     speed: 1000,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: data.boards.length == 1 ? 1 : data.boards.length == 2 ? 2 : 3,
+    slidesToScroll: data.boards.length == 1 ? 1 : data.boards.length == 2 ? 2 : 3,
     arrow: true,
     touchThreshold: 100,
+    // variableWidth: true,
     // rtl: true,
     beforeChange: handleBeforeChange,
     afterChange: handleAfterChange,
   };
   return (
     <>
-      {data.boards.length >= 4 ? (
-        <div className="slider-container">
+      {data.boards.length > 0 ? (
+        <div className="slider-container" style={{ width: `${sliderWidth}px` }}>
           <Slider {...settings}>
             {data.boards.map((board: any, index: number) => (
               <div
@@ -83,26 +96,6 @@ function SliderCard() {
               </div>
             ))}
           </Slider>
-        </div>
-      ) : data.boards.length > 0 ? (
-        <div className="mx-auto flex w-[80%] justify-evenly ">
-          {data.boards.map((board: any, index: number) => (
-            <div
-              className="TIL shadow-base"
-              key={index}
-              onClick={() => {
-                navigate(`/board/${board.id}`);
-              }}
-            >
-              <CardDefault
-                cardTitle={board.title}
-                cardContents={board.contents}
-                cardDate={board.timestamp}
-                userImage={data.user.profileImage}
-                userName={data.user.name}
-              />
-            </div>
-          ))}
         </div>
       ) : (
         <div className="mx-auto flex h-[500px] flex-col justify-center gap-y-8">
