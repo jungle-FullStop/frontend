@@ -63,7 +63,7 @@ export const TeamGrass = (props: any) => {
     } else if (proportion > 75 && proportion <= 100) {
       return RedCabbage_Raw_4;
     } else {
-      return null;
+      return undefined;
     }
   };
 
