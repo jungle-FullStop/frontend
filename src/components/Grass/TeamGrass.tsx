@@ -71,13 +71,14 @@ export const TeamGrass = (props: any) => {
       onMouseLeave={() => setShowToolTip(false)}
     >
       {showWateringCan && (
-        <img
-          src={wateringCan}
-          alt="Watering Can"
-          className="watering-can-animation rotate-effect pop-in-effect"
-        />
+        <div className={'bg-noGrass'}>
+          <img
+            src={wateringCan}
+            alt="Watering Can"
+            className="watering-can-animation rotate-effect pop-in-effect"
+          />
+        </div>
       )}
-
       <div
         className={`flex-grow rounded team-grass-${escapeCSS(props.date)} ${props.date !== '0' ? grassType(props.proportion) : 'bg-grassColor'} ${props.iter % 2 == 0 && 'scale-x-[-1]'}`}
       ></div>
