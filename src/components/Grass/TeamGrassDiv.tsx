@@ -27,6 +27,7 @@ export const TeamGrassDiv = () => {
         const updatedTilData = [...TilData];
         updatedTilData[todayDataIndex].count = newGrassData.count;
         updatedTilData[todayDataIndex].proportion = newGrassData.grass;
+        updatedTilData[todayDataIndex].sse = true;
         setTilData(updatedTilData);
       }
     };
@@ -40,7 +41,14 @@ export const TeamGrassDiv = () => {
 
   const grassElements = TilData.map((data, i) => {
     return (
-      <TeamGrass date={data.date} proportion={data.proportion} pageId={data.id} key={i} iter={i} />
+      <TeamGrass
+        date={data.date}
+        proportion={data.proportion}
+        pageId={data.id}
+        key={i}
+        iter={i}
+        sse={data.sse}
+      />
     );
   });
   return (
