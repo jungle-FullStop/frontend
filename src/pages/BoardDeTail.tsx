@@ -64,7 +64,7 @@ export const BoardDetail = () => {
       {/* <div className="mx-auto mb-5 mt-5 flex w-[90%] flex-row items-end">
       </div> */}
       <div className={'sub-container'}>
-        <div className={'board-contents-container'}>
+        <div className={'board-contents-container relative'}>
           <div>
             <p className={'pb-5 text-5xl font-bold text-black'}> {data.board.title}</p>
             <div className="flex items-center">
@@ -84,6 +84,12 @@ export const BoardDetail = () => {
               style={{ fontSize: '23px', width: 700 }}
             />
           </div>
+            {/* <div className="list-container">
+              <div className='fixed'>
+              <MDEditor.Markdown source={data.board.contents}
+              style={{width : '200px'}} />
+              </div>
+            </div> */}
         </div>
       </div>
       <Setting />

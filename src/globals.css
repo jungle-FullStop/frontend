@@ -99,6 +99,10 @@
   @apply fixed bottom-[24px] right-[24px] z-50 flex flex-row gap-x-2;
 }
 
+.list-container {
+  @apply absolute left-[105%] ;
+}
+
 .slogan-container {
   @apply flex flex-row justify-center w-[800px] h-[150px]
 }
