@@ -9,8 +9,8 @@ import { Flipped, Flipper } from 'react-flip-toolkit';
 
 // Enum for status priorities
 enum StatusPriority {
-  written = 1,
-  writing = 2,
+  written = 2,
+  writing = 1,
   not_written = 3,
 }
 
