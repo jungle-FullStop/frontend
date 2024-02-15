@@ -5,9 +5,9 @@ import { TIL } from '@type/TIL.ts';
 import { dateRange, daysInCurrentMonth } from '@util/Constants/dateConstants.ts';
 import { getUserGrass } from '@api/GrassApi.ts';
 
-const today = new Date();
+// const today = new Date();
 
-export const useGetUserGrass = () => {
+export const useGetUserGrass = (month: Date) => {
   const [, setTodayWrite] = useRecoilState(todayState);
 
   const [TilData, setTilData] = useState<TIL[]>(() => {
@@ -26,7 +26,7 @@ export const useGetUserGrass = () => {
     const numberOfZeros = dateRange.filter((value) => value === '0').length;
 
     try {
-      const response = await getUserGrass(today);
+      const response = await getUserGrass(month);
       const currentDate = new Date();
       const newTILData = [...TilData];
       // 작성한 글 중에

@@ -1,8 +1,29 @@
 import { UserGrass } from '@components/Grass/UserGrass.tsx';
 import { useGetUserGrass } from '@hooks/useGetUserGrass.ts';
+import { useState } from 'react';
 
 export const UserGrassDiv = () => {
-  const TilData = useGetUserGrass();
+  const [currentMonth, setCurrentMonth] = useState(new Date()); // 현재 월 상태 변수
+
+  // 이전 달로 이동하는 함수
+  const goToPreviousMonth = () => {
+    setCurrentMonth((prevMonth) => {
+      const newDate = new Date(prevMonth);
+      newDate.setMonth(newDate.getMonth() - 1);
+      return newDate;
+    });
+  };
+
+  // 다음 달로 이동하는 함수
+  const goToNextMonth = () => {
+    setCurrentMonth((prevMonth) => {
+      const newDate = new Date(prevMonth);
+      newDate.setMonth(newDate.getMonth() + 1);
+      return newDate;
+    });
+  };
+
+  const TilData = useGetUserGrass(currentMonth);
   // const tilScore = localStorage.getItem('tilScore');
   const tilScore = TilData.reduce((acc, cur) => acc + cur.count, 0);
 
@@ -11,7 +32,18 @@ export const UserGrassDiv = () => {
   });
 
   return (
-    <>
+    <div className="container mx-auto">
+      <div className="mb-4 text-center">
+        <button onClick={goToPreviousMonth} className="mr-4">
+          이전 달
+        </button>
+        <p className="inline-block text-2xl text-black">
+          {currentMonth.toLocaleString('default', { month: 'long', year: 'numeric' })}
+        </p>
+        <button onClick={goToNextMonth} className="ml-4">
+          다음 달
+        </button>
+      </div>
       <div className="grass-container">
         <div>
           <p className="TILFont pb-3  text-center text-2xl text-black">
@@ -34,6 +66,6 @@ export const UserGrassDiv = () => {
           이번 달 {tilScore}개의 TIL가 작성되었습니다 !
         </p>
       </div>
-    </>
+    </div>
   );
 };

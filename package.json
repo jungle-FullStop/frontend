@@ -28,6 +28,7 @@
     "cytoscape-popper": "^2.0.0",
     "firebase": "^10.7.2",
     "lodash": "^4.17.21",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
     "react-cytoscapejs": "^2.0.0",
