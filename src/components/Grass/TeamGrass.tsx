@@ -34,8 +34,7 @@ export const TeamGrass = (props: any) => {
   }
 
   useEffect(() => {
-    // If proportion has changed and it's not the initial render
-    if (props.proportion !== currentProportion && currentProportion !== null) {
+    if (props.proportion !== currentProportion && currentProportion !== null && props.sse) {
       const escapedDate = escapeCSS(props.date);
       const element = document.querySelector(`.team-grass-${escapedDate}`);
       setShowWateringCan(true);

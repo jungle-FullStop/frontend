@@ -13,6 +13,7 @@ export const useGetTeamGrass = () => {
         id: -1,
         count: 0,
         proportion: 0,
+        sse: false,
       };
     });
   });

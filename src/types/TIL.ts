@@ -1,4 +1,5 @@
 export interface TIL {
+  sse: boolean;
   date: string;
   id: number;
   count: number;
