@@ -41,6 +41,7 @@ export const TeamGrass = (props: any) => {
 
       if (element) {
         element.classList.add('grow-effect');
+        element.classList.add('hidden');
         // After the grow effect, switch to the updated clas
         setTimeout(() => {
           setShowWateringCan(false);
@@ -62,7 +63,7 @@ export const TeamGrass = (props: any) => {
     } else if (proportion > 75 && proportion <= 100) {
       return RedCabbage_Raw_4;
     } else {
-      return;
+      return null;
     }
   };
 
@@ -87,11 +88,13 @@ export const TeamGrass = (props: any) => {
       <div
         className={`flex-grow rounded  ${props.date !== '0' ? 'bg-noGrass' : 'bg-grassColor'} ${props.iter % 2 == 0 && 'scale-x-[-1]'}`}
       >
-        <img
-          src={grassType(props.proportion)}
-          alt="plant"
-          className={`team-grass-${escapeCSS(props.date)} mx-auto mt-2 hidden h-[80px] w-[80px]`}
-        />
+        {grassType(props.proportion) && (
+          <img
+            src={grassType(props.proportion)}
+            alt="plant"
+            className={`team-grass-${escapeCSS(props.date)} mx-auto mt-2 h-[80px] w-[80px]`}
+          />
+        )}
       </div>
       {props.proportion >= 1 && showToolTip && props.date !== '0' && (
         <div className="bg-default absolute -translate-x-1/2 -translate-y-full rounded bg-yellow-100 p-2 opacity-70">
