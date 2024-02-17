@@ -37,10 +37,14 @@ const TeamInfo = () => {
     queryClient.setQueryData(['teamList'], (oldTeams?: MemberListResponse[]) => {
       const updatedTeams = oldTeams
         ?.map((member) => {
-          const newStatus = newStatusData[member.id];
-          const isUpdated = newStatus && member.status !== newStatus;
-
+          let newStatus = newStatusData[member.id];
+          // isNotWritten : 작성중인 상태인데 받아온 데이터에는 없을 경우( 사용자가 머물지 않았음 )
+          const isNotWritten = !newStatus && member.status === 'writing';
+          const isUpdated = (newStatus && member.status !== newStatus) || isNotWritten;
+          // const isUpdated = newStatus && member.status !== newStatus;
+          if (isNotWritten) newStatus = 'not_written';
           if (isUpdated) {
+            console.log('isUpdated', isUpdated, member);
             // Reset highlight after 2 seconds
             setTimeout(() => {
               queryClient.setQueryData(
@@ -62,6 +66,7 @@ const TeamInfo = () => {
         })
         .sort(sortTeamMembers);
 
+      console.log(updatedTeams);
       return updatedTeams;
     });
   };
@@ -75,7 +80,7 @@ const TeamInfo = () => {
     };
 
     return () => eventSource.close();
-  }, [queryClient]);
+  }, []);
 
   // Handle poke and cheer actions
   const handlePoke = async (memberId: string, body?: string) => {
