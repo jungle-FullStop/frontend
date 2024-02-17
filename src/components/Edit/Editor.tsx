@@ -16,6 +16,14 @@ const Editor = () => {
     }
   };
 
+  const refreshUserEditTime = async () => {
+    try {
+      await axios.post(apiPath.TEAM.refresh());
+    } catch (error) {
+      console.error('Error updating user status:', error);
+    }
+  };
+
   const {
     title,
     contents,
@@ -24,11 +32,24 @@ const Editor = () => {
   } = useBoardCreate();
 
   useEffect(() => {
+    const handleBeforeUnload = async () => {
+      await updateUserStatus('not_written');
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
     // 페이지 접근 시 사용자 상태를 'writing'으로 변경
     updateUserStatus('writing');
     // 컴포넌트가 언마운트될 때 'not_written'으로 상태 변경
+
+    const intervalId = setInterval(() => {
+      refreshUserEditTime();
+    }, 50000); // 50초마다
+
     return () => {
-      // updateUserStatus('not_written');
+      clearInterval(intervalId);
+      updateUserStatus('not_written');
+      window.removeEventListener('beforeunload', handleBeforeUnload);
     };
   }, []); // 빈 배열을 넣어 처음 마운트될 때만 실행되도록 함
 
