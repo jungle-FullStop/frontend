@@ -6,6 +6,8 @@ import { useQueryClient } from '@tanstack/react-query';
 import { cockPush } from '@api/FirebaseApi.ts';
 import { round } from 'lodash';
 import { Flipped, Flipper } from 'react-flip-toolkit';
+import customSound from '@assets/sound/alarm.mp3';
+import grothSound from '@assets/sound/groth.mp3';
 
 // Enum for status priorities
 enum StatusPriority {
@@ -46,6 +48,10 @@ const TeamInfo = () => {
           if (isUpdated) {
             console.log('isUpdated', isUpdated, member);
             // Reset highlight after 2 seconds
+            if (newStatus === 'writing') {
+              const audio = new Audio(customSound);
+              audio.play();
+            }
             setTimeout(() => {
               queryClient.setQueryData(
                 ['teamList'],
