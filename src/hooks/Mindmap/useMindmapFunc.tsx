@@ -81,12 +81,8 @@ export function setResetFocus(target_cy: CollectionReturnValue, pageRank: Search
   });
   target_cy.edges().forEach(function (target) {
     if (target.data().cnt >= 80) {
-      target.style('line-color', '#1e3a8a');
-    } else if (target.data().cnt >= 60) {
-      target.style('line-color', '#1d4ed8');
-    } else if (target.data().cnt >= 40) {
       target.style('line-color', '#3b82f6');
-    } else if (target.data().cnt >= 20) {
+    } else if (target.data().cnt >= 50) {
       target.style('line-color', '#93c5fd');
     } else {
       target.style('line-color', '#dbeafe');
