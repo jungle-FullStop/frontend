@@ -49,6 +49,10 @@
   @apply mx-auto flex w-full flex-col rounded-lg border-2 border-gray-200 bg-white p-6;
 }
 
+.landing-container {
+  @apply flex h-screen w-screen flex-col;
+}
+
 /* 홈 화면 */
 .home-container {
   @apply relative mx-auto flex w-full flex-row gap-x-5 py-10;
