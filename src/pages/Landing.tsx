@@ -1,18 +1,20 @@
 import { Header } from '@components/Landing/Header';
-import { LandingMain } from '@/components/Landing/LandingMain';
-import { LoginButton } from '@/components/Landing/LoginButton';
+import LandingMainSection from '@components/Landing/LandingMainSection.tsx';
+import { Footer } from '@components/Common/Footer.tsx';
+import { Setting } from '@components/Common/Setting.tsx';
+import GuideSection from '@components/Landing/GuideSection.tsx';
+import StartSection from '@components/Landing/StartSection.tsx';
 
 const Landing = () => {
   return (
-    <div className="flex h-screen w-screen flex-col bg-landing">
+    <>
       <Header />
-      <div className="mx-auto mb-20 flex flex-grow items-center">
-        <div id="Main" className="flex flex-col text-left">
-          <LandingMain />
-          <LoginButton />
-        </div>
-      </div>
-    </div>
+      <LandingMainSection />
+      <GuideSection />
+      <StartSection />
+      <Setting />
+      <Footer />
+    </>
   );
 };
 
