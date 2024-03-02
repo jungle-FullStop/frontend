@@ -26,7 +26,7 @@ export const UserGrassDiv = () => {
             <p>Fri</p>
             <p>Sat</p>
           </div>
-          <div className="mx-auto grid h-[500px] w-[700px] grid-cols-7 grid-rows-5 rounded-lg bg-grassColor p-2">
+          <div className="mx-auto grid h-[600px] w-[700px] grid-cols-7 grid-rows-6 rounded-lg bg-grassColor p-2">
             {grassElements}
           </div>
         </div>

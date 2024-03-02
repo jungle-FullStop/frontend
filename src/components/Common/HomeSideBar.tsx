@@ -6,7 +6,7 @@ import useThrottleScroll from '@hooks/Common/useThrottleScroll.ts';
 import { TeamProfile } from '@components/Home/Profile/TeamProfile.tsx';
 
 export const HomeSideBar = (props: any) => {
-  const barPosition = useThrottleScroll(100, 50, 450);
+  const barPosition = useThrottleScroll(100, 50, 540);
   return (
     <div className={'sidebar-container'}>
       <div className={'sidebar'} style={{ transform: `translateY(${barPosition}px)` }}>
