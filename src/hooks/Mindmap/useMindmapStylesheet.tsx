@@ -46,12 +46,8 @@ export function generateStylesheet(elements: any): any {
         width: graph.edgeWidth,
         lineColor: function (ele: EdgeCollection) {
           if (ele.data().cnt >= 80) {
-            return '#1e3a8a';
-          } else if (ele.data().cnt >= 60) {
-            return '#1d4ed8';
-          } else if (ele.data().cnt >= 40) {
             return '#3b82f6';
-          } else if (ele.data().cnt >= 20) {
+          } else if (ele.data().cnt >= 50) {
             return '#93c5fd';
           } else {
             return '#dbeafe';

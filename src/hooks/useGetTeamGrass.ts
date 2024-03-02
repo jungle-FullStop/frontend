@@ -7,7 +7,7 @@ const today = new Date();
 
 export const useGetTeamGrass = () => {
   const [TilData, setTilData] = useState<TIL[]>(() => {
-    return dateRange.map((item) => {
+    return dateRange.map((item): TIL => {
       return {
         date: item,
         id: -1,

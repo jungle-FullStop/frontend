@@ -6,6 +6,8 @@ import { useQueryClient } from '@tanstack/react-query';
 import { cockPush } from '@api/FirebaseApi.ts';
 import { round } from 'lodash';
 import { Flipped, Flipper } from 'react-flip-toolkit';
+import customSound from '@assets/sound/alarm.mp3';
+import grothSound from '@assets/sound/groth.mp3';
 
 // Enum for status priorities
 enum StatusPriority {
@@ -37,11 +39,19 @@ const TeamInfo = () => {
     queryClient.setQueryData(['teamList'], (oldTeams?: MemberListResponse[]) => {
       const updatedTeams = oldTeams
         ?.map((member) => {
-          const newStatus = newStatusData[member.id];
-          const isUpdated = newStatus && member.status !== newStatus;
-
+          let newStatus = newStatusData[member.id];
+          // isNotWritten : 작성중인 상태인데 받아온 데이터에는 없을 경우( 사용자가 머물지 않았음 )
+          const isNotWritten = !newStatus && member.status === 'writing';
+          const isUpdated = (newStatus && member.status !== newStatus) || isNotWritten;
+          // const isUpdated = newStatus && member.status !== newStatus;
+          if (isNotWritten) newStatus = 'not_written';
           if (isUpdated) {
+            console.log('isUpdated', isUpdated, member);
             // Reset highlight after 2 seconds
+            if (newStatus === 'writing') {
+              const audio = new Audio(customSound);
+              audio.play();
+            }
             setTimeout(() => {
               queryClient.setQueryData(
                 ['teamList'],
@@ -62,6 +72,7 @@ const TeamInfo = () => {
         })
         .sort(sortTeamMembers);
 
+      console.log(updatedTeams);
       return updatedTeams;
     });
   };
@@ -75,7 +86,7 @@ const TeamInfo = () => {
     };
 
     return () => eventSource.close();
-  }, [queryClient]);
+  }, []);
 
   // Handle poke and cheer actions
   const handlePoke = async (memberId: string, body?: string) => {

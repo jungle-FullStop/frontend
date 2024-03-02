@@ -4,7 +4,7 @@ import RedCabbage_Raw_1 from '@assets/grass/RedCabbage_Raw_1.png';
 import RedCabbage_Raw_2 from '@assets/grass/RedCabbage_Raw_2.png';
 import RedCabbage_Raw_3 from '@assets/grass/RedCabbage_Raw_3.png';
 import RedCabbage_Raw_4 from '@assets/grass/RedCabbage_Raw_4.png';
-
+import waterSound from '@assets/sound/water.mp3';
 export const TeamGrass = (props: any) => {
   const [showToolTip, setShowToolTip] = useState(false);
   const [currentProportion, setCurrentProportion] = useState(props.proportion);
@@ -39,6 +39,9 @@ export const TeamGrass = (props: any) => {
       const element = document.querySelector(`.team-grass-${escapedDate}`);
       setShowWateringCan(true);
 
+      const audio = new Audio(waterSound);
+      audio.play();
+
       if (element) {
         element.classList.add('grow-effect');
         element.classList.add('hidden');
@@ -63,7 +66,7 @@ export const TeamGrass = (props: any) => {
     } else if (proportion > 75 && proportion <= 100) {
       return RedCabbage_Raw_4;
     } else {
-      return null;
+      return undefined;
     }
   };
 

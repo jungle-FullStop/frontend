@@ -51,6 +51,7 @@ const API_PATH = {
     join: () => SERVER_URL + TEAM + '/join',
     teamProfile: (teamCode: string) => SERVER_URL + TEAM + `/${teamCode}`,
     updateState: () => SERVER_URL + TEAM + '/change-status',
+    refresh: () => SERVER_URL + TEAM + '/refresh',
   },
   PUSH: {
     push: () => SERVER_URL + PUSH,
