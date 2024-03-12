@@ -1,4 +1,4 @@
-### 서비스 소개
+## 티나끝 서비스 소개
 https://github.com/jungle-FullStop
 
 ### 프론트엔드 프로젝트 설정 및 실행 절차
